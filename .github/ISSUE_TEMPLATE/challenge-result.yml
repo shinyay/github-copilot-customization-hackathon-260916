@@ -3,11 +3,18 @@ description: Submit Baseline and Customized evidence from an isolated Runtime re
 title: "[Challenge Result]: "
 labels:
   - challenge-result
+  - workshop-260916
 body:
   - type: markdown
     attributes:
       value: |
-        Submit evidence, including negative or blocked results. Do not paste secrets, personal data, customer data, or private source code.
+        Use respectful, non-harassing language. Repository members can read submitted Issues.
+
+        A public-safe team name or alias is sufficient. Do not provide a real name, email address, phone number, employee ID, or other contact information.
+
+        Do not paste secrets, tokens, credential values, customer data, private source code, raw logs, or personal home paths. Use minimal redacted summaries when reviewers cannot access linked private evidence.
+
+        Report the result that was actually observed. Do not hide negative, equal, worse, blocked, unsupported, or not-observed results.
 
   - type: dropdown
     id: challenge_id
@@ -76,7 +83,7 @@ body:
     id: participant_team
     attributes:
       label: Participant / team
-      description: Public-safe participant or team name.
+      description: Public-safe team name or alias only. A real name, email address, phone number, employee ID, or other contact information is not required.
     validations:
       required: true
   - type: input
@@ -140,17 +147,31 @@ body:
     validations:
       required: true
   - type: textarea
+    id: open_question
+    attributes:
+      label: Open Question
+      description: Answer the Open Question from the selected Challenge page, including uncertainty or limits.
+    validations:
+      required: true
+  - type: textarea
+    id: challenge_design
+    attributes:
+      label: Challenge-specific design
+      description: Describe the customization you chose, why you chose it, and the alternatives you rejected.
+    validations:
+      required: true
+  - type: textarea
     id: baseline_evidence
     attributes:
       label: Baseline evidence
-      description: Link or summarize fixed input, output, checks, duration, failures, and environment before activation.
+      description: Link or summarize fixed input, output, checks, duration, failures, limits, environment, and not-observed items before activation.
     validations:
       required: true
   - type: textarea
     id: customized_evidence
     attributes:
       label: Customized evidence
-      description: Link or summarize the matching evidence after activation.
+      description: Link or summarize the matching evidence after activation, including equal, worse, failed, or not-observed results.
     validations:
       required: true
   - type: dropdown
@@ -171,14 +192,14 @@ body:
     id: failures_unknowns
     attributes:
       label: Failures + unknowns
-      description: Include failed attempts, missing capabilities, condition drift, and unresolved questions. Write none if empty.
+      description: Include failed attempts, limits, missing capabilities, condition drift, not-observed behavior, and unresolved questions. Explain any N/A Runtime or Pull Request URL. Write none if empty.
     validations:
       required: true
   - type: textarea
-    id: challenge_design
+    id: reproduction_steps
     attributes:
-      label: Challenge-specific design
-      description: Explain your design choices in enough detail for this Challenge's Judging section.
+      label: Reproduction steps
+      description: Provide ordered, reproducible steps for the Baseline and Customized runs, including fixed inputs and checks. Redact sensitive values.
     validations:
       required: true
   - type: textarea
@@ -240,7 +261,7 @@ body:
     attributes:
       label: Privacy confirmation
       options:
-        - label: I removed secrets, personal data, customer data, and private source content from this Issue.
+        - label: I removed secrets, tokens, credential values, personal/contact data, customer data, private source, raw logs, and personal home paths from this Issue.
           required: true
     validations:
       required: true

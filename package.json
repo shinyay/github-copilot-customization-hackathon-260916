@@ -1,5 +1,5 @@
 {
-  "name": "@shinyay/github-copilot-customization-hackathon",
+  "name": "github-copilot-customization-hackathon-260916",
   "version": "0.1.0",
   "private": true,
   "description": "Organizer hub, challenge catalog, and inert Starter Packs for GitHub Copilot customization challenges.",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shinyay/github-copilot-customization-hackathon.git"
+    "url": "https://github.com/shinyay/github-copilot-customization-hackathon-260916.git"
   },
   "license": "UNLICENSED"
 }
