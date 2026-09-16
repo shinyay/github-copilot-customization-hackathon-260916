@@ -1,12 +1,28 @@
-# GitHub Copilot Customization Hackathon
+# GitHub Copilot Customization Workshop 2026-09-16
 
-このリポジトリは、Challengeの選択、Starter Packの配布、実行計画、提出Issue、結果集約を担う **Hub** です。実験はここでは行わず、参加者ごとに
-[`shinyay/github-copilot-customization-runtime-template`](https://github.com/shinyay/github-copilot-customization-runtime-template)
-から作る独立した非公開Runtimeリポジトリで行います。
+この非公開リポジトリは、2026-09-16開催ワークショップのChallenge選択、Starter Pack配布、実行計画、Challenge Result Issue、結果集約を担う **Hub** です。実験はHubでは行わず、参加者またはチームごとに独立した非公開Runtimeリポジトリで行います。
+
+```console
+git clone https://github.com/shinyay/github-copilot-customization-hackathon-260916.git
+```
+
+提出入口は [Issue chooser](https://github.com/shinyay/github-copilot-customization-hackathon-260916/issues/new/choose) の共通
+[Challenge Result Form](https://github.com/shinyay/github-copilot-customization-hackathon-260916/issues/new?template=challenge-result.yml)
+です。45 Challengeで同じFormを使います。
+
+## Repository identity
+
+- Event Hub: `shinyay/github-copilot-customization-hackathon-260916`
+- Target initial main: `2ad9718625562160c8d96c2090b13a180820a1e9`
+- Accepted source: [`shinyay/github-copilot-customization-hackathon@fcdf3d4b5a6ac70c3318d45f258585f8f2d660de`](https://github.com/shinyay/github-copilot-customization-hackathon/commit/fcdf3d4b5a6ac70c3318d45f258585f8f2d660de)
+- Accepted source/target tree: `1777736d3c3db03ea149811fce9036c84605bf8b`
+- Current participant Runtime: [`shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`](https://github.com/shinyay/github-copilot-customization-runtime-template/commit/8f0b3aa25c4f33facdea691642c2f1cb3901391c)
+
+Challengeページ内に残る過去のRuntime commit pinは、各Challengeの受入時点を示す履歴Evidenceです。参加開始時に使う上記のcurrent participant Runtime pinとは役割が異なるため、過去のpinや製品情報の検証日をイベント日へ置き換えません。
 
 ## Start
 
-1. [Getting Started](docs/getting-started.md) を読む。
+1. [Getting Started](docs/getting-started.md) を読み、current participant Runtime pinを確認する。
 2. [Challenge Index](docs/generated/challenge-index.md) からChallengeを1つ選ぶ。
 3. Runtimeリポジトリを作り、`--condition` 付きで不活性Packを配置し、ページ指定のBaselineを記録する。
 4. 指定されたCustomized条件を同じ入力で比較し、RuntimeのPull RequestとHubのChallenge Result Issueを提出する。資料・設計比較ではactiveな設定を作らない。

@@ -6,6 +6,12 @@ HubはChallengeを説明し、不活性なPackを配り、提出を集約しま�
 [`shinyay/github-copilot-customization-runtime-template`](https://github.com/shinyay/github-copilot-customization-runtime-template)
 から作ったRuntimeリポジトリに置きます。
 
+2026-09-16 workshopで新しい参加runを開始するcurrent Runtime identityは
+[`shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`](https://github.com/shinyay/github-copilot-customization-runtime-template/commit/8f0b3aa25c4f33facdea691642c2f1cb3901391c)
+です。このcommitから参加者またはチーム専用の非公開Runtimeリポジトリを作ります。
+
+Challengeページに記録された別のRuntime commit pinは、各Challengeの受入時点を再現するためのhistorical acceptance pinです。current participant Runtime identityへ一括置換せず、製品情報の検証日とともに履歴Evidenceとして保持します。current pinとhistorical pinの差が結果へ影響した可能性は、EnvironmentまたはFailures + unknownsへ明記します。
+
 HubのPackをそのまま実行しないでください。すべてのpayload sourceは `*.template` であり、Hubでは意図的に不活性です。
 
 ## Pack適用の安全規則
@@ -76,6 +82,7 @@ Packは読まず、ガイドの登録・安全な通常ファイル・本編と�
 ## Isolation
 
 - Challengeごとにfresh repositoryを使う。
+- Runtime repositoryは参加者またはチーム専用のprivate repositoryにする。
 - BaselineとCustomizedはページ指定のcondition strategyに従う。
 - 新しい会話で条件間の記憶を切る。
 - Customization discoveryを比較する場合はfresh profileまたは同等の分離を使う。
@@ -130,7 +137,8 @@ Runtime exporterの `runtimeBehavior` と `educationalEffect` は静的検証で
 
 - 参加者が新規作成したCustomizationと、自分で行った変更
 - Challenge指定のEvidence file
-- 再現手順
 - BaselineとCustomizedの結果
 - 環境差、失敗、unknown
+- Open Questionへの回答、Customizationの選択理由、却下した代替案
+- 第三者が追試できる再現手順
 - 必要部分へ絞りredactしたEvidence（secretやraw logは提出しない）
