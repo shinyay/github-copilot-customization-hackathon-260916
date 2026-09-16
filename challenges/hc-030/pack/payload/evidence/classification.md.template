@@ -1,0 +1,35 @@
+# HC-030 Review Classification
+
+## Public categories
+
+- **true-positive**: a reported finding identifies an actual semantic risk and cites rooted evidence.
+- **false-positive**: a reported finding claims a defect where the candidate preserves the public contract.
+- **miss**: the review omits a semantic risk demonstrated by source or a reproducible check.
+- **rooted evidence**: a claim tied to a changed line plus `TaxAmounts`, `Money`, `CommonRulesTest`, or an executed result.
+
+These definitions are public evaluation criteria, not a candidate answer key.
+
+## Environment
+
+- Client / host / OS / channel:
+- Model / effort / tools:
+
+## Candidate A
+
+| Condition | Finding or no-finding | Changed line | Rooted evidence | Verification | Classification |
+|---|---|---|---|---|---|
+| Baseline |  |  |  |  |  |
+| Customized |  |  |  |  |  |
+
+## Candidate B
+
+| Condition | Finding or no-finding | Changed line | Rooted evidence | Verification | Classification |
+|---|---|---|---|---|---|
+| Baseline |  |  |  |  |  |
+| Customized |  |  |  |  |  |
+
+## Outcome
+
+Choose one: improved / equal / worse / incomparable / blocked / unsupported
+
+Explain changes in true-positive, false-positive, miss, and rooted-evidence behavior without inventing private grading rules.

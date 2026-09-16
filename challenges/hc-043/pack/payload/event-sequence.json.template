@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_TRAINING_ONLY",
+  "tasks": [
+    {
+      "id": "E01",
+      "repositoryVisibility": "private-or-internal",
+      "policyState": "recorded-enabled",
+      "events": [
+        {
+          "eventId": "evt-001",
+          "kind": "pull-request-opened",
+          "actor": "actor-maintainer",
+          "head": "head-a",
+          "requestedWork": "read-only-impact-summary"
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "repositoryVisibility": "private-or-internal",
+      "policyState": "recorded-enabled",
+      "events": [
+        {
+          "eventId": "evt-002",
+          "kind": "pull-request-opened",
+          "actor": "actor-contributor",
+          "head": "head-b",
+          "requestedWork": "read-only-impact-summary"
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "repositoryVisibility": "public",
+      "policyState": "unknown",
+      "events": [
+        {
+          "eventId": "evt-003",
+          "kind": "pull-request-opened",
+          "actor": "actor-unknown",
+          "head": "head-c",
+          "requestedWork": "read-only-impact-summary"
+        }
+      ]
+    },
+    {
+      "id": "E04",
+      "repositoryVisibility": "private-or-internal",
+      "policyState": "recorded-enabled",
+      "events": [
+        {
+          "eventId": "evt-004",
+          "kind": "pull-request-opened",
+          "actor": "actor-maintainer",
+          "head": "head-d",
+          "requestedWork": "read-only-impact-summary"
+        },
+        {
+          "eventId": "evt-004-duplicate",
+          "duplicateOf": "evt-004",
+          "kind": "pull-request-opened",
+          "actor": "actor-maintainer",
+          "head": "head-d",
+          "requestedWork": "read-only-impact-summary"
+        },
+        {
+          "eventId": "evt-005",
+          "kind": "pull-request-synchronized",
+          "actor": "actor-maintainer",
+          "head": "head-e",
+          "previousHead": "head-d",
+          "requestedWork": "read-only-impact-summary"
+        }
+      ]
+    },
+    {
+      "id": "E05",
+      "repositoryVisibility": "private-or-internal",
+      "policyState": "recorded-enabled",
+      "creatorAvailability": "unknown",
+      "events": [
+        {
+          "eventId": "evt-006",
+          "kind": "stop-requested",
+          "actor": "actor-contributor",
+          "head": "head-f",
+          "requestedWork": "stop-future-triggering"
+        },
+        {
+          "eventId": "evt-007",
+          "kind": "pull-request-synchronized",
+          "actor": "actor-maintainer",
+          "head": "head-g",
+          "previousHead": "head-f",
+          "requestedWork": "read-only-impact-summary"
+        }
+      ]
+    }
+  ]
+}

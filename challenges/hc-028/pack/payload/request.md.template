@@ -1,0 +1,7 @@
+# Fixed revision-audit request
+
+SYNTHETIC_TRAINING_ONLY
+
+base、head、default、startingの4 refに保存されたInstructionsを台帳化し、製品別の文書化規則と、今回の記録が直接示すことを別々に監査してください。
+
+old headを現在のrunへ流用せず、task diffとInstructions/config diffを分離し、版を特定できない場合はunknownで停止してください。

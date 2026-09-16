@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "artifacts": [
+    {
+      "path": "schemas/challenge-pack.schema.json",
+      "runtimePath": ".hackathon/schemas/challenge-pack.schema.json",
+      "byteLength": 9616,
+      "sha256": "183c55bc0b395d8287430c5a363a39b4229dfd33479ffee00c6b79d611d1391e",
+      "sharedWith": "shinyay/github-copilot-customization-runtime-template"
+    },
+    {
+      "path": "fixtures/contracts/glob-conformance-v1.json",
+      "runtimePath": ".hackathon/fixtures/glob-conformance-v1.json",
+      "byteLength": 1410,
+      "sha256": "2a1d6a53e3e63cf6f6346112fe41d1ab8a5cd7f921575ec5e854f9264e88a388",
+      "sharedWith": "shinyay/github-copilot-customization-runtime-template"
+    },
+    {
+      "path": "fixtures/contracts/pack-hash-v1.json",
+      "runtimePath": ".hackathon/fixtures/pack-hash-v1.json",
+      "byteLength": 446,
+      "sha256": "108c4dfe54d97caa3d789f31505c131813195fd0a8dfc6d07c72c24190ee47bd",
+      "sharedWith": "shinyay/github-copilot-customization-runtime-template"
+    }
+  ]
+}

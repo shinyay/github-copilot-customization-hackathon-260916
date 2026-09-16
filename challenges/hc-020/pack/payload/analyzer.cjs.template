@@ -1,0 +1,19 @@
+function analyze(input) {
+  if (!input || typeof input !== 'object' || Array.isArray(input)
+      || Object.keys(input).length !== 1 || !Object.hasOwn(input, 'text')
+      || typeof input.text !== 'string' || input.text.trim().length === 0) {
+    throw new TypeError('Provide exactly one nonempty string field named text.');
+  }
+  if ([...input.text].length > 8192) {
+    throw new RangeError('Draft text exceeds 8192 Unicode code points.');
+  }
+  const text = input.text.replace(/\r\n/g, '\n');
+  return {
+    evidenceSections: (text.match(/^## Evidence[ \t]*$/gm) ?? []).length,
+    unknownSections: (text.match(/^## Unknowns[ \t]*$/gm) ?? []).length,
+    citationMarkers: (text.match(/\[\[source:[^\]\r\n]+\]\]/g) ?? []).length,
+    semanticValidation: 'not-performed'
+  };
+}
+
+module.exports = { analyze };

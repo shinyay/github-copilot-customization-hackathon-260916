@@ -1,0 +1,18 @@
+# OrderGroup.java canonical hash excerpt
+
+Canonical Runtime path:
+`wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java`
+
+```java
+payload.add("order-import-v1");
+payload.addAll(first.subList(0, 7));
+payload.add(first.get(9));
+for (List<String> row : records) {
+    lines.add(Fingerprints.of(
+            row.get(7),
+            Integer.toString(ImportFields.integer(row.get(8), "quantity"))));
+}
+Collections.sort(lines);
+```
+
+The full Runtime source is authoritative; this excerpt does not prove runtime database state.

@@ -1,0 +1,5 @@
+taskId: replay-plan
+Create a static investigation plan for repeated external_key input using OrderGroup.canonicalHash and OrderImportService. Do not import, replay, or access a database.
+
+taskId: journal-boundary
+Map the static investigation boundary between BatchRowService, BatchRunService, OrderImportService, and OrderService. Preserve unknown database and execution state.

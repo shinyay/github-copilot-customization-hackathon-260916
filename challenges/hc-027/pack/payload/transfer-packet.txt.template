@@ -1,0 +1,4 @@
+packet-id: EVAL-TRANSFER-01
+group-x: initial=7 follow-up=8
+group-y: initial=null follow-up=null
+constraint: missing rows stay in the denominator record

@@ -1,0 +1,43 @@
+{
+  "fixtureLabel": "LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACE",
+  "trainingLabel": "SYNTHETIC_TRAINING_ONLY",
+  "formatVersion": 2,
+  "revision": "participant-display-v1",
+  "deliveryPolicy": "hc013-full-display-v1",
+  "instructions": "",
+  "organization": {
+    "reader": "",
+    "readingOrder": [],
+    "groups": [],
+    "omissionPolicy": "preserve-full-display-and-metadata"
+  },
+  "materials": [],
+  "actualHistoricalDecision": "NOT_PROVIDED",
+  "observations": {
+    "evidenceKind": "local-design-only",
+    "localSourceRead": "not-observed",
+    "mcpInitialization": "not-observed",
+    "toolDiscovery": "not-observed",
+    "toolEnabled": "not-observed",
+    "authentication": "not-observed",
+    "organizationPolicy": "not-observed",
+    "spaceAcl": "not-observed",
+    "sourceAcl": "not-observed",
+    "sourceTypeSupport": "not-observed",
+    "getCopilotSpaceCall": null,
+    "aclVerified": false,
+    "synchronization": "not-observed",
+    "runtimeBehavior": "not-observed",
+    "educationalEffect": "not-observed"
+  },
+  "limitations": [
+    "これはローカルの資料設計であり、実Spaceまたはget_copilot_spaceの応答ではない。",
+    "合成運用メモと合成の閲覧属性を実際の履歴・ACLへ昇格しない。",
+    "B1/B2/B3の静的読解はJava/DBの実行ではなく、資料にない歴史的理由はNOT_PROVIDEDのままにする。",
+    "全材料のdisplayText・metadata・配列順・limitationsを保持し、取得不能を不存在としない。",
+    "B1/B2/B3はSANITIZED_FULL_SOURCE_DISPLAYである。B3の6行全体を明示markerへ置換したため原本のbyte-exact複製ではなく、実行可能なJavaとも限らない。",
+    "originalSha256は原本whole-sourceのprovenance、display.sha256は共有する表示全文の照合、transformationは行単位の限定receiptである。",
+    "B/Cのカード全raw bytes一致は同じdisplayを運んだ確認であり、原本同一・実際の投入・認証・共有・同期の証明ではない。",
+    "除去した認証値・原本の除去行・個々の値のhashは保存しない。helperの成功はRuntime exportの成功を保証しない。"
+  ]
+}

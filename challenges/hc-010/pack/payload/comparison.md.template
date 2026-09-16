@@ -1,0 +1,31 @@
+# HC-010 Comparison
+
+## Fixed task
+
+自runのcondition/run ID、比較groupと相手run、固定依頼・source・草稿・checker・入力caseのhashを記入する。
+sourceはMoney.javaのMoney.tax。読んだ範囲、run-id・資源場所の置換、本文同一性を分ける。
+
+## Environment
+
+client/host OS/Node、model/effort・toolsを使ったか、承認方式、workspace/profile/repositoryの識別と残留設定を書く。
+実機を使わない場合も理由を記す。秘密や実アカウント名は含めない。
+
+## Design
+
+受け手、担当者、時点、結果別説明、再入、通知不要の判断と原稿hashを記す。
+design.mdは両条件で同じ凍結版か、差異があれば理由を書く。
+
+## Observations
+
+source読解、設計、fixture-onlyの結果読解、実観測を別記する。何を読んだかと何を実行したかを混同しない。
+実Stop・設定発見・通知表示・追加AIターン数・未測定の時間等は理由付きnot-observedまたはnullとする。
+
+## Comparison
+
+Baseline baselineとCustomized notification-designで共通な入力、変える因子、手動確認の負担、比較不能な差を記す。
+相手run未実施なら未実施とし、一つのrunを2条件の完了にしない。
+
+## Outcome
+
+improved/equal/worse/追加不要/unsupported/not-observed/blocked/incomparableの判断と限界を記入する。
+構造・hash検査を意味の正しさや実機挙動・教育効果の証明にしない。runtimeBehavior/educationalEffectは静的検査ではnot-observed。

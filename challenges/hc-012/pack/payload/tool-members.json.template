@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "kind": "inert-tool-selection-contract",
+  "expectedMembersByCondition": {
+    "baseline": [
+      "search/changes",
+      "search/codebase",
+      "read/problems",
+      "search/usages"
+    ],
+    "tool-set-design": [
+      "search/changes",
+      "search/codebase",
+      "read/problems",
+      "search/usages"
+    ]
+  },
+  "cards": [
+    {
+      "reference": "search/changes",
+      "purpose": "変更を調べる入口。本編はアプリ変更なしなので、変更がなくても異常ではありません。",
+      "emptyResultMeaning": "変更なしは実装の正しさの証拠ではありません。結果を作るためにアプリを変更しません。",
+      "zeroResultsProveCorrectness": false
+    },
+    {
+      "reference": "search/codebase",
+      "purpose": "意味に基づいて関連コードへ到達する入口。索引の状態と実際の利用は別途確認が必要です。",
+      "emptyResultMeaning": "関連コードが存在しないとは断定せず、索引・対象範囲・queryを未確認として残します。",
+      "zeroResultsProveCorrectness": false
+    },
+    {
+      "reference": "read/problems",
+      "purpose": "利用可能な診断を読む入口。対象ファイルと言語サービスの起動状態に依存します。",
+      "emptyResultMeaning": "診断なしはアプリ全体に不具合がない証明ではありません。言語サービスと対象範囲を確認します。",
+      "zeroResultsProveCorrectness": false
+    },
+    {
+      "reference": "search/usages",
+      "purpose": "symbolの利用・関係を調べる入口。対応言語機能とXML配線などの限界を分けて考えます。",
+      "emptyResultMeaning": "呼出し元がないとは断定しません。利用可能な言語機能と検索範囲は未確認です。",
+      "zeroResultsProveCorrectness": false
+    }
+  ],
+  "boundary": {
+    "addsCapabilities": false,
+    "grantsPermissions": false,
+    "actsAsAcl": false,
+    "automaticallyInvokesAllMembers": false,
+    "testDefinitionReadingIsExecution": false
+  },
+  "discovery": {
+    "command": "Chat: Configure Tool Sets",
+    "scope": "current-profile-prompts",
+    "suffix": ".toolsets.jsonc",
+    "actualAbsolutePath": null,
+    "status": "not-observed"
+  },
+  "observations": {
+    "installedTools": "not-checked",
+    "selectedMembers": null,
+    "effectiveMembers": null,
+    "actualCalls": null,
+    "observedClicks": null,
+    "elapsedMs": null,
+    "languageService": "not-checked",
+    "index": "not-checked",
+    "runtimeBehavior": "not-observed",
+    "educationalEffect": "not-observed"
+  }
+}

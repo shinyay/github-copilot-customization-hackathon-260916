@@ -1,0 +1,28 @@
+# HC-018 run log
+
+## Synthetic packets
+
+| caseId | selected | proposal | approval | execution | result layer | stdout / stderr | exit status | classification limits |
+|---|---|---|---|---|---|---|---|---|
+| packet-01 |  |  |  |  |  |  |  |  |
+| packet-02 |  |  |  |  |  |  |  |  |
+| packet-03 |  |  |  |  |  |  |  |  |
+| packet-04 |  |  |  |  |  |  |  |  |
+| packet-05 |  |  |  |  |  |  |  |  |
+| packet-06 |  |  |  |  |  |  |  |  |
+| packet-07 |  |  |  |  |  |  |  |  |
+
+## Ordinary Manual observation
+
+- performed: yes / no
+- client / harness / host OS:
+- selected tool:
+- proposed command:
+- approval requirement and visible rule:
+- human decision:
+- execution started:
+- stdout / stderr:
+- integer exit status or unknown:
+- stop reason:
+
+CLI直実行、synthetic packet、stub、実sandboxをこの欄へ無標識で混ぜません。

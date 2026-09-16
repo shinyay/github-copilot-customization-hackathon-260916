@@ -1,0 +1,16 @@
+# HC-025 可搬性ブリーフ
+
+固定packet `LAB25-APP-01` と同じkitを、VS Code Local Agent側とAgent Host側から資料診断します。
+
+各probeで分ける層:
+
+1. file format
+2. documented discovery
+3. observed discovery
+4. loading
+5. effective tools
+6. approval
+
+本編は不活性な原稿だけを読み、実client、model、MCP、Plugin installを起動しません。observed discovery、loading、effective tools、approvalObservedはnullです。
+
+Agent HostをCloudの別名にせず、PromptのHost非読込をSkillの成功へ置き換えません。書込み、外部送信、shell、install、同期、User/home設定変更は禁止です。

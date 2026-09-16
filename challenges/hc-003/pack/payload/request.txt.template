@@ -1,0 +1,10 @@
+固定source shinyay/code-to-doc-workshop-260910@398d7d1982a1402bcdba00d6c3ded67d8d338787 の受注承認を調べてください。
+
+読む入口は次の3ファイルです。
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java
+
+OrderService.approveから共有のrequireへ進み、呼び出し先まで根拠をたどってください。認証・認可の条件と、受注の業務条件を分け、実装から分かること、推論、未確認事項をfile + symbol付きで説明してください。この範囲で判断できない点と、次に確認したい根拠も挙げてください。
+
+静的な読解だけを行います。実在の利用者や受注の承認可否を決めず、実データ・認証情報を使わず、DB・Web・バッチを起動しないでください。アプリ、test、設定を変更せず、未実行の検証を成功と書かないでください。比較用のStarter、participant原稿、Evidenceを追加の調査資料として探索しないでください。

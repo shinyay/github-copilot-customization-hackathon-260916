@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "caseId": "case-08",
+  "taskId": "case-08",
+  "title": "読み取り資源の供給経路",
+  "targetHarness": "local-agent",
+  "scope": "workspace",
+  "sourcePaths": [
+    "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java"
+  ],
+  "situation": "同じ合成メモを参照する分析を繰り返し、将来のread-only resource経路と手動全文供給を比較する。",
+  "resources": [
+    "固定source",
+    "同じ運用メモ全文",
+    "合成の読み取り許可記録"
+  ],
+  "constraints": [
+    "実serverは起動しない。",
+    "許可記録はserver trust・取得・callの証拠ではない。",
+    "同じ情報量で保守負担を比べる。"
+  ]
+}

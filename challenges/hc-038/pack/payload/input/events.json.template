@@ -1,0 +1,178 @@
+{
+  "label": "SYNTHETIC_TRAINING_ONLY",
+  "fieldBoundary": {
+    "fixtureObservationFields": [
+      "reportedEvent",
+      "invocationObserved",
+      "transport",
+      "checkerExit",
+      "checkerStdout",
+      "httpStatus",
+      "timedOut"
+    ],
+    "productInputFields": [
+      "sessionId",
+      "timestamp",
+      "cwd",
+      "toolName",
+      "toolArgs"
+    ],
+    "productOutputFields": [
+      "permissionDecision",
+      "permissionDecisionReason"
+    ]
+  },
+  "packets": [
+    {
+      "id": "E01",
+      "task": "startup-check",
+      "reportedEvent": "sessionStart",
+      "invocationObserved": false,
+      "transport": "command",
+      "checkerExit": null,
+      "checkerStdout": null,
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": null
+    },
+    {
+      "id": "E02",
+      "task": "startup-check",
+      "reportedEvent": "sessionStart",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": 0,
+      "checkerStdout": "{\"trainingStatus\":\"ready\"}",
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": null
+    },
+    {
+      "id": "E03",
+      "task": "startup-check",
+      "reportedEvent": "sessionStart",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": 17,
+      "checkerStdout": "",
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": null
+    },
+    {
+      "id": "E04",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": 0,
+      "checkerStdout": "{\"permissionDecision\":\"allow\"}",
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": {
+        "permissionDecision": "allow"
+      }
+    },
+    {
+      "id": "E05",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": 0,
+      "checkerStdout": "{\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"outside approved training scope\"}",
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": {
+        "permissionDecision": "deny",
+        "permissionDecisionReason": "outside approved training scope"
+      }
+    },
+    {
+      "id": "E06",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": 0,
+      "checkerStdout": "{\"permissionDecision\":\"ask\"}",
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": {
+        "permissionDecision": "ask"
+      }
+    },
+    {
+      "id": "E07",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": 1,
+      "checkerStdout": "",
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": null
+    },
+    {
+      "id": "E08",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": 2,
+      "checkerStdout": "{\"permissionDecision\":\"allow\"}",
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": null
+    },
+    {
+      "id": "E09",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "http",
+      "checkerExit": null,
+      "checkerStdout": null,
+      "httpStatus": 503,
+      "timedOut": false,
+      "productOutput": null
+    },
+    {
+      "id": "E10",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": null,
+      "checkerStdout": null,
+      "httpStatus": null,
+      "timedOut": true,
+      "productOutput": null
+    },
+    {
+      "id": "E11",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "http",
+      "checkerExit": null,
+      "checkerStdout": null,
+      "httpStatus": null,
+      "timedOut": true,
+      "productOutput": null
+    },
+    {
+      "id": "E12",
+      "task": "tool-check",
+      "reportedEvent": "preToolUse",
+      "invocationObserved": true,
+      "transport": "command",
+      "checkerExit": 0,
+      "checkerStdout": "",
+      "httpStatus": null,
+      "timedOut": false,
+      "productOutput": null
+    }
+  ]
+}

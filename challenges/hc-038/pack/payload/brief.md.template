@@ -1,0 +1,25 @@
+# HC-038 Starter brief
+
+SYNTHETIC_TRAINING_ONLY
+
+## Goal
+
+Separate declared events, observed invocation, checker results, product permission fields, transport failures, and operator stop decisions.
+
+## Fixed tasks
+
+- `startup-check`
+- `tool-check`
+
+Use every packet `E01` through `E12` in both `baseline` and `hook-design`.
+
+## Source / material boundary
+
+sourceKind is synthetic and sourcePaths is empty. The reported events and results are fixture records, not live Cloud observations.
+
+## Safety boundary
+
+- Keep `input/checker.sh.template` byte-identical for both conditions.
+- Do not remove `.template`, place files below `.github/hooks`, change a default branch, start Cloud, contact an endpoint, or run Java.
+- Product fields and fixture observation fields must remain separately named.
+- Runtime validation proves the static contract only; `runtimeBehavior` and `educationalEffect` remain `not-observed`.

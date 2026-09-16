@@ -1,0 +1,25 @@
+# HC-036 Starter brief
+
+SYNTHETIC_TRAINING_ONLY
+
+## Goal
+
+Design review request policy and correlate synthetic events, attempts, and heads.
+
+## Fixed tasks
+
+- `new-open`
+- `first-ready`
+- `still-draft`
+- `new-push`
+- `manual-rereview`
+
+## Source / material boundary
+
+sourceKind is synthetic and sourcePaths is empty. Do not add Java paths. All PR, actor, ruleset, request, attempt, base, and head values are training-only.
+
+## Safety boundary
+
+- Work only in declared participant/*.template files and the Runtime-owned Evidence path.
+- Do not create or change real settings, rulesets, pull requests, reviews, workflows, Java, or tests.
+- Runtime validation proves the static contract only; runtimeBehavior and educationalEffect remain not-observed.

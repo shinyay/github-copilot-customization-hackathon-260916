@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "sourceKind": "baseline",
+  "sourceRepository": "shinyay/code-to-doc-workshop-260910",
+  "sourceCommit": "398d7d1982a1402bcdba00d6c3ded67d8d338787",
+  "pathSemantics": "reading-candidates-not-acls",
+  "conditions": ["baseline", "explicit-context", "manual-equivalent"],
+  "sources": [
+    {
+      "id": "A1",
+      "path": "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+      "bytes": 29357,
+      "sha256": "a9586d7b43c4577d548180f4ea883ae522f7d97c78927f6a53e1bd48a382b072",
+      "lineCount": 521,
+      "anchorRanges": [[333, 349]]
+    },
+    {
+      "id": "A2",
+      "path": "wholesale-core/src/main/resources/application-context.xml",
+      "bytes": 5169,
+      "sha256": "ff96dd85980eb533693bd8df6111eead091796f3192645c50944db599d7d081c",
+      "lineCount": 90,
+      "anchorRanges": [[44, 53], [82, 89]]
+    },
+    {
+      "id": "A3",
+      "path": "wholesale-core/src/main/resources/spring/module-operations.xml",
+      "bytes": 1405,
+      "sha256": "284d8e50c62a952aecfab1b3fab6877db5eebd9c5d674e2da40d1a6ef6359eb9",
+      "lineCount": 27,
+      "anchorRanges": [[10, 14]]
+    }
+  ],
+  "explicitContext": ["A1", "A2"],
+  "manualEquivalent": ["A1", "A2"],
+  "additionalRead": "A3",
+  "fullSourceBytes": { "firstTwo": 34526, "allThree": 35931 },
+  "actualTokenCount": null,
+  "clientAttachmentExtent": "not-observed",
+  "runtimeBehavior": "not-observed",
+  "educationalEffect": "not-observed"
+}

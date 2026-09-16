@@ -1,0 +1,9 @@
+# HC-020 literal count run log
+
+| state | exact post-image | bytes | sha256 | PID | integer status | evidenceSections | unknownSections | citationMarkers | semanticValidation |
+|---|---|---:|---|---:|---:|---:|---:|---:|---|
+| original | fixed 4 lines + final LF |  |  |  |  |  |  |  |  |
+| missing-heading | remove only `## Unknowns` and its LF; keep the final sentence |  |  |  |  |  |  |  |  |
+| restored | exact original bytes restored |  |  |  |  |  |  |  |  |
+
+Expected literal counts are `[1,1,1] -> [1,0,1] -> [1,1,1]`. All three are valid inputs with status 0. Record process start errors, signals, and timeouts separately rather than treating `status: null` as a negative result.

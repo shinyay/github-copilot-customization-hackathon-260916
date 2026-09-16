@@ -1,0 +1,45 @@
+# HC-041 comparison evidence
+
+SYNTHETIC_TRAINING_ONLY
+
+Complete every section with participant-authored observations. Do not submit this unchanged template.
+
+## Fixed task
+
+<!-- Record exact six-card by two-surface coverage. -->
+
+## Environment
+
+<!-- Record condition, run ID, training revisions/hashes, Pack/template hash, surfaces, and unobserved live layers. -->
+
+## Condition and input
+
+<!-- Record frozen cards, repository snapshots, policy, scope notes, and design revision. -->
+
+## Design
+
+<!-- Record citation, support, eligibility, use-evidence, hold, retention, and revalidation rules. -->
+
+## Comparison
+
+<!-- Compare the same 12 rows without treating more retained or rejected cards as automatic improvement. -->
+
+## Outcome
+
+<!-- improved / equal / worse / incomparable / blocked / unsupported, with support. -->
+
+## Limitations
+
+<!-- Record Preview, service, Cloud/review, store/reuse/delete, and retention non-claims. -->
+
+## Citation audit
+
+<!-- Record source/target repo, branch/revision, path, current text check, and supported scope. -->
+
+## Scope and eligibility
+
+<!-- Separate repository fact/user preference, Cloud/review eligibility, and direct used evidence. -->
+
+## Retention and revalidation
+
+<!-- Record retain/hold/update proposal, trigger, owner, unknown, and unsupported conclusions. -->

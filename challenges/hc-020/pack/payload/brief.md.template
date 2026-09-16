@@ -1,0 +1,15 @@
+# HC-020 Starter brief
+
+SYNTHETIC_TRAINING_ONLY
+
+このPackは、普通のNodeと将来のLanguage Model Tool入口で同じpure `analyze`を共有する契約設計教材です。
+
+- conditions: `baseline`, `tool-contract`
+- fixed input: exact 4 lines、97 bytes
+- fixed analyzer: CommonJS pure function、file / network I/Oなし
+- participant output: design、counts、restored counter input。tool-contractのみinput contract、wrapper、manifest原稿
+- evidence: `.hackathon/evidence/hc-020/comparison.md`
+
+Nodeはpure calculationだけの限定対照です。Tool / Participantのregistration、discovery、confirmation、call、cancel、dispose、Host、LLM、semantic validationは本編で観測しません。
+
+別analyzer、active extension、通常profileへのinstall、Runtime root package上書きは作りません。

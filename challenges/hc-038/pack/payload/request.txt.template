@@ -1,0 +1,5 @@
+SYNTHETIC_TRAINING_ONLY
+
+Using the unchanged checker and all packets E01 through E12, prepare a diagnosis for startup-check and tool-check.
+
+For baseline, state what manual checker inspection can and cannot establish about event invocation. For hook-design, keep the checker and packets unchanged while drafting inactive sessionStart and preToolUse connections, stop ownership, and recovery steps. Do not claim default-branch placement, Cloud execution, permission enforcement, transport reachability, or tool completion.

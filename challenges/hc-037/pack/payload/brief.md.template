@@ -1,0 +1,25 @@
+# HC-037 Starter brief
+
+SYNTHETIC_TRAINING_ONLY applies to the candidate diffs and control records. The Java source paths remain read-only baseline references.
+
+## Goal
+
+Create a review evaluation plan for Lite and Balanced without requesting a live review.
+
+## Fixed task
+
+- task: `amount-review`
+- conditions: `baseline`, `balanced-plan`
+- candidates in every condition: `candidate-01`, `candidate-02`
+- state in every cell: `planned-not-requested`
+
+## Source / material boundary
+
+Read the three paths in `input/source-map.md.template`. Do not apply either candidate to the Runtime source tree.
+
+## Safety boundary
+
+- Work only in declared `participant/*.template` files and the Runtime-owned Evidence path.
+- Do not create a candidate PR, request review, change review settings, or run Java/Maven/DB work.
+- Requested effort is the only planned difference. Effective effort, model, findings, cost, fallback, and CI visibility remain `null` or `not-observed`.
+- Runtime validation proves the static contract only; `runtimeBehavior` and `educationalEffect` remain `not-observed`.

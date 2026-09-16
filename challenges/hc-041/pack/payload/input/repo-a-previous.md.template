@@ -1,0 +1,17 @@
+# repo-a previous snapshot
+
+SYNTHETIC_TRAINING_ONLY
+
+Revision: `training-r1`
+
+## docs/verify.md
+
+The repository verification command was:
+
+```text
+npm run check-a
+```
+
+## docs/output.md
+
+Generated challenge indexes were written below `docs/generated/`.

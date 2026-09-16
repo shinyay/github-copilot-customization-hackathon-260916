@@ -1,0 +1,5 @@
+{
+  "github.copilot.chat.reviewSelection.instructions": [],
+  "github.copilot.chat.commitMessageGeneration.instructions": [],
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": []
+}

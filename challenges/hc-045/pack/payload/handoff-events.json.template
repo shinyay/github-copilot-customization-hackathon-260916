@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_ADAPTED_TRAINING_ONLY",
+  "tasks": [
+    {
+      "id": "H01",
+      "candidateId": "candidate-01",
+      "state": "draft",
+      "claims": {
+        "draft": true,
+        "prepared": false,
+        "sent": false,
+        "accepted": false,
+        "applied": false
+      },
+      "evidence": {
+        "transmission": null,
+        "acceptance": null,
+        "application": null
+      }
+    },
+    {
+      "id": "H02",
+      "candidateId": "candidate-01",
+      "state": "sent-claim-without-proof",
+      "claims": {
+        "draft": true,
+        "prepared": true,
+        "sent": true,
+        "accepted": false,
+        "applied": false
+      },
+      "evidence": {
+        "transmission": null,
+        "acceptance": null,
+        "application": null
+      }
+    },
+    {
+      "id": "H03",
+      "candidateId": "candidate-01",
+      "state": "return-material",
+      "claims": {
+        "draft": true,
+        "prepared": true,
+        "sent": true,
+        "accepted": true,
+        "applied": true
+      },
+      "evidence": {
+        "transmission": null,
+        "acceptance": null,
+        "application": null
+      },
+      "returned": {
+        "branch": "cloud-fix-training",
+        "head": "head-tax-a-return",
+        "changedPaths": [
+          "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java",
+          "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java"
+        ],
+        "testReport": "self-reported-pass"
+      }
+    },
+    {
+      "id": "H04",
+      "candidateId": "candidate-02",
+      "state": "draft",
+      "claims": {
+        "draft": true,
+        "prepared": false,
+        "sent": false,
+        "accepted": false,
+        "applied": false
+      },
+      "evidence": {
+        "transmission": null,
+        "acceptance": null,
+        "application": null
+      }
+    },
+    {
+      "id": "H05",
+      "candidateId": "candidate-02",
+      "state": "sent-claim-without-proof",
+      "claims": {
+        "draft": true,
+        "prepared": true,
+        "sent": true,
+        "accepted": false,
+        "applied": false
+      },
+      "evidence": {
+        "transmission": null,
+        "acceptance": null,
+        "application": null
+      }
+    },
+    {
+      "id": "H06",
+      "candidateId": "candidate-02",
+      "state": "return-material",
+      "claims": {
+        "draft": true,
+        "prepared": true,
+        "sent": true,
+        "accepted": true,
+        "applied": true
+      },
+      "evidence": {
+        "transmission": null,
+        "acceptance": null,
+        "application": null
+      },
+      "returned": {
+        "branch": "review-fix-training",
+        "head": "head-tax-b",
+        "changedPaths": [
+          "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java"
+        ],
+        "testReport": "not-provided"
+      }
+    }
+  ]
+}

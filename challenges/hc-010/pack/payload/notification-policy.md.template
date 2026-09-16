@@ -1,0 +1,29 @@
+# HC-010 通知方針用紙
+
+notification-design専用。不活性な提案であり、配布adapterを変更・有効化する設定ではない。
+
+## 受け手と目的
+
+受け手、手動確認の責任者、応答停止との対応、伝える量を選んだ理由を書く。
+
+## Caseごとの提案
+
+sample-01からsample-05まで、result/codeを保持した通知文または見送りの案を記す。
+checkerのpass/invalid/uncheckable/skippedとexit、adapter exitを別欄にする。
+caseの一つを選び、stop-output.json.templateへcontinue: trueとsystemMessageだけの出力案を書く。
+提案は観測出力ではない。配布adapterの既存英語メッセージとは別に記録する。
+
+## 重複・再入・検査不能
+
+stop_hook_active: trueはchecker起動前にskippedとする。自動修正・新しいAIターン・反復は要求しない。
+結果を読めない場合を合格扱いしない説明と、通知が不要な場面を記す。
+
+## 無効な設定原稿
+
+stop-hook.json.templateのcommand、windows、cwd、timeoutの意味と未確認箇所を記す。
+参照する原本.runtime layoutは本編の許可外であり、作成しない。別OSへ対応済みと書かない。
+
+## 比較と非主張
+
+同じ入力のmanual-checklistと比べる観点、負担が増える可能性、追加不要の判断を書く。
+実イベント、設定発見、通知表示、性能改善を観測したとは主張しない。

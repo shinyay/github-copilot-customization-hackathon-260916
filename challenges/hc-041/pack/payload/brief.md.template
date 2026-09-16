@@ -1,0 +1,25 @@
+# HC-041 Starter brief
+
+SYNTHETIC_TRAINING_ONLY
+
+## Goal
+
+Audit repository fact cards against current material while separating source support, surface eligibility, actual use, retention, and revalidation.
+
+## Fixed tasks
+
+- `cloud-fact-audit`
+- `review-fact-audit`
+
+Use every card `F01` through `F06` in both conditions and both tasks.
+
+## Source / material boundary
+
+sourceKind is synthetic and sourcePaths is empty. Repository names, revisions, cards, citations, preferences, and use claims are training-only and are not real Git SHAs or Memory records.
+
+## Safety boundary
+
+- Work only in `participant/hc-041/retention-policy.md.template` and the Runtime-owned Evidence path.
+- Do not store, reuse, delete, disable, or clear a real Memory or user setting.
+- Keep repository facts, user preferences, VS Code Local Memory, and Copilot App memory separate.
+- Runtime validation proves the static contract only; `runtimeBehavior` and `educationalEffect` remain `not-observed`.

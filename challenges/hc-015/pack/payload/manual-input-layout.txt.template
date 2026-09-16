@@ -1,0 +1,23 @@
+HC-015 manual-input.txt のレイアウト説明（この説明文自体を送信しません）
+
+保存先はmanual-equivalentだけのparticipant/hc-015/manual-input.txtです。
+元bytesは参加者の同じRuntime sourceから読みます。PackにJava全文の別treeはありません。
+完成packetはUTF-8/BOMなし、以下のASCII preambleとfilename delimiterをLFで置きます。
+file本文は元raw bytesのままです。trim、抜粋、要約、CRLF変換、別の回答の追記をしません。
+固定二fileは末尾LFを含みます。本文とEND delimiterの間へ余分な改行を挿入しません。
+以下の二つの角括弧による説明箇所だけを各fileのraw全文で置き換えます。
+
+HC-015 MANUAL FULL-SOURCE v1
+<<<BEGIN FILE wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java>>>
+[A1の完全な29357 bytesをそのまま配置]
+<<<END FILE wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java>>>
+<<<BEGIN FILE wholesale-core/src/main/resources/application-context.xml>>>
+[A2の完全な5169 bytesをそのまま配置]
+<<<END FILE wholesale-core/src/main/resources/application-context.xml>>>
+
+二fileの本文だけで34526 bytesです。preamble、filename、delimiterの分はpacket全体に加わります。
+A3はこのpacketに入れません。全条件で同じように利用できる追加読取りとして別に記録します。
+各sectionのbyte長とSHA-256をsource-targets.json.templateの固定値へ独立に照合し、
+B側の準備した二つの全文とも一致を確認します。両条件が同じ誤hashでも合格にしません。
+準備packetのhashと、実送信・内部投入の全範囲は別の証拠です。
+内部投入範囲が不明ならnot-observed、全文が入らなければincomparable / unsupportedとして止めます。

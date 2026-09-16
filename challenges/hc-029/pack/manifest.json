@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-029",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "customized",
+    "manual-equivalent"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-029/starter/brief.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.md.template",
+      "destination": ".hackathon/challenge/hc-029/starter/request.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-029/starter/design.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-029/starter/comparison.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/source-map.md.template",
+      "destination": ".hackathon/challenge/hc-029/starter/source-map.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/compatibility-checklist.md.template",
+      "destination": ".hackathon/challenge/hc-029/starter/compatibility-checklist.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/rules-draft.md.template",
+      "destination": ".hackathon/challenge/hc-029/starter/rules-draft.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/proposal-guide.md.template",
+      "destination": ".hackathon/challenge/hc-029/starter/proposal-guide.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-029/request.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-029/proposed-change.diff.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-029/compatibility-review.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-029/repository-rules.md.template",
+      "conditions": ["customized", "manual-equivalent"]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-029/comparison.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Baseline",
+        "Customized",
+        "Manual-equivalent",
+        "Compatibility",
+        "Proposal boundary",
+        "Outcome"
+      ],
+      "templateSha256": "76d4c9402a881829e12234fffa90057a6f1dc6352de493fd985a5e52534dde56"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-029/request.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-029/proposed-change.diff.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-029/compatibility-review.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-029/repository-rules.md.template",
+      "conditions": ["customized", "manual-equivalent"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-029/comparison.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

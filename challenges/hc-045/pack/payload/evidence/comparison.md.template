@@ -1,0 +1,33 @@
+# HC-045 comparison evidence
+
+Candidate, finding, and event records are SYNTHETIC_ADAPTED_TRAINING_ONLY. Java paths are read-only baseline evidence.
+
+Complete every section with participant-authored observations. Do not submit this unchanged template.
+
+## Fixed task
+
+<!-- Record H01-H06, candidate/finding/event/source hashes, equal input bytes, and declared repetitions. -->
+
+## Environment
+
+<!-- Record condition, run ID, Hub/Pack/template identity, branch/head, client/host/model if used, and unobserved live layers. -->
+
+## Baseline
+
+<!-- Record the frozen ordinary review-to-request process, revision/body hash, candidate/state decisions, and stop points. -->
+
+## Designed policy
+
+<!-- Record the frozen handoff-policy, revision/body hash, state/scope/independent-validation rules, and task decisions. -->
+
+## Comparison
+
+<!-- Compare finding support, unsafe requests, branch/head/scope drift, self-report dependence, and draft/sent confusion. -->
+
+## Outcome
+
+<!-- improved / equal / worse / incomparable / blocked / unsupported, with support and no-change/unsent outcomes where applicable. -->
+
+## Evidence boundaries
+
+<!-- Separate static structure/source reads, live handoff/application observations, and educational effect. Do not claim send, accept, apply, test, commit, push, or merge. -->

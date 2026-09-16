@@ -1,0 +1,5 @@
+SYNTHETIC_TRAINING_ONLY
+
+Audit cards F01 through F06 for cloud-fact-audit and review-fact-audit.
+
+For baseline, use the supplied current-policy procedure. For revalidation-policy, apply a participant-authored retention, hold, update-proposal, and revalidation policy to the same cards and repository snapshots. Separate current source support, eligible/not-eligible/unknown, and direct evidence of actual use. Do not store, reuse, delete, or clear Memory.

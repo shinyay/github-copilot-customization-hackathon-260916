@@ -1,0 +1,45 @@
+# HC-038 comparison evidence
+
+SYNTHETIC_TRAINING_ONLY
+
+Complete every section with participant-authored observations. Do not submit this unchanged template.
+
+## Fixed task
+
+<!-- Record startup-check, tool-check, and exact E01-E12 coverage. -->
+
+## Environment
+
+<!-- Record condition, run ID, fixture revision/hash, Pack/template hash, surface, and unobserved live layers. -->
+
+## Condition and input
+
+<!-- Record unchanged checker/packet hashes and the current condition's execution-design boundary. -->
+
+## Design
+
+<!-- Record field separation, failure categories, stop ownership, recovery, and revision. -->
+
+## Comparison
+
+<!-- Compare manual diagnosis and inactive Hook design without claiming a live event. -->
+
+## Outcome
+
+<!-- improved / equal / worse / incomparable / blocked / unsupported, with support. -->
+
+## Limitations
+
+<!-- Record live Cloud, default branch, transport, permission, and tool-completion non-claims. -->
+
+## Event and checker
+
+<!-- Separate declaration, invocation, checker/transport result, product output, and final observation. -->
+
+## Failure matrix
+
+<!-- Cover ask, command nonzero, command timeout, HTTP failure/timeout, and empty stdout distinctly. -->
+
+## Stop and recovery
+
+<!-- Record who stops, what must be rechecked, separate approval, and restoration boundary. -->

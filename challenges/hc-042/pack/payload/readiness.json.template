@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_TRAINING_ONLY",
+  "exerciseMode": "document-only",
+  "liveExecution": {
+    "mcpRegistration": "NOT EXECUTED",
+    "toolDiscovery": "NOT EXECUTED",
+    "toolCall": "NOT EXECUTED",
+    "networkProbe": "NOT EXECUTED",
+    "authentication": "NOT EXECUTED",
+    "authorization": "NOT EXECUTED",
+    "firewallChange": "NOT EXECUTED",
+    "contentExclusionChange": "NOT EXECUTED"
+  },
+  "observations": {
+    "credentialPresence": null,
+    "networkReachability": null,
+    "authenticatedIdentity": null,
+    "authorizedScope": null,
+    "outputUsed": null,
+    "runtimeBehavior": null,
+    "educationalEffect": null
+  }
+}

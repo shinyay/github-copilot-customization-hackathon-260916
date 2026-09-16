@@ -1,0 +1,35 @@
+const vscode = require('vscode');
+const { analyze } = require('./analyzer.cjs');
+
+function activate(context) {
+  context.subscriptions.push(vscode.lm.registerTool('count_workshop_evidence', {
+    async prepareInvocation(options) {
+      analyze(options.input);
+      return {
+        invocationMessage: 'Counting literal markers in the supplied draft',
+        confirmationMessages: {
+          title: 'Count supplied draft markers',
+          message: 'No file access or model call. Counts do not establish source accuracy.'
+        }
+      };
+    },
+    async invoke(options, token) {
+      if (token?.isCancellationRequested) throw new Error('Evidence counting was cancelled.');
+      const result = analyze(options.input);
+      return new vscode.LanguageModelToolResult([
+        new vscode.LanguageModelTextPart(JSON.stringify(result))
+      ]);
+    }
+  }));
+  const participant = vscode.chat.createChatParticipant(
+    'workshop-local.evidence-counter.reader',
+    async (request, _context, stream, token) => {
+      if (token?.isCancellationRequested) throw new Error('Evidence counting was cancelled.');
+      const result = analyze({ text: request.prompt });
+      stream.markdown(`\`\`\`json\n${JSON.stringify(result, null, 2)}\n\`\`\`\n\nLiteral counts only; semantic accuracy was not checked.`);
+    }
+  );
+  context.subscriptions.push(participant);
+}
+
+module.exports = { activate, analyze };

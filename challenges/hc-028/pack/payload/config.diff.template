@@ -1,0 +1,9 @@
+SYNTHETIC_TRAINING_ONLY
+DO_NOT_APPLY
+
+diff --git a/.github/instructions/synthetic-review.instructions.md b/.github/instructions/synthetic-review.instructions.md
+--- a/.github/instructions/synthetic-review.instructions.md
++++ b/.github/instructions/synthetic-review.instructions.md
+@@ -1 +1 @@
+-record the stored instruction
++record the stored instruction and synthetic ref

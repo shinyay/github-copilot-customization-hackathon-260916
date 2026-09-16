@@ -1,0 +1,9 @@
+diff --git a/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java b/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
+index 1111111..2222222 100644
+--- a/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
++++ b/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
+@@ -8,3 +8,3 @@ public final class TaxAmounts {
+ public final class TaxAmounts {
+-    private final Map<BigDecimal, BigDecimal> bases = new TreeMap<BigDecimal, BigDecimal>();
++    private final Map<BigDecimal, BigDecimal> bases = new java.util.HashMap<BigDecimal, BigDecimal>();
+     private final String rounding;

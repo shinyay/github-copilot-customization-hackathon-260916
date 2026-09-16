@@ -1,0 +1,15 @@
+---
+name: order-replay-investigation
+description: Use for static replay-plan or journal-boundary investigation with fixed training material.
+---
+
+### Investigation procedure
+
+<!-- SKILL_BODY_START -->
+TODO: Define when replay-plan or journal-boundary applies.
+
+1. Record the fixed request and source paths.
+2. Separate raw input, canonicalization, claim, original order, and journal evidence.
+3. Stop before database access, import, replay, source changes, or script execution.
+4. Preserve unknowns and hand off the next evidence request.
+<!-- SKILL_BODY_END -->

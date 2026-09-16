@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-007",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "agent-team"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/reference/OrderAction.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-007/reference/OrderAction.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "agent-team"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference/OrderService.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-007/reference/OrderService.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "agent-team"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference/BaseService.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-007/reference/BaseService.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "agent-team"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference/Actor.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-007/reference/Actor.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "agent-team"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/customization/order-investigator.agent.md.template",
+      "destination": ".hackathon/challenge/hc-007/starter/order-investigator.agent.md.template",
+      "conditions": [
+        "agent-team"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/customization/order-reviewer.agent.md.template",
+      "destination": ".hackathon/challenge/hc-007/starter/order-reviewer.agent.md.template",
+      "conditions": [
+        "agent-team"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/fixed-packet.md.template",
+      "destination": ".hackathon/challenge/hc-007/starter/fixed-packet.md.template",
+      "conditions": [
+        "baseline",
+        "agent-team"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/handoff.md.template",
+      "destination": ".hackathon/challenge/hc-007/starter/handoff.md.template",
+      "conditions": [
+        "baseline",
+        "agent-team"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": ".github/agents/order-investigator.agent.md",
+      "conditions": [
+        "agent-team"
+      ]
+    },
+    {
+      "pattern": ".github/agents/order-reviewer.agent.md",
+      "conditions": [
+        "agent-team"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-007/handoff.md",
+      "conditions": [
+        "baseline",
+        "agent-team"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Environment",
+        "Baseline single-role result",
+        "Investigator packet",
+        "Human confirmation",
+        "Reviewer result",
+        "Final human decision"
+      ],
+      "templateSha256": "ca8b5fe1576c8763ceddf3a7094f0f9bd0985d83516e18c569083084e16ea513"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": ".github/agents/order-investigator.agent.md",
+      "conditions": [
+        "agent-team"
+      ]
+    },
+    {
+      "pattern": ".github/agents/order-reviewer.agent.md",
+      "conditions": [
+        "agent-team"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-007/handoff.md",
+      "conditions": [
+        "baseline",
+        "agent-team"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

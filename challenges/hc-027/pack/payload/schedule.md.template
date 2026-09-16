@@ -1,0 +1,24 @@
+# Preregistered 18-row schedule
+
+SYNTHETIC_TRAINING_ONLY
+
+| task | condition | block | order | status |
+|---|---|---|---:|---|
+| primary | baseline | block-01 | 1 | planned |
+| primary | baseline | block-02 | 2 | planned |
+| primary | baseline | block-03 | 3 | planned |
+| transfer-check | baseline | block-01 | 4 | planned |
+| transfer-check | baseline | block-02 | 5 | planned |
+| transfer-check | baseline | block-03 | 6 | planned |
+| primary | customized | block-01 | 7 | planned |
+| primary | customized | block-02 | 8 | planned |
+| primary | customized | block-03 | 9 | planned |
+| transfer-check | customized | block-01 | 10 | planned |
+| transfer-check | customized | block-02 | 11 | planned |
+| transfer-check | customized | block-03 | 12 | planned |
+| primary | manual-equivalent | block-01 | 13 | planned |
+| primary | manual-equivalent | block-02 | 14 | planned |
+| primary | manual-equivalent | block-03 | 15 | planned |
+| transfer-check | manual-equivalent | block-01 | 16 | planned |
+| transfer-check | manual-equivalent | block-02 | 17 | planned |
+| transfer-check | manual-equivalent | block-03 | 18 | planned |

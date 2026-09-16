@@ -1,0 +1,19 @@
+---
+name: csv-resend-investigation
+description: Use when investigating resend candidates from the training CSV and OrderImportService
+---
+
+# CSV resend investigation
+
+Use this Skill only for a bounded source investigation of order-import replay behavior.
+
+1. Read `checklist.md`.
+2. Read the exact Runtime paths for `OrderImportService.java` and `OrderGroup.java`.
+3. Trace `importDraft`, existing claim lookup, `replay`, and `canonicalHash`.
+4. Separate Skill discovery, Skill body loading, reference loading, and script execution as different observations.
+5. Explain the same-hash replay path, the different-hash conflict path, and the new-claim path from source evidence.
+6. State that static reading does not prove database state or production incident history.
+7. Run `node tools/check-evidence-note.mjs .hackathon/evidence/hc-009/evidence-note.md` only after the participant creates the evidence note.
+8. Do not import, resend, or mutate an order. This is an investigation-only Skill.
+
+Return a compact evidence map and the format-check command exit result.

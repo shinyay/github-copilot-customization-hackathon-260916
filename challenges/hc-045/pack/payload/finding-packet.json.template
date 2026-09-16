@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_ADAPTED_TRAINING_ONLY",
+  "findings": [
+    {
+      "id": "finding-01",
+      "candidateId": "candidate-01",
+      "reviewText": "The proposed map type may affect how tax-rate keys with different scales are grouped. Compare the source anchor, Money rounding rules, and CommonRulesTest expectations before deciding whether to request a change.",
+      "humanValidationClaim": "pending",
+      "supportingSourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+        "wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java"
+      ]
+    },
+    {
+      "id": "finding-02",
+      "candidateId": "candidate-02",
+      "reviewText": "The proposal adds explicit receivers. Determine from the source and independent expectations whether it changes behavior, is unnecessary, or should be held for more evidence.",
+      "humanValidationClaim": "pending",
+      "supportingSourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java",
+        "wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java"
+      ]
+    }
+  ],
+  "independentExpectations": {
+    "sameRateDifferentScale": {
+      "inputs": [
+        "6.00@0.10",
+        "6.00@0.1000",
+        "10.00@0.0800"
+      ],
+      "net": "22.00",
+      "tax": "1.00",
+      "bucketCount": 2
+    },
+    "roundingRulesSource": "Money.java tax method",
+    "executionObserved": false
+  }
+}

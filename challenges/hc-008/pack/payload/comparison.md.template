@@ -1,0 +1,60 @@
+# HC-008 Evidence
+
+参加者が.hackathon/evidence/hc-008/comparison.mdへコピーし、全見出しを記入します。
+未実施・見えない・条件不一致は理由を記録します。他条件の結果は別runを参照し、実施済みと偽りません。
+
+## Fixed inputs
+
+source repository / commit / templateVersion / Pack hash:
+request / web packet / batch packet / 凍結した設計の各SHA-256:
+保存bytesと実際に渡した全文・添付の照合:
+condition / run-id（本文hashとは別metadata）:
+
+## Environment
+
+Runtime repository / apply branch / workspace / conversation / profile:
+client / host / OS / channel / model / effort / tools:
+親と各子または手動会話の実効値・表示不能な値:
+home / User / 組織Instructions / Memoryの有無と揃えられない点:
+未確認をunknownとして残す理由:
+
+## Design
+
+participant/hc-008/design.mdの凍結版と選択理由:
+直接調査と委任のトレードオフ、比較前に決めた観測点:
+
+## Execution
+
+baselineの制御: capability-off / 指示ベースの対照 / 未確認（該当と理由）:
+subagentsの呼出し数・識別子・入力全文・開始終了・返却の観測:
+最大2子・各1回 / 入れ子なし / 再試行ループなし / モデル上書きなしの確認または未観測:
+manual-conversationsの人による3会話・両packetと設計の投入・返却受渡し:
+順次 / 並列 / 未起動 / 不明、時間・コスト・人の操作量:
+「二人が調べた」という見出しを起動証拠にしないために残した観測:
+
+## Returns and synthesis
+
+当該runの二返却全文と統合出力（必要ならparticipant/hc-008/returns.md、synthesis.mdを参照）:
+パス・シンボル・行範囲・限界が返却から統合へ残った対応:
+親にだけあった情報、子へ不足した入力、改変・redactionとその影響:
+
+## Source checks
+
+web / batchから各1項目以上をsourceへ戻して確かめた記録:
+誤引用 / 根拠の脱落 / 保留した主張:
+静的な構造点検と意味の点検、未実行のDB・業務動作の区別:
+
+## Comparison
+
+別条件のrun対応、同じ入力・設計・sourceの確認:
+結果の差と、context・metadata・人の学習や操作の差:
+揃わない条件 / 欠測 / 否定的な結果:
+
+## Outcome
+
+improved / equal / worse / incomparable / blocked / unsupported（選択と根拠）:
+Subagentが不要だった場合・未起動の場合の判断:
+静的検査command / exit code / 実行していない検査:
+runtimeBehavior: not-observed
+educationalEffect: not-observed
+秘密・個人情報の除去と未観測事項:

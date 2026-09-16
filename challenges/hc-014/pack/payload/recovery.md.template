@@ -1,0 +1,26 @@
+# HC-014 回復 Evidence
+
+## Case
+
+自分の condition / run ID、選んだケース、実際に変えた自所有 current の exact path と一つの変更、または読んだ合成資料の ID を記入します。
+実物を変えず紙上で確認した場合も、そのまま記録できます。Starter・凍結 v1/v2・他人のコピーは変更しません。
+
+## Expected boundary
+
+正常時の全ファイル hash、どの構成・同等性・復元条件を壊すのか、止める基準を自分の言葉で書きます。
+検査の境界と、コードの意味や client の動作を分けます。
+
+## Observed result
+
+変更後の形を確認し、狙った一要因だけが変わったこと、実際の照合結果・拒否理由を記入します。
+コマンドを実行していない場合は実行済みとせず、紙上点検と書きます。
+
+## Restoration
+
+確認した不一致を記録してから、自所有 current の全ファイルを凍結 v1 の全 bytes へ戻し、同じ点検を繰り返した結果を記入します。
+package の manifest と Skill の片方だけ、または version だけが戻っていても復元としません。
+
+## Non-claims
+
+これは不活性なローカル DRAFT の回復または設計点検であり、Plugin の Disable / uninstall / 再配信を行った記録ではありません。
+Java / DB は未実行、実 discovery と教育効果は未観測です。

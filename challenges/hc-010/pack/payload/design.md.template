@@ -1,0 +1,34 @@
+# HC-010 設計用紙
+
+同じ完成版を両条件へ用意する。未確認は理由を書く。用紙やsource自体は編集せずparticipant/hc-010/design.mdを新規作成する。
+
+## 読んだsourceと確認範囲
+
+- 固定source: shinyay/code-to-doc-workshop-260910@398d7d1982a1402bcdba00d6c3ded67d8d338787
+- path: wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java
+- Money.taxを実際に読んだ行範囲、説明を支持する箇所、自分の未確認点を記入する。
+- sourceの読解、合成fixtureの構造点検、設計補助の利用の有無を区別する。
+
+## 読み手と責任
+
+誰に伝えるか、手動確認は誰が担当するか、その人にどんな確認を残すか、理由を記入する。
+
+## 時点と通知しない判断
+
+手動確認の時点と応答停止時の通知の違いを書く。通知を追加しない方がよい場面も決める。
+Stopはセッションやウィンドウを閉じる時ではない。
+
+## 結果と再入
+
+pass/0、invalid/1、uncheckable/2、skipped/0をどう区別するかを書く。
+adapter exit 0とchecker passの違い、stop_hook_active: trueでcheckerを起動しない方針を記入する。
+
+## 凍結した入力
+
+source、request、2草稿、5case、同一checker、設計本文のhashと、run-id・資源場所の置換欄の場所を記入する。
+モデル等を使った場合の同一条件、外部設定の残留と比較の限界も記す。
+
+## 比較と非主張
+
+何を観測できれば有用と言えるか、equal/worse/追加不要/incomparableの判断理由を記入する。
+本編では実Stop、設定発見、通知表示、追加AIターン数を観測しない。continue: trueを保ち、自動修正・反復を求めない。

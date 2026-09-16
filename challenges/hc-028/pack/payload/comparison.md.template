@@ -1,0 +1,29 @@
+# HC-028 comparison
+
+## Fixed task
+
+4 ref、2 diff、3 attribution状態とcondition固有の変更因子を記録してください。
+
+## Environment
+
+Runtime、OS、client、実review / Cloudを行っていない境界を記録してください。
+
+## Stored revisions
+
+ref、path、body hash、file hashを実starter bytesから記録してください。
+
+## Documented rules
+
+製品、asset、文書化された採用元、適用範囲、確認時点を記録してください。
+
+## Observed attribution
+
+今回直接観測した値だけを記録し、合成記録とlive-unobservedを区別してください。
+
+## Diff separation
+
+task diffとInstructions/config diffのpath、目的、hashを別々に記録してください。
+
+## Outcome
+
+revision-identified、old-head、unknown、runtimeBehavior / educationalEffectがnot-observedであることを分けて記録してください。

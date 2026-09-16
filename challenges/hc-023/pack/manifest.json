@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-023",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "checklist"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/brief.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/mechanisms.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/mechanisms.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/checklist.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/checklist.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence-note.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/evidence-note.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/operations-note.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/operations-note.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/review-role.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/review-role.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/answers.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/answers.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/review.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/review.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/evidence/comparison.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-01.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-01.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-02.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-02.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-03.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-03.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-04.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-04.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-05.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-05.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-06.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-06.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-07.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-07.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-08.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-08.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-09.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-09.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cases/case-10.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/cases/case-10.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-01.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-01.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-02.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-02.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-03.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-03.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-04.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-04.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-05.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-05.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-06.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-06.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-07.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-07.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-08.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-08.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-09.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-09.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/requests/case-10.txt.template",
+      "destination": ".hackathon/challenge/hc-023/starter/requests/case-10.txt.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/package/v1/plugin.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/package/v1/plugin.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/package/v1/skills/order-import-evidence/SKILL.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/package/v1/skills/order-import-evidence/SKILL.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/package/v2/plugin.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/package/v2/plugin.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/package/v2/skills/order-import-evidence/SKILL.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/package/v2/skills/order-import-evidence/SKILL.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/scope-paths.json.template",
+      "destination": ".hackathon/challenge/hc-023/starter/scope-paths.json.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/resource-permission.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/resource-permission.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/harness-boundaries.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/harness-boundaries.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/fixed-review-packet.md.template",
+      "destination": ".hackathon/challenge/hc-023/starter/fixed-review-packet.md.template",
+      "conditions": ["baseline", "checklist"],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-023/answers.md",
+      "conditions": ["baseline", "checklist"]
+    },
+    {
+      "pattern": "participant/hc-023/review.md",
+      "conditions": ["baseline", "checklist"]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-023/comparison.md",
+      "conditions": ["baseline", "checklist"],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Condition",
+        "Materials",
+        "Observations",
+        "Design rationale",
+        "Comparison set",
+        "Outcome",
+        "Limits"
+      ],
+      "templateSha256": "8b3f1983d7e8ce8350b59de010641ccb1dc43ba60329f30d5b72078bbeddb911"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-023/answers.md",
+      "conditions": ["baseline", "checklist"]
+    },
+    {
+      "pattern": "participant/hc-023/review.md",
+      "conditions": ["baseline", "checklist"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-023/comparison.md",
+      "conditions": ["baseline", "checklist"]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

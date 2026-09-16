@@ -1,0 +1,20 @@
+# HC-033 Starter brief
+
+## Goal
+
+Design a replay investigation Skill while separating description, body, resources, and scripts.
+
+## Fixed tasks
+
+- `replay-plan`
+- `journal-boundary`
+
+## Source / material boundary
+
+Read the exact five baseline paths. Database state, transaction behavior, replay success, and script execution remain unobserved.
+
+## Safety boundary
+
+- Work only in declared participant/*.template files and the Runtime-owned Evidence path.
+- Do not activate Skill directories, scripts, workflows, Java, database access, Cloud Agent, or review.
+- Runtime validation proves the static contract only; runtimeBehavior and educationalEffect remain not-observed.

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "training-operations-note": {
+      "type": "local",
+      "command": "<UNRESOLVED_COMMAND>",
+      "args": [
+        "<UNRESOLVED_SERVER_PATH>"
+      ],
+      "tools": [
+        "lookup_training_note"
+      ]
+    }
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shinyay/github-copilot-customization-hackathon/schemas/hub-result-draft.schema.json",
+  "title": "Future Hub Result Aggregation Draft v1 (non-normative)",
+  "description": "Non-normative draft for possible future Hub aggregation, NOT the Runtime exporter bundle shape or a current ingestion contract. Participants submit one Challenge Result Issue Form plus a Runtime PR. Runtime validates its own bundle; the Hub has no bundle upload, ingestion API or whole-document validator.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "challengeId",
+    "conditions",
+    "participantTeam",
+    "runId",
+    "runtimeRepositoryUrl",
+    "pullRequestUrl",
+    "environment",
+    "modelEffortTools",
+    "featureUnderstanding",
+    "problemHypothesis",
+    "baselineEvidence",
+    "customizedEvidence",
+    "outcome",
+    "failuresUnknowns",
+    "challengeDesign",
+    "reusability",
+    "privacyConfirmed",
+    "safetyConfirmed",
+    "totalArtifactBytes",
+    "artifacts"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "challengeId": {
+      "type": "string",
+      "pattern": "^HC-[0-9]{3}$"
+    },
+    "conditions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]{0,31}$"
+      }
+    },
+    "participantTeam": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "runtimeRepositoryUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "pullRequestUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "modelEffortTools": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "featureUnderstanding": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10000
+    },
+    "problemHypothesis": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10000
+    },
+    "baselineEvidence": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20000
+    },
+    "customizedEvidence": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20000
+    },
+    "outcome": {
+      "enum": [
+        "improved",
+        "equal",
+        "worse",
+        "incomparable",
+        "blocked",
+        "unsupported"
+      ]
+    },
+    "failuresUnknowns": {
+      "type": "string",
+      "maxLength": 10000
+    },
+    "challengeDesign": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20000
+    },
+    "reusability": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10000
+    },
+    "privacyConfirmed": {
+      "const": true
+    },
+    "safetyConfirmed": {
+      "const": true
+    },
+    "totalArtifactBytes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 8388608
+    },
+    "artifacts": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "$ref": "#/$defs/artifact"
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourcePath",
+        "sourcePathSha256",
+        "exportName",
+        "kind",
+        "byteLength",
+        "sha256",
+        "redacted",
+        "containsSecrets"
+      ],
+      "properties": {
+        "sourcePath": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 320
+        },
+        "sourcePathSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "exportName": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,47}--[0-9a-f]{12}\\.(?:md|txt|json|patch|diff)\\.template$"
+        },
+        "kind": {
+          "enum": [
+            "customization",
+            "evidence",
+            "patch",
+            "metadata"
+          ]
+        },
+        "byteLength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1048576
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "redacted": {
+          "const": true
+        },
+        "containsSecrets": {
+          "const": false
+        }
+      }
+    }
+  }
+}

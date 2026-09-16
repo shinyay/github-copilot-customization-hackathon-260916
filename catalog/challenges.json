@@ -1,0 +1,3488 @@
+{
+  "schemaVersion": 1,
+  "runtimeTemplate": {
+    "repository": "shinyay/github-copilot-customization-runtime-template",
+    "minimumTemplateVersion": 1,
+    "versionMarker": ".hackathon/template.json"
+  },
+  "sourceBaseline": {
+    "repository": "shinyay/code-to-doc-workshop-260910",
+    "commit": "398d7d1982a1402bcdba00d6c3ded67d8d338787",
+    "fileCount": 515,
+    "treeSha256": "c3cd74e0d65b1ae88a29a4392eb42f9d51ba2c671d111796aacc69fd9cc5b111"
+  },
+  "authoringReference": {
+    "repository": "shinyay/github-copilot-customization-labs",
+    "vendoredSourcePath": "fixtures/tsubame-wholesale"
+  },
+  "releasePlan": {
+    "waves": [
+      [
+        "HC-002",
+        "HC-003",
+        "HC-004",
+        "HC-005",
+        "HC-008"
+      ],
+      [
+        "HC-010",
+        "HC-012",
+        "HC-013",
+        "HC-014",
+        "HC-015"
+      ],
+      [
+        "HC-016",
+        "HC-017",
+        "HC-018",
+        "HC-019",
+        "HC-020"
+      ],
+      [
+        "HC-021",
+        "HC-022",
+        "HC-023",
+        "HC-024",
+        "HC-025"
+      ],
+      [
+        "HC-026",
+        "HC-027",
+        "HC-028",
+        "HC-029",
+        "HC-031"
+      ],
+      [
+        "HC-032",
+        "HC-033",
+        "HC-034",
+        "HC-035",
+        "HC-036"
+      ],
+      [
+        "HC-037",
+        "HC-038",
+        "HC-039",
+        "HC-040",
+        "HC-041"
+      ],
+      [
+        "HC-042",
+        "HC-043",
+        "HC-044",
+        "HC-045"
+      ]
+    ],
+    "reviewBetweenWaves": true,
+    "participantPrerequisite": false
+  },
+  "challenges": [
+    {
+      "id": "HC-001",
+      "title": "根拠を大切にするJavaチームメイトを育てよう",
+      "track": "instructions",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-01"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-01-repository-instructions.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "optionalRoutes": [],
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+        "wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-001/README.md",
+      "pack": "challenges/hc-001/pack",
+      "feature": "Repository Instructions",
+      "support": {
+        "primary": "Repository Instructions",
+        "fallback": "公開checklistをtaskへ貼るmanual-equivalent"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-002",
+      "title": "JavaとXMLに別々の読み方を教えよう",
+      "track": "instructions",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-02"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-02-file-task-instructions.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "optionalRoutes": [],
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java",
+        "wholesale-core/src/main/resources/application-context.xml",
+        "wholesale-core/src/main/resources/spring/module-operations.xml"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-002/README.md",
+      "pack": "challenges/hc-002/pack",
+      "feature": "File/task Instructions",
+      "support": {
+        "primary": "VS Code Stableの明示applyTo付きFile/task Instructions",
+        "fallback": "凍結した二本文の全文を貼るmanual-equivalent。自動適用の未観測・unsupportedは分離する"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-003",
+      "title": "ディレクトリごとのルールをAGENTS.mdで伝えよう",
+      "track": "instructions",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-03"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-03-agents-md.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "nested-discovery",
+          "title": "入れ子のAGENTS.md発見を別実験として準備する",
+          "page": "challenges/hc-003/optional/nested-discovery.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "Experimentalなnested AGENTS.mdの説明と、利用予定のVS Code・harnessの対応状況を確認できること。",
+              "本編とは別の使い捨てworkspaceと新規会話を用意できること。"
+            ],
+            "entitlements": [
+              "利用予定環境のGitHub Copilotと教材repositoryへの通常の利用資格を確認できること。"
+            ],
+            "additionalApprovals": [
+              "Experimental機能を扱う独立した実機計画は、環境所有者の追加承認を得ること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "nested-agents-discovery",
+              "status": "not-checked",
+              "reason": "入れ子ファイルの発見・本文投入とRuntimeによる任意実機検証は未確認です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "対応状況または追加承認が確認できない場合は実機計画を止めます。",
+            "本編のroot条件、既存設定、許可pathを変更しなければ試せない場合は未実施にします。"
+          ]
+        },
+        {
+          "id": "parent-discovery",
+          "title": "親repositoryの発見条件を確認する",
+          "page": "challenges/hc-003/optional/parent-discovery.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "開くworkspace rootと親repositoryの境界を、実行せず図で区別できること。",
+              "workspace自身には.gitフォルダーがなく、親に.gitフォルダーがあるという公式の前提を確認できること。"
+            ],
+            "entitlements": [
+              "教材と親repositoryを閲覧する通常の権限を確認できること。"
+            ],
+            "additionalApprovals": [
+              "親repositoryを信頼してよいかは所有者が判断し、追加の実機計画を承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "parent-repository-discovery",
+              "status": "not-checked",
+              "reason": "親探索、trust、投入元とRuntimeによる任意実機検証の組合せは未確認です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "親の信頼性、所有者の承認、workspace境界のいずれかが不明なら止めます。",
+            "既存の親ファイルやhomeの変更、trustの迂回が必要なら未実施にします。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-003/README.md",
+      "pack": "challenges/hc-003/pack",
+      "feature": "AGENTS.md",
+      "support": {
+        "primary": "root AGENTS.md一つの指示文書と同本文の手動対照",
+        "fallback": "凍結した本文全文を手動供給し、発見・投入の未観測を分けて報告"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-004",
+      "title": "Claude形式の指示を安全に持ち込もう",
+      "track": "instructions",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-04"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-04-claude-instruction-formats.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "claude-variants",
+          "title": "localとRulesの互換形式を別々に準備する",
+          "page": "challenges/hc-004/optional/claude-variants.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "localとRulesを分けた使い捨てworkspaceと新規会話を計画できること。",
+              "利用予定のVS Code・harnessとClaude互換形式の対応状況を確認できること。"
+            ],
+            "entitlements": [
+              "利用予定環境のGitHub Copilotと教材repositoryへの通常の利用資格を確認できること。"
+            ],
+            "additionalApprovals": [
+              "localまたはRulesの独立した実機計画には、環境所有者の追加承認を得ること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "claude-local-discovery",
+              "status": "not-checked",
+              "reason": "localの発見・本文投入とGit除外の実状態は未確認です。"
+            },
+            {
+              "capability": "claude-rules-discovery",
+              "status": "not-checked",
+              "reason": "paths配列によるRulesの選択・本文投入とRuntimeによる任意実機検証は未確認です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "対応状況、分離環境、追加承認が確認できない場合は実機計画を止めます。",
+            "homeの変更、除外設定の書換え、本編へのactive Rules追加が必要なら未実施にします。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-004/README.md",
+      "pack": "challenges/hc-004/pack",
+      "feature": "CLAUDE.md compatible instructions",
+      "support": {
+        "primary": "model・harnessを固定したroot CLAUDE.md一つの互換形式比較",
+        "fallback": "凍結した本文全文を手動供給し、互換形式の発見成功とは区別"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-005",
+      "title": "個人・チーム・タスクの指示を整理しよう",
+      "track": "instructions",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-05"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-05-shared-task-instructions.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "challengeVersion": 1,
+      "page": "challenges/hc-005/README.md",
+      "pack": "challenges/hc-005/pack",
+      "feature": "個人・チーム・用途別 Instructions の設計比較",
+      "support": {
+        "primary": "権限不要の合成カードによる配置・所有・再利用の設計比較",
+        "fallback": "AIや機能利用権がなくても、同じ二場面を手作業で比較できる"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      },
+      "optionalRoutes": [
+        {
+          "id": "user-scope",
+          "title": "User指示の保存元と隔離を確認する",
+          "page": "challenges/hc-005/optional/user-scope.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "別途承認された使い捨て環境で、HOMEとUser指示の保存元を分離できること。",
+              "利用するVS Codeの版とAgent Hostの有無を特定できること。"
+            ],
+            "entitlements": [
+              "対象環境でのCopilotとUser指示の利用可否を本人が確認すること。"
+            ],
+            "additionalApprovals": [
+              "環境の所有者から、今回追加するUser指示だけの保存・確認・解除について別途承認を得ること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "user-source-isolation",
+              "status": "not-checked",
+              "reason": "Runtime v1はHOME・User指示の保存元や分離状態を検査しない。"
+            },
+            {
+              "capability": "user-instruction-delivery",
+              "status": "not-checked",
+              "reason": "User指示の発見・本文投入・別の作業での再利用は実機未確認である。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "専用profileだけでHOME・User指示も隔離されたと判断してしまう場合は停止する。",
+            "既存設定と今回の追加分を区別できない、または追加分だけを解除できない場合は停止する。",
+            "利用資格・所有者承認・保存元のいずれかが未確認なら実機試行は未実施にする。"
+          ]
+        },
+        {
+          "id": "task-generation",
+          "title": "用途別生成の入口とRuntime制約を確認する",
+          "page": "challenges/hc-005/optional/task-generation.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象のVS Code版とreview・commit message・PR descriptionの生成入口を特定できること。",
+              "通常のworkspace設定を追跡する試行には、別途承認されたRuntimeの対応が必要である。"
+            ],
+            "entitlements": [
+              "選んだ生成入口の利用資格と必要な拡張の有無を本人が確認すること。"
+            ],
+            "additionalApprovals": [
+              "環境の所有者から、選んだ用途の設定一つと合成入力だけを扱う独立試行の承認を得ること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "tracked-vscode-settings",
+              "status": "blocked",
+              "reason": "Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings."
+            },
+            {
+              "capability": "generation-entrypoint-delivery",
+              "status": "not-checked",
+              "reason": "用途別設定が選んだ生成入口へ投入されることと、その出力は実機未確認である。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Runtime v1で通常の.vscode/settings.jsonの追跡が必要な間は停止する。",
+            "通常Chatしか使えない、同じ選択範囲や差分を用意できない、または既存のstageを動かす必要がある場合は停止する。",
+            "投稿・commit・push・PR作成や追加の拡張導入が必要なら、このガイドでは実施しない。"
+          ]
+        },
+        {
+          "id": "organization-scope",
+          "title": "組織指示の承認と対応範囲を確認する",
+          "page": "challenges/hc-005/optional/organization-scope.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "利用する製品・clientの版と、対象組織での指示の保存元を特定できること。",
+              "VS CodeとGitHub Docsの適用範囲の説明差を未解決として確認すること。"
+            ],
+            "entitlements": [
+              "対象製品でのCopilotと組織指示の利用資格を本人と組織管理者が確認すること。"
+            ],
+            "additionalApprovals": [
+              "organization ownerから、対象範囲と復元責任を限定した別途の明示承認を得ること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "organization-delivery",
+              "status": "not-checked",
+              "reason": "Runtime v1は組織指示の保存・発見・本文投入や実際の対象製品を検査しない。"
+            },
+            {
+              "capability": "product-scope-agreement",
+              "status": "not-checked",
+              "reason": "VS Codeは設定による組織指示の発見を説明する一方、GitHub DocsはGitHub.comのChat・code review・cloud agentに限定しており、説明差は未解決である。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "organization ownerの承認、利用資格、対象範囲、元の状態のいずれかが不明なら停止する。",
+            "公式資料の説明差や実際の投入元を確認できない場合は、組織の実機試行を未実施にする。",
+            "既存の組織設定を上書きする、または本編のUser案を組織へ広げる必要がある場合は、このガイドでは実施しない。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HC-006",
+      "title": "繰り返すJava調査をワンコマンド化しよう",
+      "track": "workflows",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-06"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-06-prompt-files.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "optionalRoutes": [],
+      "sourcePaths": [
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java",
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-006/README.md",
+      "pack": "challenges/hc-006/pack",
+      "feature": "Prompt Files",
+      "support": {
+        "primary": "Prompt Fileの明示呼び出し",
+        "fallback": "同じPrompt本文をfresh conversationへ貼る"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-007",
+      "title": "調査役と検証役のAIチームを設計しよう",
+      "track": "workflows",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-07"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-07-custom-agents-handoffs.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "optionalRoutes": [],
+      "sourcePaths": [
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-007/README.md",
+      "pack": "challenges/hc-007/pack",
+      "feature": "Custom Agents and Handoffs",
+      "support": {
+        "primary": "調査Agentと検証Agentをhuman-confirmed handoffで接続",
+        "fallback": "役割promptを別々のfresh conversationへ手動で渡す"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-008",
+      "title": "大きな調査を二人のSubagentへ任せよう",
+      "track": "workflows",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-08"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-08-subagents.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "optionalRoutes": [],
+      "sourcePaths": [
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java",
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderCsv.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-008/README.md",
+      "pack": "challenges/hc-008/pack",
+      "feature": "Subagents",
+      "support": {
+        "primary": "通常Agentから独立2packetを最大2子・各1回へ委任",
+        "fallback": "同じ全文を人が新規会話へ分けるmanual-conversations"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-009",
+      "title": "CSV再送調査のプレイブックをSkillにしよう",
+      "track": "workflows",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-09",
+          "LAB-33"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-09-agent-skills.md",
+          "docs/labs/lab-33-github-agent-skills.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "optionalRoutes": [],
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-009/README.md",
+      "pack": "challenges/hc-009/pack",
+      "feature": "Agent Skills",
+      "support": {
+        "primary": "Skillのmanual invocationとauto discovery",
+        "fallback": "公開checklistとcheckerを手動で実行"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-010",
+      "title": "Agentの終了時に検査結果を通知しよう",
+      "track": "hooks",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-10"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-10-hooks.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-010/README.md",
+      "pack": "challenges/hc-010/pack",
+      "feature": "Hooks",
+      "support": {
+        "primary": "同じchecker結果の手動確認契約と不活性なStop通知設計",
+        "fallback": "実Hookなしでsourceと合成結果を読み、設計比較を提出"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      },
+      "optionalRoutes": [
+        {
+          "id": "stop-preview",
+          "title": "Stop Previewの準備と未確認の境界",
+          "page": "challenges/hc-010/optional/stop-preview.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象のLocal AgentとHooks対応版を特定できること。",
+              "extension hostのOSとNodeの版を確認できること。",
+              "今回専用の使い捨てworkspaceと既存Hookの分離方法を確認できること。"
+            ],
+            "entitlements": [
+              "対象環境でCopilotとHooksを利用でき、組織ポリシーが許可していること。"
+            ],
+            "additionalApprovals": [
+              "対象script、使い捨てworkspace、Stopの有効化と今回の追加分の解除について所有者の別途明示承認を得ること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "live-stop-event",
+              "status": "not-checked",
+              "reason": "実Stopの発火、checker呼出し、通知表示の相関をRuntime v1は観測していない。"
+            },
+            {
+              "capability": "isolated-hook-state",
+              "status": "not-checked",
+              "reason": "User/HomeのHookと今回の追加分の分離・解除をRuntime v1は検証しない。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "所有者の別承認またはHooksの利用許可が未確認なら停止する。",
+            "extension hostのOSまたはNodeの版が不明なら停止する。",
+            "別のHookが混入し、今回の追加分だけを分離・解除できないなら停止する。",
+            "selector、run directory、依頼のbindingが一致しないなら停止する。",
+            "core Packの許可外pathを本編runへ追加する必要があるなら停止する。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HC-011",
+      "title": "運用メモを安全に取得するMCP Toolを作ろう",
+      "track": "integrations",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-11",
+          "LAB-34"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-11-mcp.md",
+          "docs/labs/lab-34-github-mcp.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "optionalRoutes": [],
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-011/README.md",
+      "pack": "challenges/hc-011/pack",
+      "feature": "Model Context Protocol",
+      "support": {
+        "primary": "local read-only MCP Tool",
+        "fallback": "同じsynthetic noteを手動で提示"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-012",
+      "title": "よく使うtoolsを迷わず選べるセットにしよう",
+      "track": "integrations",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-12"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-12-tool-sets.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-012/README.md",
+      "pack": "challenges/hc-012/pack",
+      "feature": "Tool Setsの選択・再構成を比べる不活性設計",
+      "support": {
+        "primary": "固定sourceを読み、同じ四toolの個別選択と名前付き集合を紙上で設計・比較する",
+        "fallback": "Profileやtoolの実機操作なしで原稿と再構成を提出し、未対応・未観測を分離する"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      },
+      "optionalRoutes": [
+        {
+          "id": "profile-tool-sets",
+          "title": "Profile Tool Setsの保存元と実効メンバーを確認する",
+          "page": "challenges/hc-012/optional/profile-tool-sets.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対応するVS Code StableのLocal Agentで、Chat: Configure Tool Setsと四つの固定参照の実在を本人が確認できること。",
+              "別途承認された専用user-data/Profileを使い、既定Profileからの継承・同期・残留を識別できること。"
+            ],
+            "entitlements": [
+              "対象環境でのCopilotと既存の四toolの利用資格・policyを本人が確認すること。"
+            ],
+            "additionalApprovals": [
+              "環境の所有者から、今回新規作成するTool SetだけのProfile保存・選択・確認・解除について別途明示承認を得ること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "profile-toolsets-ui",
+              "status": "not-checked",
+              "reason": "Runtime v1はChat: Configure Tool Sets、picker、実効メンバーやtool callを検査しない。"
+            },
+            {
+              "capability": "external-profile-state",
+              "status": "not-checked",
+              "reason": "Runtime v1はrepository外のProfile保存先・継承・同期・残留を検査しない。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "対応UIがない、固定四参照のいずれかを確認できない、または実効メンバーが一致しない場合は停止する。",
+            "既定Profileからの継承・同期・残留を分離できない場合は停止する。",
+            "利用資格・所有者承認・実際の保存先が不明、または自分の追加分だけを解除できない場合は停止する。",
+            "既存HOME/Profile設定の削除・上書き、追加toolの導入や権限変更が必要なら、このガイドでは実施しない。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HC-013",
+      "title": "チームの知識をCopilot Spaceへ整理しよう",
+      "track": "integrations",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-13"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-13-copilot-spaces.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-013/README.md",
+      "pack": "challenges/hc-013/pack",
+      "feature": "Copilot Spaces向けローカル資料設計",
+      "support": {
+        "primary": "固定source由来のsanitized全体displayと合成資料を同じ内容で整理。実Spaceの作成・取得ではない",
+        "fallback": "手動の受渡し票・同一display JSON全文で比較。原本は読み取り専用、実MCP・認証・ACL・同期は未観測"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      },
+      "optionalRoutes": [
+        {
+          "id": "space-read",
+          "title": "許可済みSpaceの読取条件を確認する",
+          "page": "challenges/hc-013/optional/space-read.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "本編とは別の使い捨てworkspace・新規会話で、IDEの版、Agentモード、remote GitHub MCPの既存構成を確認できること。",
+              "所有者が既に承認した専用教材Spaceのexact owner/nameと、凍結したinstructions・カードJSON全文を照合できること。"
+            ],
+            "entitlements": [
+              "本人のCopilot利用資格、既存の正規認証、組織のMCP policy、対象Spaceと各sourceの既存閲覧権を個別に確認できること。"
+            ],
+            "additionalApprovals": [
+              "環境と教材の所有者から、既知のexact owner/nameに対するget_copilot_spaceの読み取りだけを行う独立試行の承認を別途得ること。",
+              "承認は既存の認証・閲覧権の範囲に限り、新規共有、source追加、upload、PAT発行、OAuth・ACL・組織policy変更を含めないこと。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "remote-spaces-read",
+              "status": "not-checked",
+              "reason": "Runtime v1はremote MCPの初期化・tool発見・認証・get_copilot_spaceの実callを観測しない。"
+            },
+            {
+              "capability": "source-acl-observation",
+              "status": "not-checked",
+              "reason": "Runtime v1はSpace閲覧権と個別source閲覧権、返却内容の版・範囲を実機検証しない。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "exact owner/nameが不明、対象が他人のSpace、または事前承認の対象と違う場合は停止する。",
+            "instructions・JSON全文・source種別・版・範囲が一致しない、またはpartial/empty/error/missingで全文を確認できない場合は停止する。",
+            "新しい認証、権限拡大、新規共有、資料追加、upload、PAT発行、設定変更が必要なら実機試行は未実施にする。",
+            "組織policy、利用資格、Space ACL、source ACL、追加承認のどれかが未確認なら実機試行は未実施にする。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HC-014",
+      "title": "SkillをPluginとして配布・更新しよう",
+      "track": "integrations",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-14"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-14-agent-plugins.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "plugin-enable",
+          "title": "追跡可能なworkspace設定でPluginを有効化する前の準備確認",
+          "page": "challenges/hc-014/optional/plugin-enable.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "レビュー済みの Agent Plugins 1.0・一つの Skill の package と、対応する VS Code Stable / local plugin 設定を確認できること。",
+              "本編とは別の専用 workspace と、workspace 設定を再現可能な成果物として追跡する計画があること。"
+            ],
+            "entitlements": [
+              "利用予定の Copilot・教材 repository の利用資格と、組織の Plugin policy を確認できること。"
+            ],
+            "additionalApprovals": [
+              "対象を限定した install / register / enable と workspace 設定変更には、環境所有者の別承認が必要です。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "tracked-vscode-settings",
+              "status": "blocked",
+              "reason": "Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings."
+            },
+            {
+              "capability": "plugin-discovery",
+              "status": "not-checked",
+              "reason": "Plugin の実 discovery、Skill 本文 loading、無効化後の残留は未確認です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "追跡済みの .vscode/settings.json が必要なこの経路は Runtime v1 では blocked のため、実機操作を開始しません。",
+            "対応環境・利用資格・追加承認・package のレビューを確認できない場合は未実施にします。",
+            "既存の home / User / 組織設定や他人の Plugin に触れる必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-014/README.md",
+      "pack": "challenges/hc-014/pack",
+      "feature": "Agent Plugins 1.0・一つのSkillの配布と復元",
+      "support": {
+        "primary": "同一Skill全文の手動DRAFTと一つのSkillだけのpackage DRAFTを、版・hash・コピー・完全復元で比較する",
+        "fallback": "実導入なしの不活性資料比較で完了可能。任意plugin-enableは追跡済みworkspace設定がRuntime v1でblocked、実discoveryは未観測"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-015",
+      "title": "最短経路で必要なコードへ到達しよう",
+      "track": "context-controls",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-15"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-15-context-search-language-intelligence.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/resources/application-context.xml",
+        "wholesale-core/src/main/resources/spring/module-operations.xml"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "language-tools",
+          "title": "Javaの定義・参照と言語サービスの準備を分けて確認する",
+          "page": "challenges/hc-015/optional/language-tools.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対応するJava拡張が既に導入済みで、同じworkspaceの初期化状態を確認できること。",
+              "本編とは別の診断として、同じquery・source・tabs・selection・model・toolsを固定できること。"
+            ],
+            "entitlements": [
+              "利用予定のVS Code Stable・GitHub Copilotと教材sourceへの通常の利用資格を確認できること。"
+            ],
+            "additionalApprovals": [
+              "人のエディター操作とAgentのUsages利用は区別し、実機操作・LLM利用の対象を環境所有者が別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "java-language-service",
+              "status": "not-checked",
+              "reason": "Java言語サービスの初期化、定義・参照の返却範囲とAgentからの利用は未確認です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Java拡張が未導入なら自動installせず、unsupportedまたは未実施として止めます。",
+            "初期化中、未対応、返却範囲不明なら未観測のまま止め、参照0件へ補完しません。",
+            "別の設定変更、index構築、source編集が必要なら本編へ混ぜず、別承認まで止めます。"
+          ]
+        },
+        {
+          "id": "index-exclusions",
+          "title": "索引・検索除外と設定追跡のblocked境界を確認する",
+          "page": "challenges/hc-015/optional/index-exclusions.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "同じquery・source版・除外状態・開いたfileを固定し、text検索・semantic検索・添付を別々に記録できること。",
+              "索引の出所と状態、追跡対象のworkspace設定を変更せず確認できること。"
+            ],
+            "entitlements": [
+              "対象workspaceの索引サービス、Copilot利用資格、組織policy、source読取り権限を確認できること。"
+            ],
+            "additionalApprovals": [
+              "index構築・通信・当該workspace設定変更を伴う実機診断は、対象を限定した別承認が必要です。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "tracked-vscode-settings",
+              "status": "blocked",
+              "reason": "Runtime v1は.vscode/settings.jsonをGit除外し、.vscode/mcp.jsonだけを例外にするため、この設定追跡経路はblockedです。"
+            },
+            {
+              "capability": "semantic-index-observation",
+              "status": "not-checked",
+              "reason": "semantic indexの出所、準備状態、実検索の返却範囲は未確認です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Runtime v1では追跡可能なworkspace除外設定を含む経路を完走できないため、準備確認で止めます。",
+            "force-add、User/Profileへの黙った切替、既存ignoreの変更でblockedを回避しません。",
+            "indexや権限が未確認ならreadyやsemantic結果0件にせず、組織content exclusionを回避しません。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-015/README.md",
+      "pack": "challenges/hc-015/pack",
+      "feature": "Context / Search / Language Intelligence",
+      "support": {
+        "primary": "Stableの通常検索、固定二file全文のAdd Context、同じraw全文の手動供給",
+        "fallback": "未対応clientや投入範囲不明は設計と準備の同一性を提出し、実検索・添付成功を主張しない"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-016",
+      "title": "役立つ記憶だけを残し、古い記憶を捨てよう",
+      "track": "context-controls",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-16"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-16-memory.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "local-memory",
+          "title": "local Memoryを操作する前の準備境界",
+          "page": "challenges/hc-016/optional/local-memory.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対応Stable / Local / Preview tool、組織policy、専用scope、保存・限定更新と元状態確認を準備できること。"
+            ],
+            "entitlements": [
+              "利用予定のVS Code Stable、GitHub Copilot、対象workspaceへの通常の利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "専用scopeへの保存、限定更新、元状態確認をそれぞれ対象を限定して別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "persistent-memory-lifecycle",
+              "status": "blocked",
+              "reason": "Runtime v1はlocal storeのbinding / 復元を管理しないため、この経路はblockedです。"
+            },
+            {
+              "capability": "tracked-vscode-settings",
+              "status": "blocked",
+              "reason": "Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "既存記憶を今回のnoteから分離できない場合は停止します。",
+            "自分のnoteだけを安全に戻せない場合は停止します。",
+            "全消去、既存User設定削除、個別削除を装う未確認APIが必要な場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-016/README.md",
+      "pack": "challenges/hc-016/pack",
+      "feature": "Memoryの選別・scope・鮮度設計",
+      "support": {
+        "primary": "固定sourceと中立cardを使い、保存ゼロを含む採否・scope・引用・更新・撤回を不活性原稿で比較する",
+        "fallback": "実Memoryを使わず完了可能。local-memoryはstore bindingとtracked settingsがRuntime v1でblocked、live動作は未観測"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-017",
+      "title": "タスクに合うモデルと推論量を選ぼう",
+      "track": "context-controls",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-17"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-17-language-models.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Checks.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/CreditService.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "byok-provider",
+          "title": "BYOK provider登録前の準備境界",
+          "page": "challenges/hc-017/optional/byok-provider.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "許可済みprovider / API / 実model IDと、secure inputを使える分離環境を確認できること。"
+            ],
+            "entitlements": [
+              "provider利用資格、model利用資格、組織policy、データ取扱い条件、費用範囲を確認できること。"
+            ],
+            "additionalApprovals": [
+              "provider登録、credentialのsecure input、架空短文の初回通信、費用発生をそれぞれ対象限定で別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "provider-registration",
+              "status": "blocked",
+              "reason": "Runtime v1はcredentialやUser-level provider登録を管理しないため、この経路はblockedです。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "provider登録または送信の承認がない場合は停止します。",
+            "endpoint、API、実model ID、費用、データ取扱いのいずれかが不明なら停止します。",
+            "private codeや固定分析を送らなければ成立しない場合は停止します。"
+          ]
+        },
+        {
+          "id": "utility-models",
+          "title": "utility model経路の観測準備",
+          "page": "challenges/hc-017/optional/utility-models.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "同じ固定utility入力、同じ対象操作、同じworkspace状態を用意し、対象をcommit message等の一つへ限定できること。"
+            ],
+            "entitlements": [
+              "対応Stable、GitHub Copilot、対象utility機能、実modelの表示または観測手段の利用資格を確認できること。"
+            ],
+            "additionalApprovals": [
+              "utility生成の実行、実model観測、必要な設定変更を対象限定で別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "utility-route-observation",
+              "status": "not-checked",
+              "reason": "Runtime v1ではutility入力経路、実効model表示、生成結果を確認していません。"
+            },
+            {
+              "capability": "tracked-vscode-settings",
+              "status": "blocked",
+              "reason": "Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "utility入力経路または実効modelを確認できない場合は停止します。",
+            "追跡できないworkspace設定、User/Profileへの黙った変更、force-addが必要なら停止します。",
+            "provider登録、credential変更、commit / pushが必要なら本ガイドでは停止します。"
+          ]
+        },
+        {
+          "id": "host-byok",
+          "title": "Agent Host BYOKの準備境界",
+          "page": "challenges/hc-017/optional/host-byok.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対応Agent Host / 実行OS、Experimental設定、provider、実model ID、secure inputの可用性を確認できること。"
+            ],
+            "entitlements": [
+              "Host、Copilot、provider、modelの利用資格、組織policy、データ取扱い条件、費用範囲を確認できること。"
+            ],
+            "additionalApprovals": [
+              "Experimental設定、provider登録、credentialのsecure input、Hostからの架空短文送信、費用発生を個別に別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "agent-host-byok",
+              "status": "not-checked",
+              "reason": "Runtime v1ではAgent HostのBYOK設定、provider接続、実model選択、応答を確認していません。"
+            },
+            {
+              "capability": "provider-registration",
+              "status": "blocked",
+              "reason": "Runtime v1はcredentialやUser-level provider登録を管理しないため、この経路はblockedです。"
+            },
+            {
+              "capability": "tracked-vscode-settings",
+              "status": "blocked",
+              "reason": "Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "対応Host / OS、Experimental設定、provider、credential、費用の承認が揃わない場合は停止します。",
+            "Localでしか疎通を確認できない場合はHostを未観測のまま停止します。",
+            "private code、固定分析、通常profileの変更が必要なら停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-017/README.md",
+      "pack": "challenges/hc-017/pack",
+      "feature": "Model / Thinking Effortの統制比較",
+      "support": {
+        "primary": "固定7行を使い、modelだけの実験Mと同じmodelでeffortだけの実験Eを別group・別runで比較する",
+        "fallback": "候補・表示・資格が不足すればdesign-onlyで提出。BYOK、utility、Host設定は任意guideでblocked / not-checked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-018",
+      "title": "承認と隔離の境界を可視化しよう",
+      "track": "context-controls",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-18"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-18-approvals-isolation.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "terminal-sandbox",
+          "title": "terminal sandboxの準備境界",
+          "page": "challenges/hc-018/optional/terminal-sandbox.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "macOS / Linux / WSL2の実行ホスト、準備済み依存、分離workspace、開始前状態を確認できること。"
+            ],
+            "entitlements": [
+              "対応するVS Code / Copilot、Preview機能、教材repository、実行ホストの通常利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "terminal sandboxの有効化、通常承認、限定dummy操作、開始前状態確認と復元を対象限定で別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "terminal-sandbox",
+              "status": "not-checked",
+              "reason": "Runtime v1ではterminal sandboxの有効化、実行ホスト、境界結果を確認していません。"
+            },
+            {
+              "capability": "tracked-vscode-settings",
+              "status": "blocked",
+              "reason": "Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings."
+            },
+            {
+              "capability": "owned-boundary-probe",
+              "status": "blocked",
+              "reason": "本編Packはsandbox probe用pathや実行を許可しないため、この経路はblockedです。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Windows native、依存導入、elevation、元の保護解除が必要なら停止します。",
+            "owned dummy pathと復元を確認できない場合は停止します。",
+            "追跡不能settings、force-add、User/Profileへの迂回が必要なら停止します。"
+          ]
+        },
+        {
+          "id": "mcp-sandbox",
+          "title": "stdio MCP sandboxの準備境界",
+          "page": "challenges/hc-018/optional/mcp-sandbox.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "macOS / Linux、local stdio、既存依存、分離workspace、review済みの限定serverとdummy操作を確認できること。"
+            ],
+            "entitlements": [
+              "対応するVS Code / Copilot、MCP機能、server trust、教材repositoryの通常利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "local stdio serverのtrust / 起動、sandbox設定、auto-approval挙動の受入、限定dummy操作、復元を対象限定で別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "stdio-mcp-sandbox",
+              "status": "not-checked",
+              "reason": "Runtime v1ではmacOS / Linux local stdio MCP sandbox、server起動、tool call、auto-approval挙動を確認していません。"
+            },
+            {
+              "capability": "owned-boundary-probe",
+              "status": "blocked",
+              "reason": "本編PackはMCP sandbox probe用pathや実行を許可しないため、この経路はblockedです。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Windows、別transport、未review serverしか使えない場合は停止します。",
+            "auto-approval挙動が許可条件と一致しない場合は停止します。",
+            "credential、network、home、依存導入、probe path追加が必要なら停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-018/README.md",
+      "pack": "challenges/hc-018/pack",
+      "feature": "承認・隔離・program resultの境界設計",
+      "support": {
+        "primary": "node --version一つと7件の合成packetで、tool候補、proposal、approval、OS、program resultを分離する",
+        "fallback": "live提案なしでもdesign-onlyで完了可能。terminal / MCP sandboxは任意guideでblocked / not-checked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-019",
+      "title": "カスタマイズの健康診断を作ろう",
+      "track": "context-controls",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-19"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-19-customization-management-evaluation.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "customization-editor",
+          "title": "Customizations editorの準備境界",
+          "page": "challenges/hc-019/optional/customization-editor.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対応版・harness、Preview留保、自己所有の安全なcopy、開始前状態を確認できること。"
+            ],
+            "entitlements": [
+              "対応するVS Code / Copilot、Customizations editor、教材workspaceの通常利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "管理UIを開くこと、自己所有copyの候補確認、必要最小限のredacted log、active化が必要な場合の別判断を個別に承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "customization-discovery",
+              "status": "not-checked",
+              "reason": "Runtime v1では管理UIの候補表示、selected harness、discovery、applicationを確認していません。"
+            },
+            {
+              "capability": "optional-active-customization",
+              "status": "blocked",
+              "reason": "本編は不活性copyだけを許可し、active customizationの配置や適用を許可しないためblockedです。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "対応UIがない、対象harnessが違う、自己所有copyを分離できない場合は停止します。",
+            "active化の承認がない場合は候補確認より先へ進みません。",
+            "User/Profile、原本、他人のcustomizationを変更しなければ成立しない場合は停止します。"
+          ]
+        },
+        {
+          "id": "diagnostic-evaluation",
+          "title": "外部diagnostic evaluationの準備境界",
+          "page": "challenges/hc-019/optional/diagnostic-evaluation.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "別配布Preview評価extensionの承認済み環境、publisher、固定対象copy、開始前状態を確認できること。"
+            ],
+            "entitlements": [
+              "extension、評価model、対象データ送信、費用、組織policyの利用資格と許可範囲を確認できること。"
+            ],
+            "additionalApprovals": [
+              "extension導入、分析対象送信、model利用、費用、Analyze実行を個別に別途承認し、自動修正はさらに別承認とすること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "external-diagnostic-evaluation",
+              "status": "blocked",
+              "reason": "本編とRuntime v1は外部評価extensionの導入、送信、model実行、費用、自動修正を許可・検証しないためblockedです。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "extension、publisher、送信対象、model、費用の承認が揃わない場合は停止します。",
+            "private contentや秘密を送らなければ成立しない場合は停止します。",
+            "自動修正、原本変更、通常profileへの導入が必要なら停止します。"
+          ]
+        },
+        {
+          "id": "waza-readiness",
+          "title": "Waza実行前のreadiness確認",
+          "page": "challenges/hc-019/optional/waza-readiness.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "Skill / 資源の固定版、承認済みextension / binary、対応OS、実scaffold schema / commandを確認できること。"
+            ],
+            "entitlements": [
+              "extension、binary取得、model、対象データ送信、費用、教材workspaceの利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "extension導入、binary取得 / 実行、model利用、データ送信、費用、scaffold / Runを工程ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "waza-evaluation",
+              "status": "blocked",
+              "reason": "Runtime v1と本編はWaza extension / binary、scaffold、model、送信、費用、評価実行を許可・検証しないためblockedです。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "実schema、command、入手元、hash、OS対応を確認できない場合は準備で停止します。",
+            "extension / binary取得、model、送信、費用の承認がない場合は停止します。",
+            "private data、原本変更、通常profile導入が必要なら停止します。"
+          ]
+        },
+        {
+          "id": "copy-migration",
+          "title": "customization copy migrationの準備境界",
+          "page": "challenges/hc-019/optional/copy-migration.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "Insiders Experimental、対象Hostとmigration種別、自己所有copy、原本保持、開始前状態を確認できること。"
+            ],
+            "entitlements": [
+              "対応Insiders / Copilot、対象Host、migration UI / command、source / destinationへの通常利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "自己所有copyだけの変換、destination作成、原本保持、必要な設定変更を対象限定で別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "profile-migration",
+              "status": "blocked",
+              "reason": "Runtime v1はprofile / home間のmigration、metadata継承、原本保持、rollbackを管理しないためblockedです。"
+            },
+            {
+              "capability": "tracked-vscode-settings",
+              "status": "blocked",
+              "reason": "Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "deleteOriginal、clearLocationSettings、同名上書きが必要なら停止します。",
+            "原本保持、自己所有copy、source / destination、rollbackを確認できない場合は停止します。",
+            "通常profile、User / home、追跡不能settingsへの変更が必要なら停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-019/README.md",
+      "pack": "challenges/hc-019/pack",
+      "feature": "Customization診断checklistと不活性repair",
+      "support": {
+        "primary": "fixed 2 lines、wrapper、synthetic inventoryを使い、syntaxからusefulnessまでを分離して自由repairを比較する",
+        "fallback": "実管理UI・評価・Waza・migrationなしで完了可能。4 optional routesはblocked / not-checkedのreadinessのみ"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-020",
+      "title": "VS Code拡張から専用Toolを提供しよう",
+      "track": "context-controls",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-20"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-20-extension-tools-chat-participants.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "extension-tool-host",
+          "title": "Language Model ToolのHost準備",
+          "page": "challenges/hc-020/optional/extension-tool-host.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みDevelopment Host、独立した開発用folder、対応API / client接続、同じanalyzerとfixed textを確認できること。"
+            ],
+            "entitlements": [
+              "対応するVS Code / Copilot、Extension Development Host、Language Model Tool API、教材folderの通常利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "独立folderの作成 / materialization、Development Host起動、Tool selection、confirmation、call、cancel、終了時解除を対象限定で別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "extension-development-host",
+              "status": "blocked",
+              "reason": "Runtime v1本編は開発用folderのmaterialization、Development Host起動、extension lifecycleを許可しないためblockedです。"
+            },
+            {
+              "capability": "extension-tool-observation",
+              "status": "not-checked",
+              "reason": "Toolのregistration、candidate selection、confirmation、call、cancel、disposeは未観測です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "通常profileへのinstall、既存package上書き、Marketplace公開が必要なら停止します。",
+            "対応API / client、Tool候補、登録名、confirmationを確認できない場合は停止します。",
+            "同じanalyzerを使えない、未知の追加model callが発生する、cleanupを確認できない場合は停止します。"
+          ]
+        },
+        {
+          "id": "chat-participant-host",
+          "title": "Chat ParticipantのHost準備",
+          "page": "challenges/hc-020/optional/chat-participant-host.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みDevelopment Host、独立したParticipant用開発folder、対応Chat入口、同じanalyzerとfixed textを確認できること。"
+            ],
+            "entitlements": [
+              "対応するVS Code / Copilot、Extension Development Host、Chat Participant API、教材folderの通常利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "独立folderの作成 / materialization、Development Host起動、Participant call、cancel、終了時解除を対象限定で別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "extension-development-host",
+              "status": "blocked",
+              "reason": "Runtime v1本編は開発用folderのmaterialization、Development Host起動、extension lifecycleを許可しないためblockedです。"
+            },
+            {
+              "capability": "chat-participant-observation",
+              "status": "not-checked",
+              "reason": "Participantのregistration、Chat入口、prompt、stream、cancel、disposeは未観測です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Tool結果が混入する、未知の追加model callが発生する、client接続がない場合は停止します。",
+            "通常profileへのinstall、既存package上書き、Marketplace公開が必要なら停止します。",
+            "同じanalyzerを使えない、Participant ID / referenceを確認できない、cleanupできない場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-020/README.md",
+      "pack": "challenges/hc-020/pack",
+      "feature": "VS Code Language Model Tool / Participant契約設計",
+      "support": {
+        "primary": "同じpure analyzerをNodeで三状態実行し、Tool wrapper / manifestの入力・確認・cancel・disposeを不活性設計する",
+        "fallback": "Nodeだけでも完了可能。Development Host、Tool / Participant登録・callは2 optional guidesでblocked / not-checked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-021",
+      "title": "競合するInstructionsの犯人を見つけよう",
+      "track": "design-evaluation",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-21"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-21-instruction-discovery-conflicts.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [],
+      "challengeVersion": 1,
+      "page": "challenges/hc-021/README.md",
+      "pack": "challenges/hc-021/pack",
+      "feature": "Instructionsの配置・発見・本文利用・出力・競合を分離する診断",
+      "support": {
+        "primary": "同じ2行packetと規則本文で7状態を分け、配置から出力までの根拠と最小修正を設計する",
+        "fallback": "実機がなくてもpath・原稿・一行差を診断可能。候補表示・本文利用・出力はnot-observedのまま残す"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-022",
+      "title": "外部資料からの命令注入を防ごう",
+      "track": "design-evaluation",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-22"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-22-trust-boundaries.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java"
+      ],
+      "optionalRoutes": [],
+      "challengeVersion": 1,
+      "page": "challenges/hc-022/README.md",
+      "pack": "challenges/hc-022/pack",
+      "feature": "外部資料のprovenance・authority・trust・approvalを分ける診断",
+      "support": {
+        "primary": "同じsource引用を持つ外部メモの最後の一行だけを変え、同じ扱い方針で信頼境界を記録する",
+        "fallback": "実modelを使わず合成responseと一行差を人が診断可能。一般防御・server trust・approvalは未確立"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-023",
+      "title": "最小限で十分なカスタマイズを選ぼう",
+      "track": "design-evaluation",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-23"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-23-customization-selection.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/resources/application-context.xml",
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/OrderStates.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java"
+      ],
+      "optionalRoutes": [],
+      "challengeVersion": 1,
+      "page": "challenges/hc-023/README.md",
+      "pack": "challenges/hc-023/pack",
+      "feature": "trigger・scope・resources・permissions・maintenanceによる最小機構選択",
+      "support": {
+        "primary": "10 caseをbaseline/checklistで各10回答し、none/manualを含む複数案と追加不要の理由を比較する",
+        "fallback": "テキスト設計だけで完了可能。実install・server・harness起動・教育効果はnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-024",
+      "title": "一つずつ外して本当に効いた機能を探そう",
+      "track": "design-evaluation",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-24"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-24-integration-ablation.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "ablation-preparation",
+          "title": "四機構ablationの準備境界",
+          "page": "challenges/hc-024/optional/ablation-preparation.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象Stable Local、独立workspace、同一source・operations note・requestを確認できること。"
+            ],
+            "entitlements": [
+              "対象model、Custom Agent、承認済みread-only resourceの利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "Agent選択、local server起動、server trust、resource添付、各runの停止・cleanupを個別に別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "four-component-ablation",
+              "status": "not-checked",
+              "reason": "本編Runtime v1 PackはAgent/MCP条件を提供せず、full＋各一除去の追加計画とconsumer検証が必要です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "未承認server、trust、Agent選択、resource添付が必要なら停止します。",
+            "MCPなしの行だけoperations noteの情報量が変わる場合は停止します。",
+            "実効toolsまたはmodelを揃えられない場合は停止します。",
+            "resource添付を観測できない場合は停止します。",
+            "追加Packが提供されていない場合は実行へ進みません。"
+          ]
+        },
+        {
+          "id": "hook-chain-preparation",
+          "title": "Stop通知chainの準備境界",
+          "page": "challenges/hc-024/optional/hook-chain-preparation.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対応するWindows-native Local / Preview event、限定checker、独立workspace、同じ事前草稿を確認できること。"
+            ],
+            "entitlements": [
+              "対象Preview / Hook機能、Local Agent、教材workspaceの利用条件と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "checker script、Hook配置、event試行、通知観測、終了時解除を対象限定で別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "preview-stop-hook-chain",
+              "status": "not-checked",
+              "reason": "このガイドはHook用Pack、checker/adapterのRuntime接続、実Stop eventを提供・検証しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "event、cwd、再入fieldが欠ける場合は停止します。",
+            "unknownをfalseや既定値で補う必要がある場合は停止します。",
+            "script/Hook配置やevent試行の承認がない場合は停止します。",
+            "通知をdenyまたは品質gateへ変える必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-024/README.md",
+      "pack": "challenges/hc-024/pack",
+      "feature": "Instructions×Skillの00/10/01/11四セル比較",
+      "support": {
+        "primary": "同じ3 source・operations note・requestと凍結I/Sで4セルを独立実施し、presenceからeffectまで分ける",
+        "fallback": "実機がなくてもI/S凍結と四セル設計を提出可能。2 optional routesはguide-only/live-unobserved"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-025",
+      "title": "Local AgentとAgent Hostへ同じ設計を持ち運ぼう",
+      "track": "design-evaluation",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-25"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-25-portability.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java",
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "local-host-probes",
+          "title": "Local Agent / Agent Host live probeの準備境界",
+          "page": "challenges/hc-025/optional/local-host-probes.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "Local AgentとAgent Hostを区別できる対象version、独立workspace、client接続条件、開始前状態を確認できること。"
+            ],
+            "entitlements": [
+              "各harness、model、対象Customization、教材workspaceの利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "各probeのactive配置、harness選択、限定観測、model利用、終了時解除を一件ずつ別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "live-portability-probes",
+              "status": "not-checked",
+              "reason": "両harnessでのactive probeは本編baseline/host条件外で、別の配置設計、実機観測、consumer検証が必要です。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Local Agentが対象versionにない場合は停止します。",
+            "既存probe先への上書きが必要な場合は停止します。",
+            "User保存元への移行が必要な場合は停止します。",
+            "PromptをSkillへ置き換えなければ続けられない場合は元probeを止めます。",
+            "実効model/tools/approvalを観測できない場合は停止します。"
+          ]
+        },
+        {
+          "id": "other-clients",
+          "title": "CLI / App / Cloud等の準備境界",
+          "page": "challenges/hc-025/optional/other-clients.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象CLI / App / Cloud、version、channel、実行場所、各clientの独立環境を確認できること。"
+            ],
+            "entitlements": [
+              "各client、model、Plugin/component、Cloud実行の利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "必要なinstall、login、sync、Cloud操作、model利用、外部送信、費用を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "client-specific-portability",
+              "status": "not-checked",
+              "reason": "CLI / App / Cloudごとの発見、本文投入、tools、approval、versionは本編とRuntime v1で未観測です。"
+            },
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "対象clientまたはversionが不明な場合は停止します。",
+            "install/login/sync/Cloud操作の承認がない場合は停止します。",
+            "Cloudが別branchを作り、Runtime v1 run bindingを移せない場合は停止します。",
+            "mainや別clientの実機結果を流用する場合は停止します。",
+            "全client GAへ外挿する必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-025/README.md",
+      "pack": "challenges/hc-025/pack",
+      "feature": "Local Agent / Agent Host間のformat・discovery・loading・tools・approval診断",
+      "support": {
+        "primary": "同じ不活性kitを2対象・4 probeで診断し、文書上の対応とlive観測nullを分ける",
+        "fallback": "対象harnessがなくても資料診断を提出可能。2 optional routesはguide-onlyでCloud handoffは既知blocked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-026",
+      "title": "カスタマイズを安全に段階導入しよう",
+      "track": "design-evaluation",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-26"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-26-governance.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "rollout-readiness",
+          "title": "組織展開の準備境界",
+          "page": "challenges/hc-026/optional/rollout-readiness.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象client、管理対象、配布元版、復元先、独立した検証環境を確認できること。"
+            ],
+            "entitlements": [
+              "対象組織、管理者、PluginまたはMCPを含む必要機能の利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "実owner / reviewer確認、組織へのwrite、権限変更、配布、復元試行を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "organization-rollout",
+              "status": "not-checked",
+              "reason": "Runtime v1と本編Packは組織管理、配布、承認、復元のlive操作を提供または観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "実owner、reviewer、対象管理者のいずれかを確認できない場合は停止します。",
+            "配布元版または復元先のbytesを固定できない場合は停止します。",
+            "組織write、権限拡大、PluginまたはMCP許可の追加承認がない場合は停止します。",
+            "本編runやrun-stateを実組織操作へ流用する必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-026/README.md",
+      "pack": "challenges/hc-026/pack",
+      "feature": "カスタマイズ資産の所有・版・target・rollbackを分ける段階導入設計",
+      "support": {
+        "primary": "2資産×5状態を同じ台帳で監査し、fail / blocked / passの集合rollupと復元計画を設計する",
+        "fallback": "合成資料だけで完了可能。実組織展開はoptional guide-onlyでorganization-rolloutはnot-checked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-027",
+      "title": "改善を主張する前に評価を固定しよう",
+      "track": "design-evaluation",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-27"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-27-evaluation-regression.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "evaluation-readiness",
+          "title": "外部評価の準備境界",
+          "page": "challenges/hc-027/optional/evaluation-readiness.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象publisher、対応version、binary取得元、独立環境、送信対象を確認できること。"
+            ],
+            "entitlements": [
+              "外部評価機能、認証、対象model、必要なserviceの利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "binary取得、install、login、外部送信、model利用、課金上限を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "external-evaluation",
+              "status": "not-checked",
+              "reason": "Runtime v1と本編Packは外部評価binary、認証、model実行、送信、課金を提供または観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "publisher、version、binary取得元のいずれかが不明な場合は停止します。",
+            "install、login、外部送信、model利用、課金の承認がない場合は停止します。",
+            "送信対象からprivate dataを除外できない場合は停止します。",
+            "対応commandやavailabilityを一次資料で確認できない場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-027/README.md",
+      "pack": "challenges/hc-027/pack",
+      "feature": "結果前にrubric・分母・18 row・欠測・回帰rollupを固定する評価設計",
+      "support": {
+        "primary": "2 task×3 condition×3 blockの18合成行を固定し、initial / follow-upと個別回帰を分離する",
+        "fallback": "実modelや外部serviceなしで完了可能。external-evaluationはoptional guide-only / not-checked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-028",
+      "title": "Copilotが読んだInstructionsの版を突き止めよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-28"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-28-github-instruction-origins.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "review-attribution",
+          "title": "標準review attributionの準備境界",
+          "page": "challenges/hc-028/optional/review-attribution.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象repository、PR、現在head、actor、review設定、再review手順、表示されるsession/logの範囲を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code review、対象repository、PR、必要なmodelと組織policyの利用資格を確認できること。"
+            ],
+            "additionalApprovals": [
+              "対象PRへのreview要求、再review、head更新、attribution閲覧を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "review-attribution-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は実review、対象head、session attribution、Instructions版の直接観測を実行しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "資格、repository設定、actor、対象PR/headのいずれかが不明な場合は停止します。",
+            "review要求または再reviewの承認がない場合は停止します。",
+            "表示されるattributionが対象fileや版を直接示さない場合は未観測で停止します。",
+            "old head、別run、自己申告だけで版を補う必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-028/README.md",
+      "pack": "challenges/hc-028/pack",
+      "feature": "Stored revision・Documented rule・Observed attributionを分離する版監査",
+      "support": {
+        "primary": "4合成ref、2 diff、3 attribution状態を監査し、old headとunknownを保持する",
+        "fallback": "合成資料だけで完了可能。実review attributionはoptional guide-only / not-checked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-029",
+      "title": "Cloud AgentにJava互換条件を守らせよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-29"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-29-cloud-repository-instructions.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+        "wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java",
+        "pom.xml"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "cloud-test-proposal",
+          "title": "Cloud test提案の準備境界",
+          "page": "challenges/hc-029/optional/cloud-test-proposal.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象Cloud Agent、repository、開始branch、JDK8、Maven、Java 7互換条件、対象test pathを確認できること。"
+            ],
+            "entitlements": [
+              "Cloud Agent、対象repository、model、必要なcomputeの利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "Cloud task作成、model利用、別branch作成、提案変更、test実行、費用を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Cloud機能、資格、開始branch、JDK8またはMavenを確認できない場合は停止します。",
+            "Cloud task、model、branch、変更、test、費用の承認がない場合は停止します。",
+            "別branchから既存Runtime runへ正式にbindingを移せない場合は停止します。",
+            "run-state手編集、別run作成、既存期待値緩和が必要な場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-029/README.md",
+      "pack": "challenges/hc-029/pack",
+      "feature": "十分な依頼とRepository Instructions候補へJava互換条件を分担する提案設計",
+      "support": {
+        "primary": "Money.taxのUNKNOWN境界を読み、CommonRulesTest.javaだけの不活性な提案diffを3条件で比較する",
+        "fallback": "source readingと提案作成だけで完了可能。実Cloud branch handoffは既知blocked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-030",
+      "title": "税額の意味を守るコードレビューを設計しよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-30"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-30-code-review-domain-rules.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "optionalRoutes": [],
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+        "wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java"
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-030/README.md",
+      "pack": "challenges/hc-030/pack",
+      "feature": "Copilot code review domain rules",
+      "support": {
+        "primary": "Path-specific review Instructions",
+        "fallback": "同じreview rulesをrequestへ貼るmanual-equivalent"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-031",
+      "title": "Java・XML・製品別にInstructionsを出し分けよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-31"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-31-github-scoped-instructions.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/resources/application-context.xml",
+        "wholesale-core/src/main/resources/spring/module-operations.xml",
+        "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "cloud-scope-observation",
+          "title": "Cloud scope観測の準備境界",
+          "page": "challenges/hc-031/optional/cloud-scope-observation.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象Cloud Agent、repository、開始branch、Java/XML task、4 main source、比較するInstructions原稿を確認できること。"
+            ],
+            "entitlements": [
+              "Cloud Agent、対象repository、model、repository Instructionsの利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "active Instructions配置、Cloud task、model利用、別branch作成、限定観測、終了時解除を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Cloud機能、資格、対象revision、原稿bytesのいずれかが不明な場合は停止します。",
+            "active配置、Cloud task、model、branch、観測の承認がない場合は停止します。",
+            "別branchから既存Runtime runへ正式にbindingを移せない場合は停止します。",
+            "sourceを読めたことだけでInstructions供給成功を主張する必要がある場合は停止します。"
+          ]
+        },
+        {
+          "id": "review-scope-observation",
+          "title": "review scope観測の準備境界",
+          "page": "challenges/hc-031/optional/review-scope-observation.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象repository、PR/head、Java/XML/mixedの各diff、Instructions原稿、attributionの表示範囲を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code review、対象repository、PR、repository Instructionsの利用資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "active Instructions配置、対象PRへのreview要求、再review、head更新、限定観測を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "review-scope-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は標準reviewでのInstructions発見、対象path判定、本文投入、attributionを実行または観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "資格、承認、対象revision、原稿bytes、attribution範囲のいずれかが不明な場合は停止します。",
+            "review要求、再review、active配置の承認がない場合は停止します。",
+            "Java/XML/mixedの入力を同じ条件で用意できない場合は停止します。",
+            "reply、回答言語、source accessだけで規則供給を推測する必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-031/README.md",
+      "pack": "challenges/hc-031/pack",
+      "feature": "Java/XMLのapplyToと製品別excludeAgentを分けるInstructions供給設計",
+      "support": {
+        "primary": "3 task×3 conditionと2 draft×2 product×3 metadataを分け、4 main sourceの対象/非対象を監査する",
+        "fallback": "source readingと不活性設計だけで完了可能。Cloud handoffはblocked、review観測はnot-checked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-032",
+      "title": "Cloud Agentの調査役とtoolsを設計しよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-32"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-32-cloud-custom-agents.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "cloud-profile",
+          "title": "Cloud profile確認の準備境界",
+          "page": "challenges/hc-032/optional/cloud-profile.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象Cloud Agent、承認済み専用repository、開始branch、profile保存元repository/ref/file、比較するprofile bytesを確認できること。"
+            ],
+            "entitlements": [
+              "Cloud Agent、対象repository、profile選択、model利用の資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "profileのactive保存、選択、Cloud task起動、model/費用上限、限定観測、終了時解除を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            },
+            {
+              "capability": "cloud-profile-selection",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はCloud Agentでのprofile保存元、選択、版、effective tools、actual callsを実行または観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "資格、承認、開始branch、profile保存元/ref/bytesのいずれかが不明な場合は停止します。",
+            "Cloud task、model、費用/回数上限、active保存の個別承認がない場合は停止します。",
+            "別branchから既存Runtime runへbindingを移せない場合は停止します。",
+            "declared toolsだけからeffective toolsやcallsを推測する必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-032/README.md",
+      "pack": "challenges/hc-032/pack",
+      "feature": "Cloud Agent custom agent profileの役割本文とtools境界を設計する",
+      "support": {
+        "primary": "同じread/search宣言を保ち、approval-traceの役割本文・保存元・selection・handoffを分離する",
+        "fallback": "不活性profileと手動全文の設計だけで完了可能。Cloud profile選択はlive-unobserved"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-033",
+      "title": "Cloud Agentに再送調査Skillを渡そう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-33"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-33-github-agent-skills.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/BatchRowService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/BatchRunService.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "cloud-skill",
+          "title": "Cloud Skill確認の準備境界",
+          "page": "challenges/hc-033/optional/cloud-skill.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象Cloud Agent、承認済み専用repository、開始branch、Skill本文/resourceの保存元/ref/raw bytesを確認できること。"
+            ],
+            "entitlements": [
+              "Cloud Agent、対象repository、Skills利用、model利用の資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "Skillのactive保存、Cloud task起動、本文/resourceの限定観測、model/費用上限、終了時解除を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            },
+            {
+              "capability": "cloud-skill-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はSkillの発見、本文投入、resource読取り、script実行をCloud Agentで観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "資格、承認、開始branch、Skill本文/resource bytesのいずれかが不明な場合は停止します。",
+            "resourceの安全レビューまたはscriptを起動しない初期scopeを維持できない場合は停止します。",
+            "別branchから既存Runtime runへbindingを移せない場合は停止します。",
+            "linkだけから本文/resource読取りやscript実行を推測する必要がある場合は停止します。"
+          ]
+        },
+        {
+          "id": "review-skill",
+          "title": "Review Skill確認の準備境界",
+          "page": "challenges/hc-033/optional/review-skill.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象repository、review-focused task、PR/head、Skill本文/resource bytes、観測するattribution範囲を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code review、対象repository、Skills利用の資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "review-focused Skillのactive保存、対象headへのreview要求、再review、限定観測、終了時解除を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "standard-review-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は標準reviewでのSkill発見、本文/resource投入、attribution、review結果を実行または観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "review資格、対象head、要求者、Skill bytes、観測範囲のいずれかが不明な場合は停止します。",
+            "active保存または実review要求の個別承認がない場合は停止します。",
+            "Cloud taskの記録を標準reviewのEvidenceへ流用する必要がある場合は停止します。",
+            "link、類似回答、attribution欠落からSkill利用を推測する必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-033/README.md",
+      "pack": "challenges/hc-033/pack",
+      "feature": "Cloud Agent Skillの本文・resource・manual-equivalent供給を分ける",
+      "support": {
+        "primary": "replay-planとjournal-boundaryでdescription・body・resource・scriptの観測段階を分離する",
+        "fallback": "不活性Skill原稿と同全文bundleだけで完了可能。Cloud/review採用はlive-unobserved"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-034",
+      "title": "Cloud Agentから運用メモMCPを呼ぶ設計をしよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-34"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-34-github-mcp.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "cloud-mcp",
+          "title": "Cloud MCP確認の準備境界",
+          "page": "challenges/hc-034/optional/cloud-mcp.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "研修専用server、承認済み専用repository、開始branch、training-v1 raw bytes、placeholder解決案を確認できること。"
+            ],
+            "entitlements": [
+              "Cloud Agent、対象repository、共有MCP設定を管理・利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "共有設定所有者による最小追加、既定設定保護、server起動、Cloud task、限定call、費用上限、終了時解除を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            },
+            {
+              "capability": "shared-mcp-configuration",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は共有MCP設定の保存、研修server起動、Cloud採用、tools/list、tools/callを実行または観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "資格、承認、設定所有者、開始branch、training-v1 bytesのいずれかが不明な場合は停止します。",
+            "既定MCP設定を保護できない、secret不要の研修配置に限定できない、返却版が不一致の場合は停止します。",
+            "別branchから既存Runtime runへbindingを移せない場合は停止します。",
+            "local protocol検査をCloud接続成功へ読み替える必要がある場合は停止します。"
+          ]
+        },
+        {
+          "id": "review-mcp",
+          "title": "Review MCP確認の準備境界",
+          "page": "challenges/hc-034/optional/review-mcp.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象repository、PR/head、研修専用server、training-v1 raw bytes、共有利用者とreadOnlyHint表示範囲を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code review、対象repository、共有MCP設定を管理・利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "共有設定所有者による最小追加、review要求、研修toolの限定call、共有利用者への影響確認、終了時解除を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "standard-review-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は標準reviewでのMCP採用、tool call、attribution、review結果を実行または観測しません。"
+            },
+            {
+              "capability": "shared-mcp-configuration",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は共有MCP設定の所有権、保存、既定server保護、共有利用者への影響を観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "review資格、対象head、要求者、設定所有者、training-v1 bytesのいずれかが不明な場合は停止します。",
+            "共有利用者への影響または実review要求の承認がない場合は停止します。",
+            "readOnlyHintを認可、ACL、無害性の保証として扱う必要がある場合は停止します。",
+            "NOT_FOUNDと取得error、返却版不一致を区別できない場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-034/README.md",
+      "pack": "challenges/hc-034/pack",
+      "feature": "Cloud形式MCPの取得stage・note revision・source支持を分ける設計",
+      "support": {
+        "primary": "training-v1の同一raw bytesとlookup_training_noteの取得・error・内容支持を分離する",
+        "fallback": "同じ研修メモの添付だけで完了可能。MCP接続・call・製品採用はlive-unobserved"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-035",
+      "title": "指示と実行環境を混同せず準備しよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-35"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-35-cloud-development-environment.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "pom.xml"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "cloud-setup",
+          "title": "Cloud setup確認の準備境界",
+          "page": "challenges/hc-035/optional/cloud-setup.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みUbuntu環境、default branchのsetup草稿、採用候補ref、JDK8/Maven要件、準備stepを確認できること。"
+            ],
+            "entitlements": [
+              "Cloud Agent、GitHub Actions、対象repository、runner利用の資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "active setup workflow保存、検査用trigger、runner/Actions利用、Cloud task起動、準備処理、費用上限、終了時解除を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            },
+            {
+              "capability": "active-setup-workflow",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はdefault branchのsetup保存、採用ref、runner実行、各step、失敗後のAgent開始を観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "資格、承認、Ubuntu runner、default branch/ref、setup bytesのいずれかが不明な場合は停止します。",
+            "準備処理、Actions/runner費用、Cloud task、active保存の個別承認がない場合は停止します。",
+            "別branchから既存Runtime runへbindingを移せない場合は停止します。",
+            "setup非0終了後のAgent開始をsetup成功へ読み替える必要がある場合は停止します。"
+          ]
+        },
+        {
+          "id": "review-setup",
+          "title": "Review setup確認の準備境界",
+          "page": "challenges/hc-035/optional/review-setup.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象repository、PR/head、専用review setupとshared setupの候補、対応Ubuntu runner、採用refのEvidence範囲を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code review、GitHub Actions、対象repository、対応runner利用の資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "専用またはshared setupのactive保存、review要求、runner/Actions利用、限定観測、終了時解除を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "active-setup-workflow",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はreview専用/shared setupの保存、採用ref、runner実行、各stepを観測しません。"
+            },
+            {
+              "capability": "standard-review-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は標準review要求、setup利用、review結果を実行または観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "review資格、承認、対象head、対応Ubuntu runner、setup bytesのいずれかが不明な場合は停止します。",
+            "専用/sharedの選択所有者または実review要求の承認がない場合は停止します。",
+            "review instructionsのhead採用からsetup採用refを推測する必要がある場合は停止します。",
+            "Cloud Windows対応をreview runner対応へ拡張する必要がある場合は停止します。"
+          ]
+        },
+        {
+          "id": "postgres-readiness",
+          "title": "PostgreSQL readiness確認の準備境界",
+          "page": "challenges/hc-035/optional/postgres-readiness.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "JDK8、Maven 3.9系、DB opt-in条件、承認済み専用PostgreSQL、専用DB名、復元範囲を確認できること。"
+            ],
+            "entitlements": [
+              "対象repositoryと専用PostgreSQLを利用する資格、DB所有者の許可、network/runner policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "DB所有者による専用instance/databaseの利用、接続、fixture、限定test、停止・cleanupを操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "dedicated-postgres",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はPostgreSQLのprovision、認証、接続、DB opt-in、test、cleanupを実行または観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "JDK/Maven適合、DB所有者許可、専用DB、network/runner、復元範囲のいずれかが不明な場合は停止します。",
+            "共有DB、実credential、未承認fixture、production dataが必要な場合は停止します。",
+            "DB opt-inなしのskipをDB test成功として扱う必要がある場合は停止します。",
+            "cleanupが自分の追加分だけに限定できない場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-035/README.md",
+      "pack": "challenges/hc-035/pack",
+      "feature": "InstructionsとCloud setupの準備責任・失敗・検証境界を分ける",
+      "support": {
+        "primary": "pomのJDK/Maven/compiler/API制約とsetup・agent start・tests・DBを別欄で診断する",
+        "fallback": "不活性setup草稿だけで完了可能。Agents secrets値や実setup採用は扱わない"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-036",
+      "title": "Draft・Open・更新時のレビュー発火を設計しよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-36"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-36-code-review-triggers.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "review-triggers",
+          "title": "Review trigger確認の準備境界",
+          "page": "challenges/hc-036/optional/review-triggers.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象repository、PR/head、review scope、個人/org/enterprise設定とruleset候補、event/actor/request/attemptの観測範囲を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code review、対象repository、rulesetまたは自動review設定を管理・利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "自動review設定またはruleset変更、合成でないPR event、review要求、head更新、発火/費用/回数上限、停止・復元を操作ごとに別途承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "standard-review-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は標準reviewのrequest、queue、attempt、completion、reviewed headを実行または観測しません。"
+            },
+            {
+              "capability": "automatic-review-settings",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は個人/org/enterprise設定、ruleset、自動review eventの実効組合せを観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "repository管理者、review資格、対象scope/head、設定所有者のいずれかが不明な場合は停止します。",
+            "個人/org/enterprise設定の混入、複数ruleset、actor違いを分離できない場合は停止します。",
+            "発火/費用/回数上限または停止・復元の個別承認がない場合は停止します。",
+            "レビューが起動しないため追加要求を無制限に繰り返す必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-036/README.md",
+      "pack": "challenges/hc-036/pack",
+      "feature": "Draft・Open・new push・manual rereviewの要求とhead相関を設計する",
+      "support": {
+        "primary": "SYNTHETIC_TRAINING_ONLYの4 conditions×5 tasksを欠落・重複なく診断する",
+        "fallback": "実PR・settings・reviewを作らず完了可能。標準review eventはlive-unobserved"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-037",
+      "title": "LiteとBalancedのレビュー品質を比べよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-37"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-37-code-review-effort.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+        "wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "review-effort-live",
+          "title": "標準review effort観測の準備境界",
+          "page": "challenges/hc-037/optional/review-effort-live.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みcandidate PR環境、固定diffと指示、base/head、既存自動reviewの残留、回数・費用・時間上限を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code reviewとLite/Balanced effortを対象repositoryで利用できる資格を確認できること。"
+            ],
+            "additionalApprovals": [
+              "candidate変更、各review要求、費用・回数・時間上限、終了時の整理を実施前に個別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "review-effort-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は標準reviewの実effort、actor、内部model、finding、費用、agentic fallback、CI visibilityを観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "diff、依頼全文、残留条件、base/head、実effort表示のいずれかを固定できない場合は停止します。",
+            "本編Packがsource mutationを許可しないままcandidate PR作成まで同じrunで行う必要がある場合は停止します。",
+            "回数・費用・時間上限またはreview要求の個別承認がない場合は停止します。",
+            "片側だけの結果をもう片側の0 findingsと比較する必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-037/README.md",
+      "pack": "challenges/hc-037/pack",
+      "feature": "Lite/Balancedの標準review評価計画と欠測・確認負担を分ける",
+      "support": {
+        "primary": "同じ2候補をLite/Balancedの4計画セルで評価し、支持・誤検知・負担・欠測を分ける",
+        "fallback": "標準reviewを依頼せず完了可能。実effort、model、finding、費用、fallback、CI visibilityはnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-038",
+      "title": "Cloud Hookの失敗を正しく分類しよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-38"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-38-cloud-hooks.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "session-start-live",
+          "title": "Cloud sessionStart観測の準備境界",
+          "page": "challenges/hc-038/optional/session-start-live.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みCloud専用環境、default branchのactive Hook変更計画、Cloud Linux/bash、採用checkerの固定bytesと実行環境を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot coding agent、対象repository、default branch、Actionsまたは必要な実行資源を利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "active Hook/script保存、session開始、実行資源・費用上限、ログ取得、停止・復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cloud-hook-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はsessionStartの発火、checker実行、exit、Cloud環境、ログを観測しません。"
+            },
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "checker版、Cloud Linux/bash、JDK等の実行前提、default branch、ログ取得範囲のいずれかが不明な場合は停止します。",
+            "active Hook変更、session開始、実行資源・費用、停止・復元の個別承認がない場合は停止します。",
+            "Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。",
+            "sessionStart成功を後続toolのpermission enforcementへ拡張する必要がある場合は停止します。"
+          ]
+        },
+        {
+          "id": "pre-tool-live",
+          "title": "Cloud preToolUse観測の準備境界",
+          "page": "challenges/hc-038/optional/pre-tool-live.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みCloud専用環境、default branchのactive Hook変更計画、固定checker、Cloud Linux/bash、無害な限定tool操作を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot coding agent、対象repository、default branch、対象toolと必要な実行資源を利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "active Hook/script保存、無害な限定tool操作、実行資源・費用上限、ログ取得、停止・復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cloud-hook-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はpreToolUseの発火、checker実行、permissionDecision、通常permission flow、tool完了を観測しません。"
+            },
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "checker版、default branch、Cloud Linux/bash、限定tool、permission観測範囲のいずれかが不明な場合は停止します。",
+            "endpoint、firewall変更、秘密、prompt全文log、破壊操作が必要な場合は停止します。",
+            "Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。",
+            "timeoutやHTTP failureを実tool完了またはcommand denyへ読み替える必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-038/README.md",
+      "pack": "challenges/hc-038/pack",
+      "feature": "同一checkerと12 packetでHook宣言・発火・failure・permission境界を設計する",
+      "support": {
+        "primary": "SYNTHETIC_TRAINING_ONLYのE01〜E12を両条件で診断し、製品fieldとfixture fieldを分ける",
+        "fallback": "active Hook、default branch、Cloud、endpointを変更せず完了可能。実発火とtool完了はnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-039",
+      "title": "組織で共有する規約のownerを決めよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-39"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-39-github-shared-governance.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "org-instructions-live",
+          "title": "Organization Instructions観測の準備境界",
+          "page": "challenges/hc-039/optional/org-instructions-live.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象organization、適用surface、既存organization/repository Instructions本文、対象revision、復元範囲を確認できること。"
+            ],
+            "entitlements": [
+              "organization owner権限、対象repositoryと対応surfaceの利用資格、組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "organization Instructionsの保存・変更、限定観測、他利用者への影響、停止・復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "org-settings-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はorganization Instructionsの保存、適用surface、repository Instructionsとの実効関係、他利用者への影響を観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "organization owner、対象surface、既存本文、対象revision、復元範囲のいずれかが不明な場合は停止します。",
+            "他利用者へ影響する変更または限定観測の個別承認がない場合は停止します。",
+            "repository Instructionsとの重複・優先関係を固定できない場合は停止します。",
+            "自分の変更だけを識別して復元できない場合は停止します。"
+          ]
+        },
+        {
+          "id": "shared-profiles-live",
+          "title": "共有profile観測の準備境界",
+          "page": "challenges/hc-039/optional/shared-profiles-live.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象organization/enterprise、governance repositoryと固定branch/ref、profile名、保存ACL、利用scope、Public Previewを確認できること。"
+            ],
+            "entitlements": [
+              "対象organization/enterprise、governance repository、共有profileを保存・利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "profile保存・更新、限定利用、他利用者への影響、Cloud/review試行、停止・復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "shared-profile-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は共有profileの保存ACL、利用scope、selected revision、発見、選択、本文投入、利用を観測しません。"
+            },
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "保存ACLと利用scopeを同一視する必要がある場合は停止します。",
+            "governance repository、selected branch/ref/revision、owner、Public Preview、利用資格のいずれかが不明な場合は停止します。",
+            "管理policyと不整合、または自分の追加分だけを復元できない場合は停止します。",
+            "Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-039/README.md",
+      "pack": "challenges/hc-039/pack",
+      "feature": "Instructionsの優先とprofile dedupを分け、共有規約の所有・版・責任を設計する",
+      "support": {
+        "primary": "SYNTHETIC_TRAINING_ONLYの4 tasks×3 recordsを両条件で診断し、現在値と提案を分ける",
+        "fallback": "org write、repository、ruleset、profile操作なしで完了可能。ACL、利用scope、選択版はnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-040",
+      "title": "一つのSkillをPluginとして届けよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-40"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-40-cloud-plugins.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+        "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+        "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderCsvTest.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "plugin-lifecycle-live",
+          "title": "Plugin lifecycle観測の準備境界",
+          "page": "challenges/hc-040/optional/plugin-lifecycle-live.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済み取得先と固定ref/version、対応client/Cloud、既存Skill/Plugin copy、自分の追加分、復元元hashを確認できること。"
+            ],
+            "entitlements": [
+              "Agent Plugins、対象repository/marketplace、install/enable/updateに必要な資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "Plugin取得、install、enable、update、restore、Cloud試行、費用上限、終了時の整理を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cloud-plugin-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はPlugin取得、install、enable、active copy、selected version、Skill発見、本文投入、call、update、restoreを観測しません。"
+            },
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "架空marketplace、未知版、floating ref、未確認のclient/Cloud対応が必要な場合は停止します。",
+            "既存copyと自分の追加分を識別できない、または復元元hashを固定できない場合は停止します。",
+            "install、enable、update、restore、Cloud試行の個別承認がない場合は停止します。",
+            "Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-040/README.md",
+      "pack": "challenges/hc-040/pack",
+      "feature": "同一Skill bytesをmanualと1-Skill Plugin原稿で配布・更新・復元比較する",
+      "support": {
+        "primary": "2 tasks×2 revisions×2 conditionsと3 lifecycle states×2 conditionsを静的に照合する",
+        "fallback": "install、enable、marketplace、Cloud、Java、DBなしで完了可能。実copy・取得版・発見・callはnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-041",
+      "title": "repo factsと古い記憶を見分けよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-41"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-41-github-copilot-memory.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "memory-reuse-live",
+          "title": "Memory reuse観測の準備境界",
+          "page": "challenges/hc-041/optional/memory-reuse-live.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象account、専用repository、現在branch、Cloudとreviewの独立した観測計画、自分の追加記録と残留・復元範囲を確認できること。"
+            ],
+            "entitlements": [
+              "GitHub Copilot Memory、Cloud、標準review、対象repositoryを利用する資格とuser単位設定の影響範囲を確認できること。"
+            ],
+            "additionalApprovals": [
+              "Memory設定・限定記録・Cloud/review試行・残留確認・自分の追加分だけの整理を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "memory-reuse-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はMemoryの保存、eligible、reuse、Cloud/reviewでの実利用、残留、retention、削除を観測しません。"
+            },
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "実記録または自分の追加分を識別できない場合は停止します。",
+            "user全体の設定影響、対象repository/current branch、Cloud/reviewの独立観測を固定できない場合は停止します。",
+            "既存Memoryの全削除、識別不能な記録の削除、他製品の操作が必要な場合は停止します。",
+            "Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-041/README.md",
+      "pack": "challenges/hc-041/pack",
+      "feature": "同repo/current branchの引用・eligibility・used・再検証を分ける",
+      "support": {
+        "primary": "SYNTHETIC_TRAINING_ONLYの6 cards×2 surfacesを両条件で監査し、repo factとuser preferenceを分ける",
+        "fallback": "Memory store/reuse/delete、Cloud、標準reviewなしで完了可能。実利用と28日retentionはnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-042",
+      "title": "読めない外部データの原因を層ごとに探そう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-42"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-42-github-access-boundaries.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "credentials",
+          "title": "Credential観測の準備境界",
+          "page": "challenges/hc-042/optional/credentials.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みの専用repository、Agents secrets / variablesの管理scope、対象consumer、観測する名称とpresenceだけの記録方法を確認できること。"
+            ],
+            "entitlements": [
+              "対象repositoryまたはorganizationのAgents secrets / variablesを管理・利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "値を取得しないpresence観測、対象scope、consumer、記録、停止、復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "external-access-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はAgents secrets / variablesの保存、presence、consumer、認証、認可、MCP出力利用を観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "追加承認がない、または値・値hashの取得が必要な場合は停止します。",
+            "保存scope、consumer、対象名称、記録範囲のいずれかが不明な場合は停止します。",
+            "実送信先、認可scope、復元責任者のいずれかが不明な場合は停止します。",
+            "別のsecret製品や個人credentialへ範囲を広げる必要がある場合は停止します。"
+          ]
+        },
+        {
+          "id": "firewall",
+          "title": "Firewall経路観測の準備境界",
+          "page": "challenges/hc-042/optional/firewall.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みの専用環境、Bash / MCP / setupの対象経路、現行firewall方針、許可先、観測上限、復元責任者を確認できること。"
+            ],
+            "entitlements": [
+              "対象Cloud / review環境、network policy、MCPまたはsetup経路を利用・管理する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "無害な限定経路の観測、許可先、回数・時間上限、ログ範囲、停止、復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "network-route-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はBash / MCP / setup経路の実通信、firewall適用、許可先、認証、認可、復元を観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "firewallの無効化または迂回が必要な場合は停止します。",
+            "許可経路、許可先、回数・時間上限、ログ範囲のいずれかが不明な場合は停止します。",
+            "復元責任者または停止手順が不明な場合は停止します。",
+            "MCP / setup対象外を成功または安全の証拠にする必要がある場合は停止します。"
+          ]
+        },
+        {
+          "id": "content-exclusion",
+          "title": "Content exclusion観測の準備境界",
+          "page": "challenges/hc-042/optional/content-exclusion.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "対象repository、標準code review surface、Instructions revision、content exclusionの管理scope、対象path、復元範囲を確認できること。"
+            ],
+            "entitlements": [
+              "対象repository、標準code reviewのPublic Preview、content exclusionを利用・管理する資格と実効policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "除外設定を変更しない限定観測、対象surface / path、記録範囲、停止、必要な復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "review-exclusion-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1は標準code reviewのcontent exclusion、Public Preview資格、実効管理scope、Instructions applyToとの関係を観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Public Preview、利用資格、実効policy、管理scopeのいずれかが不明な場合は停止します。",
+            "除外回避または別surfaceへの迂回を要求される場合は停止します。",
+            "対象path、Instructions revision、復元範囲を固定できない場合は停止します。",
+            "管理者による除外と参加者の指示適用範囲を一つの成功値へまとめる必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-042/README.md",
+      "pack": "challenges/hc-042/pack",
+      "feature": "外部データ経路を六層へ分け、未知・停止・相談先を設計する",
+      "support": {
+        "primary": "SYNTHETIC_TRAINING_ONLYのD01〜D07を両条件で診断し、presenceのunknownをfalseへ落とさない",
+        "fallback": "MCP登録、認証、network、firewall、secret取得なしで完了可能。runtimeBehaviorとeducationalEffectはnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-043",
+      "title": "イベント駆動Agentを最小権限で動かそう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-43"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-43-cloud-automations.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "event-trigger",
+          "title": "Event trigger観測の準備境界",
+          "page": "challenges/hc-043/optional/event-trigger.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みのprivate / internal repository、creator、限定event、固定head識別、読取task、出力先、停止担当、費用上限を確認できること。"
+            ],
+            "entitlements": [
+              "Cloud Agents Automations、対象repository、cloud / automation policy、Actions minutes、AI creditsを利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "automation登録、限定event、読取tools、session閲覧範囲、費用上限、停止、復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "automation-session-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はautomation登録、event発火、actor eligibility、session起動、tool効果、visibility、billing、停止、再開を観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "課金主体、費用上限、停止責任者のいずれかが不明な場合は停止します。",
+            "private / internal、creator権限、cloud / automation policy、session visibilityのいずれかが不明な場合は停止します。",
+            "non-write actorの受理拡大または投稿・書込toolが必要な場合は停止します。",
+            "重複event、新head、停止依頼を識別できない場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-043/README.md",
+      "pack": "challenges/hc-043/pack",
+      "feature": "event・actor・tools・visibility・費用・停止を分けて最小権限を設計する",
+      "support": {
+        "primary": "SYNTHETIC_TRAINING_ONLYのE01〜E05を両条件で評価し、creator・actor・read/write効果を分ける",
+        "fallback": "automation登録、event発火、label/review/repository更新なしで完了可能。稼働・停止・費用はnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-044",
+      "title": "CopilotのApproveとmerge可能を区別しよう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-44"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-44-code-review-approvals.md"
+        ]
+      },
+      "sourceKind": "synthetic",
+      "sourcePaths": [],
+      "optionalRoutes": [
+        {
+          "id": "approvals",
+          "title": "Approval観測の準備境界",
+          "page": "challenges/hc-044/optional/approvals.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みのpublic Preview対象repository、固定PR / head、changed files、required count、実効enterprise / organization / repository policyを確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code review Approvals Public Preview、対象repository、通常review、設定・rulesetを確認する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "限定review request、Approve、算入観測、対象head、再試行上限、ログ範囲、停止、復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "review-approval-observation",
+              "status": "not-checked",
+              "reason": "本編とRuntime v1はApprove permission、formal event、required approval算入、dismissal、all-files scope、実効policy、mergeabilityを観測しません。"
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Public Preview、利用資格、実効policy、対象head / all filesのいずれかが不明な場合は停止します。",
+            "未承認の設定またはruleset変更が必要な場合は停止します。",
+            "算入条件、eligible actor、required count、再試行上限のいずれかが不明な場合は停止します。",
+            "approval evidenceだけからmerge可能を主張する必要がある場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-044/README.md",
+      "pack": "challenges/hc-044/pack",
+      "feature": "assessment・event適格性・票数/all-files rollup・merge条件を分ける",
+      "support": {
+        "primary": "SYNTHETIC_TRAINING_ONLYのA01〜A07を両条件で評価し、per-event eligibilityとaggregateを分ける",
+        "fallback": "live review、Approve、ruleset、設定変更、mergeなしで完了可能。算入とmergeabilityはnot-observed"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    },
+    {
+      "id": "HC-045",
+      "title": "レビュー指摘を安全なCloud修正へ引き継ごう",
+      "track": "github-cloud",
+      "status": "published",
+      "sourceLab": {
+        "ids": [
+          "LAB-45"
+        ],
+        "repository": "shinyay/github-copilot-customization-labs",
+        "pages": [
+          "docs/labs/lab-45-review-cloud-handoff.md"
+        ]
+      },
+      "sourceKind": "baseline",
+      "sourcePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java",
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+        "wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java"
+      ],
+      "optionalRoutes": [
+        {
+          "id": "cloud-handoff",
+          "title": "Cloud handoff観測の準備境界",
+          "page": "challenges/hc-045/optional/cloud-handoff.md",
+          "required": false,
+          "prerequisites": {
+            "environment": [
+              "承認済みのreview / Cloud専用環境、固定PR / branch / head、TaxAmountsだけのscope、独立期待値、返却packet、停止・復元計画を確認できること。"
+            ],
+            "entitlements": [
+              "Copilot code review、Cloud agent、対象repository / PR、必要な実行資源を利用する資格と組織policyを確認できること。"
+            ],
+            "additionalApprovals": [
+              "request送信、Cloud session、限定source変更、test、commit、push、返却、最終確認、停止、復元を操作ごとに別承認すること。"
+            ]
+          },
+          "runtimeRequirements": [
+            {
+              "capability": "cross-branch-handoff",
+              "status": "blocked",
+              "reason": "Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported."
+            }
+          ],
+          "liveStatus": "live-unobserved",
+          "stopReasons": [
+            "Runtime v1 runをCloud-created branchへ移す必要がある場合は停止します。",
+            "review / Cloud双方の利用条件、対象branch / head / scope、独立期待値のいずれかが不明な場合は停止します。",
+            "TaxAmounts.java以外の変更、run.json編集、branchSafe偽装、post-hoc apply、allow-allが必要な場合は停止します。",
+            "request送信、source変更、test、commit、push、最終確認の個別承認がない場合は停止します。"
+          ]
+        }
+      ],
+      "challengeVersion": 1,
+      "page": "challenges/hc-045/README.md",
+      "pack": "challenges/hc-045/pack",
+      "feature": "指摘・draft・send claim・返却・branch/head/scope・独立検証を分ける",
+      "support": {
+        "primary": "実Java 3 pathsを読取根拠にし、合成・改作のcandidate/finding/eventでH01〜H06を評価する",
+        "fallback": "source変更、request送信、Cloud、Java実行、commit/push/mergeなしで完了可能。cross-branch-handoffはblocked"
+      },
+      "isolation": {
+        "tier": "repository",
+        "conditionStrategy": "separate-repository"
+      }
+    }
+  ]
+}

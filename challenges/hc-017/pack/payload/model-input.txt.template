@@ -1,0 +1,7 @@
+この固定入力はモデル比較用の教材であり、前のラボの回答ではない。
+確認したソース: OrderService.approve、BaseService.require、Actor.require、Checks.version。
+静的に読めること: actorがnullなら拒否する。MANAGERまたはADMINが権限検査を通る。
+expectedVersionが実際のversionと一致しなければ拒否する。状態はSUBMITTEDを要求する。
+起票者本人による承認は禁止で、ADMINもこの業務条件を省略しない。
+activeと与信の検査を通った後にAPPROVED、承認者、承認日時を設定する。
+Java/DBは未実行。実環境の認証・transaction適用・過去の設計理由はこの入力では確定しない。

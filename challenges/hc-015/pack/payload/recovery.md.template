@@ -1,0 +1,21 @@
+# HC-015 recovery
+
+## Case
+
+当該condition / run ID / comparisonGroupIdを記入します。自分の不活性成果物を実際に一要因だけ変えた検査か、配布の負例を読んだdesign-only確認かを選び、対象pathと元の完全なbytesのhashを記録します。固定source、Pack原本、設定、拡張は編集しません。
+
+## Expected boundary
+
+例は「manualの1行欠落」「同名別fileのheader」「queryをallocateからapproveへ変更」「pendingなのに参照0と記載」です。何が等しくなくなり、どの理由で停止すべきか先に書きます。片側だけの要約や別タブ追加も同じtaskへの公正な対照ではありません。
+
+## Observed result
+
+正常入力の検査、変えた一要因、意図したpost-imageの形、実際の拒否理由を分けて記入します。未実施ならnullと理由にします。別のエラーで止まっただけを狙いどおりとしません。子processを使った場合はerrorなし・signalなし・整数exit codeと具体的理由を記録します。
+
+## Restoration
+
+自分の成果物を元の完全なbytesへ戻したhash、同じ検査を再実施した結果、残留の有無を書きます。manualで試すなら送信前に復元し、壊した入力を本比較の結果へ混ぜません。design-onlyなら「書換えなし、復元操作なし」と明記します。sourceやindexを削除して復元したことにしません。
+
+## Non-claims
+
+この確認は同等性・scope・記録の構造についてのものです。Nodeのliteral scanはLSP、semantic検索、Add Contextではありません。準備hashは実投入範囲を証明せず、復元の設計だけで実機設定を戻したとはしません。runtimeBehavior / educationalEffectの未観測はnot-observedのまま残します。

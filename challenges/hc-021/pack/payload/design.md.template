@@ -1,0 +1,29 @@
+# HC-021 設計票
+
+## 調査する困りごと
+
+<!-- 想定と違う表示を、どの段階から診断するかを書く。 -->
+
+## 調査順
+
+<!-- placement / discovery / content use / output compliance の順序と理由を書く。 -->
+
+## 直接Evidence
+
+<!-- 各段階で実際に観測できるものを書く。見えない内部状態は not-observed。 -->
+
+## 固定する入力
+
+<!-- packet、request、rules本文、版、harness、model、effort、tools、approval。 -->
+
+## 比較を止める条件
+
+<!-- 入力差、残留指示、本文hash差、別packet等。 -->
+
+## 原因候補と反証
+
+<!-- 一つの原因へ決め打ちしない。 -->
+
+## 最小修正と別runでの再確認
+
+<!-- 今回の比較を変更せず、次に一つだけ変える案を書く。 -->

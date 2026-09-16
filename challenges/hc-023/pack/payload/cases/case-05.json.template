@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "caseId": "case-05",
+  "taskId": "case-05",
+  "title": "役割を分けた読み取りreview",
+  "targetHarness": "local-agent",
+  "scope": "workspace",
+  "sourcePaths": [
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
+  ],
+  "situation": "分析者とは別のreview役に同じ固定packetを読ませたい。",
+  "resources": [
+    "固定review packet",
+    "固定source",
+    "許可された読み取りtool一覧"
+  ],
+  "constraints": [
+    "書込み・terminalは不要。",
+    "役割選択と実効toolsを別に確認する。",
+    "自動handoffやSubagentは要求しない。"
+  ]
+}

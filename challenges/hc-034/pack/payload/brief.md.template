@@ -1,0 +1,20 @@
+# HC-034 Starter brief
+
+## Goal
+
+Design retrieval of the same training note while separating connection stages from content support.
+
+## Fixed tasks
+
+- `retrieval-plan`
+- `retrieval-diagnosis`
+
+## Source / material boundary
+
+Use the exact OrderGroup and OrderImportService paths to check only the code-derived section. The operations narrative is SYNTHETIC_TRAINING_ONLY.
+
+## Safety boundary
+
+- Work only in declared participant/*.template files and the Runtime-owned Evidence path.
+- Do not activate MCP settings, start a server, call a tool, use network, access a database, or handle secrets.
+- Runtime validation proves the static contract only; runtimeBehavior and educationalEffect remain not-observed.

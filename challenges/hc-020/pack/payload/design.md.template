@@ -1,0 +1,24 @@
+# HC-020 design
+
+- condition:
+- run-id:
+
+## Fixed calculation
+
+fixed 4 lines、終端LF、analyzer hash、三状態とexpected literal countsを凍結します。
+
+## Input and output contract
+
+exact one `text` string field、nonempty、8,192 Unicode code points、TypeError / RangeError、4 output fieldsを記録します。
+
+## Tool boundary
+
+Tool name、reference name、display / model description、confirmation、cancel、registration / activation / Disposableを設計します。
+
+## Alternatives
+
+Nodeだけで十分な条件、Tool入口が必要な条件、追加しない判断、Participant / Custom Agent / Subagent / Agent Pluginとの違いを記録します。
+
+## Observation limits
+
+stubで確認できる契約と、Hostでしか観測できないdiscovery / call / cancel / disposeを分けます。

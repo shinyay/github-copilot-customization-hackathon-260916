@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "evidenceKind": "synthetic",
+  "selectedHarness": "local-agent",
+  "viewHarness": "local-agent",
+  "entries": [
+    {
+      "name": "lab19-safe",
+      "scope": "workspace",
+      "source": ".github/instructions/lab19-safe.instructions.md",
+      "eligibleHarnesses": ["local-agent", "agent-host"],
+      "enabled": true,
+      "listed": true,
+      "applied": null
+    },
+    {
+      "name": "profile-only",
+      "scope": "profile",
+      "source": "vscode-profile-user-data/instructions/profile-only.instructions.md",
+      "eligibleHarnesses": ["local-agent"],
+      "enabled": false,
+      "listed": true,
+      "applied": null
+    }
+  ],
+  "liveUiObserved": null
+}

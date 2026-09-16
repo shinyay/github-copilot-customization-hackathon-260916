@@ -1,0 +1,36 @@
+# HC-014 配布方式の比較カード
+
+これは実行しない DRAFT の教材です。Skill は作業手順の本文、Plugin はそれを配る単位です。
+本編は Agent Plugins 1.0 の一つの Skill に限り、手動側にも同じ全文と版の情報を渡します。
+前の LAB、Challenge の成果物、過去の回答は必要ありません。
+
+## 固定するもの
+
+- source は `shinyay/code-to-doc-workshop-260910@398d7d1982a1402bcdba00d6c3ded67d8d338787`。`source-materials.json.template` の B1/B2/B3 を実際に読みます。
+- B1 の `importDraft` / `replay`、B2 の `canonicalHash`、B3 の関連するテスト定義を読み、Skill の読解順と根拠の残し方を自分で決めます。コードの説明文は配布しません。
+- Skill の directory と frontmatter の name は `order-import-evidence`。description と本文は安全条件の範囲で設計できます。
+- 比較前に frontmatter を含む v1 全文を UTF-8・BOM なし・LF で凍結します。v2 は `教材版: training-v1` の一行を `教材版: training-v2` にするだけです。
+- 同じ版の manual と package の Skill raw bytes を一致させます。文字列の見た目、版名、改行の自動補正では代用しません。
+- Agent を設計補助に使う場合、依頼全文、source、model / effort、実効 tools、承認方式も揃えます。保存だけで Skill がロードされたとはしません。
+
+## 変えるもの
+
+`baseline` は同一 Skill の手動 DRAFT と release ledger、`package-design` は root manifest と一つの Skill の package DRAFT と release ledger です。
+各条件の中で draft-v1 → draft-v2 → restored-v1 を記録します。三つの状態は追加の condition ではありません。
+
+package の `$schema` は `https://agent-plugins.org/schemas/1.0.0/plugin.schema.json`。
+manifest version は `1.0.0` → `2.0.0` → `1.0.0`、本文 marker は training-v1 → training-v2 → training-v1 です。
+package name / description は配布 metadata、Skill frontmatter は名前・用途、本文は手順です。混ぜて比較しません。
+
+## 触らないもの
+
+Java、XML、既存テスト、root README、適用済み Starter、User/home/組織設定は変更しません。
+`.github/skills`、`.agents/skills`、`.vscode/settings.json` などの探索先へ移さず、`.template` を外しません。
+追加の Skill、Hook、MCP、Agent、rules、prompts は作りません。install / register / enable、Java、DB、ネットワークは本編の作業に含めません。
+
+## 記録の種類
+
+ファイル hash・構成・コピー・復元はローカルの不活性資料の観測です。
+`lifecycle-origins.json.template` は `SYNTHETIC_LIFECYCLE_NOT_PLUGIN_DISCOVERY` の紙上資料です。
+実 discovery、本文 loading、配信、更新 UI、停止、時間短縮、知識の増加は別の証拠がなければ未観測です。
+手動方式で十分、equal、worse、incomparable、unsupported、blocked も有効な結論です。

@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-005",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "scope-design"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/cards.md.template",
+      "destination": ".hackathon/challenge/hc-005/cards.md.template",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/situations.md.template",
+      "destination": ".hackathon/challenge/hc-005/situations.md.template",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-005/request.txt.template",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/classification.md.template",
+      "destination": ".hackathon/challenge/hc-005/classification.md.template",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/policy.md.template",
+      "destination": ".hackathon/challenge/hc-005/policy.md.template",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/instruction-drafts.md.template",
+      "destination": ".hackathon/challenge/hc-005/instruction-drafts.md.template",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/generation-settings.json.template",
+      "destination": ".hackathon/challenge/hc-005/generation-settings.json.template",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-005/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-005/classification.md",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-005/policy.md",
+      "conditions": [
+        "scope-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-005/instruction-drafts.md.template",
+      "conditions": [
+        "scope-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-005/generation-settings.json.template",
+      "conditions": [
+        "scope-design"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-005/comparison.md",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Run",
+        "Fixed inputs",
+        "Classification",
+        "Situation 1",
+        "Situation 2",
+        "Policy and drafts",
+        "Comparison",
+        "Observation boundary",
+        "Outcome",
+        "Cleanup"
+      ],
+      "templateSha256": "4bed71e36e3590d2be6c5eae09d5ae2e2c73ee2671a9b3c6fe54d9b04bc932b7"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-005/classification.md",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-005/policy.md",
+      "conditions": [
+        "scope-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-005/instruction-drafts.md.template",
+      "conditions": [
+        "scope-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-005/generation-settings.json.template",
+      "conditions": [
+        "scope-design"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-005/comparison.md",
+      "conditions": [
+        "baseline",
+        "scope-design"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "wholesaleReader": {
+    "tools": [
+      "search/changes",
+      "search/codebase",
+      "read/problems",
+      "search/usages"
+    ],
+    "description": "受注取込の実装根拠を読むための既存ツールの選択単位。権限や新機能は追加しない。",
+    "icon": "book"
+  }
+}

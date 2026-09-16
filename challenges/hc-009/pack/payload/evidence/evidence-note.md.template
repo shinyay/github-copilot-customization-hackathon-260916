@@ -1,0 +1,52 @@
+# HC-009 Evidence Note
+
+## Fixed task
+
+Explain the source-defined order-import replay paths for a new key, a matching existing claim, and a conflicting existing claim. Do not run an import or claim production history.
+
+## Environment
+
+- Client / host / OS / channel:
+- Model / effort / tools:
+- Skill support:
+- Exact source paths:
+
+## Conditions
+
+| Condition | New conversation/profile | Skill named | Checklist pasted | Skill discovered | Evidence quality |
+|---|---|---|---|---|---|
+| no Skill |  | no | no | n/a |  |
+| manual-equivalent |  | no | yes | n/a |  |
+| manual Skill |  | yes | no | yes / no |  |
+| auto |  | no | no | yes / no |  |
+
+## Discovery observations
+
+- Direct evidence that the Skill was or was not discovered:
+
+## Body loading observations
+
+- Direct evidence that `SKILL.md` was or was not used:
+
+## Resource loading observations
+
+- Direct evidence that `checklist.md` or source excerpts were or were not used:
+
+## Script execution observations
+
+- Command:
+- Exit code:
+- Missing heading, if any:
+
+## Negative evidence
+
+- Incorrect replay-path claim:
+- Unsupported claim:
+- Unavailable feature:
+- Condition drift:
+
+## Outcome
+
+Choose one: improved / equal / worse / incomparable / blocked / unsupported
+
+Explain what discovery, body loading, resource loading, and checker execution changed, and what remains unknown.

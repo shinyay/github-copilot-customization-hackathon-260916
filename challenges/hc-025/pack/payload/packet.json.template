@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "packetId": "LAB25-APP-01",
+  "baseline": "398d7d1982a1402bcdba00d6c3ded67d8d338787",
+  "sourcePaths": [
+    "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java",
+    "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java",
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
+  ],
+  "boundary": "固定アプリのpathを列挙したpacketです。業務仕様の正解や前runの回答ではありません。",
+  "request": "packetId、三つのpathと未確認の境界を保持してください。業務事実の調査・推論は要求しません。"
+}

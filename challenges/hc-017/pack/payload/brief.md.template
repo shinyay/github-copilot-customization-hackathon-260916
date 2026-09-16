@@ -1,0 +1,13 @@
+# HC-017 Starter brief
+
+このPackは、同じ固定7行を使い、modelだけを変える実験Mと、同じmodelでeffortだけを変える実験Eを分離するための不活性教材です。
+
+- M: `baseline` / `model-alternate`
+- E: `effort-reference` / `effort-alternate`
+- fixed inputs: 7行、初回依頼、追問、source map
+- participant output: design、controls、responses
+- evidence: `.hackathon/evidence/hc-017/comparison.md`
+
+必要な承認済み候補や観測表示がなければdesign-onlyで提出します。Auto、架空model、fixtureのlow/high、要求名による補完、provider登録、credential設定を比較成立のために使いません。
+
+4条件は別repository、別workspace、別conversation、別run-idです。Mの`baseline`をEの`effort-reference`として再利用しません。

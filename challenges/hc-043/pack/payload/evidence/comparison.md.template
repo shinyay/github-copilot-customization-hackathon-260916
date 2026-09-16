@@ -1,0 +1,33 @@
+# HC-043 comparison evidence
+
+SYNTHETIC_TRAINING_ONLY
+
+Complete every section with participant-authored observations. Do not submit this unchanged template.
+
+## Fixed task
+
+<!-- Record E01-E05, packet/event hashes, equal input bytes, and declared repetitions. -->
+
+## Environment
+
+<!-- Record condition, run ID, Hub/Pack/template identity, client/host/model if used, and unobserved live layers. -->
+
+## Baseline
+
+<!-- Record the frozen ordinary trigger/tools/output/stop policy, revision/body hash, and task results. -->
+
+## Designed policy
+
+<!-- Record the frozen automation-policy, actor/creator, allowlist, visibility, cost, head, stop/resume rules, and task results. -->
+
+## Comparison
+
+<!-- Compare unnecessary write effects, visibility confusion, stale/duplicate handling, stop responsibility, and human burden. -->
+
+## Outcome
+
+<!-- improved / equal / worse / incomparable / blocked / unsupported, with support and no-automation-needed where applicable. -->
+
+## Evidence boundaries
+
+<!-- Separate static structure checks, live automation observations, and educational effect. Do not claim registration, firing, billing, stop, or resume. -->

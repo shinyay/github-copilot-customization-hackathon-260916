@@ -1,0 +1,22 @@
+# HC-017 design
+
+- condition:
+- run-id:
+- experiment group: M / E
+- factor changed:
+
+## Preflight
+
+承認済みmodel候補、同一modelのeffort候補、要求と観測表示、provider、adaptive、tools、harnessを確認します。確認できない値は未知のままにします。
+
+## Fixed controls
+
+固定7行、初回依頼、追問、提示順、source access、tools、承認、workspace範囲のhashと同一性を記録します。
+
+## Measurements
+
+6観点の保持・欠落・追加・要修正、修正負担、欠測、観測可能な時間・使用量を記録する方法を決めます。内部思考全文は収集しません。
+
+## Stop rules
+
+model / provider / adaptive等のdrift、実効表示不明、候補不足、残留を分離できない場合のblocked / unsupported / incomparableを決めます。

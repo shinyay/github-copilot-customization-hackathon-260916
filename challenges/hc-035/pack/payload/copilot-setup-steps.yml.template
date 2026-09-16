@@ -1,0 +1,23 @@
+# INERT_SETUP_DESIGN_ONLY - do not move this file to .github/workflows.
+name: HC-035 setup design draft
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    permissions:
+      contents: read
+    steps:
+      - name: Prepare JDK 8 using an approved action or image
+        run: echo "<DESIGN_JDK8_PREPARATION>"
+      - name: Report Maven version
+        run: mvn --version
+      - name: Check Maven range separately
+        run: echo "<DESIGN_MAVEN_3_9_RANGE_CHECK>"
+      - name: Prepare dependencies without claiming tests
+        run: mvn -DskipTests dependency:go-offline
+# A nonzero setup step may skip remaining setup steps while the agent still starts with the residual state.
+# A validation trigger is not evidence that Cloud Agent adopted this setup.

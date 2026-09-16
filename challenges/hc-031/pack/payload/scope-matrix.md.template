@@ -1,0 +1,15 @@
+# Three-task / three-condition scope matrix
+
+| task | condition | core Java | core XML | web Java | prediction | live observation |
+|---|---|---|---|---|---|---|
+| java-reading | baseline | record | record | record | TBD | not-checked |
+| java-reading | scoped-design | record | record | record | TBD | not-checked |
+| java-reading | manual-equivalent | record | record | record | TBD | not-checked |
+| xml-reading | baseline | record | record | record | TBD | not-checked |
+| xml-reading | scoped-design | record | record | record | TBD | not-checked |
+| xml-reading | manual-equivalent | record | record | record | TBD | not-checked |
+| mixed-reading | baseline | record | record | record | TBD | not-checked |
+| mixed-reading | scoped-design | record | record | record | TBD | not-checked |
+| mixed-reading | manual-equivalent | record | record | record | TBD | not-checked |
+
+`record` は4 main sourceを確認表から削除しないという意味です。適用予測や製品での実採用を示しません。

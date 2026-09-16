@@ -1,0 +1,11 @@
+# HC-023 人によるreview役
+
+回答の機能名を正解表と照合しません。各caseについて、次を人が読みます。
+
+- 固定caseとrequestを根拠にしているか。
+- trigger / scope / resources / permissions / maintenanceを説明したか。
+- 採用案、別案、追加不要の理由があるか。
+- 未観測、非対応、別承認を推測で埋めていないか。
+- Agent Host、tool、MCP、Plugin等の境界を広げていないか。
+
+reviewerは回答を書き直さず、引用と判断理由を残します。未確認の重大な懸念をfalseへ補完しません。

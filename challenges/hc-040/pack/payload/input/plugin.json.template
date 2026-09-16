@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "training-order-evidence",
+  "version": "0.0.0-training",
+  "description": "SYNTHETIC_TRAINING_ONLY inactive one-Skill package draft."
+}

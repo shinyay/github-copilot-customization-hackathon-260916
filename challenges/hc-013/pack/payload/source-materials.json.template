@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-013",
+  "materialRevision": 2,
+  "baselineHashMeaning": "original-whole-source-provenance-before-display-transformation",
+  "displayPolicy": {
+    "id": "hc013-full-display-v1",
+    "sourceScope": "whole-file",
+    "displayScope": "whole-file-with-explicit-redactions",
+    "operation": "replace six complete B3 authentication statements with explanatory markers; preserve every other line",
+    "sourceFilesChanged": false,
+    "valueOrIndividualValueHashesRecorded": false,
+    "runtimeRedactionOrExportOracle": false
+  },
+  "sourceBaseline": {
+    "repository": "shinyay/code-to-doc-workshop-260910",
+    "commit": "398d7d1982a1402bcdba00d6c3ded67d8d338787",
+    "fileCount": 515,
+    "treeSha256": "c3cd74e0d65b1ae88a29a4392eb42f9d51ba2c671d111796aacc69fd9cc5b111"
+  },
+  "authoringReference": {
+    "repository": "shinyay/github-copilot-customization-labs",
+    "commit": "3474d21dd62bad2e594e84657dabe2eb9bb876c1"
+  },
+  "baselineSources": [
+    {
+      "id": "B1",
+      "sourcePath": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+      "readFromAuthoringPath": "fixtures/tsubame-wholesale/wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+      "sha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+      "bytes": 5047,
+      "scope": "whole-file",
+      "adaptedFields": ["metadata path uses POSIX separators; original Java bytes are not changed or duplicated into the Pack", "display retains all 97 lines without substitutions; source and display provenance are still separate"]
+    },
+    {
+      "id": "B2",
+      "sourcePath": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+      "readFromAuthoringPath": "fixtures/tsubame-wholesale/wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+      "sha256": "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986",
+      "bytes": 5408,
+      "scope": "whole-file",
+      "adaptedFields": ["source reference added; original Java bytes are read-only and not duplicated into the Pack", "display retains all 126 lines without substitutions"]
+    },
+    {
+      "id": "B3",
+      "sourcePath": "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java",
+      "readFromAuthoringPath": "fixtures/tsubame-wholesale/wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java",
+      "sha256": "4512773a9a39ba25e61b1c1b1d0d9150d8004bfe43fb94617fb1bbe1c4a2ee63",
+      "bytes": 27073,
+      "scope": "whole-file",
+      "adaptedFields": ["source reference added for test-definition reading only; Java and PostgreSQL are not executed", "after verifying original whole-source pin, replace complete lines 86,87,237,242,431,437 in display only", "display preserves all 467 line positions and every unselected line; no removed values or individual-value hashes retained"]
+    }
+  ],
+  "displaySources": [
+    {
+      "id": "B1",
+      "policyId": "hc013-full-display-v1",
+      "scope": "whole-file-with-explicit-redactions",
+      "originalSha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+      "sha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+      "bytes": 5047,
+      "lineCount": 97,
+      "originalByteExact": true,
+      "redactedLines": []
+    },
+    {
+      "id": "B2",
+      "policyId": "hc013-full-display-v1",
+      "scope": "whole-file-with-explicit-redactions",
+      "originalSha256": "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986",
+      "sha256": "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986",
+      "bytes": 5408,
+      "lineCount": 126,
+      "originalByteExact": true,
+      "redactedLines": []
+    },
+    {
+      "id": "B3",
+      "policyId": "hc013-full-display-v1",
+      "scope": "whole-file-with-explicit-redactions",
+      "originalSha256": "4512773a9a39ba25e61b1c1b1d0d9150d8004bfe43fb94617fb1bbe1c4a2ee63",
+      "sha256": "a9db7fae855db85ce87d0fc2e83c69d6d6f1862fdc95b75669a17714a6eab32a",
+      "bytes": 27214,
+      "lineCount": 467,
+      "originalByteExact": false,
+      "redactedLines": [86, 87, 237, 242, 431, 437]
+    }
+  ],
+  "originals": [
+    {
+      "sourcePath": "docs/labs/lab-13-copilot-spaces.md",
+      "sha256": "1729a8afd646a293e02215606d8d26f9f6ce91bf869a6a879fc9d6d9ac99a8ee",
+      "bytes": 19173,
+      "adaptedFields": ["standalone Japanese workflow rewritten", "core is three local conditions only", "live read moved to one guide with separate approval", "no instructor prerequisite"]
+    },
+    {
+      "sourcePath": "docs/deep-dive/lab-13-provenance.md",
+      "sha256": "048b9717705193a2f6d5efb67a9d496d02e3b3e3a65dccf17e6053c94fcd00c1",
+      "bytes": 7639,
+      "adaptedFields": ["revision/scope/source-access separation retained", "diagnosis table not distributed", "recovery is participant-owned inert material only"]
+    },
+    {
+      "sourcePath": "examples/integrations/spaces/context-card.json",
+      "sha256": "c6417c63aad7fefc549f91125e1c2d758fd2398fef0221b16309790bf280e18f",
+      "bytes": 1739,
+      "adaptedFields": ["textContent retained verbatim", "currentCode.statement removed without replacing it by an answer", "instructions are participant-designed then frozen", "sourceReferences expanded to B1/B2/B3 with original and display provenance", "local/synthetic labels and NOT_PROVIDED retained", "formatVersion 2 replaces rawText with complete displayText and bounded transformation receipts"]
+    },
+    {
+      "sourcePath": "examples/integrations/spaces/github-spaces.mcp.json.template",
+      "sha256": "0cbfee3583eb6ea947f60d093b9d3b91620ba6614c934206fcb18773a0aef9bd",
+      "bytes": 227,
+      "adaptedFields": ["server name changed to hc013SpacesReferenceOnly", "remote endpoint and read-only/toolset headers retained", "no core MCP settings grant"]
+    },
+    {
+      "sourcePath": "examples/units/integrations/lab13/snapshot.json.template",
+      "sha256": "609b45b0929c8178031c1d1989814c16488f3c65b4019e59a75b3017e1aaac44",
+      "bytes": 319,
+      "adaptedFields": ["B1 whole-file identity and hash retained", "packet ID/repository/referenceType/byte count added", "unobserved Space hash remains null", "original hash explicitly distinguished from display delivery"]
+    },
+    {
+      "sourcePath": "examples/units/integrations/lab13/cards.json.template",
+      "sha256": "c3b27ad30fe1b9bcbfb2b1735c66530e972fa612686eb6f10e44106d31f047cc",
+      "bytes": 2134,
+      "adaptedFields": ["IDs changed to packet-01 through packet-04", "referenceType/revision/scope/hash/access attributes retained", "no semantic answer fields", "packet-05 through packet-08 add synthetic missing/error/empty/partial shapes", "packet-08 contains only B1 lines 1-2, with no invented whole-file hash", "live observations remain unobserved", "local display sanitization is not relabeled as remote partial retrieval"]
+    },
+    {
+      "sourcePath": "examples/units/integrations/lab13/provenance.mjs",
+      "sha256": "4513985b48a370e1590e8cf1656b149b721c1464fc8a6c8e0d84e8c008dadc5c",
+      "bytes": 3358,
+      "adaptedFields": ["read for boundary understanding only", "original helper and diagnosis/conclusion classifier are not copied", "new ASCII display helper performs bounded local preparation, not Runtime redaction or educational scoring"]
+    },
+    {
+      "sourcePath": "examples/units/integrations/lab13/request.txt.template",
+      "sha256": "112e761c069a2badbf820acc1e7250160f1ebb23ef66e27cecbd25c5931b1381",
+      "bytes": 546,
+      "adaptedFields": ["rewritten as a shared task for the three local conditions", "whole instructions/JSON equality and no source/Space access conflation made explicit"]
+    }
+  ],
+  "payloadDigests": [
+    { "path": "payload/brief.md.template", "bytes": 2154, "sha256": "a2fb600b88ad3e848917719de8ba6de014428f396e994d7f8a7271ea487ef42c", "derivation": "Handwritten local display scope and original-vs-display non-claims." },
+    { "path": "payload/request.txt.template", "bytes": 3098, "sha256": "1c962f412543a74a3d399aeb2b037271e4576edfda6c6998f53c951201a0938c", "derivation": "Same sanitized full display in all conditions; original credentials are not shared." },
+    { "path": "payload/design.md.template", "bytes": 2155, "sha256": "dac1cc2ba3265da06a0c73411f672e6892d81ce6a5833916cf01676b17e24321", "derivation": "Empty authored-design block with participant-chosen instructions and organization; immutable during comparison." },
+    { "path": "payload/comparison.md.template", "bytes": 1718, "sha256": "299d59b03b0b10a96fadd13fad17659ac196ddec6a5ddd39a73aa59bcc7ec38a", "derivation": "Approved headings retained; original/display inputs and helper-vs-export observations separated." },
+    { "path": "payload/recovery.md.template", "bytes": 1549, "sha256": "7107f0c91fe07eda7d09093a8b865eb8d9fc59be548425d52f2ad31986ab4e70", "derivation": "Approved headings retained; restore sanitized artifacts, never removed lines or values." },
+    { "path": "payload/provenance.md.template", "bytes": 2075, "sha256": "56132f07b4eab3d6982258400d881e55d1e3285b0b5c5eb7760aa5a3f2bc7581", "derivation": "Approved headings retained; original whole-source and display whole-text provenance plus bounded receipt." },
+    { "path": "payload/source-packet.json.template", "bytes": 5740, "sha256": "3f23d4a368843a1623cb34d51116ce92046c1b7ea07a8705cefd3e975fd30be4", "derivation": "Original synthetic text retained; three source pins and three display pins kept distinct; no business answer." },
+    { "path": "payload/snapshot.json.template", "bytes": 761, "sha256": "465e6be6eb084703f15759de02928ee365dfbbcad3d356253f9e9b19f26ac6ca", "derivation": "Original B1 identity retained and explicitly labeled as provenance, not display/Space retrieval." },
+    { "path": "payload/provenance-packets.json.template", "bytes": 6808, "sha256": "941d6f2cc64cf07b2958b10cc3cc179f4308eb2243ab30805e82726dd05d9930", "derivation": "All eight neutral packets and unknown/access states retained; local sanitization distinguished from remote partial retrieval." },
+    { "path": "payload/context-card.json.template", "bytes": 2193, "sha256": "b877eea836165f2edce9aa83355f5814b13ac049e73c2fb018e06f71d8ed0b77", "derivation": "Format 2 displayText scaffold with explicit sanitization and preserved local/synthetic labels." },
+    { "path": "payload/github-spaces.mcp.json.template", "bytes": 240, "sha256": "fb1182e831f76d8a73200102748865c883d9435af914cb5124d3bcbdc5ee3ea4", "derivation": "Original inactive remote/read-only reference with renamed server; no settings grant or credentials." },
+    { "path": "payload/handoff-worksheet.md.template", "bytes": 2069, "sha256": "17dc4bdd4a71ef76c7fbae0c47110e682aa909240da72234d5a6567740378b40", "derivation": "Baseline handoff contract requires the same complete sanitized display, instructions and global metadata." },
+    { "path": "payload/prepare-display.mjs.template", "bytes": 16455, "sha256": "83a410478a77181b35bef30d69908cdaa89be81e123d1d4ebaeb0221e5e52909", "derivation": "New ASCII, fixed-pin, six-whole-line display transformer and create-only/verify CLI. No original values, original Java tree, Runtime redaction filter or semantic classifier embedded." }
+  ],
+  "nonClaims": [
+    "This ledger and the manifest are deliberately excluded from payloadDigests to avoid a recursive self hash; the existing pack-hash-v1 contract covers the whole Pack.",
+    "Original hashes describe read-only authoring inputs, not Space retrieval.",
+    "Synthetic labels do not relabel the actual source baseline as synthetic.",
+    "No live Space/MCP/authentication/ACL/synchronization or educational effect was observed.",
+    "Completed QA materializations live outside the Pack and are not participant answers.",
+    "Revision 2 supersedes raw original-source embedding only for HC-013; prior execution reports and fixtures are preserved unchanged.",
+    "A display is not an original-byte-exact copy or necessarily executable Java. Runtime export compatibility requires fresh consumer verification."
+  ]
+}

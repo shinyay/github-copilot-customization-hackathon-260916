@@ -1,0 +1,10 @@
+---
+syntheticRef: REF-HEAD-02
+asset: repository-instructions
+---
+
+# Head rules
+
+- Java 7構文と標準APIの範囲を記録する。
+- test未実施を成功として報告しない。
+- unknown roundingの根拠をsourceへ結び付ける。

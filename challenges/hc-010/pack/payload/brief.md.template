@@ -1,0 +1,37 @@
+# HC-010 固定brief
+
+## 目的
+
+同じchecker結果を読む手動確認契約と、応答停止時の不活性な通知設計を比較する。
+受け手、確認時点、読み違え、通知の負担を自分で判断する。追加カスタマイズ不要も有効。
+
+## 固定した読解対象
+
+- source repository: shinyay/code-to-doc-workshop-260910
+- source commit: 398d7d1982a1402bcdba00d6c3ded67d8d338787
+- source path: wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java
+- symbol: Money.tax
+
+Runtimeの同ファイル全文を実際に読む。説明の支持箇所と未確認点は参加者が確かめる。
+Javaの完成済み分析や採点者用の答えは配らない。
+
+## 共通入力
+
+request.txt.template、draft-a.md.template、draft-b.md.template、stop-inputs.json.template、
+checker-results.json.template、notification-contract.json.templateと同一の3 helperを両条件で利用可能にする。
+草稿とイベントpacketはSYNTHETIC_TRAINING_ONLY。結果はfixture-onlyで、実StopやLLMの観測ではない。
+caseは5件、conditionはbaselineとnotification-designの2件であり、別々に数える。
+
+## 制作範囲
+
+baselineはdesign.mdとmanual-checklist.md、notification-designはdesign.md、notification-policy.md、
+stop-output.json.template、stop-hook.json.templateをparticipant/hc-010/に新規作成する。
+design.mdは同じ完成bytesを凍結し、条件ごとに別run・別repositoryで比較する。
+各runの3つのEvidenceは.hackathon/evidence/hc-010/のrun-stateに記入する。
+
+## 安全と非主張
+
+本編ではHookを有効にせず、checker/adapterを実行しない。原本の.runtime layoutをRuntimeへ作らない。
+source、配布物、既存設定は変更しない。通知はcontinue: trueで終了を妨げず、
+自動修正、新しいAIターン、ループを要求しない。形式合格、通知成功、意味の正しさ、実イベントは別である。
+equal、worse、追加不要、unsupported、not-observed、blocked、incomparableを理由付きで受け入れる。

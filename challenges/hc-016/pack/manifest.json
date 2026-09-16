@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-016",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "curated-design"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-016/brief.md.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-016/request.txt.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-016/starter/design.md.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-016/starter/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/source-map.md.template",
+      "destination": ".hackathon/challenge/hc-016/materials/source-map.md.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/memory-fact.txt.template",
+      "destination": ".hackathon/challenge/hc-016/materials/memory-fact.txt.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/cards.md.template",
+      "destination": ".hackathon/challenge/hc-016/materials/cards.md.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/card-review.md.template",
+      "destination": ".hackathon/challenge/hc-016/starter/card-review.md.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/handoff.txt.template",
+      "destination": ".hackathon/challenge/hc-016/starter/handoff.txt.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-016/design.md",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-016/card-review.md",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-016/handoff.txt.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-016/comparison.md",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Design",
+        "Run log",
+        "Comparison",
+        "Outcome",
+        "Limits and cleanup"
+      ],
+      "templateSha256": "9e7682a192b3837ffd98096052976f54565d27ae85f0bcb0d9a64f54c4fc8aa9"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-016/design.md",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-016/card-review.md",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-016/handoff.txt.template",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-016/comparison.md",
+      "conditions": [
+        "baseline",
+        "curated-design"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

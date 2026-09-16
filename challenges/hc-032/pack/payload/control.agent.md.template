@@ -1,0 +1,12 @@
+---
+name: approval-control-reader
+description: Read the fixed approval-trace material without an added investigation role body.
+target: github-copilot
+tools:
+  - read
+  - search
+---
+
+# Control profile body
+
+Use the fixed request and source material. Do not change, post, execute, or approve anything.

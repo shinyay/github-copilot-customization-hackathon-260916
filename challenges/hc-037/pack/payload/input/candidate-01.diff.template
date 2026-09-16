@@ -1,0 +1,12 @@
+SYNTHETIC_TRAINING_ONLY
+
+diff --git a/wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java b/wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java
+--- a/wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java
++++ b/wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java
+@@ -10,7 +10,8 @@ public class CommonRulesTest {
+-    public void taxIsRoundedPerRateRatherThanPerLine() {
++    public void taxIsRoundedPerRateRatherThanPerLine() {
++        // Keep the assertion name aligned with the documented per-rate rule.
+         // Existing assertions are unchanged in this training candidate.
+     }
+ }

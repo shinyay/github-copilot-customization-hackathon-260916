@@ -1,0 +1,25 @@
+---
+description: Investigate an OrderAction behavior with a repeatable evidence packet
+---
+
+Build a bounded source map for the order operation named by the participant.
+
+Required inputs:
+
+- operation such as `save`, `submit`, or `approve`
+- allowed scope:
+  - `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java`
+  - `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java`
+  - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`
+
+Produce exactly these sections:
+
+1. **Entry point** — identify the `OrderAction.perform` branch and cite it.
+2. **Form data** — list only `OrderForm` data read on the direct path.
+3. **Direct service call** — identify the exact `OrderService` method and arguments.
+4. **Facts / inference / unknowns** — keep the categories separate.
+5. **Additional candidates** — name files outside scope only as follow-up candidates.
+6. **Runtime boundary** — state what static reading does not verify.
+7. **Next action** — recommend the smallest justified next read or check, not an automatic edit.
+
+Do not edit files until the participant asks. Do not invent framework behavior that is absent from the Starter Kit.

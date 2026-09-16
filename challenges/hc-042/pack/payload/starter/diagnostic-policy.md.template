@@ -1,0 +1,32 @@
+# HC-042 diagnostic policy
+
+Condition: TODO
+Policy revision: TODO
+
+## Frozen order
+
+1. TODO
+
+## Layer rules
+
+- discovery: TODO
+- tool selection/call: TODO
+- network: TODO
+- authentication: TODO
+- authorization: TODO
+- output use: TODO
+
+## Presence and unknown
+
+- `present`: TODO
+- `absent`: TODO
+- `unknown`: TODO
+- rule preventing `unknown` from becoming `false`: TODO
+
+## Trust, authority, and stop
+
+- server trust evidence: TODO
+- external-text instruction authority: TODO
+- consultation owners: TODO
+- prohibited observations or changes: TODO
+- stop / no-addition-needed rule: TODO

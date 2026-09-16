@@ -1,0 +1,5 @@
+taskId: prepare-plan
+Read pom.xml and design responsibility boundaries for instructions, setup, version checks, dependency preparation, tests, database work, and agent start.
+
+taskId: setup-diagnosis
+Diagnose the neutral setup packets. Keep setup outcome, each step, skipped remainder, version fit, agent start, unit tests, and database tests separate.

@@ -1,0 +1,101 @@
+# HC-004 comparison
+
+これは空の記録用紙です。現在のconditionだけを実施事実で埋め、別conditionは対応する
+repository / PRへリンクするか未実施と書きます。テンプレートを置いただけでは提出になりません。
+比較の回答を保存した後で記入し、回答生成の追加資料には使いません。
+
+## Fixed task
+
+- condition / team / runの識別子:
+- request.txt.templateの全文とUTF-8 SHA-256:
+- source repository / commit / 3つのpath / 同一revisionを確認した方法:
+- 実データ・認証情報なし、アプリ・test変更なし、DB等の起動なし:
+- 試行順、凍結日時、追加ヒントや参照範囲の差:
+
+## Design before run
+
+- 再利用したい指示の意図と、出力前に決めた観測基準:
+- 選んだ短い規則、採用理由、削った候補:
+- 形式と意図の対応（本文で表すこと／保存場所が担うこと／この比較では確認できないこと）:
+- rootに一つだけ置く理由、複製が増えたときの保守担当と更新方法:
+- ファイル形式だけを扱い、model / harness / toolsを変更していないこと:
+- AGENTS.md、.claude/CLAUDE.md、CLAUDE.local.md、Rulesを同時に置いていないこと:
+
+## Frozen instruction body
+
+- 参加者が選んだ本文全文（customizedとmanual-equivalentで同一）:
+- participant/hc-004/root-instructions.md.templateのSHA-256、bytes、改行・文字コード:
+- root CLAUDE.mdとのbyte照合結果（customizedだけ）:
+- manualへ貼った本文全文、順序、貼付記録と同一性の確認:
+- baselineに選択本文を供給していないこと／混入した場合の限界:
+- metadataや優先順位の同一性を本文hashから主張していないこと:
+- 改訂した場合は別runへ分離したこと:
+
+## Environment
+
+- 日時、client / version / host / OS / channel / harness:
+- 指定model / 実効model / effort / tools / 承認範囲（不明はunknown）:
+- 各conditionのRuntime URL / branch / workspace / conversation / Profileの識別子:
+- 開いたworkspace root、source revision、Runtime template version、Pack hash:
+- root CLAUDE.md以外のworkspace指示、home、User、組織、Memory由来の指示の有無と確認範囲:
+- chat.useClaudeMdFileの観測値（設定変更なし）:
+- 分離できない要因、アクセスできず未確認の保存元、条件間の差:
+- local絶対path等を伏せた方法:
+
+## Baseline
+
+- このrepositoryのconditionか、別repository / PRリンクか、未実施か:
+- root CLAUDE.mdなし、選択本文を貼付していないこと:
+- 固定依頼全文、未修正出力、失敗・中断、実際の参照:
+
+## Customized
+
+- このrepositoryのconditionか、別repository / PRリンクか、未実施か:
+- root CLAUDE.mdだけを新規作成したこと、保存した本文のhash:
+- 指定model / 実効model / harnessが比較中に変わっていないこと:
+- 固定依頼全文、未修正出力、失敗・中断、実際の参照:
+
+## Manual-equivalent
+
+- このrepositoryのconditionか、別repository / PRリンクか、未実施か:
+- root CLAUDE.mdなし、選択した同じ本文全文 + 固定依頼全文の送信記録:
+- 未修正出力、失敗・中断、実際の参照:
+- 手動供給であり互換形式のdiscoveryを確認した結果ではないこと:
+
+## Storage, discovery, input, output
+
+| condition | 保存したpathとhash | 発見されたことの証拠 | 本文が投入されたことの証拠 | 出力の引用と限界 |
+| --- | --- | --- | --- | --- |
+| baseline | | | | |
+| customized | | | | |
+| manual-equivalent | | | | |
+
+見えていない段階はnot-observedと書きます。自己申告や回答の似かよりから発見・投入を推定しません。
+本文を保存したhashと実際のcontextは別の記録です。手動貼付も送信できた範囲を記し、内部処理を推測しません。
+
+## Comparison
+
+| 事前に決めた観点 | Baseline | Customized | Manual-equivalent | 根拠と比較限界 |
+| --- | --- | --- | --- | --- |
+| | | | | |
+
+- 意図と出力の対応、出典の正確さ、共有処理までの追跡を人がどう照合したか:
+- 再入力の手間、不要な長文化、複製を維持する負担:
+- 同じにできなかったsource / 本文 / model / harness / tools / 外部指示:
+- 実際に実行したcommand、整数exit code、未実行の理由（実機テストを架空に補わない）:
+
+## Outcome
+
+- improved / equal / worse / incomparable / blocked / unsupportedから選択:
+- その理由、追加不要と判断した点、反証、failure / unknown:
+- 静的検証のruntimeBehavior / educationalEffectはnot-observed:
+- 別モデル・別harnessへの移植や教育効果として主張できない範囲:
+
+## Submission and cleanup
+
+- conditionとRuntime repository / PR / runの対応、Hub Issue:
+- 公開可能な要約、secret・個人情報・private code・local pathのredaction確認:
+- verify-run in-progress / submitted、export-submissionの結果:
+- baseline不変、自分が追加したファイルだけの整理計画、起動processの有無と停止:
+- 別repositoryの保管・archive判断（自動完了とは書かない）:
+- 任意ガイドは未実施でよい。記録する場合は共通IssueのOPTIONAL欄へ分離:

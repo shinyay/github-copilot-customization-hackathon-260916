@@ -1,0 +1,32 @@
+# HC-045 handoff policy
+
+Condition: TODO
+Policy revision: TODO
+
+## State model
+
+| state | evidence required before using the state | owner | stop / rollback |
+|---|---|---|---|
+| finding received | TODO | TODO | TODO |
+| human assessed | TODO | TODO | TODO |
+| draft | TODO | TODO | TODO |
+| prepared | TODO | TODO | TODO |
+| sent | TODO | TODO | TODO |
+| accepted | TODO | TODO | TODO |
+| applied | TODO | TODO | TODO |
+| independently validated | TODO | TODO | TODO |
+
+## Scope rules
+
+- requested branch / head: TODO
+- only proposed change target: `TaxAmounts.java`
+- read-only evidence: `Money.java`, `CommonRulesTest.java`
+- allowed source mutation in this Runtime run: none
+- response to cross-branch handoff: TODO
+
+## Final human confirmation
+
+- finding adopted / rejected / held: TODO
+- independent expectation used: TODO
+- self-report versus independent evidence: TODO
+- no-change decision: TODO

@@ -1,0 +1,10 @@
+# HC-024 四セル記録
+
+| condition | I | S | I hash | S hash | source packet hash | note hash | request hash | discovery | usage | outcome |
+|---|---:|---:|---|---|---|---|---|---|---|---|
+| baseline | 0 | 0 | same frozen material | same frozen material | fixed | fixed | fixed | null | null | |
+| instructions | 1 | 0 | fixed-I | same frozen material | fixed | fixed | fixed | null | null | |
+| skill | 0 | 1 | same frozen material | fixed-S | fixed | fixed | fixed | null | null | |
+| both | 1 | 1 | fixed-I | fixed-S | fixed | fixed | fixed | null | null | |
+
+4行の一つをduplicateして件数だけ合わせません。Iはinstructions/both、Sはskill/bothで同じraw bytesにします。

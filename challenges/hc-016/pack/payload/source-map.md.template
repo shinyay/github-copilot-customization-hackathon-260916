@@ -1,0 +1,12 @@
+# HC-016 fixed source map
+
+Source repository: `shinyay/code-to-doc-workshop-260910`
+
+Source commit: `398d7d1982a1402bcdba00d6c3ded67d8d338787`
+
+| ID | Runtime root relative path | Symbol | Static reading boundary |
+|---|---|---|---|
+| S1 | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java` | `require` | null actorを拒否し、それ以外をS2へ委譲する |
+| S2 | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java` | `require` | ADMIN、指定role、拒否を分ける |
+
+このmapは固定sourceへ戻る入口です。Java / DB、実認証、実利用者の権限、過去の設計理由は確認していません。行番号だけでなく、現在のsymbol本文が主張を支持するかを読みます。

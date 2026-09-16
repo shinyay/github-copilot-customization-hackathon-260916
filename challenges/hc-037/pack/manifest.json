@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-037",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "balanced-plan"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-037/starter/brief.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-037/starter/request.txt.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-037/starter/design.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-037/starter/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/candidate-01.diff.template",
+      "destination": ".hackathon/challenge/hc-037/starter/input/candidate-01.diff.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/candidate-02.diff.template",
+      "destination": ".hackathon/challenge/hc-037/starter/input/candidate-02.diff.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/controls.json.template",
+      "destination": ".hackathon/challenge/hc-037/starter/input/controls.json.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/rules.md.template",
+      "destination": ".hackathon/challenge/hc-037/starter/input/rules.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/source-map.md.template",
+      "destination": ".hackathon/challenge/hc-037/starter/input/source-map.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-037/evaluation-plan.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ]
+    },
+    {
+      "pattern": "participant/hc-037/review-request.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-037/comparison.md",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Condition and input",
+        "Design",
+        "Comparison",
+        "Outcome",
+        "Limitations",
+        "Effort controls",
+        "Candidate coverage",
+        "Supported findings and false positives",
+        "Missing observations and burden"
+      ],
+      "templateSha256": "2b780fa4c6b7647a49ed6d30ed8873ac3f91b4f1ff38775f9aa60b648d9df7ec"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-037/evaluation-plan.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ]
+    },
+    {
+      "pattern": "participant/hc-037/review-request.md.template",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-037/comparison.md",
+      "conditions": [
+        "baseline",
+        "balanced-plan"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

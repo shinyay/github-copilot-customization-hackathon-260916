@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "FIXED_HC024_BATCH_IMPORT_CONTEXT",
+  "sourceCommit": "398d7d1982a1402bcdba00d6c3ded67d8d338787",
+  "sourceTreeSha256": "c3cd74e0d65b1ae88a29a4392eb42f9d51ba2c671d111796aacc69fd9cc5b111",
+  "baselineFiles": 515,
+  "sources": [
+    {
+      "path": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+      "sha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2"
+    },
+    {
+      "path": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+      "sha256": "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986"
+    },
+    {
+      "path": "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java",
+      "sha256": "4512773a9a39ba25e61b1c1b1d0d9150d8004bfe43fb94617fb1bbe1c4a2ee63"
+    }
+  ],
+  "note": {
+    "path": "participant/hc-024/operations-note.json",
+    "sha256": "22df2a80b62da87852559d22ef6d60e0a8aabc743d15b1ba8a591e9e9c64c2db"
+  },
+  "citationIds": [
+    "import-draft",
+    "import-replay",
+    "canonical-hash",
+    "replay-test-definition"
+  ]
+}

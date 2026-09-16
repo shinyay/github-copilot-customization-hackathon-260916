@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-030",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "customized"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/reference/TaxAmounts.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-030/reference/TaxAmounts.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "customized"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference/Money.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-030/reference/Money.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "customized"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference/CommonRulesTest.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-030/reference/CommonRulesTest.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "customized"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/candidates/candidate-a.patch.template",
+      "destination": ".hackathon/challenge/hc-030/starter/candidate-a.patch.template",
+      "conditions": [
+        "baseline",
+        "customized"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/candidates/candidate-b.patch.template",
+      "destination": ".hackathon/challenge/hc-030/starter/candidate-b.patch.template",
+      "conditions": [
+        "baseline",
+        "customized"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/candidates/candidates.json.template",
+      "destination": ".hackathon/challenge/hc-030/starter/candidates.json.template",
+      "conditions": [
+        "baseline",
+        "customized"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/customization/tax-review.instructions.md.template",
+      "destination": ".hackathon/challenge/hc-030/starter/tax-review.instructions.md.template",
+      "conditions": [
+        "customized"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/classification.md.template",
+      "destination": ".hackathon/challenge/hc-030/starter/classification.md.template",
+      "conditions": [
+        "baseline",
+        "customized"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": ".github/instructions/tax-review.instructions.md",
+      "conditions": [
+        "customized"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-030/classification.md",
+      "conditions": [
+        "baseline",
+        "customized"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Public categories",
+        "Environment",
+        "Candidate A",
+        "Candidate B",
+        "Outcome"
+      ],
+      "templateSha256": "35c7f70cb868c3361cbd11725fbf91e43465c1a88e0e249c4052ce290d00ef41"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": ".github/instructions/tax-review.instructions.md",
+      "conditions": [
+        "customized"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-030/classification.md",
+      "conditions": [
+        "baseline",
+        "customized"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

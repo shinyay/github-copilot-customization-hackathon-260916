@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_TRAINING_ONLY",
+  "tasks": [
+    {
+      "id": "A01",
+      "assessment": {
+        "state": "positive",
+        "targetHead": "head-a"
+      },
+      "reviewEvents": []
+    },
+    {
+      "id": "A02",
+      "assessment": {
+        "state": "positive",
+        "targetHead": "head-b"
+      },
+      "reviewEvents": [
+        {
+          "eventId": "review-201",
+          "state": "APPROVED",
+          "actor": "reviewer-one",
+          "targetHead": "head-b",
+          "actorEligibilityRecord": "recorded"
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "assessment": {
+        "state": "positive",
+        "targetHead": "head-c"
+      },
+      "reviewEvents": [
+        {
+          "eventId": "review-301",
+          "state": "APPROVED",
+          "actor": "reviewer-one",
+          "targetHead": "head-c",
+          "actorEligibilityRecord": "recorded"
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "assessment": {
+        "state": "positive",
+        "targetHead": "head-d"
+      },
+      "reviewEvents": [
+        {
+          "eventId": "review-401",
+          "state": "APPROVED",
+          "actor": "reviewer-one",
+          "targetHead": "head-d",
+          "actorEligibilityRecord": "recorded"
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "assessment": {
+        "state": "positive",
+        "targetHead": "head-f"
+      },
+      "reviewEvents": [
+        {
+          "eventId": "review-501",
+          "state": "APPROVED",
+          "actor": "reviewer-one",
+          "targetHead": "head-e",
+          "actorEligibilityRecord": "recorded"
+        },
+        {
+          "eventId": "review-501-copy",
+          "duplicateOf": "review-501",
+          "state": "APPROVED",
+          "actor": "reviewer-one",
+          "targetHead": "head-e",
+          "actorEligibilityRecord": "recorded"
+        }
+      ]
+    },
+    {
+      "id": "A06",
+      "assessment": {
+        "state": "positive",
+        "targetHead": "head-g"
+      },
+      "reviewEvents": [
+        {
+          "eventId": "review-601",
+          "state": "APPROVED",
+          "actor": "reviewer-one",
+          "targetHead": "head-g",
+          "actorEligibilityRecord": "recorded"
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "assessment": {
+        "state": "positive",
+        "targetHead": "head-h"
+      },
+      "reviewEvents": [
+        {
+          "eventId": "review-701",
+          "state": "APPROVED",
+          "actor": "reviewer-one",
+          "targetHead": "head-h",
+          "actorEligibilityRecord": "recorded"
+        }
+      ]
+    }
+  ]
+}

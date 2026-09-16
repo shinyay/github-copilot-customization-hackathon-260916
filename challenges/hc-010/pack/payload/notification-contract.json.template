@@ -1,0 +1,47 @@
+{
+  "materialType": "SYNTHETIC_TRAINING_ONLY",
+  "scope": "配布した原本helperの限定契約。全製品schemaのvalidatorでも通知設定言語でもない。",
+  "sourceProtocol": "LAB-10",
+  "challengeId": "HC-010",
+  "checker": {
+    "arguments": [],
+    "cwdAuthority": "process cwd, not the Hook input cwd field",
+    "selector": ".runtime/independent-labs/lab-10/active.json",
+    "draft": ".runtime/independent-labs/lab-10/<runId>/draft.md",
+    "selectorKeys": ["lab", "runId"],
+    "runIdPattern": "^[a-z][a-z0-9-]{0,31}$",
+    "draftRunMarker": false,
+    "requiredHeadings": ["## Evidence", "## Unknowns"],
+    "resultExits": { "pass": 0, "invalid": 1, "uncheckable": 2, "skipped": 0 },
+    "unexpectedArguments": { "result": "uncheckable", "code": "UNEXPECTED_ARGUMENTS", "exitCode": 2 },
+    "meaning": "pass is a format check only; skipped is not pass"
+  },
+  "adapter": {
+    "event": "Stop",
+    "when": "current Agent response stops, not session/window closing",
+    "inputSubset": ["hook_event_name", "stop_hook_active"],
+    "reentry": "stop_hook_active: true skips before invoking the checker",
+    "continue": true,
+    "outputKeys": ["continue", "systemMessage"],
+    "notificationExitCode": 0,
+    "exitMeaning": "notification returned, not checker pass",
+    "autoFix": false,
+    "newAiTurnRequested": false,
+    "retryLoop": false
+  },
+  "limits": {
+    "stdinBytes": 32768,
+    "stdinTimeoutMs": 2000,
+    "selectorBytes": 1024,
+    "draftBytes": 65536,
+    "checkerTimeoutMs": 3000,
+    "checkerOutputBytes": 8192
+  },
+  "nonClaims": {
+    "coreExecution": "not-permitted",
+    "realStop": "not-observed",
+    "notificationDisplay": "not-observed",
+    "semanticAccuracy": "not-evaluated",
+    "proposedMessage": "participant proposal, not observed adapter output"
+  }
+}

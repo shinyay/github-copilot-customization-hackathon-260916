@@ -1,0 +1,5 @@
+# HC-029 Starter brief
+
+このPackは、十分な固定依頼と、繰り返し使うRepository Instructions候補の責任分担を設計する不活性教材です。
+
+main sourceとsupplemental guidanceはRuntime固定commitのroot相対pathで参照します。Hubは515 raw source filesを同梱せず、提案diffもsourceへ適用しません。

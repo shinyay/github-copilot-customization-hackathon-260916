@@ -1,0 +1,11 @@
+# Preparation responsibility matrix
+
+| concern | instruction owner | setup owner | observer | stop decision | live status |
+|---|---|---|---|---|---|
+| JDK constraint | TODO | TODO | TODO | TODO | not-observed |
+| Maven range | TODO | TODO | TODO | TODO | not-observed |
+| compiler / Java API | TODO | TODO | TODO | TODO | static pom only |
+| dependency preparation | TODO | TODO | TODO | TODO | not-observed |
+| unit tests | TODO | TODO | TODO | TODO | not-observed |
+| database tests | TODO | TODO | TODO | TODO | not-observed |
+| agent start | TODO | TODO | TODO | TODO | not-observed |

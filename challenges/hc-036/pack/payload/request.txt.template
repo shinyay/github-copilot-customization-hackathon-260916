@@ -1,0 +1,3 @@
+SYNTHETIC_TRAINING_ONLY
+
+Use the same synthetic event definitions for every condition. Record each of new-open, first-ready, still-draft, new-push, and manual-rereview without creating a real PR, review request, ruleset, or setting.

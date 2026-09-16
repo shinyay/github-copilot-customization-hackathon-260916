@@ -1,0 +1,8 @@
+# Harness境界
+
+- Local AgentとAgent Hostは同じ名前の設定を必ず同じように読むとは限りません。
+- Prompt FilesはAgent Hostで読み込まれないという文書上の境界を保持します。
+- Localの過去結果をHostの成功へ流用しません。
+- tool宣言と実効tools、Plugin packageと個別component対応を分けます。
+- version、model、effort、approvalが不明ならunknown / nullです。
+- 本編は実harnessを起動せず、設計上の対応範囲だけを検討します。

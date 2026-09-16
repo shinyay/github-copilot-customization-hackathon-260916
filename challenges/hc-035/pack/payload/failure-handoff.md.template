@@ -1,0 +1,13 @@
+# Setup failure handoff
+
+- Failed step: TODO
+- Exit code: TODO
+- Remaining setup steps skipped: TODO
+- Versions actually observed: TODO
+- Range conformance observed: TODO
+- Unfinished preparation: TODO
+- Agent started after failure: unknown / yes / no
+- Unit tests: not-observed
+- Database opt-in / tests: not-observed
+- Human decision required: TODO
+- Setup outcome remains failure when a required step failed: TODO

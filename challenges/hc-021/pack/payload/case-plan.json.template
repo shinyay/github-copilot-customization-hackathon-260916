@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "SYNTHETIC_HC021_CASE_PLAN",
+  "target": "participant/hc-021/display.txt",
+  "conditions": [
+    {
+      "id": "baseline",
+      "placements": [],
+      "manualMaterials": [],
+      "observations": {
+        "discovery": null,
+        "contentUse": null,
+        "outputCompliance": null
+      }
+    },
+    {
+      "id": "inert",
+      "placements": [
+        ".github/copilot-instructions.md.template"
+      ],
+      "manualMaterials": [],
+      "observations": {
+        "discovery": null,
+        "contentUse": null,
+        "outputCompliance": null
+      }
+    },
+    {
+      "id": "misplaced",
+      "placements": [
+        "notes/copilot-instructions.md"
+      ],
+      "manualMaterials": [],
+      "observations": {
+        "discovery": null,
+        "contentUse": null,
+        "outputCompliance": null
+      }
+    },
+    {
+      "id": "valid",
+      "placements": [
+        ".github/copilot-instructions.md"
+      ],
+      "manualMaterials": [],
+      "observations": {
+        "discovery": null,
+        "contentUse": null,
+        "outputCompliance": null
+      }
+    },
+    {
+      "id": "manual",
+      "placements": [],
+      "manualMaterials": [
+        "rules.md.template"
+      ],
+      "observations": {
+        "discovery": null,
+        "contentUse": null,
+        "outputCompliance": null
+      }
+    },
+    {
+      "id": "duplicate",
+      "placements": [
+        ".github/copilot-instructions.md",
+        ".github/instructions/hc021-display.instructions.md"
+      ],
+      "manualMaterials": [],
+      "observations": {
+        "discovery": null,
+        "contentUse": null,
+        "outputCompliance": null
+      }
+    },
+    {
+      "id": "conflict",
+      "placements": [
+        ".github/copilot-instructions.md",
+        ".github/instructions/hc021-display.instructions.md"
+      ],
+      "manualMaterials": [],
+      "observations": {
+        "discovery": null,
+        "contentUse": null,
+        "outputCompliance": null
+      }
+    }
+  ],
+  "nonClaims": [
+    "placement does not prove discovery",
+    "discovery does not prove content use",
+    "output does not prove a universal precedence rule"
+  ]
+}

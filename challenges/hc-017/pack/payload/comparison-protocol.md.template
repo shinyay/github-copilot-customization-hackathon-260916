@@ -1,0 +1,19 @@
+# HC-017 comparison protocol
+
+## Experiment M: model
+
+| condition | fixed | changed |
+|---|---|---|
+| `baseline` | fixed input、request、follow-up、tools、approval、harness、対応可能なeffort / adaptive条件 | 承認済みmodel A |
+| `model-alternate` | 同上 | modelだけB |
+
+## Experiment E: effort
+
+| condition | fixed | changed |
+|---|---|---|
+| `effort-reference` | fixed input、request、follow-up、同じmodel E、provider、tools、approval | 実pickerで確認したeffort e1 |
+| `effort-alternate` | 同上 | effortだけe2 |
+
+MとEは別group・別runです。Mの応答をEへ渡しません。同じlabelを異なるmodel間の同じ計算量とみなしません。Mでeffort / adaptive条件を揃えられなければmodel構成の限定診断、Eでmodel / providerが変わればincomparableとします。
+
+結果が欠けたrunも集合から除外せず、未観測理由を記録します。

@@ -1,0 +1,28 @@
+STATUS: DRAFT - NOT SENT
+
+Candidate: TODO
+Requested branch: TODO
+Target head: TODO
+
+Proposed change target:
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
+
+Read-only evidence; do not change:
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java
+- wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java
+
+Source anchor and proposed post-image:
+TODO
+
+Independent expectations to preserve:
+- tax-rate scale grouping: TODO
+- aggregation: TODO
+- rounding: TODO
+
+Requested validation and return packet:
+TODO
+
+Stop conditions:
+TODO
+
+This draft is not permission, transmission evidence, acceptance evidence, or mutation authority.

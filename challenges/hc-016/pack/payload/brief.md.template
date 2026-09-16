@@ -1,0 +1,13 @@
+# HC-016 Starter brief
+
+このPackは、現在の二つの`require`へ毎回戻る案と、根拠付きnote候補を選別・保守する案を比較するための不活性教材です。
+
+- conditions: `baseline`, `curated-design`
+- fixed source: `BaseService.require`, `Actor.require`
+- fixed material: `memory-fact.txt.template`と中立IDの4 cards
+- participant output: design、card review、不活性handoff原稿
+- evidence: `.hackathon/evidence/hc-016/comparison.md`
+
+すべてのoverlayは`.hackathon/challenge/hc-016/`配下の`.template`です。Memoryのsave、read、update、delete、clear、scope変更、次会話での再参照は実行しません。原稿のhashやassistantの応答を保存済みの証拠にしません。
+
+`baseline`は永続noteを作らずsourceへ戻る設計、`curated-design`は同じ入力から採否・scope・引用・更新・撤回を設計する条件です。どちらもactive customizationではありません。

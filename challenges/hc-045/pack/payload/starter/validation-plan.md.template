@@ -1,0 +1,23 @@
+# HC-045 independent validation plan
+
+Condition: TODO
+Policy revision: TODO
+
+| task | candidate / state | before and source anchor | post-image | requested branch / head / scope | packet claim | independently observed evidence | decision / stop |
+|---|---|---|---|---|---|---|---|
+| H01 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| H02 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| H03 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| H04 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| H05 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| H06 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+
+## Independent expectations
+
+- tax-rate values with different scales: TODO
+- per-rate aggregation: TODO
+- DOWN / UP / HALF_UP rounding boundary: TODO
+- changed-path inventory: TODO
+- final human confirmation: TODO
+
+Do not treat a packet claim, candidate hash, self-reported test, or returned file list as actual permission, transmission, application, or correctness.

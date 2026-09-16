@@ -1,0 +1,12 @@
+# Synthetic ref register
+
+SYNTHETIC_TRAINING_ONLY
+
+| ref | synthetic revision | rules file | body SHA-256 | file SHA-256 |
+|---|---|---|---|---|
+| base | REF-BASE-01 | refs/base-rules.md.template | 56a369af5db097da55ed615a20bdbca6437d99f7c6de787d5ab81e8ded4a8c1b | 486111591e54234686e542c858db63b857933b6017600ed8464d47816509fd20 |
+| head | REF-HEAD-02 | refs/head-rules.md.template | 9e1a44af380336967cc9d230fa7bd59fcf84035a048360e69895ca2d8732e353 | 5f48105f590c0321b501d6c1f4acadf1a9e0ac5d3521905b84e6d659d08191d0 |
+| default | REF-DEFAULT-03 | refs/default-rules.md.template | e333356c64082aeae18582014b6b1c79864ae0464b7a6450d078f645d90e32af | 035d012d226b9450081b77ed63330bf6f0ce62b3d9a4df10a00b7c0787a21357 |
+| starting | REF-STARTING-04 | refs/starting-rules.md.template | 53a1a3b82ddd4c14f741f3a55872deb0fd5ce5b6eaef24397787c35e3af45fff | ceac5d71a6016af8043ed27d425a1f3d924778f88f2cb57a404978a19e149c49 |
+
+hashは保存bytesの記録です。実modelへ投入された版を示しません。

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-012",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": ["baseline", "tool-set-design"],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-012/brief.md.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-012/request.txt.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/source-materials.json.template",
+      "destination": ".hackathon/challenge/hc-012/source-materials.json.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-012/design.md.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/tool-members.json.template",
+      "destination": ".hackathon/challenge/hc-012/tool-members.json.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reader.toolsets.jsonc.template",
+      "destination": ".hackathon/challenge/hc-012/reader.toolsets.jsonc.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/selection-worksheet.md.template",
+      "destination": ".hackathon/challenge/hc-012/selection-worksheet.md.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-012/comparison.md.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/recovery.md.template",
+      "destination": ".hackathon/challenge/hc-012/recovery.md.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/membership.md.template",
+      "destination": ".hackathon/challenge/hc-012/membership.md.template",
+      "conditions": ["baseline", "tool-set-design"],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-012/design.md",
+      "conditions": ["baseline", "tool-set-design"]
+    },
+    {
+      "pattern": "participant/hc-012/individual-selection.md",
+      "conditions": ["baseline"]
+    },
+    {
+      "pattern": "participant/hc-012/reader.toolsets.jsonc.template",
+      "conditions": ["tool-set-design"]
+    },
+    {
+      "pattern": "participant/hc-012/selection-plan.md",
+      "conditions": ["tool-set-design"]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-012/comparison.md",
+      "conditions": ["baseline", "tool-set-design"],
+      "stage": "submitted",
+      "requiredHeadings": ["Fixed task", "Environment", "Design", "Observations", "Comparison", "Outcome"],
+      "templateSha256": "a270702f0750ef0fca6de43d4eb6783286dab2713838b8b5fcb7efa20ace3897"
+    },
+    {
+      "path": ".hackathon/evidence/hc-012/recovery.md",
+      "conditions": ["baseline", "tool-set-design"],
+      "stage": "submitted",
+      "requiredHeadings": ["Case", "Expected boundary", "Observed result", "Restoration", "Non-claims"],
+      "templateSha256": "ee5da9a42318cfb5865d5ef9e72c6fb16d77b41c6307457fa369885ace35a70e"
+    },
+    {
+      "path": ".hackathon/evidence/hc-012/membership.md",
+      "conditions": ["baseline", "tool-set-design"],
+      "stage": "submitted",
+      "requiredHeadings": ["Declared set", "Reconstructed set", "Operations", "Non-claims"],
+      "templateSha256": "a7781e9830c028816a0ecc095055b325a3597da006c8f536e5a3cba1517b13e4"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-012/design.md",
+      "conditions": ["baseline", "tool-set-design"]
+    },
+    {
+      "pattern": "participant/hc-012/individual-selection.md",
+      "conditions": ["baseline"]
+    },
+    {
+      "pattern": "participant/hc-012/reader.toolsets.jsonc.template",
+      "conditions": ["tool-set-design"]
+    },
+    {
+      "pattern": "participant/hc-012/selection-plan.md",
+      "conditions": ["tool-set-design"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-012/comparison.md",
+      "conditions": ["baseline", "tool-set-design"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-012/recovery.md",
+      "conditions": ["baseline", "tool-set-design"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-012/membership.md",
+      "conditions": ["baseline", "tool-set-design"]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

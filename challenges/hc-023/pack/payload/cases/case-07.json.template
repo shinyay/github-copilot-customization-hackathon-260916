@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "caseId": "case-07",
+  "taskId": "case-07",
+  "title": "Agent Hostを対象にした再利用設計",
+  "targetHarness": "agent-host",
+  "scope": "workspace",
+  "sourcePaths": [
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/OrderStates.java"
+  ],
+  "situation": "同じ固定アプリのread-only依頼をAgent Host向けに再利用する設計を点検する。実機は起動しない。",
+  "resources": [
+    "固定依頼",
+    "固定source",
+    "公開資料のharness境界"
+  ],
+  "constraints": [
+    "Prompt FilesのHost非読込を残す。",
+    "Localの過去結果をHostへコピーしない。",
+    "手動入力または対応を確認する別案を検討する。"
+  ]
+}

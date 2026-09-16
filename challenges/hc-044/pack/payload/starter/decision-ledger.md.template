@@ -1,0 +1,16 @@
+# HC-044 decision ledger
+
+Condition: TODO
+Policy revision: TODO
+
+| task | assessment | events / actors / heads | per-event eligibility | distinct eligible count | all-files rollup | required count | effective policy / other gates | supported claim / unknown |
+|---|---|---|---|---|---|---|---|---|
+| A01 | TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| A02 | TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| A03 | TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| A04 | TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| A05 | TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| A06 | TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| A07 | TODO | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+
+Evaluate each event before aggregate count and all-files decisions. Do not use a positive assessment, stale review, or duplicate event as an additional vote.

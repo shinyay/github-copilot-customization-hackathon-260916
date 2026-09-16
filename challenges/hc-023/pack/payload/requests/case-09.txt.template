@@ -1,0 +1,3 @@
+case-09の同梱v1/v2 packageだけを使い、同じ一Skillのowner、reviewer、版、復元を管理する最小の配布方法、手動配布、または追加不要を選んでください。
+trigger、scope、resources、permissions、maintenanceと、選ばない案の理由を説明してください。
+実Pluginのinstall、有効化、組織write、Cloud配布、source変更を行わないでください。

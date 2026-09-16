@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-045",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "handoff-policy"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-045/starter/brief.md.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-045/starter/request.txt.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference-notes.md.template",
+      "destination": ".hackathon/challenge/hc-045/starter/reference-notes.md.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/readiness.json.template",
+      "destination": ".hackathon/challenge/hc-045/starter/readiness.json.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/candidate-diffs.json.template",
+      "destination": ".hackathon/challenge/hc-045/starter/candidate-diffs.json.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/finding-packet.json.template",
+      "destination": ".hackathon/challenge/hc-045/starter/finding-packet.json.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/handoff-events.json.template",
+      "destination": ".hackathon/challenge/hc-045/starter/handoff-events.json.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/starter/handoff-policy.md.template",
+      "destination": ".hackathon/challenge/hc-045/starter/starter/handoff-policy.md.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/starter/request-draft.txt.template",
+      "destination": ".hackathon/challenge/hc-045/starter/starter/request-draft.txt.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/starter/validation-plan.md.template",
+      "destination": ".hackathon/challenge/hc-045/starter/starter/validation-plan.md.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-045/starter/evidence/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-045/handoff-policy.md",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ]
+    },
+    {
+      "pattern": "participant/hc-045/request-draft.txt",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ]
+    },
+    {
+      "pattern": "participant/hc-045/validation-plan.md",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-045/comparison.md",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Baseline",
+        "Designed policy",
+        "Comparison",
+        "Outcome",
+        "Evidence boundaries"
+      ],
+      "templateSha256": "c0a3cf03620c20f3ee5f7b25d24635e10f9f6b5b1cebdc834c8e379295809fd6"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-045/handoff-policy.md",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ]
+    },
+    {
+      "pattern": "participant/hc-045/request-draft.txt",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ]
+    },
+    {
+      "pattern": "participant/hc-045/validation-plan.md",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-045/comparison.md",
+      "conditions": [
+        "baseline",
+        "handoff-policy"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

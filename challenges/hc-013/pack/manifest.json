@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-013",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": ["baseline", "context-card", "manual-equivalent"],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-013/brief.md.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-013/request.txt.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/source-materials.json.template",
+      "destination": ".hackathon/challenge/hc-013/source-materials.json.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-013/design.md.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-013/comparison.md.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/recovery.md.template",
+      "destination": ".hackathon/challenge/hc-013/recovery.md.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/provenance.md.template",
+      "destination": ".hackathon/challenge/hc-013/provenance.md.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/source-packet.json.template",
+      "destination": ".hackathon/challenge/hc-013/source-packet.json.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/snapshot.json.template",
+      "destination": ".hackathon/challenge/hc-013/snapshot.json.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/provenance-packets.json.template",
+      "destination": ".hackathon/challenge/hc-013/provenance-packets.json.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/context-card.json.template",
+      "destination": ".hackathon/challenge/hc-013/context-card.json.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/github-spaces.mcp.json.template",
+      "destination": ".hackathon/challenge/hc-013/github-spaces.mcp.json.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/handoff-worksheet.md.template",
+      "destination": ".hackathon/challenge/hc-013/handoff-worksheet.md.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/prepare-display.mjs.template",
+      "destination": ".hackathon/challenge/hc-013/prepare-display.mjs.template",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-013/design.md",
+      "conditions": ["baseline", "context-card", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-013/source-handoff.md",
+      "conditions": ["baseline"]
+    },
+    {
+      "pattern": "participant/hc-013/context-card.json.template",
+      "conditions": ["context-card", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-013/manual-input.txt",
+      "conditions": ["manual-equivalent"]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-013/comparison.md",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "stage": "submitted",
+      "requiredHeadings": ["Fixed task", "Environment", "Design", "Observations", "Comparison", "Outcome"],
+      "templateSha256": "299d59b03b0b10a96fadd13fad17659ac196ddec6a5ddd39a73aa59bcc7ec38a"
+    },
+    {
+      "path": ".hackathon/evidence/hc-013/recovery.md",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "stage": "submitted",
+      "requiredHeadings": ["Case", "Expected boundary", "Observed result", "Restoration", "Non-claims"],
+      "templateSha256": "7107f0c91fe07eda7d09093a8b865eb8d9fc59be548425d52f2ad31986ab4e70"
+    },
+    {
+      "path": ".hackathon/evidence/hc-013/provenance.md",
+      "conditions": ["baseline", "context-card", "manual-equivalent"],
+      "stage": "submitted",
+      "requiredHeadings": ["Source inventory", "Revision and scope", "Access layers", "Whole material equality", "Non-claims"],
+      "templateSha256": "56132f07b4eab3d6982258400d881e55d1e3285b0b5c5eb7760aa5a3f2bc7581"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-013/design.md",
+      "conditions": ["baseline", "context-card", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-013/source-handoff.md",
+      "conditions": ["baseline"]
+    },
+    {
+      "pattern": "participant/hc-013/context-card.json.template",
+      "conditions": ["context-card", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-013/manual-input.txt",
+      "conditions": ["manual-equivalent"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-013/comparison.md",
+      "conditions": ["baseline", "context-card", "manual-equivalent"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-013/recovery.md",
+      "conditions": ["baseline", "context-card", "manual-equivalent"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-013/provenance.md",
+      "conditions": ["baseline", "context-card", "manual-equivalent"]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

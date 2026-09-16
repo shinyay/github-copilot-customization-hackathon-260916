@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-010",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": ["baseline", "notification-design"],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-010/brief.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-010/request.txt.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/source-materials.json.template",
+      "destination": ".hackathon/challenge/hc-010/source-materials.json.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-010/design.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/manual-checklist.md.template",
+      "destination": ".hackathon/challenge/hc-010/manual-checklist.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/notification-policy.md.template",
+      "destination": ".hackathon/challenge/hc-010/notification-policy.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/stop-output.json.template",
+      "destination": ".hackathon/challenge/hc-010/stop-output.json.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/stop-hook.json.template",
+      "destination": ".hackathon/challenge/hc-010/stop-hook.json.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/draft-a.md.template",
+      "destination": ".hackathon/challenge/hc-010/draft-a.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/draft-b.md.template",
+      "destination": ".hackathon/challenge/hc-010/draft-b.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/stop-inputs.json.template",
+      "destination": ".hackathon/challenge/hc-010/stop-inputs.json.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/checker-results.json.template",
+      "destination": ".hackathon/challenge/hc-010/checker-results.json.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/notification-contract.json.template",
+      "destination": ".hackathon/challenge/hc-010/notification-contract.json.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/active.json.template",
+      "destination": ".hackathon/challenge/hc-010/active.json.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/stop-notification.json.template",
+      "destination": ".hackathon/challenge/hc-010/stop-notification.json.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/tools/checker.mjs.template",
+      "destination": ".hackathon/challenge/hc-010/tools/checker.mjs.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/tools/hook-io.mjs.template",
+      "destination": ".hackathon/challenge/hc-010/tools/hook-io.mjs.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/tools/stop-notify.mjs.template",
+      "destination": ".hackathon/challenge/hc-010/tools/stop-notify.mjs.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-010/comparison.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/recovery.md.template",
+      "destination": ".hackathon/challenge/hc-010/recovery.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/notifications.md.template",
+      "destination": ".hackathon/challenge/hc-010/notifications.md.template",
+      "conditions": ["baseline", "notification-design"],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-010/design.md",
+      "conditions": ["baseline", "notification-design"]
+    },
+    {
+      "pattern": "participant/hc-010/manual-checklist.md",
+      "conditions": ["baseline"]
+    },
+    {
+      "pattern": "participant/hc-010/notification-policy.md",
+      "conditions": ["notification-design"]
+    },
+    {
+      "pattern": "participant/hc-010/stop-output.json.template",
+      "conditions": ["notification-design"]
+    },
+    {
+      "pattern": "participant/hc-010/stop-hook.json.template",
+      "conditions": ["notification-design"]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-010/comparison.md",
+      "conditions": ["baseline", "notification-design"],
+      "stage": "submitted",
+      "requiredHeadings": ["Fixed task", "Environment", "Design", "Observations", "Comparison", "Outcome"],
+      "templateSha256": "7366263f50b9bee6c6b0c13416a8aeb12f15d232a05fd38c64606c1f8af2ba3a"
+    },
+    {
+      "path": ".hackathon/evidence/hc-010/recovery.md",
+      "conditions": ["baseline", "notification-design"],
+      "stage": "submitted",
+      "requiredHeadings": ["Case", "Expected boundary", "Observed result", "Restoration", "Non-claims"],
+      "templateSha256": "9dc272f00bd845d2541f9bb4091cadf61f9765f2796de17a0d6beb8b42c57236"
+    },
+    {
+      "path": ".hackathon/evidence/hc-010/notifications.md",
+      "conditions": ["baseline", "notification-design"],
+      "stage": "submitted",
+      "requiredHeadings": ["Case coverage", "Manual checker", "Stop adapter", "Proposed message", "Non-claims"],
+      "templateSha256": "5cc526873e1133b6ddcac119311387e0625f5fad15b249681da8384264e38f1d"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-010/design.md",
+      "conditions": ["baseline", "notification-design"]
+    },
+    {
+      "pattern": "participant/hc-010/manual-checklist.md",
+      "conditions": ["baseline"]
+    },
+    {
+      "pattern": "participant/hc-010/notification-policy.md",
+      "conditions": ["notification-design"]
+    },
+    {
+      "pattern": "participant/hc-010/stop-output.json.template",
+      "conditions": ["notification-design"]
+    },
+    {
+      "pattern": "participant/hc-010/stop-hook.json.template",
+      "conditions": ["notification-design"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-010/comparison.md",
+      "conditions": ["baseline", "notification-design"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-010/recovery.md",
+      "conditions": ["baseline", "notification-design"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-010/notifications.md",
+      "conditions": ["baseline", "notification-design"]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

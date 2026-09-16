@@ -1,0 +1,11 @@
+# 固定台帳規則
+
+SYNTHETIC_TRAINING_ONLY
+
+個別資産では、owner / reviewer / review完了 / 更新理由 / current / expected current / target / allowed target / previous / rollback / digest参照を別々に確認します。
+
+- 根拠が欠測して判断を続けられない場合は `blocked` を保持します。
+- current不一致、未許可target、rollbackとdigestの不整合は `fail` として記録します。
+- 必須項目がそろい、版・target・rollbackが整合するときだけ `pass` とします。
+
+集合rollupは、1件でもfailならfail、failなしで1件でもblockedならblocked、全件passのときだけpassです。台帳の判定を、その後の共有・待機・縮小という運用判断で上書きしません。

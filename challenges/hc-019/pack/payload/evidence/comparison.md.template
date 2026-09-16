@@ -1,0 +1,31 @@
+# HC-019 comparison evidence
+
+このstarterを当該runの`.hackathon/evidence/hc-019/comparison.md`へ新規作成して記入します。未編集templateはsubmitted evidenceではありません。
+
+## Fixed task
+
+condition、run-id、fixed 2 lines、wrapper、inventory、request、Packの識別とhash、SYNTHETIC_TRAINING_ONLYを記録します。
+
+## Environment
+
+client、harness、OS、保存元label、parser / viewer、実UI未使用を記録します。
+
+## Design
+
+checklistの分業、元の目的、最小修正候補、停止条件を記録します。
+
+## Run log
+
+line pair、wrapper同一性、inventory判定、修正差分、構文と意味の別確認を記録します。
+
+## Comparison
+
+相手run-id、同一入力、読み順、checklistの追加負担、成立しない対照を記録します。
+
+## Outcome
+
+equal、worse、追加不要、blocked、unsupported、incomparable等と根拠を記録します。
+
+## Limits and cleanup
+
+discovery、application、usefulness、実管理UI、外部評価、Waza、migrationを観測していないことと、自分の不活性copyだけの整理を記録します。

@@ -1,0 +1,10 @@
+# Skill resource ledger
+
+| artifact / section | byte range or marker | SHA-256 | observed stage | method | unknown / stop |
+|---|---|---|---|---|---|
+| SKILL file | full file | TODO | saved only | raw bytes | TODO |
+| SKILL body | SKILL_BODY markers | TODO | not-observed | raw bytes | TODO |
+| checklist file | full file | TODO | saved only | raw bytes | TODO |
+| manual Skill body | MANUAL_SKILL_BODY markers | TODO | manual supply planned | raw bytes | TODO |
+| manual checklist | MANUAL_CHECKLIST markers | TODO | manual supply planned | raw bytes | TODO |
+| script | none | N/A | not-observed | no script path allowed | script not run |

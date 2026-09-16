@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-020",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "tool-contract"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-020/brief.md.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-020/request.txt.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-020/starter/design.md.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-020/starter/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/analyzer.cjs.template",
+      "destination": ".hackathon/challenge/hc-020/materials/analyzer.cjs.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/counter-draft.txt.template",
+      "destination": ".hackathon/challenge/hc-020/materials/counter-draft.txt.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/extension.cjs.template",
+      "destination": ".hackathon/challenge/hc-020/reference/extension.cjs.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/package.json.template",
+      "destination": ".hackathon/challenge/hc-020/reference/package.json.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/counts.md.template",
+      "destination": ".hackathon/challenge/hc-020/starter/counts.md.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input-contract.md.template",
+      "destination": ".hackathon/challenge/hc-020/starter/input-contract.md.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-020/design.md",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/counts.md",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/counter-input.txt.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/input-contract.md",
+      "conditions": [
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/extension.cjs.template",
+      "conditions": [
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/package.json.template",
+      "conditions": [
+        "tool-contract"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-020/comparison.md",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Design",
+        "Run log",
+        "Comparison",
+        "Outcome",
+        "Limits and cleanup"
+      ],
+      "templateSha256": "91258b846e7d8972be4acc6a9151048d207c9a55ec71d58fa3ab5a0d11748da2"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-020/design.md",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/counts.md",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/counter-input.txt.template",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/input-contract.md",
+      "conditions": [
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/extension.cjs.template",
+      "conditions": [
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": "participant/hc-020/package.json.template",
+      "conditions": [
+        "tool-contract"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-020/comparison.md",
+      "conditions": [
+        "baseline",
+        "tool-contract"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

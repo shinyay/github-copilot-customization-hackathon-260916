@@ -1,0 +1,9 @@
+# Fixed request
+
+SYNTHETIC_TRAINING_ONLY
+
+2資産 reading-rules / analysis-package と5資料状態の全10組を監査してください。
+
+owner、reviewer、review完了、更新理由、current、previous、target、rollbackを別々に確認してください。previousとして保存されたv1と、currentとして期待版と一致しないv1を同じ理由で失敗にしないでください。
+
+不明値は推測せず、個別判定、集合rollup、運用判断、実機未観測を分けて報告してください。

@@ -1,0 +1,37 @@
+# HC-022 Evidence
+
+## Fixed task
+
+<!-- 固定request、Hub --run / Runtime --run-idを書く。 -->
+
+## Environment
+
+<!-- client / host / OS / channel / model / effort / tools / approval。unknown可。 -->
+
+## Condition
+
+<!-- baseline または imperative、repository、branch、run ID。 -->
+
+## Materials
+
+<!-- note variant、provenance、policyの全文/hash、実際に送った資料。 -->
+
+## Observations
+
+<!-- 合成responseの文字列数、実model responseの有無、人の意味判定を分ける。 -->
+
+## Design rationale
+
+<!-- authority、停止、確認方針の理由を書く。 -->
+
+## Comparison set
+
+<!-- 比較相手のrun、Hub commit、Pack hash、bundle参照。 -->
+
+## Outcome
+
+<!-- improved / equal / worse / incomparable / blocked / unsupported と根拠。 -->
+
+## Limits
+
+<!-- authenticity/server trust/approval/model response/general defenseの未確立を残す。 -->

@@ -1,0 +1,11 @@
+SYNTHETIC_TRAINING_ONLY
+
+diff --git a/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java b/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
+--- a/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
++++ b/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
+@@ -31,7 +31,7 @@ public final class TaxAmounts {
+-        total = total.add(amount.tax(rate));
++        total = total.add(amount).tax(rate);
+     }
+     return total;
+ }

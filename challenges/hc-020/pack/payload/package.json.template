@@ -1,0 +1,49 @@
+{
+  "name": "evidence-counter",
+  "displayName": "Workshop Evidence Counter",
+  "publisher": "workshop-local",
+  "version": "0.0.1",
+  "private": true,
+  "engines": { "vscode": "^1.137.0" },
+  "main": "./extension.cjs",
+  "files": ["extension.cjs", "analyzer.cjs"],
+  "activationEvents": [
+    "onLanguageModelTool:count_workshop_evidence",
+    "onChatParticipant:workshop-local.evidence-counter.reader"
+  ],
+  "contributes": {
+    "languageModelTools": [
+      {
+        "name": "count_workshop_evidence",
+        "displayName": "Count workshop evidence markers",
+        "toolReferenceName": "workshopEvidence",
+        "canBeReferencedInPrompt": true,
+        "icon": "$(checklist)",
+        "userDescription": "Count literal headings and citation markers in supplied draft text.",
+        "modelDescription": "Count literal Evidence and Unknowns level-two headings and source citation markers in supplied text. This is a bounded string counter, not Markdown parsing, source verification, or semantic review. It does not read or write files.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8192,
+              "description": "Nonempty draft text, at most 8192 Unicode code points."
+            }
+          },
+          "required": ["text"],
+          "additionalProperties": false
+        }
+      }
+    ],
+    "chatParticipants": [
+      {
+        "id": "workshop-local.evidence-counter.reader",
+        "name": "workshop-evidence",
+        "fullName": "Workshop Evidence Reader",
+        "description": "Count literal evidence markers without making a model request.",
+        "isSticky": false
+      }
+    ]
+  }
+}

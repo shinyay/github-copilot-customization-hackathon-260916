@@ -1,0 +1,37 @@
+HC-012 固定依頼 — 両条件へこの全文を同じbytesで渡す。
+
+受注CSV再送の実装根拠を読む準備をしてください。使用するsourceは
+shinyay/code-to-doc-workshop-260910@398d7d1982a1402bcdba00d6c3ded67d8d338787 の次の三ファイルだけです。
+
+wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java
+wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java
+wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java
+
+OrderImportService.importDraft / replay、OrderGroup.canonicalHash / validate、関連するテスト定義を実際に読んでください。
+読んだpath・symbol・行範囲と、この範囲だけでは確認できないことをdesign.mdへ記録します。
+テスト定義の読解であり、テスト成功やJava・DBの実行を報告する課題ではありません。
+採用理由や履歴の資料がなければ不明とします。ソース本文や講師の結論を新しい教材ツリーとして複製しません。
+
+同じ四参照を、別の担当者が手順書だけから選び直せるように設計してください。
+search/changes
+search/codebase
+read/problems
+search/usages
+
+baseline: 四参照を個別に選ぶ初回準備と再設定の手順をindividual-selection.mdへ書きます。
+tool-set-design: 同じ四参照の名前付き集合をreader.toolsets.jsonc.templateへ書き、選択・展開・確認の手順をselection-plan.mdへ書きます。
+集合名・説明・iconは提案であり唯一解ではありません。どちらもdesign.mdの共通設計を使い、同じ全資料を参照します。
+
+比較するのは選択と再構成の設計です。道具の追加、権限付与、Profileの実変更、実際のtool呼出しは本編では行いません。
+ファイルはparticipant/hc-012/の当該conditionで許可されたexact pathにだけ作ります。
+JSONC原稿はコメント・末尾カンマなしのstrict-JSON subsetにします。.templateのまま保存し、Profileや.vscodeへ移しません。
+request、source、四参照、安全条件は固定し、片方だけ入力を要約・省略したり、別条件の完成回答を足したりしません。
+
+原稿に宣言した集合、手順から再構成した集合、UIで選択・有効となった集合、実際のcallを分けて記録してください。
+両条件が同じ三参照、または同じ別の四参照でも固定契約には不一致です。
+想定手順数と実測クリック数は別です。未観測の選択・実効メンバー・クリック数・時間・callはnull、実機はnot-observedにします。
+search/changesに変更がなくてもアプリを変更しません。read/problemsの空結果を不具合ゼロと読み替えません。
+Tool SetはACLではなく、全toolの自動呼出し指示でもありません。
+
+同等、悪化、追加不要、unsupported、blocked、incomparableも理由付きで残します。
+comparison.md、recovery.md、membership.mdを各runで記入し、他条件の未実施を隠しません。

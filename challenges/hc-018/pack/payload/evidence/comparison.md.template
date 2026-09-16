@@ -1,0 +1,31 @@
+# HC-018 comparison evidence
+
+このstarterを当該runの`.hackathon/evidence/hc-018/comparison.md`へ新規作成して記入します。未編集templateはsubmitted evidenceではありません。
+
+## Fixed task
+
+HC、condition、run-id、fixed command / request、packet / Pack hash、SYNTHETIC_TRAINING_ONLYを記録します。
+
+## Environment
+
+client、harness、host OS、tools、Manual状態、既存approval規則の見える範囲を記録します。
+
+## Design
+
+境界図、人が見る項目、falseとdenyの違い、追加設定不要の判断を記録します。
+
+## Run log
+
+7 synthetic casesとlive rowを分離し、proposal、approval、execution、result、exit statusを記録します。
+
+## Comparison
+
+相手run-id、controls一致、設計差、prompt欠測、成立しないsandbox比較を記録します。
+
+## Outcome
+
+equal、worse、追加不要、blocked、unsupported、incomparable、未観測と根拠を記録します。
+
+## Limits and cleanup
+
+approval reset、設定適用、sandbox probe、network、別tool、実隔離を行っていないことと、自分の追加分だけの整理を記録します。

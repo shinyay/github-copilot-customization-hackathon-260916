@@ -1,0 +1,20 @@
+# HC-033 design
+
+## Question
+
+How should a short replay procedure and a detailed checklist be split without hiding unknowns?
+
+## Decisions before comparison
+
+- Skill description and applicability: TODO
+- Body versus checklist split: TODO
+- Task independence: TODO
+- Body/resource freeze and SHA-256: TODO
+- Script non-execution: TODO
+- DB stop boundary: TODO
+
+## Non-claims
+
+- Skill discovery/body/resource/script use: not-observed
+- Runtime behavior: not-observed
+- Educational effect: not-observed

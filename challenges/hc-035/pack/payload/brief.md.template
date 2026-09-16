@@ -1,0 +1,20 @@
+# HC-035 Starter brief
+
+## Goal
+
+Separate Java constraints in instructions from tools prepared by a setup design.
+
+## Fixed tasks
+
+- `prepare-plan`
+- `setup-diagnosis`
+
+## Source / material boundary
+
+Read root pom.xml. Distinguish compiler 1.7, JDK [1.8,1.9), Maven [3.9,4.0), Animal Sniffer Java 7 API checks, and the java17 signature name.
+
+## Safety boundary
+
+- Work only in declared participant/*.template files and the Runtime-owned Evidence path.
+- Do not activate workflows, run Actions, install tools, change pom/Java/tests/DB, or read/register/display/move/require secrets.
+- Runtime validation proves the static contract only; runtimeBehavior and educationalEffect remain not-observed.

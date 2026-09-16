@@ -1,0 +1,20 @@
+# Runtime source map
+
+Runtime repository: `shinyay/github-copilot-customization-runtime-template`
+
+Pinned commit: `708449571fa41bbaf8367a6b81b7c222e30fc3ce`
+
+Pinned tree: `150dd10444add5dae51471acec47334c58dc7d19`
+
+Hubにはraw sourceを複製しません。次の値はRuntime固定commitのGit blobとraw bytesの記録です。
+
+| role | path | Git blob SHA-1 | bytes | SHA-256 |
+|---|---|---|---:|---|
+| main | wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java | 2e2c7b3f141c1622114bb7b9015d0038078dab01 | 29357 | a9586d7b43c4577d548180f4ea883ae522f7d97c78927f6a53e1bd48a382b072 |
+| main | wholesale-core/src/main/resources/application-context.xml | 517534c12c6bb20c8acb13f12514f952df1537c5 | 5169 | ff96dd85980eb533693bd8df6111eead091796f3192645c50944db599d7d081c |
+| main | wholesale-core/src/main/resources/spring/module-operations.xml | 7cb38a69254598d09af5a4e3148b4e88911ee9bd | 1405 | 284d8e50c62a952aecfab1b3fab6877db5eebd9c5d674e2da40d1a6ef6359eb9 |
+| main | wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java | 6ae9e49ecaeb7dc8cf62edcd546426240b26c2c0 | 11068 | 4f9e5b174c3eca01bc5d6c0b10166b92b29728778f6ba395cb43398fc38406f3 |
+| supplemental | wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java | e5c89bb2d4519b167c629f2e311ddd5603b9a577 | 1390 | 90a6bea7f6f0ad40334dcad9e8ff537ee9d779705e4cf604b6b7225af3e9597c |
+| supplemental | wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java | 18bd0e2e014e1258abc8b987cf0c73b9803e9350 | 1760 | 22d05b59f52e47bcbe63eafc71a01af6076ae94f87b652f9ef24c7151af7c7db |
+
+catalogの`sourcePaths`にはmain 4件だけを登録します。supplemental 2件は共通guardを辿る案内であり、transactionやruntime behaviorの実観測ではありません。

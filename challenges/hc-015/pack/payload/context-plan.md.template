@@ -1,0 +1,25 @@
+# HC-015 全文供給の計画
+
+explicit-context / manual-equivalentの人がparticipant/hc-015/context-plan.mdへコピーして具体化します。UIの成功を仮定した記録ではありません。
+
+## Frozen materials
+
+当該condition、run ID、comparisonGroupId、設計revision、request hashを記入します。B/Cで同じにした設計内容と、run識別子だけの違いを区別します。
+
+供給順はA1、A2です。source-targets.json.templateの二つのexact path・各byte数・各SHA-256を独立に照合します。全sourceは同じRuntimeの固定baselineから読みます。A3は事前の添付集合に足さず、追加読取りを全条件に同じように許します。
+
+## Delivery
+
+explicit-contextはAdd Contextでfileそのものを二つ選びます。候補表示と実添付表示を確認し、symbol、selection、同名別ファイル、folder、前の回答を代用品にしません。
+
+manual-equivalentはmanual-input-layout.txt.templateに従い、同じ二つのraw全文をfilename delimiter付きでmanual-input.txtへ構成します。行を削らず、trim・改行変換・要約をしません。各file sectionのraw bytesを固定oracleと照合してから、同じrequestとともに全文を手動供給します。
+
+## Equal access and extra reads
+
+同じ検索能力とsource全文へのアクセスを保ちます。A3や参照先へ進む操作は事前供給と区別し、path、要求・返却・読取範囲、理由を記録します。path一覧はアクセスを禁止するリストではありません。
+
+## Extent and stop
+
+原稿hashの一致、添付表示、実際の投入範囲、モデルが使った根拠を別に確認します。A1/A2の34526 bytesにrequestとdelimiterが追加されます。token数と内部投入範囲は実測できなければnull / not-observedです。
+
+片側だけの要約、切り詰め、欠落、同名別source、別タブ混入があれば比較を止めます。全文が収まらない場合も片側だけ削りません。別の集合は別design revisionです。準備だけ同一なら「準備は同一、実投入未観測」と記録し、route成功を主張しません。

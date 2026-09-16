@@ -1,0 +1,45 @@
+# HC-039 comparison evidence
+
+SYNTHETIC_TRAINING_ONLY
+
+Complete every section with participant-authored observations. Do not submit this unchanged template.
+
+## Fixed task
+
+<!-- Record exact four-task by three-record coverage. -->
+
+## Environment
+
+<!-- Record condition, run ID, synthetic revision/hash, Pack/template hash, surface, and unobserved live layers. -->
+
+## Condition and input
+
+<!-- Record the frozen ledger, policy, rule/profile drafts, mechanism map, and design revision. -->
+
+## Design
+
+<!-- Separate current facts, unknowns, proposals, approvals, owners, reviewers, update, retirement, and restoration. -->
+
+## Comparison
+
+<!-- Compare the same twelve records without converting more roles or wider sharing into automatic improvement. -->
+
+## Outcome
+
+<!-- improved / equal / worse / incomparable / blocked / unsupported, with support. -->
+
+## Limitations
+
+<!-- Record organization, repository, ACL, entitlement, Preview, discovery, and use non-claims. -->
+
+## Ownership and scope
+
+<!-- Separate storage repository/path, storage ACL, usage scope, owner, author, reviewer, and maintainer. -->
+
+## Precedence and revision
+
+<!-- Keep Instructions precedence and profile deduplication separate; record selected branch/ref/revision/hash. -->
+
+## Change responsibility
+
+<!-- Record proposal, approval, update, retirement, restoration, and confirmation ownership. -->

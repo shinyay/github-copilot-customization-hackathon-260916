@@ -1,0 +1,12 @@
+受注の在庫引当の入口と、適用されるtransaction設定を説明してください。OrderServiceとapplication-context.xmlの対応を調べ、必要ならそこから参照されるXMLも読んでください。path・symbol・確認できる範囲を示し、静的に確定できない点を分けてください。アプリ、DB、テストを実行せず、Java/XMLや設定を変更しないでください。
+
+共通sourceはshinyay/code-to-doc-workshop-260910@398d7d1982a1402bcdba00d6c3ded67d8d338787です。以下は全条件に同じように利用可能な読取り候補で、読取り権限を狭めるACLではありません。
+A1: wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java
+A2: wholesale-core/src/main/resources/application-context.xml
+A3: wholesale-core/src/main/resources/spring/module-operations.xml
+
+検索と全文読取りは全条件で同じ能力を使えます。A1のOrderService.allocateを起点に、文字列一致と定義・参照解決を区別してください。参照先を追加で読んだ場合は、A3を含めpath・目的・読取り範囲を明示してください。返却位置の表示と、実際に読めた範囲も分けてください。
+
+添付や手動入力がある場合も、内容の版・path・範囲を確かめ、欠落・切り詰め・別タブの混入が疑われればその限界を報告してください。前の回答、教師の結論、別の要約を材料にしません。indexや言語機能の未準備・未観測を0件へ置換せず、文字列検索だけをLSPやsemantic検索の成功とは呼ばないでください。実proxy、実transaction、Java/DB実行、過去の設計意図は静的読解で確認したことと分けてください。
+
+読取り以外のtool、ネットワーク上の別repository検索、index構築、拡張install、User/Profileやworkspace設定の変更はこの依頼に含みません。設計票やEvidenceを書くのは人の記録作業です。この依頼ではsourceへの調査回答だけを返してください。

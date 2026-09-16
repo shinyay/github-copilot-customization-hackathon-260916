@@ -1,0 +1,14 @@
+# OrderAction.java approval excerpt
+
+Canonical Runtime path:
+`wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java`
+
+```java
+if ("approve".equals(form.getOp()) || "reject".equals(form.getOp())) {
+    actor(request).require("MANAGER");
+}
+// ...
+else if ("approve".equals(form.getOp())) {
+    result = service.approve(id, version, actor(request));
+}
+```

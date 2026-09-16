@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_TRAINING_ONLY",
+  "exerciseMode": "document-only",
+  "liveExecution": {
+    "reviewRequest": "NOT EXECUTED",
+    "approve": "NOT EXECUTED",
+    "settingsChange": "NOT EXECUTED",
+    "rulesetChange": "NOT EXECUTED",
+    "ciRun": "NOT EXECUTED",
+    "merge": "NOT EXECUTED"
+  },
+  "observations": {
+    "effectiveEnterprisePolicy": null,
+    "effectiveOrganizationPolicy": null,
+    "eligibleApprovalCount": null,
+    "allFilesCovered": null,
+    "mergeable": null,
+    "runtimeBehavior": null,
+    "educationalEffect": null
+  }
+}

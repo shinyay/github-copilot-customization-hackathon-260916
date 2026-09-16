@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-006",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "prompt-file"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/reference/OrderAction.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-006/reference/OrderAction.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "prompt-file"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference/OrderForm.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-006/reference/OrderForm.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "prompt-file"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference/OrderService.java.excerpt.md.template",
+      "destination": ".hackathon/challenge/hc-006/reference/OrderService.java.excerpt.md.template",
+      "conditions": [
+        "baseline",
+        "prompt-file"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/customization/order-investigation.prompt.md.template",
+      "destination": ".hackathon/challenge/hc-006/starter/order-investigation.prompt.md.template",
+      "conditions": [
+        "prompt-file"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-006/starter/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "prompt-file"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": ".github/prompts/order-investigation.prompt.md",
+      "conditions": [
+        "prompt-file"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-006/comparison.md",
+      "conditions": [
+        "baseline",
+        "prompt-file"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed investigation",
+        "Environment",
+        "Repeated manual run 1",
+        "Repeated manual run 2",
+        "Explicit Prompt File invocation 1",
+        "Explicit Prompt File invocation 2",
+        "Outcome"
+      ],
+      "templateSha256": "d1504ab753db1c7a5ecbb89730794a32a6bb37e4f748c85178255556ea88828f"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": ".github/prompts/order-investigation.prompt.md",
+      "conditions": [
+        "prompt-file"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-006/comparison.md",
+      "conditions": [
+        "baseline",
+        "prompt-file"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

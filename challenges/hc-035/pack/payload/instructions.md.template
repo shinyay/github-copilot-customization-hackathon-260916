@@ -1,0 +1,8 @@
+# Java maintenance constraints
+
+- Read root `pom.xml` before proposing preparation.
+- Keep JDK `[1.8,1.9)`, Maven `[3.9,4.0)`, compiler source/target `1.7`, and Java 7 API checks distinct.
+- Treat Animal Sniffer `java17:1.0` as a signature artifact name, not a JDK 17 instruction.
+- Report version display separately from range conformance.
+- Do not change Java, pom.xml, tests, database settings, workflows, or secrets.
+- Preserve unknown setup, test, database, runner, and agent-start state.

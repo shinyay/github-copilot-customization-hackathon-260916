@@ -1,0 +1,26 @@
+# HC-044 Starter brief
+
+SYNTHETIC_TRAINING_ONLY
+
+## Goal
+
+Design an approval policy that keeps assessment, formal review event, count eligibility, aggregate approval count, all-files scope, effective policy, and mergeability separate.
+
+## Fixed task
+
+- conditions: `baseline`, `approval-policy`
+- tasks in every condition: `A01` through `A07`
+- per-event eligibility is evaluated separately from count and all-files rollups
+- positive assessment is not a vote
+- stale or duplicate events cannot fill a required count
+
+## Material boundary
+
+The policy, events, heads, actors, changed files, and CI state are synthetic training records. Their field names are not represented as GitHub REST fields or a current product schema.
+
+## Safety boundary
+
+- Do not request or submit a live review.
+- Do not enable Approve, change a ruleset or repository/organization/enterprise setting, or merge.
+- Work only in the three declared participant documents and Runtime-owned Evidence.
+- Runtime validation proves only the static contract. `runtimeBehavior` and `educationalEffect` remain `not-observed`.

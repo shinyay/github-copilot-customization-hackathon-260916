@@ -1,0 +1,22 @@
+{
+  "label": "SYNTHETIC_TRAINING_ONLY",
+  "noteKey": "order-import-replay",
+  "revision": "training-v1",
+  "sections": [
+    {
+      "kind": "synthetic-operations",
+      "text": "Use the same training note for every condition. Distinguish an existing matching claim, different content, missing evidence, NOT_FOUND, and retrieval failure without asserting a live incident."
+    },
+    {
+      "kind": "code-derived-snapshot",
+      "claims": [
+        "OrderGroup.canonicalHash normalizes quantities, sorts line fingerprints, and includes a payload fingerprint.",
+        "OrderImportService exposes importDraft, findClaim, and replay as static investigation entry points."
+      ]
+    }
+  ],
+  "limits": [
+    "No live database, order, journal, customer, incident, MCP call, or network result is represented.",
+    "The note must be checked against the exact source and may still be incomplete."
+  ]
+}

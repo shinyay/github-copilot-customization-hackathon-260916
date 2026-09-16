@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-027",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "customized",
+    "manual-equivalent"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/brief.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/request.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/design.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/comparison.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/primary-request.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/primary-request.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/primary-packet.txt.template",
+      "destination": ".hackathon/challenge/hc-027/starter/primary-packet.txt.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/transfer-request.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/transfer-request.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/transfer-packet.txt.template",
+      "destination": ".hackathon/challenge/hc-027/starter/transfer-packet.txt.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/schedule.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/schedule.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/rules-draft.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/rules-draft.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/synthetic-trials.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/synthetic-trials.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/regression-toy.md.template",
+      "destination": ".hackathon/challenge/hc-027/starter/regression-toy.md.template",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-027/evaluation-plan.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-027/schedule.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-027/trials.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-027/regression-policy.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-027/rules-body.md.template",
+      "conditions": ["customized", "manual-equivalent"]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-027/comparison.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Preregistered plan",
+        "Trial coverage",
+        "Baseline",
+        "Customized",
+        "Manual-equivalent",
+        "Missing and failures",
+        "Outcome"
+      ],
+      "templateSha256": "3992f70acca3d4678b69ff74dcc1bc5fed289c0cf043ef10c6276385cfb5ca42"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-027/evaluation-plan.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-027/schedule.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-027/trials.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-027/regression-policy.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-027/rules-body.md.template",
+      "conditions": ["customized", "manual-equivalent"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-027/comparison.md",
+      "conditions": ["baseline", "customized", "manual-equivalent"]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

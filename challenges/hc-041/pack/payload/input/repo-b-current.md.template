@@ -1,0 +1,11 @@
+# repo-b current snapshot
+
+SYNTHETIC_TRAINING_ONLY
+
+Revision: `training-b-r2`
+
+## docs/output.md
+
+Generated reports are written to `reports/latest`.
+
+This is a different training repository from repo-a.

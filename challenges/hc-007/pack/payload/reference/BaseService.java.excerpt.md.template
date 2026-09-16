@@ -1,0 +1,13 @@
+# BaseService.java authorization excerpt
+
+Canonical Runtime path:
+`wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java`
+
+```java
+protected void require(Actor actor, String... roles) {
+    if (actor == null) {
+        throw new BusinessException("authentication.required", "ログインしてください。");
+    }
+    actor.require(roles);
+}
+```

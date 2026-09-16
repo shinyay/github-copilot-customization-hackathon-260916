@@ -1,0 +1,14 @@
+OrderService.allocateの在庫引当を、Javaの実装とSpring XMLの設定を結び付けて説明してください。
+
+同じRuntime baselineから、以下の入口を読んでください。
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java
+- wholesale-core/src/main/resources/application-context.xml
+- wholesale-core/src/main/resources/spring/module-operations.xml
+
+誰が呼べるかを共有ガードまでたどり、状態やバージョンの前提、拒否される条件、処理が進んだ場合の更新を分けてください。必要な参照先は同じbaseline内で読取りだけで補ってください。
+XMLでは対象のbean定義、参照されるadvice、advisorのpointcut、該当するmethod ruleを根拠付きで結び付けてください。別のサービスの条件を、そのままallocateの条件だとは仮定しないでください。
+回答は重要な主張をfileとsymbol（XMLなら要素・属性）に結び付け、事実・推論・未確認を区別してください。Java/XMLを両方引用しただけで設定の適用を確定したとせず、XMLの宣言と稼働時のtransaction・rollbackの観測を分けてください。
+
+これは読取り専用の調査です。ファイル編集、compile、test、DB接続、サーバー起動はしないでください。設計票やEvidenceを作成するのは人の別作業です。教材の指示原稿、participant配下の設計票、他条件の回答を探索して追加ヒントにしないでください。

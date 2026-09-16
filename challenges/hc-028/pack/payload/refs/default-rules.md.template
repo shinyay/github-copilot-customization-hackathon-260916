@@ -1,0 +1,9 @@
+---
+syntheticRef: REF-DEFAULT-03
+asset: repository-instructions
+---
+
+# Default rules
+
+- Java 7互換の共通規則だけを保存する。
+- product固有の採用元は別の文書化根拠で確認する。

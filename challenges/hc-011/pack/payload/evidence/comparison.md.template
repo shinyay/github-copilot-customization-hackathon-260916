@@ -1,0 +1,40 @@
+# HC-011 Comparison
+
+## Environment
+
+- Client / host / OS / channel:
+- Model / effort / tools:
+- Node version:
+
+## Manual condition
+
+- Fixed request:
+- Note key:
+- Information returned:
+- Unsupported or invented details:
+
+## MCP condition
+
+- Server start command:
+- Process ID or process evidence:
+- Tool input:
+- Tool output:
+- Information returned:
+- Unsupported or invented details:
+
+## Error condition
+
+- Tool input using an invalid note key:
+- Explicit error output:
+- Did the assistant preserve the error:
+
+## Cleanup
+
+- Server stop command:
+- Process confirmed stopped:
+
+## Outcome
+
+Choose one: improved / equal / worse / incomparable / blocked / unsupported
+
+Compare traceability and error handling. Do not treat access to the synthetic note as access to a production system.

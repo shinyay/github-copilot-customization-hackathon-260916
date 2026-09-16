@@ -1,0 +1,13 @@
+# HC-019 diagnostic checklist
+
+| layer | input | evidence to inspect | automated fact | human judgment | stop if unknown |
+|---|---|---|---|---|---|
+| syntax |  |  |  |  |  |
+| location |  |  |  |  |  |
+| harness |  |  |  |  |  |
+| meaning |  |  |  |  |  |
+| discovery |  |  |  |  |  |
+| application |  |  |  |  |  |
+| usefulness |  |  |  |  |  |
+
+`listed: true`、`enabled: true`、parse passだけで`applied: true`やusefulとしません。`applied: null`は未知のままにします。

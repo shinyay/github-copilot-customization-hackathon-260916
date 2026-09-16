@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "SYNTHETIC_HC023_SELECTION",
+  "sourceRepository": "shinyay/code-to-doc-workshop-260910",
+  "sourceCommit": "398d7d1982a1402bcdba00d6c3ded67d8d338787",
+  "sourceTreeSha256": "c3cd74e0d65b1ae88a29a4392eb42f9d51ba2c671d111796aacc69fd9cc5b111",
+  "applicationFiles": 515,
+  "purpose": "同じ卸売アプリの読み取り分析に必要な最小の準備を、trigger/scope/resources/permissions/maintenanceで選ぶ。",
+  "allowedOperations": [
+    "read-fixed-source",
+    "inspect-inert-materials",
+    "draft-only"
+  ],
+  "forbiddenOperations": [
+    "edit-application",
+    "modify-user-settings",
+    "organization-write",
+    "start-external-service",
+    "install-extension",
+    "publish",
+    "push"
+  ],
+  "runtimeBehavior": "not-observed",
+  "educationalEffect": "not-observed"
+}

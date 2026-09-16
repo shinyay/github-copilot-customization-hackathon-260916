@@ -1,0 +1,9 @@
+diff --git a/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java b/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
+index 1111111..3333333 100644
+--- a/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
++++ b/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java
+@@ -38,3 +38,3 @@ public final class TaxAmounts {
+     public BigDecimal getTotalAmount() {
+-        return getNetAmount().add(getTaxAmount());
++        return this.getNetAmount().add(this.getTaxAmount());
+     }

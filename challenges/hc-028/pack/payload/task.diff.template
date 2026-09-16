@@ -1,0 +1,9 @@
+SYNTHETIC_TRAINING_ONLY
+DO_NOT_APPLY
+
+diff --git a/synthetic/task-note.txt b/synthetic/task-note.txt
+--- a/synthetic/task-note.txt
++++ b/synthetic/task-note.txt
+@@ -1 +1 @@
+-record the candidate task
++record the candidate task and its target revision

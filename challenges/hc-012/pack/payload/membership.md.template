@@ -1,0 +1,34 @@
+# HC-012 Membership
+
+今回のcondition / 実run IDを記入し、相手条件が未実施ならそのまま残します。三種類の集合とcallを区別する記録です。
+
+## Declared set
+
+記入: 原稿が宣言する参照一覧、個別選択票または集合原稿のpathとhash。集合条件では名前・description・iconも記録します。
+固定oracleはsearch/changes、search/codebase、read/problems、search/usagesの四参照です。各一回だけで、欠落・余分・重複・未知は不一致です。
+両条件同士だけでなく、それぞれをこの固定リストへ照合してください。個別選択条件に有効なTool Setを作りません。
+
+## Reconstructed set
+
+記入: 手順を読んだ人が紙上で再構成した一覧、元の版、固定四参照との照合、欠落や余分の有無。
+別の人がいなければ自己点検とcarryoverを記入します。これはUIで選択・有効になった実効メンバーではありません。
+selectedMembers: null
+effectiveMembers: null
+discovery: not-observed
+
+## Operations
+
+記入: 初回と再設定それぞれの想定手順・数え方・計画値。選択漏れの確認と、集合を作らない案の負担を比べます。
+observedClicks: null
+elapsedMs: null
+actualCalls: null
+未観測の数を0にせず、想定手順数を実測クリック数へ読み替えません。全toolが毎回呼ばれるとは限りません。
+
+## Non-claims
+
+Tool Setは既存toolの選択単位であり、能力や権限を追加しません。ACLでも全toolの自動呼出しでもありません。
+search/changesの変更なし、read/problemsの診断なしを不具合ゼロと扱いません。言語サービス・索引・installed toolsは未確認です。
+保存先の設計はChat: Configure Tool Setsが開くcurrent Profileのprompts、suffixは.toolsets.jsoncです。実際の絶対パスはnull、Profileは本編で操作しません。
+原稿の整合性はtoolの存在・発見・選択・有効状態・callの証明ではありません。
+runtimeBehavior: not-observed
+educationalEffect: not-observed

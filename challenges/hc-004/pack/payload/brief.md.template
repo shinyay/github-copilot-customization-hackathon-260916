@@ -1,0 +1,36 @@
+# 固定sourceを読むための手元資料
+
+これは参照案内であり、追加の常設指示でも、承認可否の解答でもありません。
+
+- Source: shinyay/code-to-doc-workshop-260910
+- Commit: 398d7d1982a1402bcdba00d6c3ded67d8d338787
+- Runtime baseline: 515 files
+- Source tree SHA-256: c3cd74e0d65b1ae88a29a4392eb42f9d51ba2c671d111796aacc69fd9cc5b111
+
+## 読む場所
+
+| repository-relative path | 調べる入口 |
+| --- | --- |
+| wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java | approveから呼び出す処理と、その後に続く条件をたどる |
+| wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java | 継承元のrequireが何を確認し、どこへ委ねるかを読む |
+| wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java | requireと、そこから使うrole判定の分岐を読む |
+
+Java本文はRuntimeにあるものを読みます。このPackはJavaを複製しません。
+path-only inventoryはpathの存在を確かめる資料で、コードの意味や実機成功の証拠ではありません。
+
+## 途中で問い直すこと
+
+1. メソッド内のrole文字列だけで説明を終えていないか。呼び出すrequireの定義はどこか。
+2. 引数がない場合や早く戻る分岐を、呼び出し先も含めて読んだか。
+3. 認証・認可を通ることと、受注の業務条件を満たすことを混ぜていないか。
+4. この3ファイルでは分からない実行時の値や呼び出し先の詳細を、未確認として残せるか。
+
+これは読み方の問いです。特定の利用者や受注についての判定は埋めてありません。
+入力は固定sourceとrequest.txt.templateだけです。実データ、利用者ID、認証情報を追加せず、
+DB、Web、バッチを起動しません。sourceや既存testも変更しません。
+
+## 比較で共通にするもの
+
+全条件で同じrequest全文、同じsource revision、同じ3ファイルへのアクセスを使います。
+StarterやEvidenceは自動発見される指示ではありませんが、読めない秘密領域でもありません。
+比較の会話へ追加添付せず、意図せず読まれた場合は投入の混入として記録します。

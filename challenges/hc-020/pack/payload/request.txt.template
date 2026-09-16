@@ -1,0 +1,1 @@
+同じpure analyzerを使い、固定4行のoriginal、Unknowns見出し行だけを除いたmissing-heading、元bytesへ戻したrestoredの三状態を確認してください。literal countと意味・引用先の正しさを区別し、Nodeだけで十分な条件とTool入口が必要な条件を設計してください。

@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "hc013SpacesReferenceOnly": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "X-MCP-Toolsets": "copilot_spaces",
+        "X-MCP-Readonly": "true"
+      }
+    }
+  }
+}

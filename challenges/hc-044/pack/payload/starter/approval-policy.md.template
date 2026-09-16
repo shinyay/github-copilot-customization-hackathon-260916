@@ -1,0 +1,31 @@
+# HC-044 approval policy
+
+Condition: TODO
+Policy revision: TODO
+
+## Confirmation order
+
+1. assessment: TODO
+2. formal review event: TODO
+3. Approve permission: TODO
+4. required-approval counting permission: TODO
+5. target head / stale / duplicate: TODO
+6. eligible actor: TODO
+7. all changed files: TODO
+8. distinct eligible count versus required count: TODO
+9. effective enterprise / organization / repository policy: TODO
+10. other merge gates: TODO
+
+## Claims allowed at each boundary
+
+- assessment only: TODO
+- eligible event only: TODO
+- approval requirement satisfied: TODO
+- mergeability: TODO
+
+## Stop and burden
+
+- unknown policy rule: TODO
+- escalation owner: TODO
+- retry / re-review limit: TODO
+- excessive-stop trade-off: TODO

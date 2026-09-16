@@ -1,0 +1,4 @@
+packet-id: EVAL-PRIMARY-01
+event-a: accepted=12 rejected=2
+event-b: accepted=5 rejected=1
+constraint: retry rows must remain separately attributable

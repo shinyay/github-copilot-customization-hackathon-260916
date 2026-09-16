@@ -1,0 +1,5 @@
+# Transfer-check task
+
+SYNTHETIC_TRAINING_ONLY
+
+別形式の4行packetを読み、重複ID、欠測、初回と追問後の値を区別する評価方針を説明してください。primaryの回答をそのまま正解として転記しないでください。

@@ -1,0 +1,18 @@
+---
+applyTo: "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java,wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java,wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java,.hackathon/challenge/hc-030/starter/candidate-a.patch.template,.hackathon/challenge/hc-030/starter/candidate-b.patch.template"
+---
+
+# Tax semantic review rules
+
+Review changed behavior, not naming preference.
+
+1. Inspect how `TaxAmounts` buckets `BigDecimal` rate keys before judging a collection change.
+2. Check both per-rate aggregation and rounding-after-bucketing behavior.
+3. Remember that numeric comparison and `BigDecimal.equals` do not treat every differently-scaled value the same way.
+4. Use `TaxAmounts`, `Money.tax`, and `CommonRulesTest.taxIsRoundedPerRateRatherThanPerLine` as rooted evidence.
+5. Report a finding only when a changed line can violate a stated invariant or observed contract.
+6. If evidence is insufficient, ask for a test instead of asserting a defect.
+7. Do not flag a semantics-preserving qualification, rename, or refactor solely because it changed code.
+8. For each finding, provide changed line, impact, evidence, and the smallest verification.
+
+It is valid to report no issue. Never claim a test passed unless it was run.

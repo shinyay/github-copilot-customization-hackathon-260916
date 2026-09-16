@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "wholesale-evidence",
+  "version": "1.0.0",
+  "description": "受注取込を静的に読み、事実と未確認事項を分離するSkillだけを配布する研修用Agent Plugins 1.0 package。"
+}

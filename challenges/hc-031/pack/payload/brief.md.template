@@ -1,0 +1,7 @@
+# HC-031 Starter brief
+
+このPackは、Java/XMLのpath scopeとCloud Agent/code reviewのproduct scopeを分離する不活性教材です。
+
+`applyTo` は規則を供給するscopeでありACLではありません。`excludeAgent` は原稿を特定製品へ供給しないmetadataであり、source accessを拒否する設定ではありません。
+
+本編は3 conditionです。3 task × 3 conditionの9行と、2 draft × 2 product × 3 metadata案の12行を別々に扱います。

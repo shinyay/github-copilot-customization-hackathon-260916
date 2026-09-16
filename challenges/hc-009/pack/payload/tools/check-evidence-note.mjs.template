@@ -1,0 +1,35 @@
+import { readFile } from "node:fs/promises";
+
+const requiredHeadings = [
+  "# HC-009 Evidence Note",
+  "## Fixed task",
+  "## Environment",
+  "## Conditions",
+  "## Discovery observations",
+  "## Body loading observations",
+  "## Resource loading observations",
+  "## Script execution observations",
+  "## Negative evidence",
+  "## Outcome",
+];
+
+const filePath = process.argv[2];
+if (!filePath) {
+  console.error("Usage: node tools/check-evidence-note.mjs <evidence-note.md>");
+  process.exit(2);
+}
+
+const contents = await readFile(filePath, "utf8");
+const lines = new Set(
+  contents.replace(/\r\n/gu, "\n").split("\n").map((line) => line.trimEnd()),
+);
+const missing = requiredHeadings.filter((heading) => !lines.has(heading));
+
+if (missing.length > 0) {
+  for (const heading of missing) {
+    console.error(`missing heading: ${heading}`);
+  }
+  process.exit(1);
+}
+
+console.log(`Evidence format: PASS (${requiredHeadings.length} required headings)`);

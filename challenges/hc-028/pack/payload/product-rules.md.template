@@ -1,0 +1,11 @@
+# Documented product-rule boundary
+
+SYNTHETIC_TRAINING_ONLY
+
+| product / asset | documented rule used by this exercise | boundary |
+|---|---|---|
+| Copilot code review / repository instructions | head branchから読むと説明されている | Cloud Agentや別automationへ一般化しない |
+| Cloud environment setup / setup workflow | default branchに存在することが起動条件 | すべてのInstructionsがdefault由来とは限らない |
+| Cloud Agent / repository instructions | この固定資料では採用refを確定できない | unknownを保持する |
+
+文書化規則の存在は、今回の実投入版やattributionの観測を証明しません。

@@ -1,0 +1,14 @@
+# HC-043 event ledger
+
+Condition: TODO
+Policy revision: TODO
+
+| task | event / head | actor / creator facts | accept / ignore / hold | allowed read effects | excluded write effects | output / cost | unknown / stop |
+|---|---|---|---|---|---|---|---|
+| E01 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| E02 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| E03 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| E04 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+| E05 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
+
+Do not convert a private configuration into a private-session claim, a duplicate event into extra work, or a synchronized head into the old result.

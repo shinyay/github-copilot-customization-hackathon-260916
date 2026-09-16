@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "caseId": "case-02",
+  "taskId": "case-02",
+  "title": "Java/XMLだけに必要な読み方",
+  "targetHarness": "local-agent",
+  "scope": "workspace",
+  "sourcePaths": [
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+    "wholesale-core/src/main/resources/application-context.xml"
+  ],
+  "situation": "JavaとSpring XMLを結ぶ分析を反復するが、同じrepositoryの文書校正へその観点を持ち込みたくない。",
+  "resources": [
+    "固定Java/XML",
+    "対象/非対象path一覧"
+  ],
+  "constraints": [
+    "scope一致と本文投入を分ける。",
+    "descriptionだけの自動選択を保証しない。",
+    "sourceや設定を変更しない。"
+  ]
+}

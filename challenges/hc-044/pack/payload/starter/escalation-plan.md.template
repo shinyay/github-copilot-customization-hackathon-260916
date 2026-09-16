@@ -1,0 +1,15 @@
+# HC-044 escalation plan
+
+Condition: TODO
+Policy revision: TODO
+
+| missing or conflicting evidence | responsible owner | exact information requested | safe wait/stop state | retry or review limit |
+|---|---|---|---|---|
+| Approve permission | TODO | TODO | TODO | TODO |
+| count eligibility | TODO | TODO | TODO | TODO |
+| target head / stale event | TODO | TODO | TODO | TODO |
+| changed-file coverage | TODO | TODO | TODO | TODO |
+| effective organization / enterprise policy | TODO | TODO | TODO | TODO |
+| other merge gates | TODO | TODO | TODO | TODO |
+
+No escalation request in this document authorizes a setting change, live Approve, review request, or merge.

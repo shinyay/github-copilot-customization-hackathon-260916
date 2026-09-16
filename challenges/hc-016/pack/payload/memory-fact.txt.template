@@ -1,0 +1,6 @@
+教材用の固定事実。対象はこの演習用repositoryだけであり、個人の好みではない。
+BaseService.requireはactorがnullならauthentication.requiredを送出し、それ以外はActor.requireへ委譲する。
+Actor.requireはADMINを許可し、そうでなければ指定されたroleのどれかを要求する。
+根拠: wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java の require、
+wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java の require。
+これは固定ソースの読解であり、Java/DB実行や実際の利用者の権限を確認した結果ではない。

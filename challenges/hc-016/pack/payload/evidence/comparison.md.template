@@ -1,0 +1,31 @@
+# HC-016 comparison evidence
+
+このstarterを当該runの`.hackathon/evidence/hc-016/comparison.md`へ新規作成して記入します。未編集templateのままsubmittedへ進めません。
+
+## Fixed task
+
+HC、condition、run-id、Pack、S1/S2、fixed fact、cards、requestの識別とhashを記録します。
+
+## Environment
+
+client、harness、OS、read手段、残留の可能性を記録します。モデル不使用ならそのまま記録します。
+
+## Design
+
+採否、scope、引用、再確認、更新・撤回、保存ゼロの理由を記録します。
+
+## Run log
+
+source照合、card review、紙上lifecycleを、合成素材とsource観測に分けて記録します。
+
+## Comparison
+
+相手conditionのrun-id、同一入力、設計差、順序効果、未実施の相手runを記録します。
+
+## Outcome
+
+equal、worse、追加不要、blocked、unsupported、incomparable等と根拠を記録します。
+
+## Limits and cleanup
+
+save/read/update/delete/clear、scope確認、次会話再参照、残留評価を実施していないことと、自分の追加分だけの整理を記録します。

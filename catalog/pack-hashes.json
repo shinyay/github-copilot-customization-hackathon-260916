@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "hashAlgorithm": "pack-hash-v1",
+  "packs": [
+    {
+      "challengeId": "HC-001",
+      "challengeVersion": 1,
+      "sha256": "d231913ce02df8bf2e7e83603980ade496c370305590ba88252397d4cb67d946",
+      "fileCount": 5,
+      "byteLength": 6417
+    },
+    {
+      "challengeId": "HC-002",
+      "challengeVersion": 1,
+      "sha256": "36e28537d50f5f75a2c2478aeed1db2b350cddaf85f61ca1701809e6cc213f1d",
+      "fileCount": 7,
+      "byteLength": 18331
+    },
+    {
+      "challengeId": "HC-003",
+      "challengeVersion": 1,
+      "sha256": "cbcd7763450892b7688a098e8abd50d6fb592e8cc09579af68d582b66054c169",
+      "fileCount": 5,
+      "byteLength": 11882
+    },
+    {
+      "challengeId": "HC-004",
+      "challengeVersion": 1,
+      "sha256": "6875305528e7710509d1ddda7f3a4f233392767d9da6c542f918799a29f292c6",
+      "fileCount": 5,
+      "byteLength": 12220
+    },
+    {
+      "challengeId": "HC-005",
+      "challengeVersion": 1,
+      "sha256": "0fb056cef9251fe42382577f0aabac1718c0b1c1696be1fa573cf4dc567f97f1",
+      "fileCount": 9,
+      "byteLength": 21684
+    },
+    {
+      "challengeId": "HC-006",
+      "challengeVersion": 1,
+      "sha256": "b06ea1df21da14b221955d104d36070ab067f85d6fe598b3fb4eb062c06b6e82",
+      "fileCount": 6,
+      "byteLength": 7465
+    },
+    {
+      "challengeId": "HC-007",
+      "challengeVersion": 1,
+      "sha256": "6898b006c9b8ba9132e11b98a3d5f59b78c51bb8b59db301acd6800b52d8372f",
+      "fileCount": 9,
+      "byteLength": 10678
+    },
+    {
+      "challengeId": "HC-008",
+      "challengeVersion": 1,
+      "sha256": "611fea16a1b9ee733072b92df0a12dc794339e50251d61160b021f919f8a6b6c",
+      "fileCount": 8,
+      "byteLength": 15505
+    },
+    {
+      "challengeId": "HC-009",
+      "challengeVersion": 1,
+      "sha256": "867de8d6808f0f02885dc16e0846d056d032d55fc5b3fcdc5f36a77870b9aae1",
+      "fileCount": 7,
+      "byteLength": 9823
+    },
+    {
+      "challengeId": "HC-010",
+      "challengeVersion": 1,
+      "sha256": "d3cb476cd3795c1795cff5872a0722d745bef23f1ae07376d1676bbbc62c0644",
+      "fileCount": 22,
+      "byteLength": 55335
+    },
+    {
+      "challengeId": "HC-011",
+      "challengeVersion": 1,
+      "sha256": "ce4b371de31eefbd360eb9fa5312917f401e4c5bb9afa5f86fdfcbdf534e5951",
+      "fileCount": 7,
+      "byteLength": 14260
+    },
+    {
+      "challengeId": "HC-012",
+      "challengeVersion": 1,
+      "sha256": "c36bade8aa14ee8f9782844ab1291a85b1f448b937eeaeee1382218a09dad890",
+      "fileCount": 11,
+      "byteLength": 35629
+    },
+    {
+      "challengeId": "HC-013",
+      "challengeVersion": 1,
+      "sha256": "d2694fe1e128948b20bcf22b90a0e102dd86c8752f835199b0d7cb9593f930c1",
+      "fileCount": 15,
+      "byteLength": 65854
+    },
+    {
+      "challengeId": "HC-014",
+      "challengeVersion": 1,
+      "sha256": "601a09dda6c424dc26f3cb4b5fb21bb8dfa5fb4d15c53cfb1df01bbe4ccd3079",
+      "fileCount": 15,
+      "byteLength": 41253
+    },
+    {
+      "challengeId": "HC-015",
+      "challengeVersion": 1,
+      "sha256": "f7a030ac3e876ae7d6bd3d548b93bc0d7403b745d8933887a85d1e846ba7e3a9",
+      "fileCount": 13,
+      "byteLength": 38327
+    },
+    {
+      "challengeId": "HC-016",
+      "challengeVersion": 1,
+      "sha256": "f7c1fc3d43fac6f9466ec27217d8afe72b01136af2fd6dadffa922511a274561",
+      "fileCount": 10,
+      "byteLength": 12270
+    },
+    {
+      "challengeId": "HC-017",
+      "challengeVersion": 1,
+      "sha256": "7df76654c2017a9bbd60d7c33aae2a3bb16eac501171bbd85aab18209ccdd184",
+      "fileCount": 11,
+      "byteLength": 13071
+    },
+    {
+      "challengeId": "HC-018",
+      "challengeVersion": 1,
+      "sha256": "06a3e1ff52ce6bcf7d9b42249ea2070316ccbe8a8c82b7a7ea32a8d27d6b52d9",
+      "fileCount": 10,
+      "byteLength": 10781
+    },
+    {
+      "challengeId": "HC-019",
+      "challengeVersion": 1,
+      "sha256": "4d4bcbb82fc1617ce9beb826f4a2a5bd8660e4604e54ffb739d92c2bd5ba2b08",
+      "fileCount": 10,
+      "byteLength": 9674
+    },
+    {
+      "challengeId": "HC-020",
+      "challengeVersion": 1,
+      "sha256": "91993636d276c814728f464fa1aff2b5feddbd5e74307cd1764d4fa58123bc94",
+      "fileCount": 11,
+      "byteLength": 14454
+    },
+    {
+      "challengeId": "HC-021",
+      "challengeVersion": 1,
+      "sha256": "56d9f357d87a9ea11a21109b18db575b8785101825e5d76b377a7d25c87994e6",
+      "fileCount": 10,
+      "byteLength": 11914
+    },
+    {
+      "challengeId": "HC-022",
+      "challengeVersion": 1,
+      "sha256": "80e760765d6475c7ab312a4f18e03a63c0a7a017457eadeb42b5d8f0cd03eeb3",
+      "fileCount": 11,
+      "byteLength": 9547
+    },
+    {
+      "challengeId": "HC-023",
+      "challengeVersion": 1,
+      "sha256": "5d9d822699cfbc20634538b5daad592854fc3dfaff8c3eb61bd35dd71650de46",
+      "fileCount": 38,
+      "byteLength": 35977
+    },
+    {
+      "challengeId": "HC-024",
+      "challengeVersion": 1,
+      "sha256": "0c1f731cf103d7e7122281d461a9a503302cfff88e12d29d4488d1e0eb4ad0e6",
+      "fileCount": 10,
+      "byteLength": 14449
+    },
+    {
+      "challengeId": "HC-025",
+      "challengeVersion": 1,
+      "sha256": "4e9253f7cfffb312aa434b3aca72f28ed690e279bde6000312e61dbe1c69d7eb",
+      "fileCount": 15,
+      "byteLength": 14155
+    },
+    {
+      "challengeId": "HC-026",
+      "challengeVersion": 1,
+      "sha256": "362c9a8407a1066a565aef0b5de1883ba97301d15eefece9005282a5366d22ad",
+      "fileCount": 14,
+      "byteLength": 17033
+    },
+    {
+      "challengeId": "HC-027",
+      "challengeVersion": 1,
+      "sha256": "315ab1d117c9808af22e15468d4e541acf4cc02b99c47dc9c6699ce9eddc6e98",
+      "fileCount": 13,
+      "byteLength": 12815
+    },
+    {
+      "challengeId": "HC-028",
+      "challengeVersion": 1,
+      "sha256": "584797f091b5ed7fdebcff3539e2b5047ab0f3d2f87a10d7537d1203b88cce78",
+      "fileCount": 14,
+      "byteLength": 10970
+    },
+    {
+      "challengeId": "HC-029",
+      "challengeVersion": 1,
+      "sha256": "c43d8cff0f9b271b40d9721f8a0f422812879df13917b45f53547ab8e080dd9f",
+      "fileCount": 9,
+      "byteLength": 10673
+    },
+    {
+      "challengeId": "HC-030",
+      "challengeVersion": 1,
+      "sha256": "cbed06b334b9a2c3a792b6acc6f9e60252c37ca45092a8d7f27afb577b27527c",
+      "fileCount": 9,
+      "byteLength": 10015
+    },
+    {
+      "challengeId": "HC-031",
+      "challengeVersion": 1,
+      "sha256": "9daf3a9e26abe384a9db1ee82754d5a7a1b6fc36e98d510422060bb088f877f7",
+      "fileCount": 11,
+      "byteLength": 13338
+    },
+    {
+      "challengeId": "HC-032",
+      "challengeVersion": 1,
+      "sha256": "88dec2d32023bdc0aaa68541f1cd2ca4a5a7576a8252a2c3a792aed50354ff9f",
+      "fileCount": 11,
+      "byteLength": 12256
+    },
+    {
+      "challengeId": "HC-033",
+      "challengeVersion": 1,
+      "sha256": "3ebbe9d1f257509b8c0989596c4e359359bfe53eb8c2e34d1d7e0dde4c552d5d",
+      "fileCount": 10,
+      "byteLength": 12679
+    },
+    {
+      "challengeId": "HC-034",
+      "challengeVersion": 1,
+      "sha256": "2a85c5528ea14eaacd0dfa118047ff620370a694d806e2fe8d3364569b1879d4",
+      "fileCount": 10,
+      "byteLength": 12607
+    },
+    {
+      "challengeId": "HC-035",
+      "challengeVersion": 1,
+      "sha256": "188c1397fd9f52c34044753866126445ebcca2cf9de4507cb4cc3ea450254538",
+      "fileCount": 10,
+      "byteLength": 12181
+    },
+    {
+      "challengeId": "HC-036",
+      "challengeVersion": 1,
+      "sha256": "eb08b7055825ac515a9dff7096ade582cb098ba74d509b24fdf854704fc71962",
+      "fileCount": 9,
+      "byteLength": 12868
+    },
+    {
+      "challengeId": "HC-037",
+      "challengeVersion": 1,
+      "sha256": "1915798c63a0643074964a559df0467ae2c15c5efad70e08e9e70317a3b65cdd",
+      "fileCount": 10,
+      "byteLength": 12706
+    },
+    {
+      "challengeId": "HC-038",
+      "challengeVersion": 1,
+      "sha256": "b129d85340dde8dc1bb7b058b07f31bc528a2166c5f9a744d0dd0f33992ebad0",
+      "fileCount": 10,
+      "byteLength": 16455
+    },
+    {
+      "challengeId": "HC-039",
+      "challengeVersion": 1,
+      "sha256": "ae1ab2b05274cd3a776cef3a9150316376694c81e04f14a812beef698422f3ea",
+      "fileCount": 10,
+      "byteLength": 21627
+    },
+    {
+      "challengeId": "HC-040",
+      "challengeVersion": 1,
+      "sha256": "0f15718ed7f784130f01beeeca8a036856b78419623053e97e0607b080f921cc",
+      "fileCount": 10,
+      "byteLength": 15054
+    },
+    {
+      "challengeId": "HC-041",
+      "challengeVersion": 1,
+      "sha256": "4cc3c24c9a40d413f355f50b0a8dbad3c51a538ea08af9e91d55aecb2333fcdc",
+      "fileCount": 11,
+      "byteLength": 14695
+    },
+    {
+      "challengeId": "HC-042",
+      "challengeVersion": 1,
+      "sha256": "2881e7594014fe7272d2648c8a234001b13fd475cc038629a2906351d85fd77e",
+      "fileCount": 10,
+      "byteLength": 15837
+    },
+    {
+      "challengeId": "HC-043",
+      "challengeVersion": 1,
+      "sha256": "810c5cb05e1f54a7a063533fa02a1e9e8e57160fe30a6ae59e65508ab4568f02",
+      "fileCount": 11,
+      "byteLength": 16354
+    },
+    {
+      "challengeId": "HC-044",
+      "challengeVersion": 1,
+      "sha256": "68b19e14ebfde36ad5171ef29cb848d2362d5807f7aa1199f1ccbc2d4b41f439",
+      "fileCount": 11,
+      "byteLength": 18206
+    },
+    {
+      "challengeId": "HC-045",
+      "challengeVersion": 1,
+      "sha256": "ccc19c1fc32ec14b88daefbceb70cc67f9101ada3912f7b2439ae322ebb0a1b3",
+      "fileCount": 12,
+      "byteLength": 19331
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+# HC-012 読む準備と選び直し
+
+この素材は不活性な設計用の説明です。Tool Setを登録したり、Agentを起動したりしません。
+SYNTHETIC_TRAINING_ONLY — 「別の保守担当者へ選択手順を渡す」という場面は合成教材です。以下のJavaは実在する固定sourceであり、合成の実行結果は付いていません。
+
+## 固定の読解対象
+
+sourceKind: baseline
+repository: shinyay/code-to-doc-workshop-260910
+commit: 398d7d1982a1402bcdba00d6c3ded67d8d338787
+
+| Runtime rootからのpath | 自分で確かめる入口 |
+|---|---|
+| `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java` | `importDraft` から `replay` へ進む箇所と、`replay` 本体を読む |
+| `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java` | `canonicalHash` と `validate` を読み、前提と説明できる範囲を調べる |
+| `wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java` | `connect` の前提と、再送を扱う `@Test` 定義の入力・assertionを読む |
+
+三つとも全文を参照できる同じ状態から始めます。引用する箇所だけを根拠として選ぶことと、片方の条件から入力を削ることは別です。
+テスト定義の読解であり、Java・Maven・DB・CLIの実行ではありません。テスト名やassertionを読んでも、実行済み・成功済みとは言えません。
+採用理由、履歴、呼出し先の内部など、この三ファイルから確かめられないことはunknownへ残します。架空の理由を補いません。
+
+## 比較するもの
+
+Baselineの `baseline` は四toolを個別に選ぶ手順、Customizedの `tool-set-design` は同じ四toolを名前付き集合から選ぶ手順です。
+固定参照は `search/changes`、`search/codebase`、`read/problems`、`search/usages`。メンバーを減らして便利さの差を作りません。
+別の人に手順を読んでもらい、紙上で同じ四参照へ再構成できるか確認します。これは同じ条件内の反復で、第三conditionではありません。
+
+名前・説明・icon、確認する順番、欠落や余分な選択を見つける方法、集合を使わない場面は自分で設計します。
+正解の集合名や業務分析の完成文は配布しません。toolの説明カードは `tool-members.json.template` にあります。
+
+## 非主張
+
+原稿の保存、原稿から再構成したメンバー、UIで選択・有効になったメンバー、実際のtool callは別です。
+本編の選択・実効メンバー、クリック数、所要時間、callはnull / not-observedです。想定手順数を実測値にしません。
+Tool Setは新しい能力、権限、ACL、sandbox、自動呼出しを追加しません。
+実効メンバーが揃っても全toolを毎回呼ぶ必要はなく、空の変更・診断結果を正しさの証拠にしません。

@@ -1,0 +1,19 @@
+# Two-draft / two-product / three-metadata matrix
+
+| draft | product | metadata case | excludeAgent value | predicted supply | live observation |
+|---|---|---|---|---|---|
+| java | cloud-agent | none | null | TBD | not-checked |
+| java | cloud-agent | without-review | code-review | TBD | not-checked |
+| java | cloud-agent | without-cloud | cloud-agent | TBD | not-checked |
+| java | code-review | none | null | TBD | not-checked |
+| java | code-review | without-review | code-review | TBD | not-checked |
+| java | code-review | without-cloud | cloud-agent | TBD | not-checked |
+| xml | cloud-agent | none | null | TBD | not-checked |
+| xml | cloud-agent | without-review | code-review | TBD | not-checked |
+| xml | cloud-agent | without-cloud | cloud-agent | TBD | not-checked |
+| xml | code-review | none | null | TBD | not-checked |
+| xml | code-review | without-review | code-review | TBD | not-checked |
+| xml | code-review | without-cloud | cloud-agent | TBD | not-checked |
+
+bodyは固定し、metadataだけを比較します。`predicted supply`を実製品の観測値へ書き換えません。
+`none` 行の `null` はfrontmatterでkeyが存在しないことを表す教材セルであり、`excludeAgent: null` と書く指示ではありません。

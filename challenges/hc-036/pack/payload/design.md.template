@@ -1,0 +1,23 @@
+# HC-036 design
+
+SYNTHETIC_TRAINING_ONLY
+
+## Question
+
+Which synthetic events should request review, and how are request, queue, attempt, completion, and head kept distinct?
+
+## Decisions before comparison
+
+- Four condition differences: TODO
+- Basic request and new-open: TODO
+- Draft/push one-factor comparisons from basic: TODO
+- Manual rereview actor responsibility: TODO
+- Request/queue/start/complete fields: TODO
+- Base/head/reviewed-head correlation: TODO
+- Duplicate and unknown handling: TODO
+
+## Non-claims
+
+- Real settings/PR/request/review: not-observed
+- Runtime behavior: not-observed
+- Educational effect: not-observed

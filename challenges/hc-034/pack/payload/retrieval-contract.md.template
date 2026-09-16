@@ -1,0 +1,15 @@
+# Training note retrieval contract
+
+- Note key: `order-import-replay`
+- Required revision: `training-v1`
+- Expected raw body SHA-256: TODO
+- Allowed tool: `lookup_training_note`
+- Required arguments and return fields: TODO
+- INVALID_ARGUMENT handling: TODO
+- NOT_FOUND handling: TODO
+- Explicit empty-success schema, if any: TODO
+- Server / transport / timeout handling: TODO
+- Retry limit and human stop: TODO
+- Code-derived source support: TODO
+- Synthetic narrative boundary: TODO
+- Live MCP/product adoption: not-observed

@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-043",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "automation-policy"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-043/starter/brief.md.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-043/starter/request.txt.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/reference-notes.md.template",
+      "destination": ".hackathon/challenge/hc-043/starter/reference-notes.md.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/readiness.json.template",
+      "destination": ".hackathon/challenge/hc-043/starter/readiness.json.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/automation-packet.json.template",
+      "destination": ".hackathon/challenge/hc-043/starter/automation-packet.json.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/event-sequence.json.template",
+      "destination": ".hackathon/challenge/hc-043/starter/event-sequence.json.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/starter/automation-design.md.template",
+      "destination": ".hackathon/challenge/hc-043/starter/starter/automation-design.md.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/starter/event-ledger.md.template",
+      "destination": ".hackathon/challenge/hc-043/starter/starter/event-ledger.md.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/starter/stop-plan.md.template",
+      "destination": ".hackathon/challenge/hc-043/starter/starter/stop-plan.md.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-043/starter/evidence/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-043/automation-design.md",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ]
+    },
+    {
+      "pattern": "participant/hc-043/event-ledger.md",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ]
+    },
+    {
+      "pattern": "participant/hc-043/stop-plan.md",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-043/comparison.md",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Baseline",
+        "Designed policy",
+        "Comparison",
+        "Outcome",
+        "Evidence boundaries"
+      ],
+      "templateSha256": "5d2213f13c79a3a56b60edc43fc53123f092491be4b1bf0fc39ddfa6ea3c8f35"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-043/automation-design.md",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ]
+    },
+    {
+      "pattern": "participant/hc-043/event-ledger.md",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ]
+    },
+    {
+      "pattern": "participant/hc-043/stop-plan.md",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-043/comparison.md",
+      "conditions": [
+        "baseline",
+        "automation-policy"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

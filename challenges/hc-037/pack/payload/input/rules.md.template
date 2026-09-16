@@ -1,0 +1,26 @@
+# HC-037 evaluation rules
+
+SYNTHETIC_TRAINING_ONLY
+
+## Source support
+
+- Tie each proposed finding to a changed line and a supporting source or test unit.
+- Record the supported scope. A citation count is not a correctness score.
+- Keep `unsupported`, duplicate, and missing-source cases explicit.
+
+## False positives
+
+- Examine warnings against both candidates, including an ordinary change.
+- Do not reveal or assume an answer key for either candidate.
+- A longer review or a larger finding count is not automatically better.
+
+## Burden and missing data
+
+- Record the human confirmation needed for each finding.
+- Do not turn an unrun condition into zero findings.
+- Do not compute precision or superiority without a valid denominator.
+- `equal`, `worse`, `incomparable`, `blocked`, and `unsupported` are valid outcomes.
+
+## Execution boundary
+
+This Pack prepares plans only. It does not request standard review, mutate source, run tests, observe cost, or identify an internal model.

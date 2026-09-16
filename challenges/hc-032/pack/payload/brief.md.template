@@ -1,0 +1,19 @@
+# HC-032 Starter brief
+
+## Goal
+
+Design a read-only approval investigation role and a precise handoff.
+
+## Fixed task
+
+- `approval-trace`
+
+## Source / material boundary
+
+Read OrderService.approve, BaseService.require, and Actor.require from the exact baseline paths. Do not infer live authorization or business state.
+
+## Safety boundary
+
+- Work only in declared participant/*.template files and the Runtime-owned Evidence path.
+- Do not activate agents, Cloud tasks, changes, posts, execution, approvals, or secrets.
+- Runtime validation proves the static contract only; runtimeBehavior and educationalEffect remain not-observed.

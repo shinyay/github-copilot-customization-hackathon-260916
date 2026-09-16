@@ -1,0 +1,13 @@
+# Money.java tax excerpt
+
+Canonical Runtime path:
+`wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java`
+
+```java
+public static BigDecimal tax(BigDecimal base, BigDecimal rate, String rounding) {
+    // Select DOWN, UP, or HALF_UP; invalid values raise validation.rounding.
+    return base.multiply(rate).setScale(0, mode).setScale(2);
+}
+```
+
+Read the full Runtime file before asserting behavior.

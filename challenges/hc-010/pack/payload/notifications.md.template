@@ -1,0 +1,26 @@
+# HC-010 Notifications
+
+## Case coverage
+
+自runのcondition/run IDとsample-01〜sample-05の対応、source/checker/草稿hash、selectorのrunとdirectoryの対応を書く。
+5caseと2conditionを混同せず、実施・設計・fixture-onlyの読解を分ける。
+
+## Manual checker
+
+配布結果のcase ID、result、code、missingHeadings、exitを各caseに対応付ける。再入caseのcheckerは未起動とする。
+手動案の担当者・確認時点を記し、本編で手動起動したと書かない。追加CLI引数は受け付けない。
+
+## Stop adapter
+
+合成入力、既存adapter出力とexit、checkerとの関係を書く。exit 0は通知成功であり形式合格ではない。
+stop_hook_active: trueはchecker起動前にskipped。実Stop・設定発見・表示は未観測とする。
+
+## Proposed message
+
+参加者の提案文面とcase ID、result/codeの保持、受け手と時点、見送りの理由を書く。
+baselineなら通知案は対象外と記し、手動で伝える内容を書く。提案文面を観測済みadapter出力へ混ぜない。
+
+## Non-claims
+
+continue: trueのnonblockingを維持する。自動修正、新しいAIターン、ループを求めない。
+形式・通知・意味・実イベントは別である。実測していない回数や時間、実機挙動、教育効果を成功と書かない。

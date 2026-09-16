@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-034",
+  "noteKey": "order-import-replay",
+  "expectedRevisionForComparison": "training-v1",
+  "packets": [
+    {
+      "id": "P34-01",
+      "serverStartedClaimed": true,
+      "toolsListed": false,
+      "productAdopted": "unknown",
+      "call": null,
+      "return": null
+    },
+    {
+      "id": "P34-02",
+      "serverStartedClaimed": true,
+      "toolsListed": true,
+      "productAdopted": "unknown",
+      "call": null,
+      "return": null
+    },
+    {
+      "id": "P34-03",
+      "serverStartedClaimed": true,
+      "toolsListed": true,
+      "productAdopted": true,
+      "call": {
+        "tool": "lookup_training_note",
+        "arguments": {
+          "noteKey": "order-import-replay"
+        }
+      },
+      "return": {
+        "revision": "training-v1",
+        "bodyHash": "TO_BE_COMPUTED_FROM_RAW_NOTE"
+      }
+    },
+    {
+      "id": "P34-04",
+      "serverStartedClaimed": true,
+      "toolsListed": true,
+      "productAdopted": true,
+      "call": {
+        "tool": "lookup_training_note",
+        "arguments": {
+          "noteKey": "order-import-replay"
+        }
+      },
+      "return": {
+        "revision": "training-v0",
+        "bodyHash": "DIFFERENT_REVISION_RECORD"
+      }
+    },
+    {
+      "id": "P34-05",
+      "serverStartedClaimed": "unknown",
+      "toolsListed": "unknown",
+      "productAdopted": "unknown",
+      "call": null,
+      "error": {
+        "kind": "transport",
+        "code": "CONNECTION_CLOSED"
+      }
+    },
+    {
+      "id": "P34-06",
+      "serverStartedClaimed": true,
+      "toolsListed": true,
+      "productAdopted": "unknown",
+      "call": {
+        "tool": "lookup_training_note",
+        "arguments": {
+          "noteKey": "missing-training-key"
+        }
+      },
+      "error": {
+        "kind": "application",
+        "code": "NOT_FOUND",
+        "isError": true
+      }
+    }
+  ],
+  "nonClaims": [
+    "Packet IDs and order are not verdicts.",
+    "readOnlyHint would not prove authorization, ACLs, harmlessness, or adoption."
+  ]
+}

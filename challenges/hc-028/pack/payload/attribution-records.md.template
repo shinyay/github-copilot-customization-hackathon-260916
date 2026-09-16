@@ -1,0 +1,11 @@
+# Synthetic attribution records
+
+SYNTHETIC_TRAINING_ONLY
+
+| record | state | claimed target revision | claimed rules ref | observed instructions hash | live observation |
+|---|---|---|---|---|---|
+| ATTR-01 | revision-identified | REF-HEAD-02 | head | null | not-observed |
+| ATTR-02 | old-head | REF-HEAD-01 | head | null | not-observed |
+| ATTR-03 | unknown | unknown | unknown | null | not-observed |
+
+`state` は合成packetの構造分類です。保存hashや自己申告をobserved instructions hashへコピーしないでください。

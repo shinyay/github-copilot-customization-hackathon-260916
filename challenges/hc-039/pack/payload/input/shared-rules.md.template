@@ -1,0 +1,13 @@
+# Shared evidence rule draft
+
+SYNTHETIC_TRAINING_ONLY
+
+When reporting an investigation:
+
+- cite the material that supports each conclusion;
+- state the repository, branch/ref, and revision used;
+- separate verified facts, participant proposals, unknowns, and blocked checks;
+- do not convert missing access or missing evidence into a pass;
+- name the owner of future updates and restoration before sharing a revision.
+
+This is an inactive training draft, not root `AGENTS.md`, organization Instructions, a ruleset, or an access-control policy.

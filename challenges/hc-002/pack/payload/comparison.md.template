@@ -1,0 +1,115 @@
+# HC-002 Comparison
+
+人が .hackathon/evidence/hc-002/comparison.md にコピーして記入します。
+自分のconditionの欄を埋め、他条件は参照先または未実施理由を記載してください。
+未観測を成功へ置き換えません。未加工ログやsecretを貼らず、共有前にredactします。
+
+## Fixed task
+
+- request.txt.templateの全文（省略しない）:
+- task hash:
+- source repository / commit / baseline不変の確認:
+- 五つの入口と追加で読んだbaselineの参照先:
+- 全条件で同じにしたsourceの添付方法・読取り方法:
+- このrepositoryのcondition / run / named branch / 他条件の対応:
+
+## Environment
+
+- Client / host / OS / channel / version:
+- Model / effort / tools（不明はunknown）:
+- 専用repository / workspace / conversation / profileの分離:
+- home / User / 組織 / 設定同期 / Memoryの混入と未確認:
+- 読取り用toolsの実効権限、追加機構を使っていないこと:
+- 確認できない違いと停止判断:
+
+## Design and frozen text
+
+- participant/hc-002/design.mdの仮説・scope・文章を選んだ理由:
+- 原稿の凍結日時／版、三条件で同じbytesを使用した確認:
+
+| 原稿 | fileSha256 | frontmatterSha256 | bodySha256 | 対応するinstalled fileの有無とhash |
+|---|---|---|---|---|
+| Java | 未記入 | 未記入 | 未記入 | 未記入 |
+| XML | 未記入 | 未記入 | 未記入 | 未記入 |
+
+frontmatterは先頭の区切りから閉じる区切り直後のLFまで、bodyはその後の全文です。
+保存hashは発見・実投入を証明しません。
+
+## Scope probes
+
+各probeは別の新規会話で、同じ「構造を一文で説明する」読取り依頼を使用します。
+選んだapplyToによる予測と、clientで観測した結果を分離します。
+
+| 対象path | Javaの予測 | XMLの予測 | 明示添付／他の参照経路 | 発見の表示 | 実際のcontext投入の根拠／未観測 |
+|---|---|---|---|---|---|
+| wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java | 未記入 | 未記入 | 未記入 | 未記入 | 未記入 |
+| wholesale-core/src/main/resources/application-context.xml | 未記入 | 未記入 | 未記入 | 未記入 | 未記入 |
+| wholesale-core/src/main/resources/spring/module-operations.xml | 未記入 | 未記入 | 未記入 | 未記入 | 未記入 |
+| pom.xml | 未記入 | 未記入 | 未記入 | 未記入 | 未記入 |
+| README.md | 未記入 | 未記入 | 未記入 | 未記入 | 未記入 |
+
+- 予測と違った場合に調べたdescription、添付、リンク、混入:
+- applyToをACLとせず、特定できないとき停止した判断:
+- 診断後に改稿したか。本番との会話・比較セットの分離:
+
+## Baseline
+
+- この条件を実施したか／別repositoryの参照／未実施理由:
+- 二つの有効なInstructionsがないこと:
+- 送った固定task全文とsource:
+- 原稿本文を追加供給しなかったこと:
+- 回答と安全な参照、正しい引用・誤引用:
+- 所要時間、読取り経路、指示混入の兆候:
+- 未確認・失敗・source変更がない確認:
+
+## Customized
+
+- この条件を実施したか／別repositoryの参照／未実施理由:
+- installed fileのexact path（許可された二つだけ）:
+- 保存したbytesと参加者原稿の一致:
+- 発見が観測できたか。client表示等の根拠／not-observed:
+- 二本文それぞれの実際のcontext投入の根拠／not-observed:
+- 指示を手動添付したか（した回は自動適用の証拠ではない）:
+- 固定task、回答と安全な参照、正しい引用・誤引用:
+- 所要時間、読取り経路、未確認・失敗:
+
+## Manual-equivalent
+
+- この条件を実施したか／別repositoryの参照／未実施理由:
+- 二つの有効なInstructionsがないこと:
+- 同じ固定task全文:
+- 手動で送ったJava本文の全文（frontmatterだけを除く）:
+- 手動で送ったXML本文の全文（frontmatterだけを除く）:
+- それぞれのbody hashと凍結した参加者原稿との一致:
+- 送信順序・添付方法・送信の根拠。内部contextが不明ならunknown:
+- 要約、元Starter、Customizedの回答で代用していないこと:
+- 回答と安全な参照、正しい引用・誤引用、所要時間:
+
+## Comparison
+
+- 事前に定義した観測項目ごとの三条件の評価と根拠:
+- Javaの共有ガード、前提・拒否・更新をたどれたか:
+- XMLのbean・advice・pointcut・method ruleがつながっているか:
+- 別サービスの条件を無条件に流用していないか:
+- 宣言と稼働時のtransaction・rollbackを区別したか（本編では実行しない）:
+- 指示本文の効果と、届け方・発見の効果をどこまで分けられるか:
+- 不要な説明、対象漏れ、過剰適用、手動の負担:
+- model、順序、環境、入力等の比較限界と反証:
+
+## Outcome
+
+improved / equal / worse / incomparable / blocked / unsupported から選び、根拠を記入:
+
+- 否定的な結果、追加不要、未実施を含む判断:
+- 今回主張できないこと:
+- 次回変えるなら何を一つ変えるか:
+
+## Cleanup
+
+- 人が実行したRuntime検証command・終了code・失敗:
+- submitted検証とexport、提出bundleのredaction確認:
+- baseline不変と宣言外変更がない確認:
+- 自分が起動したprocessだけの停止（アプリを起動していなければその旨）:
+- repository archiveの実施／未実施と理由:
+- 他人のUser・組織・workspace設定やMemoryを変更・削除していないこと:
+- 静的検証と実機観測の区別（runtimeBehavior / educationalEffectはnot-observed）:

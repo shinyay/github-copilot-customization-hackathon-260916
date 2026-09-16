@@ -1,0 +1,19 @@
+# HC-045 reference notes
+
+Candidate, finding, and event records are SYNTHETIC_ADAPTED_TRAINING_ONLY. The Java source paths are pinned baseline evidence.
+
+Checked against public GitHub documentation on 2026-09-15. This is a short training summary, not a live review, Cloud, branch, or transmission observation.
+
+## Boundaries to preserve
+
+- A review finding, human assessment, request draft, prepared request, sent request, accepted request, applied change, returned material, and independently validated result are separate.
+- GitHub can present a Fix with Copilot request draft and choices about where work may occur, but drafting is not transmission or permission.
+- Runtime v1 binds `branchSafe:false` runs to the named apply branch. Cross-branch handoff remains blocked rather than being worked around.
+- Branch, head, changed-path scope, before/source anchor/post-image, tax-rate scale, aggregation, rounding, and independent validation must be recorded separately.
+- `Money.java` and `CommonRulesTest.java` are read evidence. A future request may target only `TaxAmounts.java`, but this Pack grants no source mutation.
+
+## Public reference
+
+- https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review
+
+Live request sending, acceptance, Cloud branch work, source application, Java tests, commit, push, and merge are `not-observed`.

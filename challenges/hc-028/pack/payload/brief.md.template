@@ -1,0 +1,7 @@
+# HC-028 Starter brief
+
+SYNTHETIC_TRAINING_ONLY
+
+このPackは、Stored revision、Documented rule、Observed attributionを分離する不活性教材です。4つの合成ref、task/configの2 diff、3つの合成attribution状態を使います。
+
+合成ref IDは実Git SHAではなく、diffは実repositoryへ適用しません。合成記録のrevision特定可能性を、実製品の観測成功へ昇格させないでください。

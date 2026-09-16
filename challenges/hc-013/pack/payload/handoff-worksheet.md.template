@@ -1,0 +1,33 @@
+# HC-013 Source handoff
+
+LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACE。これは受渡し票の説明用ひな型です。完成票は凍結設計からhelperが新規作成し、Spaceの取得ログとは呼びません。
+SYNTHETIC_TRAINING_ONLYは合成資料の性質です。actualHistoricalDecision: NOT_PROVIDEDを保持します。
+
+## Instructions
+
+比較前に凍結したinstructions文字列をそのまま記入します。全文とUTF-8 SHA-256:
+
+## Organization
+
+読む人、用途、読む順・group、資料を束ねる理由、未確認の見せ方:
+カードのglobal metadataも同じ内容で記入します。labels、revision、instructions、organization、
+observations、actualHistoricalDecision、limitationsを省略せず、Bだけが制約を知る対照にしません。
+
+## Materials
+
+B1、B2、B3、P1、P2、P3の順に6材料のdisplayTextと全metadataを対応付けます。
+B1/B2/B3は原本pin検証後のsanitized全体displayで、原本byte-exactとは呼びません。B3の6行以外は周囲の全行を保ちます。
+Bのカードと同じ全display、instructions、global metadata、limitations、配列を保持します。
+P1/P2/P3はreferenceType:local-packet、revision:hc013-materials-v2、scope:whole-fileのJSON全文です。
+B1/B2/B3のmetadataはP1のsourceReferences全field、transformationは原本とdisplayの別hash・件数・行番号・markerだけのreceiptです。
+原本の除去行・認証値・個々の値のhashを記入しません。原本への読み取り専用アクセスは全条件で同じです。
+
+## Handoff and unknowns
+
+実際に渡せた本文、添付表示、未解決main、missing/error/empty/partial、local sourceアクセスとSpace/source ACLの別:
+取得不能を不存在にせず、提供されていない履歴・hashを補充しません。
+
+## Non-claims
+
+実call・認証・ACL・同期・runtimeBehavior・educationalEffectは本編ではnot-observedです。
+同じinstructionsと同じ6材料を保ち、別条件にだけ新しい情報を足しません。

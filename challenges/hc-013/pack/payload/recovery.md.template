@@ -1,0 +1,30 @@
+# HC-013 Recovery
+
+## Case
+
+当該condition/run ID、自分の不活性成果物の対象path、正常時の全bytes/hash:
+未実施の場合は資料読解による設計点検と明記します。
+
+## Expected boundary
+
+変える一要因（revision、scope、本文部分、limitations欠落、配列順、instructions等）と保つ要因:
+境界の期待であり、資料の意味の正解分類ではありません。
+
+## Observed result
+
+意図したpost-image、変更前後の差分、実際に比較できた範囲、結果と未観測理由:
+同じ誤hashを両条件へ入れても固定source pinに戻る確認:
+originalとdisplayのhashの取り違え、予定外の行変更、receiptだけの差替え、片側だけのraw原本投入の拒否:
+値そのものを負例のログへ残さず、無害なdisplay行やmetadataでpost-imageを示します。
+
+## Restoration
+
+保存していた元の全bytesへ戻したこと、正常時と同じ確認、復元後hash:
+ここで戻すのはsanitized成果物の正常bytesです。原本の除去行・認証値を戻してはいけません。
+Java・overlay・実Space・OAuth・ACL・既存設定を変更せず、自分の追加分だけを扱います。
+
+## Non-claims
+
+ローカル不活性成果物の点検を実Space取得や実ACLの復元と呼びません。
+実call、認証、同期、runtimeBehavior、educationalEffectの未観測とその理由:
+helperの検査成功をRuntime export成功としません。認証値や個々の値のhashは保存しません。

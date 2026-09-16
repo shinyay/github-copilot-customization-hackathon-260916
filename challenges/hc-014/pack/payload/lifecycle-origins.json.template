@@ -1,0 +1,34 @@
+{
+  "fixtureLabel": "SYNTHETIC_LIFECYCLE_NOT_PLUGIN_DISCOVERY",
+  "scope": "紙上の候補メモ。実在するユーザー、ホーム設定、Plugin の一覧ではありません。",
+  "snapshot": "draft-v2",
+  "candidates": [
+    {
+      "origin": "paper/package-current",
+      "skill": "order-import-evidence",
+      "enabled": true,
+      "declaredVersion": "2.0.0",
+      "bodyMarker": "training-v2"
+    },
+    {
+      "origin": "paper/manual-copy",
+      "skill": "order-import-evidence",
+      "enabled": false,
+      "declaredVersion": "1.0.0",
+      "bodyMarker": "training-v1"
+    },
+    {
+      "origin": "paper/another-copy",
+      "skill": "order-import-evidence",
+      "enabled": true,
+      "declaredVersion": "2.0.0",
+      "bodyMarker": "training-v2"
+    }
+  ],
+  "questions": [
+    "一件ずつの書式確認とは別に、全 origin をまとめて何を調べますか。",
+    "enabled が false と書かれた候補の本文や版は、どの記録に残しますか。",
+    "この紙上メモだけでは確認できない実機の状態は何ですか。"
+  ],
+  "liveDiscovery": "not-observed"
+}

@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-040",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "plugin-package"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-040/starter/brief.md.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-040/starter/request.txt.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-040/starter/design.md.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-040/starter/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/SKILL.md.template",
+      "destination": ".hackathon/challenge/hc-040/starter/input/SKILL.md.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/plugin.json.template",
+      "destination": ".hackathon/challenge/hc-040/starter/input/plugin.json.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/plugin-settings.json.template",
+      "destination": ".hackathon/challenge/hc-040/starter/input/plugin-settings.json.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/source-map.md.template",
+      "destination": ".hackathon/challenge/hc-040/starter/input/source-map.md.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/lifecycle.md.template",
+      "destination": ".hackathon/challenge/hc-040/starter/input/lifecycle.md.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-040/distribution-plan.md.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/manual/v1/SKILL.md.template",
+      "conditions": [
+        "baseline"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/manual/v2/SKILL.md.template",
+      "conditions": [
+        "baseline"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/package/v1/plugin.json.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/package/v1/skills/training-order-evidence/SKILL.md.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/package/v2/plugin.json.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/package/v2/skills/training-order-evidence/SKILL.md.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/plugin-settings.json.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-040/comparison.md",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Condition and input",
+        "Design",
+        "Comparison",
+        "Outcome",
+        "Limitations",
+        "Skill byte identity",
+        "Component inventory",
+        "Version and restoration"
+      ],
+      "templateSha256": "12569e9f132e8135fe45d0e17f609228658dc662b6f851a683f5e49afc1edbaf"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-040/distribution-plan.md.template",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/manual/v1/SKILL.md.template",
+      "conditions": [
+        "baseline"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/manual/v2/SKILL.md.template",
+      "conditions": [
+        "baseline"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/package/v1/plugin.json.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/package/v1/skills/training-order-evidence/SKILL.md.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/package/v2/plugin.json.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/package/v2/skills/training-order-evidence/SKILL.md.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": "participant/hc-040/plugin-settings.json.template",
+      "conditions": [
+        "plugin-package"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-040/comparison.md",
+      "conditions": [
+        "baseline",
+        "plugin-package"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-033",
+  "inputCards": [
+    {
+      "id": "R33-01",
+      "externalKey": "training-key-a",
+      "lines": [
+        {
+          "sku": "SKU-A",
+          "quantity": "01"
+        },
+        {
+          "sku": "SKU-B",
+          "quantity": "2.0"
+        }
+      ],
+      "note": "Quantity spelling and line order are training inputs; no canonical digest is supplied."
+    },
+    {
+      "id": "R33-02",
+      "externalKey": "training-key-a",
+      "lines": [
+        {
+          "sku": "SKU-C",
+          "quantity": "1"
+        }
+      ],
+      "note": "Content differs; no result label is supplied."
+    },
+    {
+      "id": "R33-03",
+      "externalKey": null,
+      "lines": [
+        {
+          "sku": "SKU-A",
+          "quantity": "1"
+        }
+      ],
+      "note": "Claim information is incomplete; no result label is supplied."
+    }
+  ],
+  "observationPackets": [
+    {
+      "id": "P33-01",
+      "descriptionVisible": true,
+      "bodyObserved": false,
+      "resourcesObserved": false,
+      "scriptObserved": false
+    },
+    {
+      "id": "P33-02",
+      "descriptionVisible": true,
+      "bodyObserved": true,
+      "resourcesObserved": false,
+      "scriptObserved": false
+    },
+    {
+      "id": "P33-03",
+      "descriptionVisible": true,
+      "bodyObserved": true,
+      "resourcesObserved": true,
+      "scriptObserved": false
+    },
+    {
+      "id": "P33-04",
+      "descriptionVisible": true,
+      "bodyObserved": "unknown",
+      "resourcesObserved": "unknown",
+      "scriptLinkPresent": true,
+      "scriptObserved": "not-observed"
+    }
+  ],
+  "nonClaims": [
+    "No packet proves Skill discovery, body injection, resource reading, script execution, database state, or replay success."
+  ]
+}

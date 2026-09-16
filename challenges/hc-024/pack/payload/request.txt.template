@@ -1,0 +1,7 @@
+固定commit 398d7d1982a1402bcdba00d6c3ded67d8d338787の受注CSV external_key再送を説明してください。
+OrderImportService.javaのimportDraft/replay、OrderGroup.javaのcanonicalHash、OrderImportPostgresTest.javaの定義という同じ3 sourceの範囲で、新規作成・同じ内容の再送・内容が違う再送を分け、pathとsymbolを根拠にしてください。
+participant/hc-024/operations-note.jsonの全文は全conditionで利用できます。
+コードの現在の分岐、合成した運用、資料にない実際の採用理由を分離し、採用理由や未展開guardの挙動は不明としてください。
+testは定義の意図だけを読み、未実行と明記してください。
+日本語でEvidenceとUnknownsを分け、[[source:import-draft]]、[[source:import-replay]]、[[source:canonical-hash]]、[[source:replay-test-definition]]を該当する説明へ一度ずつ添えてください。
+markerの存在だけでは意味の正しさを証明できません。read/searchの範囲で回答だけを返し、ファイル・設定・アプリ・DB・test・外部systemを変更または実行しないでください。

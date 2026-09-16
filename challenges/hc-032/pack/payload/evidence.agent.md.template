@@ -1,0 +1,19 @@
+---
+name: approval-evidence-reader
+description: Read the fixed approval-trace material without changing the repository.
+target: github-copilot
+tools:
+  - read
+  - search
+---
+
+# Investigation role body
+
+<!-- ROLE_BODY_START -->
+TODO: Define the approval-trace investigation responsibility without changing, posting, executing, or approving anything.
+
+- Source scope: TODO
+- Evidence format: TODO
+- Unknowns and stop conditions: TODO
+- Handoff to the change owner: TODO
+<!-- ROLE_BODY_END -->

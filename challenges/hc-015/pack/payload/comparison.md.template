@@ -1,0 +1,27 @@
+# HC-015 comparison
+
+## Fixed task
+
+このrunのcondition / run ID / comparisonGroupId / design revision / Runtime PRを記入します。request全文のSHA-256、source repositoryと固定commit、A1/A2/A3のpath・raw byte数・SHA-256を記録します。他conditionは別run・別PRへリンクし、未実施は未実施のままにします。
+
+## Environment
+
+実施日、VS Code Stable / Copilot / OSとextension host、model/effort、実効read/search tools、承認方式、tabs、selection、添付、Java拡張と言語サービス、indexの状態を記録します。User/home/組織指示、Memory、設定同期の残留も分けます。不明な値はnullまたはnot-observedと理由を書き、指定名や0で埋めません。
+
+## Design
+
+自分の設計票と当該conditionのsearch-planまたはcontext-planのpath・hash、検索順序、停止基準、供給準備の選択理由を記入します。B/Cの事前供給はA1/A2の同じ全文です。A3への追加読取りは全条件で利用可能です。別添付集合は別revisionに分けます。
+
+## Observations
+
+観測種別を実検索・実添付・手動供給・design-only・fixture-onlyから明示します。各操作のquery、方式、要求path/範囲、返却path/範囲、実際に読んだ範囲、追加読取り理由を時系列に残します。A3、別タブ混入、全文切り詰めの有無と未確認部分も記録します。
+
+操作数は検索・全文read・添付・貼付・追問を分け、数え方を記します。計画手順数と実UI操作数、source byte数とtoken数は別です。実測できない時間・token・call数はnullです。
+
+## Comparison
+
+同じtask/source/access/model/toolsを保てたか、準備した全文と実投入のどちらを照合したか書きます。最初に必要な根拠へ到達できたか、不要な操作や不足、全文供給の負担を比べます。返却された引用と説明は人がsourceへ戻って確認し、その範囲と不確実さを残します。件数の多さだけを勝ちにしません。
+
+## Outcome
+
+improved / equal / worse / incomparable / blocked / unsupportedから、このrunで言える範囲を理由付きで選びます。改善や追加不要のどちらでも提出できます。runtimeBehavior / educationalEffectは観測していなければnot-observedです。静的検査・設計の完了を、実検索・添付・LSP・semantic index・実transactionの成功へ昇格させません。

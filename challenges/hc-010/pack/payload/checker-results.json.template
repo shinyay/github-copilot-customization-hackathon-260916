@@ -1,0 +1,153 @@
+{
+  "materialType": "SYNTHETIC_TRAINING_ONLY",
+  "observation": "fixture-only",
+  "liveStatus": "live-unobserved",
+  "generatedFrom": "Unchanged Labs helper bytes, copied together only into author-owned scratch; synthetic stdin is not a real Stop event.",
+  "host": "win32",
+  "node": "v22.16.0",
+  "helperSha256": {
+    "payload/tools/checker.mjs.template": "dd2e6ecee395c907a73202bae6b9104d5d12f98a0b4378d42ec806b4f0e33875",
+    "payload/tools/hook-io.mjs.template": "dd149a110b33e555f81347c2860548f79df24731e71b132dfbdc8ecec7df3642",
+    "payload/tools/stop-notify.mjs.template": "fd46c9e1ab6d06694f882109fb0483eeafef1ba1620b9ea2b3fa287c2a5d1fdd"
+  },
+  "cases": [
+    {
+      "caseId": "sample-01",
+      "observation": "fixture-only",
+      "selector": {
+        "lab": "LAB-10",
+        "runId": "run-01"
+      },
+      "draftSource": "payload/draft-a.md.template",
+      "draftSha256": "6d132ff4658936784350710bbd81248b8c6dbe27cf769c697afce8b14e594ac1",
+      "checkerInvoked": true,
+      "checker": {
+        "exitCode": 0,
+        "output": {
+          "protocolVersion": 1,
+          "lab": "LAB-10",
+          "result": "pass",
+          "code": "OK",
+          "missingHeadings": []
+        }
+      },
+      "adapter": {
+        "exitCode": 0,
+        "output": {
+          "continue": true,
+          "systemMessage": "[LAB-10] pass: OK. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+        }
+      }
+    },
+    {
+      "caseId": "sample-02",
+      "observation": "fixture-only",
+      "selector": {
+        "lab": "LAB-10",
+        "runId": "run-01"
+      },
+      "draftSource": "payload/draft-b.md.template",
+      "draftSha256": "2701b55ebd83c4cb57f2dbb0a24b04ea8948dc3ae6525c7196a80e9ab0e836f1",
+      "checkerInvoked": true,
+      "checker": {
+        "exitCode": 1,
+        "output": {
+          "protocolVersion": 1,
+          "lab": "LAB-10",
+          "result": "invalid",
+          "code": "MISSING_REQUIRED_HEADING",
+          "missingHeadings": [
+            "## Unknowns"
+          ]
+        }
+      },
+      "adapter": {
+        "exitCode": 0,
+        "output": {
+          "continue": true,
+          "systemMessage": "[LAB-10] invalid: MISSING_REQUIRED_HEADING. Missing: ## Unknowns. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+        }
+      }
+    },
+    {
+      "caseId": "sample-03",
+      "observation": "fixture-only",
+      "selector": {
+        "lab": "LAB-10",
+        "runId": "run-02"
+      },
+      "draftSource": "payload/draft-a.md.template",
+      "draftSha256": "6d132ff4658936784350710bbd81248b8c6dbe27cf769c697afce8b14e594ac1",
+      "checkerInvoked": true,
+      "checker": {
+        "exitCode": 2,
+        "output": {
+          "protocolVersion": 1,
+          "lab": "LAB-10",
+          "result": "uncheckable",
+          "code": "DRAFT_NOT_FOUND",
+          "missingHeadings": []
+        }
+      },
+      "adapter": {
+        "exitCode": 0,
+        "output": {
+          "continue": true,
+          "systemMessage": "[LAB-10] uncheckable: DRAFT_NOT_FOUND. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+        }
+      }
+    },
+    {
+      "caseId": "sample-04",
+      "observation": "fixture-only",
+      "selector": null,
+      "draftSource": "payload/draft-a.md.template",
+      "draftSha256": "6d132ff4658936784350710bbd81248b8c6dbe27cf769c697afce8b14e594ac1",
+      "checkerInvoked": true,
+      "checker": {
+        "exitCode": 0,
+        "output": {
+          "protocolVersion": 1,
+          "lab": "LAB-10",
+          "result": "skipped",
+          "code": "NO_ACTIVE_TARGET",
+          "missingHeadings": []
+        }
+      },
+      "adapter": {
+        "exitCode": 0,
+        "output": {
+          "continue": true,
+          "systemMessage": "[LAB-10] skipped: NO_ACTIVE_TARGET. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+        }
+      }
+    },
+    {
+      "caseId": "sample-05",
+      "observation": "fixture-only",
+      "selector": {
+        "lab": "LAB-10",
+        "runId": "run-01"
+      },
+      "draftSource": "payload/draft-b.md.template",
+      "draftSha256": "2701b55ebd83c4cb57f2dbb0a24b04ea8948dc3ae6525c7196a80e9ab0e836f1",
+      "checkerInvoked": false,
+      "checker": null,
+      "adapter": {
+        "exitCode": 0,
+        "output": {
+          "continue": true,
+          "systemMessage": "[LAB-10] skipped: STOP_HOOK_ALREADY_ACTIVE. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+        }
+      }
+    }
+  ],
+  "nonClaims": {
+    "realStop": "not-observed",
+    "settingsDiscovery": "not-observed",
+    "notificationDisplay": "not-observed",
+    "llmExecution": "not-observed",
+    "semanticAccuracy": "not-evaluated",
+    "participantProposals": "not observed adapter output"
+  }
+}

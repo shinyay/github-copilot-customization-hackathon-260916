@@ -1,0 +1,51 @@
+# HC-012 選び直しの手順票
+
+SYNTHETIC_TRAINING_ONLY — 設計と紙上の再構成の記録用紙です。UI操作ログではありません。
+baselineはindividual-selection.md、tool-set-designはselection-plan.mdへコピーして記入します。
+
+## Mode
+
+記入: condition、共通design.mdの版、個別選択か名前付き集合か。実run IDはEvidenceに記録します。
+
+## Declared members
+
+- search/changes
+- search/codebase
+- read/problems
+- search/usages
+
+この固定四参照を各一回だけ用います。手順票と集合原稿を別々に固定リストへ照合してください。
+
+## First preparation
+
+記入: 初回に資料を読み、対象を見つけ、選ぶまでの想定手順を番号付きで書く。tool-set-designでは集合名・説明・iconと原稿pathも示す。
+本編は手順の設計だけです。想定手順数は数え方付きの計画値、実測クリック数と所要時間はnullです。
+
+## Reconstruction
+
+記入: 別の人が選び直す想定手順と、初回から省略せず残す確認。紙上の再構成者、自己点検ならcarryover、読んだ原稿の版も書く。
+
+## Reconstructed members
+
+記入: 手順から再構成した参照を一行に一つずつ書く。UIで選択済み・有効なtool一覧とは呼びません。
+再構成できなかった場合は不足・余分・重複・未知の内容と理由を記録し、固定リストを後付けして成功にしません。
+
+## Checks and stop
+
+記入: 四参照の固定リストとの照合、初回と再設定の差、停止・未実施の扱い。変更なしや診断なしを正しさへ読み替えない確認も含める。
+本編の集合原稿はparticipant/hc-012/reader.toolsets.jsonc.templateに留めます。
+Chat: Configure Tool Setsが開くcurrent Profileのpromptsフォルダーは将来の別承認の対象で、今は開きません。.vscodeを発見先にしません。
+
+## Observability
+
+記入: 紙上で観察できたこと、実機未観測の理由、集合を使わない案の得失。
+selectedMembers: null
+effectiveMembers: null
+actualCalls: null
+observedClicks: null
+elapsedMs: null
+discovery: not-observed
+runtimeBehavior: not-observed
+educationalEffect: not-observed
+
+集合の全toolが毎回呼ばれる保証も、他toolを禁止するACLもありません。予定の手順を実測クリックへ変換しません。

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_TRAINING_ONLY",
+  "schemaBoundary": "Training fields are not asserted to be GitHub API fields.",
+  "tasks": [
+    {
+      "id": "A01",
+      "approveAllowed": "unknown",
+      "countTowardRequiredApprovals": "unknown",
+      "requiredApprovalCount": 1,
+      "targetHead": "head-a",
+      "changedFilePatterns": [
+        "wholesale-core/**"
+      ],
+      "effectivePolicy": {
+        "repository": "recorded",
+        "organization": "unknown",
+        "enterprise": "unknown"
+      },
+      "otherMergeGates": {
+        "ci": "unknown"
+      }
+    },
+    {
+      "id": "A02",
+      "approveAllowed": true,
+      "countTowardRequiredApprovals": false,
+      "requiredApprovalCount": 1,
+      "targetHead": "head-b",
+      "changedFilePatterns": [
+        "wholesale-core/**"
+      ],
+      "effectivePolicy": {
+        "repository": "recorded",
+        "organization": "recorded",
+        "enterprise": "recorded"
+      },
+      "otherMergeGates": {
+        "ci": "unknown"
+      }
+    },
+    {
+      "id": "A03",
+      "approveAllowed": true,
+      "countTowardRequiredApprovals": true,
+      "requiredApprovalCount": 2,
+      "targetHead": "head-c",
+      "changedFilePatterns": [
+        "wholesale-core/**"
+      ],
+      "effectivePolicy": {
+        "repository": "recorded",
+        "organization": "recorded",
+        "enterprise": "recorded"
+      },
+      "otherMergeGates": {
+        "ci": "unknown"
+      }
+    },
+    {
+      "id": "A04",
+      "approveAllowed": true,
+      "countTowardRequiredApprovals": true,
+      "requiredApprovalCount": 1,
+      "targetHead": "head-d",
+      "changedFilePatterns": [
+        "wholesale-core/**"
+      ],
+      "changedFiles": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java",
+        "wholesale-web/src/main/resources/templates/order.html"
+      ],
+      "effectivePolicy": {
+        "repository": "recorded",
+        "organization": "recorded",
+        "enterprise": "recorded"
+      },
+      "otherMergeGates": {
+        "ci": "unknown"
+      }
+    },
+    {
+      "id": "A05",
+      "approveAllowed": true,
+      "countTowardRequiredApprovals": true,
+      "requiredApprovalCount": 2,
+      "targetHead": "head-f",
+      "previousHead": "head-e",
+      "changedFilePatterns": [
+        "wholesale-core/**"
+      ],
+      "effectivePolicy": {
+        "repository": "recorded",
+        "organization": "recorded",
+        "enterprise": "recorded"
+      },
+      "otherMergeGates": {
+        "ci": "unknown"
+      }
+    },
+    {
+      "id": "A06",
+      "approveAllowed": true,
+      "countTowardRequiredApprovals": true,
+      "requiredApprovalCount": 1,
+      "targetHead": "head-g",
+      "changedFilePatterns": [
+        "wholesale-core/**"
+      ],
+      "effectivePolicy": {
+        "repository": "recorded",
+        "organization": "unknown",
+        "enterprise": "unknown"
+      },
+      "otherMergeGates": {
+        "ci": "recorded-success"
+      }
+    },
+    {
+      "id": "A07",
+      "approveAllowed": true,
+      "countTowardRequiredApprovals": true,
+      "requiredApprovalCount": 1,
+      "targetHead": "head-h",
+      "changedFilePatterns": [
+        "wholesale-core/**"
+      ],
+      "effectivePolicy": {
+        "repository": "recorded",
+        "organization": "recorded",
+        "enterprise": "recorded"
+      },
+      "otherMergeGates": {
+        "ci": "unknown",
+        "requiredConversations": "unknown",
+        "deployments": "unknown"
+      }
+    }
+  ]
+}

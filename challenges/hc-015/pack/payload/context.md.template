@@ -1,0 +1,25 @@
+# HC-015 context
+
+## Requested context
+
+当該condition / run ID / comparisonGroupId、request hash、source baselineを記入します。読む候補A1/A2/A3、検索query、要求した範囲と理由を記録します。333–349行のanchorと全文供給は別です。事前供給するB/Cの集合はA1/A2の二つだけで、A3は全条件に等しく利用可能です。
+
+## Provided context
+
+baselineの検索・全文read、BのAdd Context、Cの手動供給のうち当該runの経路を書きます。準備したexact path・各raw byte数・SHA-256・供給順を記録し、Cはmanual-input.txt全体と各file sectionのhashも残します。
+
+準備した全文、実添付表示、返却範囲、実際に投入された範囲、実際に読めた範囲を分けます。34526 bytesは二file本文だけで、requestとdelimiterは別です。actual token countは未実測ならnull、client attachment extentは観測できなければnot-observedです。欠落、選択だけ、同名別file、別タブ、切り詰めを調べた方法と限界を書きます。
+
+## Source references
+
+回答に現れたpath / symbol / 行範囲を元sourceへ照合し、対応を人が確かめた範囲を記入します。A2のimportからA3のbean定義をどう辿ったか、その要求・返却・読取範囲を記録します。A3や他pathへの追加readは全条件で可能です。本文の検索ヒット数と結論の妥当性を同じ尺度にしません。
+
+## Search and language status
+
+queryと検索順、literal text / file read / human editor Definition-References / Agent Usages / semanticを別欄にします。Java言語サービスの未導入・pending・unsupported・not-observedは参照0ではありません。resolvedLocationsは未観測ならnullです。
+
+indexの出所・状態・資格・policyと未確認範囲を記入します。未確認indexのsemanticResultsはnullであり、0件やreadyと書きません。search.exclude、files.exclude、.gitignoreとtabs/selectionの観測有無も残します。本編で除外変更・index構築は行いません。JSON計画やNodeのliteral scanは製品側の検索結果ではありません。
+
+## Non-claims
+
+全文準備の同一性はUIのmetadata・優先度・内部投入の同一性を保証しません。path候補や検索除外はACLではなく、0件は不存在でもアクセス拒否でもありません。設計だけのrouteを成功としません。実proxy・実transaction・Java/DBテスト・過去の採用理由、未実施のLLM/教育効果は未確認です。任意診断は本編と別に記録します。

@@ -1,0 +1,9 @@
+---
+syntheticRef: REF-BASE-01
+asset: repository-instructions
+---
+
+# Base rules
+
+- Java 7構文と標準APIの範囲を記録する。
+- test未実施を成功として報告しない。

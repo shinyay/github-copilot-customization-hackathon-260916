@@ -1,0 +1,16 @@
+# HC-021 診断ブリーフ
+
+SYNTHETIC_TRAINING_ONLY
+
+このPackは2行の表示カードと短いInstructions原稿だけを扱います。Java source、実データ、秘密、外部接続は使いません。
+
+確認する層:
+
+1. placement: ファイルのpath、名前、拡張子。
+2. discovery: clientが候補・参照元として示したか。
+3. content use: 本文が会話へ供給されたと確認できたか。
+4. output compliance: 回答が規則へどう対応したか。
+
+ファイルの存在から発見・本文利用を推測せず、出力から投入元を逆算しません。複数Instructionsの一般的な優先順位も導きません。
+
+全conditionで同じpacket、request、rules、variant原稿を使います。選択しないvariant、case-plan、別conditionの出力をChatへ渡しません。

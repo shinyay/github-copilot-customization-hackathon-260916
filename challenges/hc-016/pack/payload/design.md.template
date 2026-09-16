@@ -1,0 +1,25 @@
+# HC-016 design
+
+- condition:
+- run-id:
+- comparison group:
+
+## Reading paths
+
+sourceから読む経路、固定factを手動供給する経路、将来Memory経由で読む経路の違いを記録します。三つ目は本編で実行しません。
+
+## Selection and scope
+
+残す候補、残さない候補、保留する候補と、Repository / User / Session等のscope判断を記録します。保存ゼロも選べます。
+
+## Provenance and freshness
+
+source commit、path、symbol、引用範囲、再確認trigger、陳腐化条件を記録します。
+
+## Maintenance and stop
+
+更新、撤回、対象外note保持の担当と手順、全消去を使わず停止する条件を記録します。
+
+## Fixed controls
+
+fixed fact、cards、request、source、観測点のhashと、設計revisionを変えた場合の新しいcomparison groupを記録します。

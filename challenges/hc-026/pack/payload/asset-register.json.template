@@ -1,0 +1,56 @@
+{
+  "label": "SYNTHETIC_TRAINING_ONLY",
+  "hashAlgorithm": "sha256",
+  "assets": [
+    {
+      "assetId": "reading-rules",
+      "versions": {
+        "v1": {
+          "files": [
+            {
+              "path": "versions/v1/analysis-rules.md.template",
+              "sha256": "0f376780ddf1ecd52dff9d34c141149e74e809b2e0e4d82b201ea8b942d63dd8"
+            }
+          ]
+        },
+        "v2": {
+          "files": [
+            {
+              "path": "versions/v2/analysis-rules.md.template",
+              "sha256": "9ff5e19b1d4c25256aa1f0cee70ed69817263784183689567e488ddf66146e33"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "assetId": "analysis-package",
+      "versions": {
+        "v1": {
+          "files": [
+            {
+              "path": "versions/v1/analysis-package/plugin.json.template",
+              "sha256": "9ebf1524bfbf4d25e2d62d93991026a37e723ecc0cf3f6f73b372e362a591743"
+            },
+            {
+              "path": "versions/v1/analysis-package/skills/order-import-evidence/SKILL.md.template",
+              "sha256": "d8c56a501e9626d057985f274af72de584407d7fd4a52c5757d485cbbe9cf5ad"
+            }
+          ]
+        },
+        "v2": {
+          "files": [
+            {
+              "path": "versions/v2/analysis-package/plugin.json.template",
+              "sha256": "3ed0f42a92336a4d9d1925eba0364eb31a32fcc74c2063db14c103b42252ab5f"
+            },
+            {
+              "path": "versions/v2/analysis-package/skills/order-import-evidence/SKILL.md.template",
+              "sha256": "42f68514cc812a25539c7fa35309af20d1d404a6e38b22d062518536da5dc4da"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

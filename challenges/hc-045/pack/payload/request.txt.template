@@ -1,0 +1,5 @@
+SYNTHETIC_ADAPTED_TRAINING_ONLY
+
+Use the supplied source paths, candidate diffs, finding packet, and handoff events to assess H01 through H06. For each task, record candidate state, before/source anchor/after check, branch/head/scope, finding adoption or hold reason, packet claim versus observed evidence, independent expectations, read-only files, final human confirmation, and stop condition.
+
+For baseline, freeze your usual review-to-request approach. For handoff-policy, first freeze a participant-authored policy that separates draft, prepared, sent, accepted, and applied states. Use the same material bytes in both conditions. Keep the request as an unsent draft targeting only TaxAmounts.java; do not change source, commit, push, merge, or bind a Runtime v1 run to another branch.

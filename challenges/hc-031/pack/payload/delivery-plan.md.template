@@ -1,0 +1,15 @@
+# Delivery plan
+
+| condition | Java body source | XML body source | delivery |
+|---|---|---|---|
+| baseline | none | none | fixed request only |
+| scoped-design | participant/hc-031/java-rules.md.template | participant/hc-031/xml-rules.md.template | applyTo別の供給設計 |
+| manual-equivalent | participant/hc-031/java-rules.md.template | participant/hc-031/xml-rules.md.template | 同じbody全文を同じ順序で手動供給 |
+
+## Task order
+
+- java-reading:
+- xml-reading:
+- mixed-reading:
+
+mixed-readingではJava/XML bodyを要約せず、scoped-designで凍結した順序を保ちます。供給設計は実採用やsource accessを保証しません。

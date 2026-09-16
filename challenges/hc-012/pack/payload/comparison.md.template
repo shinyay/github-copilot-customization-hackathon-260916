@@ -1,0 +1,39 @@
+# HC-012 Comparison
+
+このひな型を今回のrunの記録へ置き換えます。設計、紙上の再構成、合成QA、実機観測を混同しません。
+
+## Fixed task
+
+記入: challenge / condition / 実run ID / comparisonGroupId、Runtime repository・branch・PR、Pack version・hash。
+固定source repositoryとcommit、三つのsource path、brief・request・tool-members・designのraw SHA-256と全文を読める状態を記録します。
+比較相手が未実施なら未実施と書きます。別runとの対応はPR・runへのリンクで示し、同じrunへまとめません。
+
+## Environment
+
+記入: OS、Node、編集方法、条件別repository・workspaceの識別、会話・Profileは本編でnot-usedであること。
+model/effort・承認方式・実効toolsは実機未使用ならnot-used / null。既存User/HOME/組織/Memoryの有無や残留の不明点を記録します。
+別repositoryだけで外部設定や人の記憶が消えたとせず、carryoverや揃えられない条件を残します。
+
+## Design
+
+記入: 選び直す相手と用途、集合名・description・iconの理由、個別選択の代案、事前の比較軸、追加不要の場面。
+完成したparticipant成果物のexact pathとraw SHA-256を記録し、原稿の版を比較中に変更しません。
+
+## Observations
+
+記入: 三sourceを読んだpath・symbol・行範囲と限界。テスト定義の読解であり、Java・DBは未実行です。
+原稿に宣言した四参照、紙上で再構成した四参照はmembership.mdへ対応付けます。
+UIで選択した集合・実効メンバー・発見・実callはnot-observed、実測クリック数・時間はnullです。想定手順数は計画値と明記します。
+
+## Comparison
+
+記入: Baseline / Customizedの同じ全資料・固定四参照との一致、手順の分かりやすさ、確認漏れ、初回準備と再設定の違い。
+両条件が同じ三参照、または同じ別の四参照では不一致です。再構成者とcarryover、実機未観測による限界を残します。
+変更なし・診断なしを正しさに読み替えず、toolの選択と回答品質の差を同一視しません。
+
+## Outcome
+
+記入: improved / equal / worse / incomparable / blocked / unsupportedの一つと、設計比較としての理由・根拠・限界。
+追加不要、実機なしでも有効です。未観測の成功receiptは作りません。
+runtimeBehavior: not-observed
+educationalEffect: not-observed

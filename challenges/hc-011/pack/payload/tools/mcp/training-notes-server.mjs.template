@@ -1,0 +1,222 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { createInterface } from "node:readline";
+
+const protocolVersion = "2025-11-25";
+const note = JSON.parse(
+  readFileSync(
+    path.resolve(process.cwd(), "fixtures", "operations-note.json"),
+    "utf8",
+  ),
+);
+const tool = {
+  name: "lookup_training_note",
+  description:
+    "Read one fictional workshop operations note by key. Returns labeled synthetic content and a fixed code-reading snapshot, NOT production facts or historical evidence.",
+  inputSchema: {
+    type: "object",
+    properties: {
+      noteKey: {
+        type: "string",
+        minLength: 1,
+        maxLength: 80,
+        pattern: "^[a-z][a-z0-9-]*$",
+        description: "The workshop key is order-import-replay. Not a path or URL.",
+      },
+    },
+    required: ["noteKey"],
+    additionalProperties: false,
+  },
+};
+
+let phase = "new";
+const isObject = (value) =>
+  value !== null && typeof value === "object" && !Array.isArray(value);
+const isId = (value) => typeof value === "string" || Number.isInteger(value);
+const has = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
+
+function send(message) {
+  process.stdout.write(`${JSON.stringify(message)}\n`);
+}
+
+function error(id, code, message) {
+  const response = { jsonrpc: "2.0", error: { code, message } };
+  if (isId(id)) {
+    response.id = id;
+  }
+  send(response);
+}
+
+function result(id, value) {
+  send({ jsonrpc: "2.0", id, result: value });
+}
+
+function toolError(id, code, message) {
+  result(id, {
+    isError: true,
+    content: [
+      {
+        type: "text",
+        text: JSON.stringify({
+          code,
+          message,
+          fixtureLabel: "SYNTHETIC_TRAINING_ONLY",
+        }),
+      },
+    ],
+    structuredContent: { error: { code, message } },
+  });
+}
+
+function receive(line) {
+  let request;
+  try {
+    request = JSON.parse(line);
+  } catch {
+    error(undefined, -32700, "Parse error");
+    return;
+  }
+
+  if (
+    isObject(request) &&
+    request.jsonrpc === "2.0" &&
+    !has(request, "method") &&
+    isId(request.id) &&
+    has(request, "result") !== has(request, "error")
+  ) {
+    return;
+  }
+  if (
+    !isObject(request) ||
+    request.jsonrpc !== "2.0" ||
+    typeof request.method !== "string"
+  ) {
+    error(isObject(request) ? request.id : undefined, -32600, "Invalid request");
+    return;
+  }
+
+  if (!has(request, "id")) {
+    if (
+      request.method === "notifications/initialized" &&
+      phase === "negotiated" &&
+      (request.params === undefined || isObject(request.params))
+    ) {
+      phase = "ready";
+    }
+    return;
+  }
+  if (!isId(request.id)) {
+    error(undefined, -32600, "Request id must be a string or integer");
+    return;
+  }
+  if (request.params !== undefined && !isObject(request.params)) {
+    error(request.id, -32602, "params must be an object");
+    return;
+  }
+
+  const params = request.params ?? {};
+  if (request.method === "initialize") {
+    if (phase !== "new") {
+      error(request.id, -32600, "Already initialized");
+      return;
+    }
+    if (
+      typeof params.protocolVersion !== "string" ||
+      !isObject(params.capabilities) ||
+      !isObject(params.clientInfo) ||
+      typeof params.clientInfo.name !== "string" ||
+      typeof params.clientInfo.version !== "string"
+    ) {
+      error(
+        request.id,
+        -32602,
+        "initialize requires protocolVersion, capabilities and clientInfo",
+      );
+      return;
+    }
+    phase = "negotiated";
+    result(request.id, {
+      protocolVersion,
+      capabilities: { tools: {} },
+      serverInfo: { name: "independent-training-notes", version: "1.0.0" },
+    });
+    return;
+  }
+  if (request.method === "ping") {
+    result(request.id, {});
+    return;
+  }
+  if (!["tools/list", "tools/call"].includes(request.method)) {
+    error(request.id, -32601, "Method not found");
+    return;
+  }
+  if (phase !== "ready") {
+    error(
+      request.id,
+      -32000,
+      "Complete initialize and notifications/initialized first",
+    );
+    return;
+  }
+  if (request.method === "tools/list") {
+    if (params.cursor !== undefined) {
+      error(request.id, -32602, "This one-page fixture has no continuation cursor");
+      return;
+    }
+    result(request.id, { tools: [tool] });
+    return;
+  }
+
+  if (
+    typeof params.name !== "string" ||
+    (params.arguments !== undefined && !isObject(params.arguments))
+  ) {
+    error(
+      request.id,
+      -32602,
+      "tools/call requires a name and optional object arguments",
+    );
+    return;
+  }
+  if (params.name !== tool.name) {
+    error(request.id, -32602, "Unknown tool");
+    return;
+  }
+  const args = params.arguments ?? {};
+  if (
+    Object.keys(args).some((key) => key !== "noteKey") ||
+    typeof args.noteKey !== "string" ||
+    args.noteKey.length > 80 ||
+    !/^[a-z][a-z0-9-]*$/u.test(args.noteKey)
+  ) {
+    toolError(
+      request.id,
+      "INVALID_ARGUMENT",
+      "Provide only noteKey: a 1..80 character lowercase identifier.",
+    );
+    return;
+  }
+  if (args.noteKey !== note.noteKey) {
+    toolError(
+      request.id,
+      "NOT_FOUND",
+      "No training note for that key. Do not invent missing evidence.",
+    );
+    return;
+  }
+  result(request.id, {
+    isError: false,
+    content: [{ type: "text", text: JSON.stringify(note) }],
+    structuredContent: note,
+  });
+}
+
+const input = createInterface({
+  input: process.stdin,
+  crlfDelay: Number.POSITIVE_INFINITY,
+  terminal: false,
+});
+input.on("line", receive);
+input.on("close", () => {
+  process.exitCode = 0;
+});

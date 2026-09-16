@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-010",
+  "sourceKind": "baseline",
+  "labs": {
+    "repository": "shinyay/github-copilot-customization-labs",
+    "commit": "3474d21dd62bad2e594e84657dabe2eb9bb876c1"
+  },
+  "sourceBaseline": {
+    "repository": "shinyay/code-to-doc-workshop-260910",
+    "commit": "398d7d1982a1402bcdba00d6c3ded67d8d338787",
+    "path": "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+    "bytes": 1419,
+    "sha256": "647a016546879a67680973676c751668cdb39d84569df26d65cf543c67ef5f15",
+    "symbol": "Money.tax",
+    "scope": "この1ファイルをread-onlyで照合した。515-file treeの再検証、Java実行、業務上の正答の配布はしない。"
+  },
+  "originals": [
+    {
+      "path": "docs/labs/lab-10-hooks.md",
+      "bytes": 13910,
+      "sha256": "6735e3f9fcbd147eb76b1f671f5fa0e9d4c207a2101b6747266c08598489aae9",
+      "use": "呼出し契約、Stopの時点、形式と意味の区別。本編を手動確認契約と不活性通知設計へ改作。"
+    },
+    {
+      "path": "docs/optional/lab-10-hooks.md",
+      "bytes": 57016,
+      "sha256": "8f0d6692f974e0809aa6cce8c3c18dbb23f338f01b0844f74198ed1346cb4143",
+      "use": "別承認、extension host OS、入出力と非主張の参照。原本の配置・実行手順は移植しない。"
+    },
+    {
+      "path": "examples/hooks/checker.mjs",
+      "bytes": 5912,
+      "sha256": "dd2e6ecee395c907a73202bae6b9104d5d12f98a0b4378d42ec806b4f0e33875",
+      "use": "同一bytesを.templateとして配布。ロジックを書き直さない。"
+    },
+    {
+      "path": "examples/hooks/hook-io.mjs",
+      "bytes": 2326,
+      "sha256": "dd149a110b33e555f81347c2860548f79df24731e71b132dfbdc8ecec7df3642",
+      "use": "同一bytesを.templateとして配布。相対importを保つ。"
+    },
+    {
+      "path": "examples/hooks/stop-notify.mjs",
+      "bytes": 3546,
+      "sha256": "fd46c9e1ab6d06694f882109fb0483eeafef1ba1620b9ea2b3fa287c2a5d1fdd",
+      "use": "同一bytesを.templateとして配布。同じcheckerを呼ぶ通知専用adapter。"
+    },
+    {
+      "path": "examples/hooks/active.json.template",
+      "bytes": 43,
+      "sha256": "311054059411d0293c014fd1bc383836fd6ec344b9e743b14f0027a891583436",
+      "use": "原本の2-key selectorを無変更で参照。原本LAB-10は由来IDでありHC-010へ変更しない。"
+    },
+    {
+      "path": "examples/hooks/stop-notification.json.template",
+      "bytes": 298,
+      "sha256": "b20620429f305037b2cb84a65d6bec8da1b478ce564cc0403913880a09788750",
+      "use": "Windows向けの無効な参照原稿。同じ内容の参加者用stop-hook用紙も作成する。"
+    },
+    {
+      "path": "examples/hooks/draft.valid.md.template",
+      "bytes": 899,
+      "sha256": "39d1ce052bb368a8580270a8ffefc9d7f01a02b4547a524d9b59bacf709a05d3",
+      "use": "見出し構造だけを参考にし、完成済みの業務分析は除去。SYNTHETIC_TRAINING_ONLYへ全面改作。"
+    },
+    {
+      "path": "examples/hooks/draft.missing-unknowns.md.template",
+      "bytes": 684,
+      "sha256": "330bf8e95b62611076ccdbd80bcb2bf3471cd4e90841529614914c5cc83441dd",
+      "use": "Unknowns節のみを除く構造差を参考にする。原本の意味上の結論・分類表は配布しない。"
+    },
+    {
+      "path": "examples/hooks/request.txt.template",
+      "bytes": 857,
+      "sha256": "9666f5ba22b63c235461bc8e3ea1b9c360f55956b097c7c773a738a16885c607",
+      "use": "Money.taxの実読解対象と安全境界を参照。原本実行依頼ではなく本編2条件の共通設計依頼へ書き直す。"
+    },
+    {
+      "path": "fixtures/tsubame-wholesale/wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+      "bytes": 1419,
+      "sha256": "647a016546879a67680973676c751668cdb39d84569df26d65cf543c67ef5f15",
+      "use": "Java原本commitはsourceBaseline側。Labsへvendorされた1ファイルを実読し、答えの文章は複製しない。"
+    }
+  ],
+  "payloads": [
+    {
+      "source": "payload/brief.md.template",
+      "origins": [
+        "docs/labs/lab-10-hooks.md"
+      ],
+      "adaptation": "本編2条件、共通入力、制作範囲を独立したbriefへ手書きで整理。",
+      "bytes": 2101,
+      "sha256": "b8f32875501b79e19e6c2f1862b88f28910f5a27ee2ae11ec340c7bc76e17471"
+    },
+    {
+      "source": "payload/request.txt.template",
+      "origins": [
+        "examples/hooks/request.txt.template",
+        "docs/labs/lab-10-hooks.md"
+      ],
+      "adaptation": "実Stopの依頼を本編の読解・通知設計へ改作。source参照と合成教材を区別する。",
+      "bytes": 2254,
+      "sha256": "1363ff6f97f0e6d2fc69866841c602aac55210ce82dce70519ef858e3cd6f711"
+    },
+    {
+      "source": "payload/design.md.template",
+      "origins": [
+        "docs/labs/lab-10-hooks.md"
+      ],
+      "adaptation": "受け手、責任、再入、追加不要、入力凍結の参加者用の問いを手書きで追加。",
+      "bytes": 1779,
+      "sha256": "b9864ee003657ae9dc31c6245ed2dd207e2fae07768df94fc8a9ee6724012c19"
+    },
+    {
+      "source": "payload/manual-checklist.md.template",
+      "origins": [
+        "docs/labs/lab-10-hooks.md"
+      ],
+      "adaptation": "baselineの手動確認契約用紙。実CLIを本編で起動する手順は含めない。",
+      "bytes": 1209,
+      "sha256": "81b535da6e86a93dd3088e1c6979d276962c9f95448cbc1cd1b963320a085e7c"
+    },
+    {
+      "source": "payload/notification-policy.md.template",
+      "origins": [
+        "docs/labs/lab-10-hooks.md",
+        "examples/hooks/stop-notify.mjs"
+      ],
+      "adaptation": "実adapter出力と参加者の提案文面を分離する通知方針用紙。",
+      "bytes": 1473,
+      "sha256": "0c776365ab618a93f46661cf5e480fa6e5bbae0c8c86d7781927d83e3e6ba2e8"
+    },
+    {
+      "source": "payload/stop-output.json.template",
+      "origins": [
+        "examples/hooks/stop-notify.mjs"
+      ],
+      "adaptation": "continueとsystemMessageだけの提案用紙。観測出力ではない。",
+      "bytes": 218,
+      "sha256": "38f21c7ed2cc41bbf41ed6a952dcabfb521d89b6527150f5a1d7bd2722e2365f"
+    },
+    {
+      "source": "payload/stop-hook.json.template",
+      "origins": [
+        "examples/hooks/stop-notification.json.template"
+      ],
+      "adaptation": "同じ無効な設定bytesを原稿用紙名で収録。設定参照先の作成許可は与えない。",
+      "bytes": 298,
+      "sha256": "b20620429f305037b2cb84a65d6bec8da1b478ce564cc0403913880a09788750"
+    },
+    {
+      "source": "payload/draft-a.md.template",
+      "origins": [
+        "examples/hooks/draft.valid.md.template"
+      ],
+      "adaptation": "SYNTHETIC_TRAINING_ONLYの構造メモへ全面改作。業務説明を除去し中立名にする。",
+      "bytes": 716,
+      "sha256": "6d132ff4658936784350710bbd81248b8c6dbe27cf769c697afce8b14e594ac1"
+    },
+    {
+      "source": "payload/draft-b.md.template",
+      "origins": [
+        "examples/hooks/draft.missing-unknowns.md.template",
+        "examples/hooks/draft.valid.md.template"
+      ],
+      "adaptation": "改作後draft-aからUnknowns節だけを除いたSYNTHETIC_TRAINING_ONLYの全文。意味の答えはない。",
+      "bytes": 563,
+      "sha256": "2701b55ebd83c4cb57f2dbb0a24b04ea8948dc3ae6525c7196a80e9ab0e836f1"
+    },
+    {
+      "source": "payload/stop-inputs.json.template",
+      "origins": [
+        "examples/hooks/checker.mjs",
+        "examples/hooks/stop-notify.mjs",
+        "examples/hooks/active.json.template"
+      ],
+      "adaptation": "SYNTHETIC_TRAINING_ONLYの中立IDの5case。原本契約の構造のみ。全製品入力schemaではない。",
+      "bytes": 1511,
+      "sha256": "e8b8cc210f16e8d90cc5e88890d34b52d8785261d4b75152525afe208b1395b2"
+    },
+    {
+      "source": "payload/checker-results.json.template",
+      "origins": [
+        "examples/hooks/checker.mjs",
+        "examples/hooks/hook-io.mjs",
+        "examples/hooks/stop-notify.mjs"
+      ],
+      "adaptation": "無変更helperを所有scratchへ同時配置して得たSYNTHETIC_TRAINING_ONLYのfixture-only結果。実Stopではない。",
+      "bytes": 4928,
+      "sha256": "1246930617836cef4b6f6f928057abcd7c0e77f18830b1d38129aa048e657053"
+    },
+    {
+      "source": "payload/notification-contract.json.template",
+      "origins": [
+        "examples/hooks/checker.mjs",
+        "examples/hooks/hook-io.mjs",
+        "examples/hooks/stop-notify.mjs"
+      ],
+      "adaptation": "SYNTHETIC_TRAINING_ONLYの契約読解資料。結果・exit・制限を列挙し、実行可能な新schemaを作らない。",
+      "bytes": 1808,
+      "sha256": "07b8c633b91884bbecd336302e0634bb52cc856bd4107ce65d38b386c782bab9"
+    },
+    {
+      "source": "payload/active.json.template",
+      "origins": [
+        "examples/hooks/active.json.template"
+      ],
+      "adaptation": "無変更、raw bytes一致。不活性のまま配布。",
+      "bytes": 43,
+      "sha256": "311054059411d0293c014fd1bc383836fd6ec344b9e743b14f0027a891583436"
+    },
+    {
+      "source": "payload/stop-notification.json.template",
+      "origins": [
+        "examples/hooks/stop-notification.json.template"
+      ],
+      "adaptation": "無変更、raw bytes一致。Windows原本を別OSへ一般化しない。",
+      "bytes": 298,
+      "sha256": "b20620429f305037b2cb84a65d6bec8da1b478ce564cc0403913880a09788750"
+    },
+    {
+      "source": "payload/tools/checker.mjs.template",
+      "origins": [
+        "examples/hooks/checker.mjs"
+      ],
+      "adaptation": "無変更、raw bytes一致。配布名の.templateだけを追加。",
+      "bytes": 5912,
+      "sha256": "dd2e6ecee395c907a73202bae6b9104d5d12f98a0b4378d42ec806b4f0e33875"
+    },
+    {
+      "source": "payload/tools/hook-io.mjs.template",
+      "origins": [
+        "examples/hooks/hook-io.mjs"
+      ],
+      "adaptation": "無変更、raw bytes一致。相対importを保ち、実体化はテスト所有scratchのみ。",
+      "bytes": 2326,
+      "sha256": "dd149a110b33e555f81347c2860548f79df24731e71b132dfbdc8ecec7df3642"
+    },
+    {
+      "source": "payload/tools/stop-notify.mjs.template",
+      "origins": [
+        "examples/hooks/stop-notify.mjs"
+      ],
+      "adaptation": "無変更、raw bytes一致。同じcheckerを引数追加なし・shell:falseで呼ぶ。",
+      "bytes": 3546,
+      "sha256": "fd46c9e1ab6d06694f882109fb0483eeafef1ba1620b9ea2b3fa287c2a5d1fdd"
+    },
+    {
+      "source": "payload/comparison.md.template",
+      "origins": [
+        "docs/labs/lab-10-hooks.md"
+      ],
+      "adaptation": "本編のEvidence用紙。入力・設計・観測・比較・outcomeを分離する。",
+      "bytes": 1582,
+      "sha256": "7366263f50b9bee6c6b0c13416a8aeb12f15d232a05fd38c64606c1f8af2ba3a"
+    },
+    {
+      "source": "payload/recovery.md.template",
+      "origins": [
+        "docs/labs/lab-10-hooks.md"
+      ],
+      "adaptation": "設計確認と自分の不活性原稿の実復元を分けるEvidence用紙。",
+      "bytes": 1206,
+      "sha256": "9dc272f00bd845d2541f9bb4091cadf61f9765f2796de17a0d6beb8b42c57236"
+    },
+    {
+      "source": "payload/notifications.md.template",
+      "origins": [
+        "docs/labs/lab-10-hooks.md",
+        "examples/hooks/stop-notify.mjs"
+      ],
+      "adaptation": "合成結果、手動確認、adapter、提案文面、非主張を分けるEvidence用紙。",
+      "bytes": 1381,
+      "sha256": "5cc526873e1133b6ddcac119311387e0625f5fad15b249681da8384264e38f1d"
+    }
+  ],
+  "digestPolicy": "各payloadの最終UTF-8/LF raw bytesをsha256で記録する。この台帳自身とmanifestは再帰hashに含めない。Pack全体のhashは共通pack-hashesの責務。",
+  "nonClaims": {
+    "realStop": "not-observed",
+    "settingsDiscovery": "not-observed",
+    "notificationDisplay": "not-observed",
+    "llmExecution": "not-observed",
+    "semanticAnswerKey": "not-provided"
+  }
+}

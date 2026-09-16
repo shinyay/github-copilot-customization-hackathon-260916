@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-032",
+  "taskId": "approval-trace",
+  "packets": [
+    {
+      "id": "P32-01",
+      "source": {
+        "repository": "training/profile-store-a",
+        "ref": "refs/heads/main",
+        "file": "control.agent.md"
+      },
+      "selected": "unknown",
+      "declaredTools": [
+        "read",
+        "search"
+      ],
+      "effectiveTools": "not-observed",
+      "calls": []
+    },
+    {
+      "id": "P32-02",
+      "source": {
+        "repository": "training/profile-store-b",
+        "ref": "refs/heads/main",
+        "file": "evidence.agent.md"
+      },
+      "selected": false,
+      "declaredTools": [
+        "read",
+        "search"
+      ],
+      "effectiveTools": "not-observed",
+      "calls": []
+    },
+    {
+      "id": "P32-03",
+      "source": {
+        "repository": "training/profile-store-b",
+        "ref": "refs/heads/main",
+        "file": "evidence.agent.md"
+      },
+      "selected": true,
+      "declaredTools": [
+        "read",
+        "search"
+      ],
+      "effectiveTools": "unknown",
+      "calls": []
+    },
+    {
+      "id": "P32-04",
+      "source": {
+        "repository": "training/profile-store-b",
+        "ref": "refs/heads/main",
+        "file": "evidence.agent.md"
+      },
+      "selected": true,
+      "declaredTools": [
+        "read",
+        "search"
+      ],
+      "effectiveTools": "unknown",
+      "calls": [
+        {
+          "callId": "training-call-04",
+          "tool": "search",
+          "reportedAllowed": "read",
+          "result": "synthetic-record"
+        }
+      ]
+    }
+  ],
+  "nonClaims": [
+    "Packet statements are synthetic records, not Cloud Agent observations.",
+    "IDs and ordering are not answer labels."
+  ]
+}

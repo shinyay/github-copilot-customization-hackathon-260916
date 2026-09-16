@@ -1,0 +1,9 @@
+---
+name: order-import-evidence-training
+description: "SYNTHETIC_TRAINING_ONLY: collect source citations and unknowns without executing changes."
+---
+
+# Evidence steps training-v1
+
+1. 対象pathと根拠を記録する。
+2. 未確認の結果をunknownとして残す。

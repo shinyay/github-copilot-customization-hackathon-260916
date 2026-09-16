@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "training-notes": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "tools/mcp/training-notes-server.mjs"
+      ]
+    }
+  }
+}

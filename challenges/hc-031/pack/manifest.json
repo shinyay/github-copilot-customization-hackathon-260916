@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-031",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "scoped-design",
+    "manual-equivalent"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/brief.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/request.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/design.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/comparison.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/source-map.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/source-map.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/java-rules-draft.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/java-rules-draft.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/xml-rules-draft.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/xml-rules-draft.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/scope-matrix.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/scope-matrix.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/product-matrix.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/product-matrix.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/delivery-plan.md.template",
+      "destination": ".hackathon/challenge/hc-031/starter/delivery-plan.md.template",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-031/scope-matrix.md",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-031/product-matrix.md",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-031/delivery-plan.md",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-031/java-rules.md.template",
+      "conditions": ["scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-031/xml-rules.md.template",
+      "conditions": ["scoped-design", "manual-equivalent"]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-031/comparison.md",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Baseline",
+        "Scoped design",
+        "Manual-equivalent",
+        "Scope coverage",
+        "Product coverage",
+        "Outcome"
+      ],
+      "templateSha256": "8b14c0d75de10530279b6cf0d49c1cf9b3ca937e647b79e94b7c0c7447d3384b"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-031/scope-matrix.md",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-031/product-matrix.md",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-031/delivery-plan.md",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-031/java-rules.md.template",
+      "conditions": ["scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": "participant/hc-031/xml-rules.md.template",
+      "conditions": ["scoped-design", "manual-equivalent"]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-031/comparison.md",
+      "conditions": ["baseline", "scoped-design", "manual-equivalent"]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

@@ -1,0 +1,31 @@
+# HC-015 到達経路の設計票
+
+この票をparticipant/hc-015/design.mdへコピーし、人が比較前に自分の設計を書きます。問いに対する業務の回答を埋める票ではありません。凍結後に変えた設計は別revision・別比較groupにします。
+
+## Intent
+
+何を減らしたいか、逆に削ってはいけない情報は何かを書きます。自力検索で十分という仮説も選べます。「最短」は改善の事前保証ではありません。
+
+## Fixed inputs
+
+当該condition、run ID、comparisonGroupId、設計revision、共通requestのSHA-256を記入します。source repository / commitはsource-targets.json.templateと照合してください。
+
+baseline / explicit-context / manual-equivalentは同じtask・source・アクセス・model/effort・実効read/search tools・承認方式です。B/Cの事前供給集合はA1/A2の全文だけに固定します。A3や他の参照先は全条件で読め、追加読取りを記録します。読み候補はACLではありません。
+
+## Search choices
+
+検索語の順序、対象範囲、本文を開く判断、XMLのimportを辿る基準と止める基準を理由付きで書きます。query.json.templateのallocate / OrderService.allocate / 333–349行は固定anchorです。文脈や参照先を読む範囲はanchorと区別します。approveへのすり替えは別taskです。
+
+## Context choices
+
+A1/A2全文の準備、file名の照合、添付表示の確認、手動packetのraw bytes照合をどう行うかを書きます。34526 bytesはsource本文だけで、実token数・client内部投入量はunknownです。片側だけの要約・抜粋・別タブ混入は比較を止めます。別の添付集合を選ぶ案は本編を変更せず別revisionへ分けます。
+
+## Observation and limits
+
+到達をどう認定するか、検索・読取・添付・貼付・追問をそれぞれ何操作と数えるか決めます。計画上の手順数と実測UI操作数を区別します。引用の妥当性は人がsourceへ戻って確認します。表示のない時間・token・call数はnullと理由を記録します。
+
+Java拡張、LSP、index、tabs、selection、User/home/組織指示、Memory、設定同期の状態・未観測範囲を記録します。文字列検索、人のGo to Definition / Find All References、AgentのUsages、semantic検索を混同しません。source読解は実proxy・実transactionの証明ではありません。
+
+## Stop and recovery
+
+不一致が出たときの停止と復元を自分の不活性成果物の範囲で設計します。既存source・設定・index・拡張は変更しません。未対応ならunsupported、同等性を確かめられなければincomparable、環境境界ならblockedを選べます。机上設計だけの提出を検索・添付成功へ読み替えません。

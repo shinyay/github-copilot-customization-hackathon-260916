@@ -1,0 +1,9 @@
+---
+syntheticRef: REF-STARTING-04
+asset: repository-instructions
+---
+
+# Starting rules
+
+- 作業開始点とInstructions採用元を同一視しない。
+- 観測できないrevisionをunknownとして残す。

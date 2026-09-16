@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-038",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "hook-design"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-038/starter/brief.md.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-038/starter/request.txt.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-038/starter/design.md.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-038/starter/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/events.json.template",
+      "destination": ".hackathon/challenge/hc-038/starter/input/events.json.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/checker.sh.template",
+      "destination": ".hackathon/challenge/hc-038/starter/input/checker.sh.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/hook-contract.md.template",
+      "destination": ".hackathon/challenge/hc-038/starter/input/hook-contract.md.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/hooks-session-start.json.template",
+      "destination": ".hackathon/challenge/hc-038/starter/input/hooks-session-start.json.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/input/hooks-pre-tool.json.template",
+      "destination": ".hackathon/challenge/hc-038/starter/input/hooks-pre-tool.json.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-038/diagnosis-policy.md.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-038/hooks-session-start.json.template",
+      "conditions": [
+        "hook-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-038/hooks-pre-tool.json.template",
+      "conditions": [
+        "hook-design"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-038/comparison.md",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Condition and input",
+        "Design",
+        "Comparison",
+        "Outcome",
+        "Limitations",
+        "Event and checker",
+        "Failure matrix",
+        "Stop and recovery"
+      ],
+      "templateSha256": "a8fd668470afa87a6e067dc155f0575461a48c1934469cc92710b7f8aa2d0f2a"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-038/diagnosis-policy.md.template",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-038/hooks-session-start.json.template",
+      "conditions": [
+        "hook-design"
+      ]
+    },
+    {
+      "pattern": "participant/hc-038/hooks-pre-tool.json.template",
+      "conditions": [
+        "hook-design"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-038/comparison.md",
+      "conditions": [
+        "baseline",
+        "hook-design"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

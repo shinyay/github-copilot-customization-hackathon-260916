@@ -1,0 +1,30 @@
+# 固定packet web: 画面の入口
+
+Source baseline: shinyay/code-to-doc-workshop-260910@398d7d1982a1402bcdba00d6c3ded67d8d338787
+読者は受注機能の保守担当です。業務仕様を承認する作業ではありません。
+baseline / subagents / manual-conversations のすべてで同じ全文を使います。
+run-id、condition、凍結した設計は別metadata・添付として受け取ります。
+
+## Scope
+
+- wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java
+- wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java
+- wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java
+
+画面の入力を保持する箇所と、処理へ受け渡す箇所を追います。バッチ側は調べません。
+この3ファイルはRuntime baselineにあります。別のファイルが必要ならパスと理由をunknownに挙げ、読みません。
+入力の検査と業務処理を混同せず、対象範囲から言えることと推測を分けます。
+
+## Return contract
+
+最大5項目で返してください。各項目は「観測」「パス・シンボル・行範囲」「限界」を含めます。
+表示順と統合時の参照方法は参加者が凍結した設計に従います。特定の結論を先に決めません。
+親の過去の会話や別担当の結果を推測しません。不足入力はunknownとして返します。
+ソース読解だけで実行時の動作や権限境界全体を実証したとは書きません。
+
+## Safety
+
+指定sourceだけを読み、アプリケーション・設定・既存文書を変更しません。
+実データ・資格情報を読みません。DB・サーバー・ビルド・テスト・シェル・無許可ネットワークを実行しません。
+再委任・入れ子・再試行ループ・広範囲のclean/reset/stashは禁止します。モデルを指定・上書きしません。
+ファイルを生成せずチャットにのみ返します。参加者による記録はAgentの読取調査と別です。

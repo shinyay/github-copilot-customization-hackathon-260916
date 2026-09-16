@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_ADAPTED_TRAINING_ONLY",
+  "source": {
+    "targetPath": "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java",
+    "readOnlyEvidencePaths": [
+      "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java",
+      "wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java"
+    ],
+    "baselineRawSha256": "9d1472b68fb32c4a1b76b974c7c7414f1489cdc199c35b8a1e5592caab66945a",
+    "baselineGitBlobSha256": "9d1472b68fb32c4a1b76b974c7c7414f1489cdc199c35b8a1e5592caab66945a"
+  },
+  "candidates": [
+    {
+      "id": "candidate-01",
+      "before": "new TreeMap<BigDecimal, BigDecimal>()",
+      "after": "new java.util.HashMap<BigDecimal, BigDecimal>()",
+      "sourceAnchorOccurrences": 1,
+      "postImageSha256": "a464229ba011bae07b326c6e0454c807669a5d694945888b188be4cc4c0397eb",
+      "requestedBranch": "review-fix-training",
+      "targetHead": "head-tax-a",
+      "requestedChangePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java"
+      ]
+    },
+    {
+      "id": "candidate-02",
+      "before": "return getNetAmount().add(getTaxAmount());",
+      "after": "return this.getNetAmount().add(this.getTaxAmount());",
+      "sourceAnchorOccurrences": 1,
+      "postImageSha256": "1d395143d6b3fe3cf5c447190485260aa2f205adbd09ed87112287983c1109e1",
+      "requestedBranch": "review-fix-training",
+      "targetHead": "head-tax-b",
+      "requestedChangePaths": [
+        "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java"
+      ]
+    }
+  ]
+}

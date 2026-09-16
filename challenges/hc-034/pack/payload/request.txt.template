@@ -1,0 +1,5 @@
+taskId: retrieval-plan
+Design retrieval for order-import-replay / training-v1. Separate config saved, server started, tools listed, product adopted, called, returned, and content-supported.
+
+taskId: retrieval-diagnosis
+Diagnose the neutral packets without converting NOT_FOUND into an empty success or a transport failure into no record.

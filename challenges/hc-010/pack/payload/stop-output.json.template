@@ -1,0 +1,4 @@
+{
+  "continue": true,
+  "systemMessage": "参加者の提案文を記入する。選んだcase IDとresult/code、形式検査だけであることを保持する。これは観測したadapter出力ではない。"
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "materialLabel": "SYNTHETIC_TRAINING_ONLY",
+  "schemaBoundary": "Teaching operation labels and fields are not GitHub tool IDs or API schema.",
+  "automation": {
+    "creator": "actor-maintainer",
+    "configurationVisibility": "creator-private",
+    "repositoryVisibility": "private-or-internal",
+    "cloudAutomationPolicy": "unknown",
+    "billing": {
+      "actionsMinutesChargedTo": "creator-context",
+      "aiCreditsChargedTo": "creator-context",
+      "observedAmounts": null
+    },
+    "sessionVisibility": "repository-readers"
+  },
+  "actors": [
+    {
+      "id": "actor-maintainer",
+      "repositoryWriteAccess": "present"
+    },
+    {
+      "id": "actor-contributor",
+      "repositoryWriteAccess": "absent"
+    },
+    {
+      "id": "actor-unknown",
+      "repositoryWriteAccess": "unknown"
+    }
+  ],
+  "teachingOperations": [
+    {
+      "id": "read-pr-summary",
+      "effect": "read",
+      "scope": "synthetic-pr-metadata"
+    },
+    {
+      "id": "read-diff-summary",
+      "effect": "read",
+      "scope": "synthetic-change-regions"
+    },
+    {
+      "id": "save-analysis-output",
+      "effect": "session-output",
+      "scope": "training-summary"
+    },
+    {
+      "id": "update-label",
+      "effect": "write",
+      "scope": "repository-metadata"
+    },
+    {
+      "id": "post-review",
+      "effect": "write",
+      "scope": "pull-request-review"
+    },
+    {
+      "id": "push-commit",
+      "effect": "write",
+      "scope": "repository-content"
+    }
+  ]
+}

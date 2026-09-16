@@ -1,0 +1,106 @@
+{
+  "label": "SYNTHETIC_TRAINING_ONLY",
+  "schemaVersion": 1,
+  "challengeId": "HC-036",
+  "packets": [
+    {
+      "id": "P36-01",
+      "eventId": "evt-001",
+      "eventType": "new-open",
+      "actor": "training-user-a",
+      "prId": "TRAINING-PR-36",
+      "base": "base-a",
+      "head": "head-a",
+      "requestId": "req-a",
+      "queue": "unknown",
+      "attemptId": null,
+      "started": false,
+      "completed": false,
+      "reviewedHead": null
+    },
+    {
+      "id": "P36-02",
+      "eventId": "evt-002",
+      "eventType": "first-ready",
+      "actor": "training-user-b",
+      "prId": "TRAINING-PR-36",
+      "base": "base-a",
+      "head": "head-b",
+      "requestId": "req-b",
+      "queue": "queued",
+      "attemptId": null,
+      "started": false,
+      "completed": false,
+      "reviewedHead": null
+    },
+    {
+      "id": "P36-03",
+      "eventId": "evt-003",
+      "eventType": "still-draft",
+      "actor": "training-user-b",
+      "prId": "TRAINING-PR-36",
+      "base": "base-a",
+      "head": "head-c",
+      "requestId": "req-c",
+      "queue": "dequeued",
+      "attemptId": "attempt-c",
+      "started": true,
+      "completed": false,
+      "reviewedHead": null
+    },
+    {
+      "id": "P36-04",
+      "eventId": "evt-004",
+      "eventType": "new-push",
+      "actor": "training-user-c",
+      "prId": "TRAINING-PR-36",
+      "base": "base-a",
+      "head": "head-d",
+      "requestId": "req-d",
+      "queue": "dequeued",
+      "attemptId": "attempt-d",
+      "started": true,
+      "completed": true,
+      "reviewedHead": "head-d"
+    },
+    {
+      "id": "P36-05",
+      "eventId": "evt-005",
+      "eventType": "manual-rereview",
+      "actor": "training-user-d",
+      "prId": "TRAINING-PR-36",
+      "base": "base-a",
+      "head": "head-e",
+      "requestId": "req-e",
+      "queue": "dequeued",
+      "attemptId": "attempt-e",
+      "started": true,
+      "completed": true,
+      "reviewedHead": "head-d"
+    },
+    {
+      "id": "P36-06",
+      "eventId": "evt-006",
+      "eventType": "new-push",
+      "actor": null,
+      "prId": "TRAINING-PR-36",
+      "base": "base-a",
+      "head": "head-f",
+      "setting": {
+        "source": "unknown",
+        "scope": "unknown",
+        "ref": "unknown"
+      },
+      "requestId": null,
+      "queue": "unknown",
+      "attemptId": null,
+      "started": "unknown",
+      "completed": "unknown",
+      "reviewedHead": null
+    }
+  ],
+  "nonClaims": [
+    "IDs and ordering are not verdicts.",
+    "Synthetic packet fields do not represent GitHub settings, users, pull requests, reviews, queues, or timings."
+  ]
+}

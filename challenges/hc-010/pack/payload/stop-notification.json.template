@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "node .runtime\\independent-labs\\lab-10\\tools\\stop-notify.mjs",
+        "windows": "node .runtime\\independent-labs\\lab-10\\tools\\stop-notify.mjs",
+        "cwd": ".",
+        "timeout": 10
+      }
+    ]
+  }
+}

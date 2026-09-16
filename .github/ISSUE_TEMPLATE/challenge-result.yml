@@ -1,0 +1,255 @@
+name: Challenge Result
+description: Submit Baseline and Customized evidence from an isolated Runtime repository.
+title: "[Challenge Result]: "
+labels:
+  - challenge-result
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit evidence, including negative or blocked results. Do not paste secrets, personal data, customer data, or private source code.
+
+  - type: dropdown
+    id: challenge_id
+    attributes:
+      label: Challenge ID
+      description: Select one of the published challenges.
+      options:
+        - HC-001
+        - HC-002
+        - HC-003
+        - HC-004
+        - HC-005
+        - HC-006
+        - HC-007
+        - HC-008
+        - HC-009
+        - HC-010
+        - HC-011
+        - HC-012
+        - HC-013
+        - HC-014
+        - HC-015
+        - HC-016
+        - HC-017
+        - HC-018
+        - HC-019
+        - HC-020
+        - HC-021
+        - HC-022
+        - HC-023
+        - HC-024
+        - HC-025
+        - HC-026
+        - HC-027
+        - HC-028
+        - HC-029
+        - HC-030
+        - HC-031
+        - HC-032
+        - HC-033
+        - HC-034
+        - HC-035
+        - HC-036
+        - HC-037
+        - HC-038
+        - HC-039
+        - HC-040
+        - HC-041
+        - HC-042
+        - HC-043
+        - HC-044
+        - HC-045
+    validations:
+      required: true
+  - type: textarea
+    id: conditions
+    attributes:
+      label: Conditions compared
+      description: List the exact condition IDs from the Pack manifest and map each Runtime repository / PR to its condition.
+      placeholder: |
+        baseline: <runtime repo and PR>
+        customized: <runtime repo and PR>
+    validations:
+      required: true
+  - type: input
+    id: participant_team
+    attributes:
+      label: Participant / team
+      description: Public-safe participant or team name.
+    validations:
+      required: true
+  - type: input
+    id: run_id
+    attributes:
+      label: Run ID
+      description: Stable identifier used as Hub --run and Runtime --run-id. Keep the same value in the dry-run plan, Runtime run, PR, and this Issue.
+      placeholder: run-01
+    validations:
+      required: true
+  - type: input
+    id: runtime_repo_url
+    attributes:
+      label: Runtime repository URL
+      description: Primary Runtime repository URL. Map additional condition repositories in Conditions compared. Use N/A and explain why under Failures + unknowns if blocked or unsupported before repository creation.
+    validations:
+      required: true
+  - type: input
+    id: pull_request_url
+    attributes:
+      label: Pull Request URL
+      description: Primary Runtime Pull Request. Map additional condition PRs in Conditions compared. Use N/A and explain why under Failures + unknowns if no Pull Request could be created.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Client / host / OS / channel
+      description: Record the client, host, operating system, and release channel. Use unknown where needed.
+      placeholder: |
+        Client:
+        Host:
+        OS:
+        Channel:
+    validations:
+      required: true
+  - type: textarea
+    id: model_effort_tools
+    attributes:
+      label: Model / effort / tools
+      description: Record model, effort, enabled tools, and relevant versions. unknown is allowed.
+      placeholder: |
+        Model:
+        Effort:
+        Tools:
+        Versions:
+    validations:
+      required: true
+  - type: textarea
+    id: feature_understanding
+    attributes:
+      label: Feature understanding
+      description: Explain what the customization changes and what remains outside its scope.
+    validations:
+      required: true
+  - type: textarea
+    id: problem_hypothesis
+    attributes:
+      label: Problem + hypothesis
+      description: State the repeated problem and the change you expected to observe.
+    validations:
+      required: true
+  - type: textarea
+    id: baseline_evidence
+    attributes:
+      label: Baseline evidence
+      description: Link or summarize fixed input, output, checks, duration, failures, and environment before activation.
+    validations:
+      required: true
+  - type: textarea
+    id: customized_evidence
+    attributes:
+      label: Customized evidence
+      description: Link or summarize the matching evidence after activation.
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Outcome
+      description: Select the result supported by your comparison.
+      options:
+        - improved
+        - equal
+        - worse
+        - incomparable
+        - blocked
+        - unsupported
+    validations:
+      required: true
+  - type: textarea
+    id: failures_unknowns
+    attributes:
+      label: Failures + unknowns
+      description: Include failed attempts, missing capabilities, condition drift, and unresolved questions. Write none if empty.
+    validations:
+      required: true
+  - type: textarea
+    id: challenge_design
+    attributes:
+      label: Challenge-specific design
+      description: Explain your design choices in enough detail for this Challenge's Judging section.
+    validations:
+      required: true
+  - type: textarea
+    id: reusability
+    attributes:
+      label: Reusability
+      description: Where should this customization be reused, avoided, reviewed, and maintained?
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        ### OPTIONAL guide / activity record
+        Optional guide/activity records do not count as core improvement or Runtime verification success. They may remain unperformed.
+        These fields do not grant permissions, authorize live execution, or change the core Outcome. Record only separately authorized attempts; never invent a run or evidence to fill an optional field.
+  - type: input
+    id: optional_route
+    attributes:
+      label: OPTIONAL guide route
+      description: Registered optional route ID and guide link, if used. Leave empty if no optional guide applies.
+    validations:
+      required: false
+  - type: dropdown
+    id: optional_status
+    attributes:
+      label: OPTIONAL activity status
+      description: Guide-only means reading/design only, not an observed live run. Live-attempted is not a success verdict.
+      options:
+        - unperformed
+        - guide-only
+        - blocked
+        - live-attempted
+      default: 0
+    validations:
+      required: false
+  - type: textarea
+    id: optional_run
+    attributes:
+      label: OPTIONAL separate run
+      description: Only for a separately authorized live attempt, record its independent run ID, approved scope, environment and safe links. Leave empty or N/A when unperformed; do not reuse a core run to imply live support.
+    validations:
+      required: false
+  - type: textarea
+    id: optional_evidence
+    attributes:
+      label: OPTIONAL evidence
+      description: Separate redacted observations from guide/design notes and unknowns. Do not add optional receipts to core comparison claims or present them as Runtime verifier success.
+    validations:
+      required: false
+  - type: textarea
+    id: optional_unperformed_reason
+    attributes:
+      label: OPTIONAL unperformed / blocked reason
+      description: Record unperformed steps, missing approvals, unchecked environment or entitlement, and known Runtime blockers. No permission workaround is allowed; optional non-execution does not invalidate the core result.
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy_confirmation
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I removed secrets, personal data, customer data, and private source content from this Issue.
+          required: true
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety_confirmation
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: I used an isolated Runtime repository when one was created, and recorded any external processes or tools that were started.
+          required: true
+    validations:
+      required: true

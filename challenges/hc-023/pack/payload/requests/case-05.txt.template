@@ -1,0 +1,3 @@
+case-05の固定packetだけを使い、読み取り分析に追加する最小の準備方法、または追加不要を選び、その理由を説明してください。
+trigger、scope、resources、permissions、maintenanceを分け、少なくとも一つの別案も示してください。
+業務上の答えを作らず、設定・source・外部serviceを変更しないでください。別caseや別conditionの回答を使わないでください。

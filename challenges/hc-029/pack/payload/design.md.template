@@ -1,0 +1,22 @@
+# Supply design worksheet
+
+## Fixed request
+
+全conditionで `request.md.template` 全文を使います。baselineにも互換条件、変更範囲、既存期待値の保持、未実施報告を渡します。
+
+## Body source
+
+| condition | additional body source | supply design |
+|---|---|---|
+| baseline | none | fixed request only |
+| customized | participant/hc-029/repository-rules.md.template | persistent repository supply proposal |
+| manual-equivalent | participant/hc-029/repository-rules.md.template | same body in the same order, supplied manually |
+
+customizedとmanual-equivalentのbodyは同じ参加者成果を参照します。供給位置、優先度、実製品採用まで同じとは主張しません。
+
+## Freeze before proposal
+
+- 常設化する条件:
+- 依頼へ残す条件:
+- Instructions追加不要の判断:
+- body SHA-256:

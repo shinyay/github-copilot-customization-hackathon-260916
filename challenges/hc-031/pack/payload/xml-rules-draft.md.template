@@ -1,0 +1,11 @@
+---
+applyTo: "wholesale-core/src/main/resources/**/*.xml"
+---
+
+# XML rules body draft
+
+XML配線を読むために必要な規則を参加者が記入します。完成bodyやsourceの答えは含まれていません。
+
+- <write one XML reading rule>
+
+除外なしでは `excludeAgent` keyを置きません。使う場合の値は `code-review` または `cloud-agent` です。metadataは供給対象を表し、sourceへのACLではありません。

@@ -1,0 +1,32 @@
+# HC-013 Provenance
+
+## Source inventory
+
+当該condition/run ID、B1/B2/B3とP1/P2/P3の全sourcePath・sourceKind・出所:
+原本3件のoriginalBytes/originalLineCount/originalSha256と、表示3件のdisplay.bytes/lineCount/sha256を分けます。
+合成運用資料のSYNTHETIC_TRAINING_ONLYとactualHistoricalDecision: NOT_PROVIDEDを保持します。
+
+## Revision and scope
+
+referenceType、revision、resolvedRevision、whole-file/範囲、実際の読取本文、既知pinと未観測hash:
+原本はwhole-file、共有する表示はwhole-file-with-explicit-redactionsです。B3の6行全体を置換したpolicy、行番号・件数・markerのreceiptを記録します。
+displayは原本byte-exactでなく、実行可能Javaとも限りません。除去内容・認証値・個々の値のhashは記録しません。
+未解決main、missing、error、empty、partial、取得不能を別に記録し、不存在と決めません。
+
+## Access layers
+
+ローカルsource読取と、MCP初期化、tool discovery、enabled、認証、組織policy、Space ACL、
+source ACL、source typeの制約、実call、解釈を分離します。本編の実サービス観測はnot-observedです。
+fixtureのaclVerified:falseは実ACLの拒否結果ではありません。
+
+## Whole material equality
+
+凍結instructions文字列、Aの全資料、B/CのJSON全文と全field、配列順、limitationsの一致確認:
+全A/B/Cの同じsanitized全体displayと全metadata、B/Cカード全raw bytesを確認します。
+保存display bytesのhashと実投入の観測、元原本pinへの照合、予定外の変更がないこと、比較不能な範囲:
+
+## Non-claims
+
+LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACEを保持します。原稿の再hashやローカルsource読取はSpace取得ではありません。
+get_copilot_space、OAuth、Space/source ACL、同期、runtimeBehavior、educationalEffectの未観測理由:
+helperは限定的な表示変換・完全性確認であり、Runtimeのredaction/export判定でも意味の採点でもありません。

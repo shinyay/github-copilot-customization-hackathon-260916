@@ -1,0 +1,10 @@
+# Investigation checklist
+
+- Locate `OrderImportService.importDraft`.
+- Record where `OrderGroup.canonicalHash()` is computed.
+- Record the first and second lookup of the existing `external_key` claim.
+- For an existing claim, distinguish matching `payloadHash` from `orderImport.keyConflict`.
+- For a new claim, trace `saveDraft` and claim persistence without claiming a runtime result.
+- In `OrderGroup.canonicalHash`, record `order-import-v1`, common header fields, normalized integer quantity, sorted line fingerprints, and the final fingerprint.
+- Keep discovery, body loading, reference loading, and checker execution as separate observations.
+- Never run an import, replay, or external connection for this Challenge.

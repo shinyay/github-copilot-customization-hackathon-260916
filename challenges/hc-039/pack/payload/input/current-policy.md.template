@@ -1,0 +1,14 @@
+# Current sharing policy snapshot
+
+SYNTHETIC_TRAINING_ONLY
+
+Revision: `training-policy-r2`
+
+1. Shared guidance must distinguish evidence from unverified statements.
+2. A current owner, author, reviewer, selected revision, and restoration owner must be supported by the ledger or remain unknown.
+3. A proposal must not overwrite a current fact until separately approved.
+4. Repository rules, organization Instructions, organization profiles, and enterprise profiles are maintained as different mechanisms.
+5. Storage ACL, usage scope, and editing authority are recorded separately.
+6. Duplicate guidance is avoided unless a named maintainer owns synchronization.
+
+This snapshot does not grant organization or repository permissions.

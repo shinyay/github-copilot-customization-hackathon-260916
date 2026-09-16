@@ -1,0 +1,24 @@
+# OrderGroup.java canonical hash excerpt
+
+Canonical Runtime path:
+`wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java`
+
+```java
+public String canonicalHash() {
+    validate();
+    List<String> payload = new ArrayList<String>();
+    payload.add("order-import-v1");
+    List<String> first = records.get(0);
+    payload.addAll(first.subList(0, 7));
+    payload.add(first.get(9));
+    List<String> lines = new ArrayList<String>();
+    for (List<String> row : records) {
+        lines.add(Fingerprints.of(
+                row.get(7),
+                Integer.toString(ImportFields.integer(row.get(8), "quantity"))));
+    }
+    Collections.sort(lines);
+    payload.addAll(lines);
+    return Fingerprints.of(payload.toArray(new String[payload.size()]));
+}
+```

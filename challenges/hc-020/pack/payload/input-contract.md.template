@@ -1,0 +1,30 @@
+# HC-020 input and wrapper contract
+
+## Input
+
+- object with exactly one own field named `text`
+- `text` is a nonempty, non-whitespace string
+- at most 8,192 Unicode code points
+- no additional fields
+
+## Errors
+
+- TypeError: `Provide exactly one nonempty string field named text.`
+- RangeError: `Draft text exceeds 8192 Unicode code points.`
+- cancel: `Evidence counting was cancelled.`
+
+## Output
+
+Exact fields: `evidenceSections`, `unknownSections`, `citationMarkers`, `semanticValidation`. The final field remains `not-performed`.
+
+## Registration and lifecycle
+
+- Tool registration: `count_workshop_evidence`
+- Tool reference: `workshopEvidence`
+- Participant ID: `workshop-local.evidence-counter.reader`
+- Participant reference: `workshop-evidence`
+- `prepareInvocation` validates input and supplies confirmation text
+- `invoke` checks cancellation before calling the same analyzer
+- returned Disposable objects are added to `context.subscriptions`
+
+This contract does not claim live registration, discovery, call, confirmation, cancellation, disposal, Markdown parsing, source verification, or semantic review.

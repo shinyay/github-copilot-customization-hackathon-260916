@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-034",
+  "challengeVersion": 1,
+  "minimumTemplateVersion": 1,
+  "conditions": [
+    "baseline",
+    "mcp-retrieval",
+    "manual-equivalent"
+  ],
+  "isolation": {
+    "tier": "repository",
+    "freshWorkspace": true,
+    "freshConversation": true,
+    "freshProfile": true,
+    "freshRepository": true,
+    "conditionStrategy": "separate-repository",
+    "branchSafe": false
+  },
+  "overlay": [
+    {
+      "source": "payload/brief.md.template",
+      "destination": ".hackathon/challenge/hc-034/starter/brief.md.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/request.txt.template",
+      "destination": ".hackathon/challenge/hc-034/starter/request.txt.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/design.md.template",
+      "destination": ".hackathon/challenge/hc-034/starter/design.md.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/packets.json.template",
+      "destination": ".hackathon/challenge/hc-034/starter/packets.json.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/evidence/comparison.md.template",
+      "destination": ".hackathon/challenge/hc-034/starter/evidence/comparison.md.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/mcp.json.template",
+      "destination": ".hackathon/challenge/hc-034/starter/mcp.json.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/operations-note.json.template",
+      "destination": ".hackathon/challenge/hc-034/starter/operations-note.json.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/manual-note.json.template",
+      "destination": ".hackathon/challenge/hc-034/starter/manual-note.json.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    },
+    {
+      "source": "payload/retrieval-contract.md.template",
+      "destination": ".hackathon/challenge/hc-034/starter/retrieval-contract.md.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "allowOverwrite": false
+    }
+  ],
+  "allowedMutations": [],
+  "allowedAdditions": [
+    {
+      "pattern": "participant/hc-034/design.md.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    },
+    {
+      "pattern": "participant/hc-034/mcp.json.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    },
+    {
+      "pattern": "participant/hc-034/manual-note.json.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    },
+    {
+      "pattern": "participant/hc-034/retrieval-contract.md.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    }
+  ],
+  "forbiddenActiveCustomizations": [],
+  "evidenceRequirements": [
+    {
+      "path": ".hackathon/evidence/hc-034/comparison.md",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ],
+      "stage": "submitted",
+      "requiredHeadings": [
+        "Fixed task",
+        "Environment",
+        "Design",
+        "Comparison",
+        "Observations",
+        "Outcome",
+        "Limits",
+        "Retrieval and support"
+      ],
+      "templateSha256": "5a416a5de753a9f5369e86154ff46aca3d5fdda71815a2971e9f97560ea00816"
+    }
+  ],
+  "submissionFiles": [
+    {
+      "pattern": "participant/hc-034/design.md.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    },
+    {
+      "pattern": "participant/hc-034/mcp.json.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    },
+    {
+      "pattern": "participant/hc-034/manual-note.json.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    },
+    {
+      "pattern": "participant/hc-034/retrieval-contract.md.template",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    },
+    {
+      "pattern": ".hackathon/evidence/hc-034/comparison.md",
+      "conditions": [
+        "baseline",
+        "mcp-retrieval",
+        "manual-equivalent"
+      ]
+    }
+  ],
+  "cleanup": {
+    "advisory": true,
+    "verifyBaseline": true,
+    "exportSubmission": true,
+    "stopProcesses": true,
+    "archiveRepository": true
+  }
+}

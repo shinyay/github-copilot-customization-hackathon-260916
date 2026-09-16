@@ -1,0 +1,45 @@
+# HC-006 Comparison
+
+## Fixed investigation
+
+- Symptom:
+- Example input:
+- Expected scope:
+
+## Environment
+
+- Client / host / OS / channel:
+- Model / effort / tools:
+
+## Repeated manual run 1
+
+- Exact request:
+- Sections produced:
+- Evidence cited:
+- Time:
+
+## Repeated manual run 2
+
+- Exact request:
+- Sections produced:
+- Drift from run 1:
+- Time:
+
+## Explicit Prompt File invocation 1
+
+- Invocation:
+- Sections produced:
+- Evidence cited:
+- Time:
+
+## Explicit Prompt File invocation 2
+
+- Invocation:
+- Drift from invocation 1:
+- Time:
+
+## Outcome
+
+Choose one: improved / equal / worse / incomparable / blocked / unsupported
+
+Compare reproducibility, completeness, irrelevant work, and participant effort. Preserve failures and missing sections.

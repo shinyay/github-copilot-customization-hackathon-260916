@@ -1,0 +1,35 @@
+# HC-018 synthetic event packets
+
+SYNTHETIC_TRAINING_ONLY
+
+これは有限教材packetであり、VS Code event schema、実log、実sandbox観測ではありません。各caseのevent shapeと欠測だけを使い、原因をEvidence以上に断定しないでください。
+
+```json
+{"caseId":"packet-01","selected":false,"events":[]}
+```
+
+```json
+{"caseId":"packet-02","selected":true,"events":[{"type":"proposal","command":"node --version"},{"type":"approval","decision":"pending"}]}
+```
+
+```json
+{"caseId":"packet-03","selected":true,"events":[{"type":"proposal","command":"node --version"},{"type":"approval","decision":"deny","actor":"human"}]}
+```
+
+```json
+{"caseId":"packet-04","selected":true,"events":[{"type":"proposal","command":"node --version"},{"type":"approval","decision":"allow-once"},{"type":"execution"},{"type":"result","layer":"os","code":"EACCES","exitCode":1}]}
+```
+
+```json
+{"caseId":"packet-05","selected":true,"events":[{"type":"proposal","command":"node --version"},{"type":"approval","decision":"allow-once"},{"type":"execution"},{"type":"result","layer":"program","output":"v22.16.0\n","exitCode":0}]}
+```
+
+```json
+{"caseId":"packet-06","selected":true,"events":[{"type":"proposal","command":"node --version"},{"type":"approval","decision":"allow-once"},{"type":"execution"},{"type":"result","layer":"program","code":"SYNTHETIC_PROGRAM_ERROR","exitCode":2}]}
+```
+
+```json
+{"caseId":"packet-07","selected":true,"events":[{"type":"proposal","command":"node --version"},{"type":"approval","decision":"allow-once"},{"type":"execution"},{"type":"result","layer":"unknown","code":"INSUFFICIENT_EVIDENCE","exitCode":null}]}
+```
+
+`v22.16.0`はpacket内の合成文字列です。参加者環境のNode versionではありません。packet-07のnullを0やnonzeroへ補完しません。

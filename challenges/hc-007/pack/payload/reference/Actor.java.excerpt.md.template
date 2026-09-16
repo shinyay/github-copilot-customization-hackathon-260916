@@ -1,0 +1,22 @@
+# Actor.java role excerpt
+
+Canonical Runtime path:
+`wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java`
+
+```java
+public void require(String... allowed) {
+    if (hasRole("ADMIN")) {
+        return;
+    }
+    for (String role : allowed) {
+        if (roles.contains(role)) {
+            return;
+        }
+    }
+    throw new BusinessException("permission.denied", "この処理を実行する権限がありません。");
+}
+
+public boolean hasRole(String role) {
+    return roles.contains(role);
+}
+```

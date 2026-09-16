@@ -1,0 +1,71 @@
+{
+  "label": "SYNTHETIC_TRAINING_ONLY",
+  "cards": [
+    {
+      "id": "F01",
+      "kind": "repository-fact",
+      "sourceRepo": "repo-a",
+      "targetRepo": "repo-a",
+      "scope": "repository",
+      "claim": "The verification command is npm run verify.",
+      "citationPath": "docs/verify.md",
+      "citationRevision": "training-r2",
+      "reportedUsed": false
+    },
+    {
+      "id": "F02",
+      "kind": "repository-fact",
+      "sourceRepo": "repo-a",
+      "targetRepo": "repo-a",
+      "scope": "repository",
+      "claim": "The verification command is npm run check-a.",
+      "citationPath": "docs/verify.md",
+      "citationRevision": "training-r1",
+      "reportedUsed": false
+    },
+    {
+      "id": "F03",
+      "kind": "repository-fact",
+      "sourceRepo": "repo-b",
+      "targetRepo": "repo-a",
+      "scope": "repository",
+      "claim": "Generated reports are written to reports/latest.",
+      "citationPath": "docs/output.md",
+      "citationRevision": "training-b-r2",
+      "reportedUsed": false
+    },
+    {
+      "id": "F04",
+      "kind": "user-preference",
+      "sourceRepo": null,
+      "targetRepo": "repo-a",
+      "scope": "user",
+      "claim": "Prefer compact tables in summaries.",
+      "citationPath": null,
+      "citationRevision": null,
+      "reportedUsed": false
+    },
+    {
+      "id": "F05",
+      "kind": "repository-fact",
+      "sourceRepo": "repo-a",
+      "targetRepo": "repo-a",
+      "scope": "repository",
+      "claim": "Release validation uses docs/release-check.md.",
+      "citationPath": "docs/release-check.md",
+      "citationRevision": "training-r3",
+      "reportedUsed": false
+    },
+    {
+      "id": "F06",
+      "kind": "repository-fact",
+      "sourceRepo": "repo-a",
+      "targetRepo": "repo-a",
+      "scope": "repository",
+      "claim": "The current task used the verification-command fact.",
+      "citationPath": "docs/verify.md",
+      "citationRevision": "training-r2",
+      "reportedUsed": true
+    }
+  ]
+}

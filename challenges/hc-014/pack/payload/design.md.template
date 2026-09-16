@@ -1,0 +1,30 @@
+# HC-014 配布設計
+
+これは記入前の設計用紙です。比較前に自分の判断を記入し、同じ決定を二条件へ渡してください。
+run ID と condition は release ledger / Evidence に分離できます。説明を末尾に一言足すだけでは完成しません。
+
+## 読み手とsource
+
+誰へ渡すか、B1/B2/B3 のどの入口を読んで手順を設計したか、テスト定義を読む範囲、未実行の境界を記入します。
+コードの答え、架空の採用理由や履歴は書き込みません。
+
+## 三つの制御
+
+package name / description を選ぶ理由、Skill frontmatter の name / description、本文の読み順と根拠・未確認の残し方を別々に記入します。
+Skill name は directory と同じ `order-import-evidence` です。package prefix は付けません。
+manifest が持つ配布 metadata を、追加の業務知識と扱わない理由も書きます。
+
+## 凍結と同等性
+
+v1 全文を凍結した時点と hash、v2 で marker 一行だけを変える方法、同じ版の manual / package で frontmatter を含む raw LF bytes を照合する方法を書きます。
+本文を改善したくなったときに既存の比較を継続せず、新しい比較へ分ける基準を書きます。
+
+## 配布と復元
+
+手動方式で版と出所を追える ledger、package の二ファイルの確認順、current を更新する前の確認、重複・旧版を全 origin で点検する方法、全 bytes を初回 v1 へ戻す手順を決めます。
+手動配布だけで十分となる場面と、その判断理由も書きます。
+
+## 比較の限界
+
+二つの別 repository / workspace / conversation / profile、固定 request / source / model / effort / tools / 承認方式と、home・User・組織設定・Memory の残留をどう記録するかを書きます。
+実 install、discovery、loading、更新配信、停止、時間短縮、教育効果は未観測であり、必要なら incomparable / blocked とする境界を書きます。
