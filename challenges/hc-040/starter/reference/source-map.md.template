@@ -1,0 +1,11 @@
+# HC-040 source map
+
+Read-only source context:
+
+| path | symbols / reason to inspect |
+|---|---|
+| `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java` | `OrderImportService.importDraft`, `OrderImportService.findClaim`, `OrderImportService.replay` |
+| `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java` | `OrderGroup.canonicalHash` |
+| `wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderCsvTest.java` | `OrderCsvTest.canonicalPayloadNormalizesQuantityWhitespaceAndProductOrder` |
+
+The main scenario summarizes the relevant claim lookup, canonicalization, and replay boundaries so it can be completed without fetching another repository. The distribution and lifecycle records are `SYNTHETIC_TRAINING_ONLY`. Reading source or a test definition does not prove CSV import, replay, Java, Maven, or database behavior.

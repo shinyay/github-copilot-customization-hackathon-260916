@@ -1,0 +1,35 @@
+# HC-038 diagnosis design
+
+SYNTHETIC_TRAINING_ONLY
+
+Complete all twelve packet rows. Keep declaration, invocation, checker/transport result, product fields, and final handling separate.
+
+| packet | task | declared event | invocation evidence | checker / transport evidence | product field validity | expected handling | stop / recovery |
+|---|---|---|---|---|---|---|---|
+| E01 | startup-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E02 | startup-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E03 | startup-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E04 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E05 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E06 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E07 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E08 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E09 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E10 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E11 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+| E12 | tool-check | TODO | TODO | TODO | TODO | TODO | TODO |
+
+## Decisions before comparison
+
+- Checker and packet raw-byte hashes: TODO
+- Fixture-field versus product-field rule: TODO
+- `sessionStart` versus `preToolUse` responsibility: TODO
+- command nonzero, timeout, HTTP failure, and empty-output handling: TODO
+- who stops additional work and who authorizes recovery: TODO
+- design revision: TODO
+
+## Non-claims
+
+- Active Hook/default-branch placement: `not-observed`
+- Cloud event invocation/checker execution: `not-observed`
+- Permission enforcement/tool completion: `not-observed`

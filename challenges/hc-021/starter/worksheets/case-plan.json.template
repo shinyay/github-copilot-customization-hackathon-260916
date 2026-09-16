@@ -1,0 +1,71 @@
+{
+  "fixtureLabel": "SYNTHETIC_HC021_CASE_PLAN",
+  "target": "starter/fixtures/packet.txt.template",
+  "observationFields": [
+    "placement",
+    "discovery",
+    "contentUse",
+    "outputCompliance"
+  ],
+  "cases": [
+    {
+      "id": "no-instructions",
+      "supply": "none"
+    },
+    {
+      "id": "inactive-template",
+      "materials": ["starter/customizations/rules.md.template"],
+      "hypotheticalPlacements": [".github/copilot-instructions.md.template"]
+    },
+    {
+      "id": "nonstandard-path",
+      "materials": ["starter/customizations/rules.md.template"],
+      "hypotheticalPlacements": ["notes/copilot-instructions.md"]
+    },
+    {
+      "id": "documented-path",
+      "materials": ["starter/customizations/rules.md.template"],
+      "hypotheticalPlacements": [".github/copilot-instructions.md"]
+    },
+    {
+      "id": "manual-body",
+      "manualMaterials": ["starter/customizations/rules.md.template"]
+    },
+    {
+      "id": "duplicate-text",
+      "materials": [
+        "starter/customizations/rules.md.template",
+        "starter/customizations/variant-a.instructions.md.template"
+      ],
+      "hypotheticalPlacements": [
+        ".github/copilot-instructions.md",
+        ".github/instructions/hc021-display.instructions.md"
+      ]
+    },
+    {
+      "id": "conflicting-text",
+      "materials": [
+        "starter/customizations/rules.md.template",
+        "starter/customizations/variant-b.instructions.md.template"
+      ],
+      "hypotheticalPlacements": [
+        ".github/copilot-instructions.md",
+        ".github/instructions/hc021-display.instructions.md"
+      ]
+    }
+  ],
+  "observationTemplate": {
+    "caseId": "",
+    "placement": null,
+    "discovery": null,
+    "contentUse": null,
+    "outputCompliance": null,
+    "diagnosis": "",
+    "nextSmallCheck": ""
+  },
+  "nonClaims": [
+    "placement does not prove discovery",
+    "discovery does not prove content use",
+    "output does not prove a universal precedence rule"
+  ]
+}

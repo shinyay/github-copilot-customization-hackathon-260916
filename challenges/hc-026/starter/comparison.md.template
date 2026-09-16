@@ -1,0 +1,29 @@
+# HC-026 監査・導入判断ワークシート
+
+## Fixed input
+
+<!-- 2資産、5状態、全10 record、固定policy。 -->
+
+## Asset coverage
+
+<!-- reading-rules / analysis-package と record-01〜record-05のexact集合、欠落、重複。 -->
+
+## Record results
+
+<!-- 各fieldの確認結果とpass / blocked / fail。unknownを残す。 -->
+
+## Collection rollup
+
+<!-- fail優先、次にblocked、全件passの場合だけpass。 -->
+
+## Restore
+
+<!-- previous、rollback candidate、実fileのSHA-256、未確認の復元操作。 -->
+
+## Rollout decision
+
+<!-- pilot、対象縮小、待機、停止、共有しない等。台帳判定とは分離する。 -->
+
+## Limits
+
+<!-- 実owner、承認、配布、復元など、紙上監査で確認していないこと。 -->

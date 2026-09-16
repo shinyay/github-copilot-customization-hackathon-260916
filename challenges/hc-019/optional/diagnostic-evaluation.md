@@ -1,51 +1,45 @@
-# 外部diagnostic evaluationの準備境界
+# 承認済みの外部diagnosticを試す
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-019本編](../README.md)の有限toy checkとは別に、別配布Preview評価extensionを使う前の準備ガイドです。Analyzeや自動修正を本編へ追加しません。
+外部の診断extensionやmodelへ、合成原稿だけを渡して補助的な指摘を得ます。出力は人のレビューを支える候補であり、意味の真値や修正のanswer keyではありません。
 
-外部modelの出力は業務上の真値や参加者repairのanswer keyではありません。
+## 前提
 
-## Prerequisites
+- publisher、extension、利用model、費用を確認済みであること
+- 送信内容、保存先、保持期間、組織policyを確認できること
+- [固定本文](../starter/fixtures/draft-p.txt.template)と[frontmatter](../starter/fixtures/wrapper.txt.template)だけを使うこと
+- 元へ戻せる自己所有の作業copy
 
-environment:
+## 権限・安全
 
-- 別配布Preview評価extensionの承認済み環境、publisher、固定対象copy、開始前状態を確認できること。
+- extension導入、model利用、データ送信、費用を個別に承認します。
+- private code、秘密、個人情報、第三者情報を送信しません。
+- 自動修正は無効にし、提案の適用は別判断にします。
+- 通常profileや原本を直接変更しません。
 
-entitlements:
+## 手順
 
-- extension、評価model、対象データ送信、費用、組織policyの利用資格と許可範囲を確認できること。
+1. extensionの公式配布元、publisher、権限、送信先を確認します。
+2. 合成2行とfrontmatterだけを含む使い捨てcopyを用意します。
+3. 実際に送信される本文、metadata、logを事前に確認します。
+4. 診断を一度実行し、入力、model、出力、費用、errorを記録します。
+5. 指摘ごとに、固定2行から直接確認できるかを人がレビューします。
+6. 採用する場合も、[修正検討票](../starter/worksheets/repair.md.template)で最小案として再評価します。
+7. 自分が作ったcopyと保存logだけを整理します。
 
-送信される本文、metadata、log、保存先、redaction、復元方法を事前にレビューします。
+## 観察すること
 
-## Permissions / Safety
+- 競合2行を明示したか
+- syntaxとmeaningを混同していないか
+- 根拠のないapplication / usefulnessを主張していないか
+- 提案が目的を削りすぎていないか
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 停止条件
 
-additionalApprovals:
+- publisher、送信対象、model、費用、保存先を確認できない
+- private contentを送らなければ成立しない
+- 自動修正や原本変更が必須
+- 出力を人が検証できない
 
-- extension導入、分析対象送信、model利用、費用、Analyze実行を個別に別途承認し、自動修正はさらに別承認とすること。
-
-private code、秘密、第三者情報を未承認先へ送らず、Implement Suggestionsを自動実行しません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| external-diagnostic-evaluation | blocked | 本編とRuntime v1は外部評価extensionの導入、送信、model実行、費用、自動修正を許可・検証しないためblockedです。 |
-
-parser passや固定toy検査はAI diagnosticではなく、Analyze出力も真値ではありません。
-
-## Stop / Block
-
-- extension、publisher、送信対象、model、費用の承認が揃わない場合は停止します。
-- private contentや秘密を送らなければ成立しない場合は停止します。
-- 自動修正、原本変更、通常profileへの導入が必要なら停止します。
-
-未実施のAnalyze結果やscoreを作りません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-install readiness、送信対象、model、Analyze出力、人の確認、修正の別承認、cleanupを分けます。一つの評価出力を意味の正しさ、application、usefulness、全customizationへ外挿しません。
+[メインシナリオの発展へ戻る](../README.md#発展)

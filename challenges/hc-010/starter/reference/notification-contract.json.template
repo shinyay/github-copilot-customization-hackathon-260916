@@ -1,0 +1,43 @@
+{
+  "materialType": "SYNTHETIC_TRAINING_ONLY",
+  "scenario": "HC-010",
+  "checker": {
+    "cli": "node manual/hc-010/tools/checker.mjs <relative-draft-path>",
+    "pathAuthority": "process working directory",
+    "defaultStopDraft": "manual/hc-010/draft.md",
+    "requiredHeadings": [
+      "## Evidence",
+      "## Unknowns"
+    ],
+    "resultExits": {
+      "pass": 0,
+      "invalid": 1,
+      "uncheckable": 2,
+      "skipped": 0
+    },
+    "meaning": "pass is a format check only; skipped is not pass"
+  },
+  "adapter": {
+    "event": "Stop",
+    "inputSubset": [
+      "hook_event_name",
+      "stop_hook_active"
+    ],
+    "reentry": "stop_hook_active: true skips before invoking the checker",
+    "outputKeys": [
+      "continue",
+      "systemMessage"
+    ],
+    "continue": true,
+    "autoFix": false,
+    "newAiTurnRequested": false,
+    "retryLoop": false
+  },
+  "limits": {
+    "hookInputBytes": 32768,
+    "hookInputTimeoutMs": 2000,
+    "draftBytes": 65536,
+    "checkerTimeoutMs": 3000,
+    "checkerOutputBytes": 8192
+  }
+}

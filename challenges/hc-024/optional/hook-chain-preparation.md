@@ -1,55 +1,52 @@
-# Stop通知chainの準備境界
+# Stop 通知経路を比べる
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-024本編](../README.md)の四セルとは別に、同じ限定checkerを未接続・手動・Stop event通知の三経路へ接続する準備ガイドです。
+[HC-024 のメインシナリオ](../README.md)で使う「一要因だけを変える」考え方を、同じ限定 checker の呼出し経路へ応用します。checker を未接続、手動実行、Stop 通知へ接続した3経路で観察します。
 
-Stopはnonblocking通知であり、品質gate、PreToolUse deny、自動修正、会話window終了と同義ではありません。
+Stop 通知は nonblocking な通知として扱います。品質 gate、tool deny、自動修正、会話の終了保証とはみなしません。
 
-## Prerequisites
+## 前提
 
-environment:
+- 対応する Local / Preview 環境と Stop event を利用できる。
+- 許可済みの使い捨て検証用 workspace がある。
+- 同じ入力だけを検査する、小さな read-only checker を用意できる。
+- checker 実行、Hook 設定、event 試行、通知観察、終了後の解除を個別に承認できる。
 
-- 対応するWindows-native Local / Preview event、限定checker、独立workspace、同じ事前草稿を確認できること。
+## 権限と安全
 
-entitlements:
+- このガイド自体は Hook や script の実行権限を付与しません。
+- checker は固定入力の形式確認だけを行い、source や回答を変更しません。
+- 通知は処理継続を前提とし、deny、permission 変更、retry loop、自動修正へ拡張しません。
+- 3経路で同じ checker と同じ入力を使います。
+- この教材 repository には active な Hook や checker を追加しません。
 
-- 対象Preview / Hook機能、Local Agent、教材workspaceの利用条件と組織policyを確認できること。
+## 手順
 
-additionalApprovals:
+1. checker の入力、確認項目、出力、最大実行時間を固定します。
+2. 未接続の状態で、checker が自動実行されていないことを確認します。
+3. 同じ入力で checker を手動実行し、形式結果を記録します。
+4. 許可済みの別 workspace でのみ、同じ checker を Stop 通知へ接続します。
+5. Stop event、checker 起動、通知表示、再入防止を別々に観察します。
+6. 検証後に設定を解除し、残った process や変更がないことを確認します。
 
-- checker script、Hook配置、event試行、通知観測、終了時解除を対象限定で別途承認すること。
+## 観察すること
 
-## Permissions / Safety
+- event が発生したか。
+- checker が同じ入力で起動したか。
+- 形式結果と通知内容が一致したか。
+- 通知が回答の意味評価や tool deny に変化していないか。
+- checker 自身が再度 Stop event を生む場合に、再入を避けられたか。
+- cleanup 後に Hook や process が残っていないか。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+手動実行の成功だけで、Hook discovery、event、通知 UI の成功を主張しません。通知成功も回答品質や教育効果の証明にはなりません。
 
-additionalApprovals:
+## 停止条件
 
-- checker script、Hook配置、event試行、通知観測、終了時解除を対象限定で別途承認すること。
+- event、作業 directory、再入判定に必要な情報が得られない。
+- 未観測値を既定値で補う必要がある。
+- script / Hook の配置や event 試行が承認されていない。
+- nonblocking 通知を deny や品質 gate に変える必要がある。
+- checker が書込み、外部送信、長時間実行を要求する。
 
-三経路で同じcheckerを使い、event側だけ別の検査器を追加しません。事前配布草稿の形式検査と、実Chat回答の意味評価を分けます。
-
-通知は `continue: true` を維持し、deny、permissionDecision、retry loop、自動修正へ変更しません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| preview-stop-hook-chain | not-checked | このガイドはHook用Pack、checker/adapterのRuntime接続、実Stop eventを提供・検証しません。 |
-
-合成stdinやNode checkerの成功は、実Hook discovery、event、通知UIのEvidenceではありません。
-
-## Stop / Block
-
-- event、cwd、再入fieldが欠ける場合は停止します。
-- unknownをfalseや既定値で補う必要がある場合は停止します。
-- script/Hook配置やevent試行の承認がない場合は停止します。
-- 通知をdenyまたは品質gateへ変える必要がある場合は停止します。
-- 再入skipを実hostで確認できない場合は未検査のまま残します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-未接続、手動、eventの来歴、checker起動、形式結果、通知、再入、cleanupを別に記録します。通知成功をsource意味、実回答の品質、tool deny、教育効果へ昇格しません。
+[HC-024 のメインシナリオへ戻る](../README.md#発展)

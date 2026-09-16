@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "SYNTHETIC_TRAINING_ONLY",
+  "query": "allocate",
+  "symbol": "OrderService.allocate",
+  "source": "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+  "fileSha256": "a9586d7b43c4577d548180f4ea883ae522f7d97c78927f6a53e1bd48a382b072",
+  "range": [333, 349],
+  "provenance": "node-literal-scan",
+  "languageService": {
+    "name": "Java",
+    "status": "not-observed",
+    "resolvedLocations": null
+  }
+}

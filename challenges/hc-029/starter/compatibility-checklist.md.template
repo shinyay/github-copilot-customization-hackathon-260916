@@ -1,0 +1,14 @@
+# Compatibility checklist
+
+| check | required record |
+|---|---|
+| environment | JDK8 / Mavenのavailabilityと実際に実行したか |
+| language | Java 7構文とJava 7標準APIの範囲 |
+| proposal target | CommonRulesTest.javaだけ |
+| production | Money.javaを含むproduction codeは不変 |
+| build | pom.xmlは不変 |
+| existing tests | 既存testの期待値は不変 |
+| execution | compile/test未実施はnot-run |
+| application | proposed-change.diff.templateはapplyしない |
+
+sourceを読めたことやDB testのskipを、compile/test全体のpassへ置き換えません。

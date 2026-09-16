@@ -1,49 +1,55 @@
-# Plugin lifecycle観測の準備境界
+# Plugin lifecycleを限定観測する
 
-## Guide scope
+[HC-040本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-040本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+信頼済みの固定取得先を使い、Pluginの取得、install、enable、selected version、Skill発見、update、restoreを限定的に観察します。本編のbyte identity計画を実環境で確認する補足です。
 
-## Prerequisites
+## 前提
 
-environment:
+- 承認済みの取得先と固定ref/versionがある。
+- 対応clientまたはCloud surfaceを確認できる。
+- 既存Skill/Plugin copyと自分の追加分を識別できる。
+- v1/v2 package hashとv1復元元を固定できる。
+- install、enable、updateに必要な資格と組織policyを確認できる。
 
-- 承認済み取得先と固定ref/version、対応client/Cloud、既存Skill/Plugin copy、自分の追加分、復元元hashを確認できること。
+## 権限と安全
 
-entitlements:
+- 取得、install、enable、update、restore、Cloud試行、費用について個別の許可を得る。
+- 架空marketplace、floating ref、未知版を使わない。
+- user設定へ黙って迂回せず、既存copyを一括削除しない。
+- 本編のpackageへ追加componentを入れない。
 
-- Agent Plugins、対象repository/marketplace、install/enable/updateに必要な資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. 取得先、ref/version、package hash、component inventoryを記録する。
+2. 既存copy、selected version、復元元を確認する。
+3. 承認後にv1をinstall/enableし、発見されたversionとSkillを観察する。
+4. v2へupdateし、selected version、Skill hash、発見、callの各観測を分けて記録する。
+5. v1へrestoreし、取得元とSkill hashが凍結したv1へ戻ったか確認する。
+6. 終了後、自分の追加分だけを承認済み手順で整理する。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+| 層 | 記録 |
+|---|---|
+| package | source/ref、package hash、component inventory |
+| lifecycle | install、enable、update、restore |
+| selection | active copy数、selected/fetched version |
+| use | discovery、本文投入、call |
+| safety | client/Cloud対応、費用、復元 |
 
-- Plugin取得、install、enable、update、restore、Cloud試行、費用上限、終了時の整理を操作ごとに別承認すること。
+形式適合やhash一致だけで、発見やcallを成功扱いしません。
 
-架空marketplace、floating ref、User設定への迂回、追加component、run.json手編集、既存copyの全消去を使いません。
+## 停止条件
 
-## Runtime capabilities
+- 取得先、ref/version、対応surfaceを確認できない。
+- 既存copyと自分の追加分を識別できない。
+- v1復元元またはhashを固定できない。
+- install、enable、update、restoreの個別許可がない。
+- 一Skill比較へ追加componentが必要になる。
 
-| capability | status | reason |
-|---|---|---|
-| cloud-plugin-observation | not-checked | 本編とRuntime v1はPlugin取得、install、enable、active copy、selected version、Skill発見、本文投入、call、update、restoreを観測しません。 |
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
+## 本編へ戻る
 
-blockedとnot-checkedを区別します。既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- 架空marketplace、未知版、floating ref、未確認のclient/Cloud対応が必要な場合は停止します。
-- 既存copyと自分の追加分を識別できない、または復元元hashを固定できない場合は停止します。
-- install、enable、update、restore、Cloud試行の個別承認がない場合は停止します。
-- Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-取得先/ref、package hash、component inventory、install、enable、active copy、selected version、発見、call、update、restore、unknown、blocked理由を分けます。Agent Plugins 1.0形式や他clientの説明をCloudの実提供保証へ変換せず、runtimeBehaviorとeducationalEffectは観測した範囲を超えて主張しません。
+観察結果は [HC-040の確認ポイント](../README.md#確認ポイント) へ戻し、planned copyとobserved active copy、manifestとselected versionを混同していないか確認します。

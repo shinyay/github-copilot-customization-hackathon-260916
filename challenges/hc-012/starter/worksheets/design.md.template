@@ -1,0 +1,39 @@
+# HC-012 共通設計worksheet
+
+## Purpose
+
+- 誰がいつ選び直すか:
+- 個別選択と名前付き集合を比べる理由:
+- 集合を追加しない方がよい場面:
+
+## Source reading
+
+| path / symbol | 読んだ範囲 | 確認できたこと | 未確認事項 |
+|---|---|---|---|
+| `OrderImportService.importDraft / replay` |  |  |  |
+| `OrderGroup.canonicalHash / validate` |  |  |  |
+| 関連test定義 |  |  |  |
+
+sourceを利用できなかった場合の制限:
+
+## Tool Set proposal
+
+- name:
+- description:
+- icon:
+- この名前と説明を選ぶ理由:
+- 採用しなかった案とtradeoff:
+
+## Reconstruction
+
+- 初回準備の手順:
+- 別の人が再設定する手順:
+- 欠落・余分・重複・未知の参照を見つける方法:
+- 自己点検の場合のcarryover:
+
+## Boundaries
+
+- Tool Setが追加しない能力・権限:
+- 変更なし・診断なしの解釈:
+- 原稿 / UI選択 / 有効なtools / 実callの区別:
+- 比較を停止する条件:

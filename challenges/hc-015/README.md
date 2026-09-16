@@ -1,275 +1,232 @@
 # HC-015 最短経路で必要なコードへ到達しよう
 
-## Challenge Story
+## Scenario
 
-「受注の在庫引当はどこから始まり、transactionはどこで決まりますか」と聞かれました。検索するとJavaの同じ単語がいくつも見つかります。しかし、ヒット数が多くても、必要な設定まで読めたとは限りません。Javaの定義からXMLへ移り、説明の根拠を揃える道筋が必要です。
+「受注の在庫引当はどこから始まり、transaction はどこで決まりますか」と聞かれました。
+`allocate` を検索すると Java の同じ単語が複数見つかります。しかし、検索ヒットだけでは、
+定義を読めたか、XML の import を辿れたか、実際の transaction を確認できたかは分かりません。
 
-このChallengeでは、通常の検索で探す方法と、先に二つのファイル全文を渡す方法を実際に比べます。タイトルの「最短」は性能改善の約束ではありません。先に添付する準備のほうが重い、自力検索で十分だった、という発見も大切です。このページとStarter Kitだけで始められ、過去のChallenge・LABの回答や履修は不要です。
+このシナリオでは、通常の検索で source を探す方法、二つのファイルを最初から明示添付する方法、
+同じ二つの raw 全文を手動で渡す方法を試します。「最短」は速さの保証ではありません。
+準備の負担が大きい、自力検索で十分、全文が実際に投入されたか確認できない、という結果も重要です。
 
 ## この機能とは
 
-**コンテキストの添付は情報を渡す操作、検索は情報を探す操作**です。どちらも新しい常設Instructionsを作る必要はありません。通常のVS Code Stable / Copilotで利用できるread/searchと、ChatのAdd Contextによるfile添付を本編で使います。
+**コンテキストの添付は情報を渡す操作、検索は情報を探す操作**です。
+どちらも常設の repository customization を作る必要はありません。
 
-たとえば、`allocate`を文字列検索して定義のあるJavaを開く方法と、最初からそのJavaファイルをChatへ添付する方法は、同じsourceへ向かう別の入口です。XMLもfileとして添付すれば設定を渡せますが、添付しただけでモデルが全行を読んだとは言えません。
+- **Add Context**: Chat の依頼へファイルなどを明示する UI です。このシナリオでは
+  `Files & Folders` からファイルそのものを選びます。候補名の入力、symbol、selection、folder 添付とは区別します。
+- **text/file search**: ファイル名や文字列で候補を探します。`allocate` の一致は、
+  定義、参照、呼出し回数、実行結果の確定ではありません。
+- **言語機能 / LSP**: Java 拡張などが定義・参照の位置を解決します。
+  人の Go to Definition / Find All References と、Agent が Usages を使った結果は別の観察です。
+- **semantic index**: 意味的に関連する箇所を探すための索引です。
+  repository 全文を毎回投入する機能でも、読取権限を付与する機能でもありません。
 
-- **Add Context**: ファイル等を依頼に明示するUIです。文書では`Add Context → Files & Folders`、`Symbols`、`#`参照、ドラッグ＆ドロップが案内されています。本編ではfileを選び、symbol・selection・folderの添付とは区別します。候補名を入力しただけで添付できたことにせず、実添付表示を確認します。
-- **text/file search**: 名前や文字列を手がかりに探します。grep/text/file検索はsemantic indexなしでも使える経路です。`allocate`の文字列一致は、呼出し・定義・実行回数の確定ではありません。
-- **言語機能 / LSP**: Java拡張などが定義・参照の位置を解決します。AgentのUsagesはreferences・implementations・definitionsを組み合わせて調べる経路です。人のGo to Definition / Find All Referencesと、AgentがUsagesを使った記録は別で、一つのエディター操作と同一とはしません。
-- **semantic index**: semantic検索に必要な、関連箇所を探すための索引です。リポジトリ全文を毎回投入する機能でも、読取り権限を与える機能でもありません。状態の確認先はCopilot status dashboardです。個人・enterpriseの利用資格やpolicy、初期化状態を別々に記録し、未準備を検索0件へ読み替えません。未準備なら全条件を同じtext/file searchへ揃え、semantic成功を主張しません。
+添付表示を確認できても、内部で全 bytes が使われたとは限りません。
+index や言語機能が未準備の場合は、結果を「0 件」にせず、text/file search で確認できる範囲へ限定します。
 
-取得確認した一次資料（**2026-09-15**）: [Add context to chat](https://code.visualstudio.com/docs/chat/copilot-chat-context)、[Workspace context](https://code.visualstudio.com/docs/agents/reference/workspace-context)。補足: [Tools in VS Code](https://code.visualstudio.com/docs/agents/run/tools)。UI名・候補・使えるtoolsは利用中の版と表示で確認してください。文書には添付したfileのraw bytesすべてがモデルへ届く保証はありません。文書を読んだこと、原稿のhashが一致したこと、実機で操作できたことは別の証拠です。本教材の制作時には実UI・LLM・LSP・indexを操作していません。
+参考:
+
+- [Add context to chat](https://code.visualstudio.com/docs/chat/copilot-chat-context)
+- [Workspace context](https://code.visualstudio.com/docs/agents/reference/workspace-context)
+- [Tools in VS Code](https://code.visualstudio.com/docs/agents/run/tools)
 
 ## 向いていること / 向いていないこと
 
 **向いていること**
 
-- 入口は分かるが、JavaとXMLを行き来する調査で根拠が抜けやすい。
-- ファイル名は知っていて、検索を毎回繰り返すか先に全文を渡すかを選びたい。
-- 「見つからなかった」を、対象範囲・index・未対応・アクセスなどへ切り分けたい。
+- Java と XML を行き来する調査で、根拠となる path・symbol・範囲を残したい。
+- ファイル名は分かるが、毎回検索するか、先に全文を渡すか判断したい。
+- 「見つからない」を、検索範囲、index、言語機能、アクセス、添付範囲へ切り分けたい。
+- 全文準備のコストと、追加検索・追問の減り方を比較したい。
 
 **向いていないこと**
 
-- 読む量を増やせば必ず正しい、添付すれば必ず速い、という保証が必要な場面。
-- sourceを隠してBaselineを不利にする比較や、検索除外をACLとして使うこと。
-- 文字列検索をLSPの代用品とし、未観測を「参照0件」へ置き換えること。
-- 静的なJava/XML読解だけで、Springの実proxy・実transaction・DB動作を証明すること。
+- 添付すれば必ず速い、長い context ほど必ず正しい、という保証が必要な場面。
+- source を隠して検索側を不利にする比較。
+- 検索除外を ACL として扱うこと。
+- 静的な Java/XML の読解だけで、Spring proxy、実 transaction、DB 動作を証明すること。
 
-言語拡張が未導入でも、text/file searchと全文readが利用できるなら本編を続けられます。LSPだけをunsupportedとして分け、新しい拡張を自動installしません。
+## ゴール
 
-## Starter Kit
+1. `OrderService.allocate` を入口に、Java の定義と XML の transaction 設定へ到達する。
+2. A2 の import から A3 の bean 定義を辿り、path・範囲・未確認事項を示す。
+3. text search、file read、LSP、semantic search、明示添付を混同しない。
+4. A1/A2 を添付または手動供給するとき、固定版・byte 数・SHA-256 を確認する。
+5. 原稿の同一性、UI の添付表示、実際の内部投入範囲を別々に扱う。
+6. Java、XML、設定、index、拡張を変更せず、静的に確認できないことを残す。
 
-[Pack manifest](pack/manifest.json) はschemaVersion / challengeVersion / minimumTemplateVersionがすべて1です。sourceKindは`baseline`。元アプリは **shinyay/code-to-doc-workshop-260910@398d7d1982a1402bcdba00d6c3ded67d8d338787** の515ファイルで、Runtime rootにあります。Labs repositoryは教材の改作元であり、アプリのsource repositoryではありません。PackにJavaの重複treeや業務の完成回答はありません。
+## 用意するもの
 
-### 同じsourceを三条件へ
+- まずリポジトリ共通の [始め方](../../README.md#始め方) を完了してください。
+- Git
+- Node.js 22 以降
+- PowerShell
+- UTF-8・LF で保存できるエディター
+- 通常の text/file search とファイル添付を使える Copilot Chat
+- 公開Runtime templateから作成したruntime workspace
 
-次はRuntime root相対のexact pathです。JSON・表のpathは契約上POSIX表記、Windowsの操作コマンドは`\`表記を使います。
+  upstream template revision:
+  `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
 
-| ID / 読むファイル | 調べること | 全文bytes |
-|---|---|---:|
-| A1 `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` | `OrderService.allocate`の定義。333–349行を入口に必要な前後・参照先を読む | 29357 |
-| A2 `wholesale-core/src/main/resources/application-context.xml` | transaction設定とimport。44–53行、82–89行を本文全体とともに確かめる | 5169 |
-| A3 `wholesale-core/src/main/resources/spring/module-operations.xml` | A2のimportから辿る実際のbean定義。10–14行を入口に読む | 1405 |
+Java 拡張、JDK、Maven、DB、semantic index は必須ではありません。
+upstream revisionはsourceの出所であり、templateから作ったruntime workspaceのlocal `HEAD` が
+この値と一致することは要求しません。
 
-これらは**読む候補でありACLではありません**。必要な参照先は全条件で同じbaselineから読めます。A3は全条件へ等しく利用可能にし、追加readの理由と範囲を記録します。import先を推測した別のXML名へ置き換えません。
+`starter\` の内容:
 
-主比較のB/Cで事前供給するのは**A1/A2の二つの全文だけ**です。原文合計は34526 bytes、A3も足すと35931 bytesです。request・filename delimiterはこの値に含みません。各fileの固定SHA-256と行数は[source-targets.json.template](pack/payload/source-targets.json.template)にあります。Byte数は測定済みですが、実token数・clientの容量・切り詰めなしは未観測です。
-
-### 配布物と道具
-
-全条件へ同じ12個の不活性`.template`を`.hackathon/challenge/hc-015/`にoverlayします。原本は編集・renameしません。
-
-| 配布物 | 使い方 |
+| パス | 用途 |
 |---|---|
-| `brief.md.template` / `request.txt.template` | 共通の前提と、全条件へ省略せず送る依頼 |
-| `source-materials.json.template` / `source-targets.json.template` | 原本の由来・改作・hashと、固定sourceの照合 |
-| `design.md.template` | 自分の判断と停止基準を先に書く |
-| `context-plan.md.template` | B/Cの全文準備・投入範囲・同等性の計画 |
-| `query.json.template` / `search-plan.json.template` | queryとscope、未観測の状態を分ける教材用データ |
-| `manual-input-layout.txt.template` | 元sourceから作るCのfilename delimiter仕様 |
-| `comparison.md.template` / `recovery.md.template` / `context.md.template` | 当該runの三つのEvidenceの編集開始点 |
+| `starter\request.txt.template` | 全方法で使う固定依頼 |
+| `starter\worksheets\design.md.template` | 検索順、添付、観察、停止条件の設計票 |
+| `starter\worksheets\context-plan.md.template` | A1/A2 の全文供給計画 |
+| `starter\worksheets\observations.md.template` | 検索・添付・追加読取を記録する用紙 |
+| `starter\fixtures\source-targets.json.template` | A1/A2/A3 の固定 path、byte 数、SHA-256 |
+| `starter\fixtures\query.json.template` | `allocate` と Java 言語機能を分ける合成データ |
+| `starter\fixtures\search-plan.json.template` | 検索順・index 状態・除外状態を分ける合成データ |
+| `starter\references\manual-input-layout.txt.template` | A1/A2 の手動全文レイアウト |
+| `starter\tools\prepare-manual-input.mjs.template` | 固定 source を照合し、手動全文を新規作成する helper |
 
-query/search-planは **SYNTHETIC_TRAINING_ONLY** の設計教材です。アプリsourceは合成メモと混同せず固定baselineのままです。JSONはVS Code設定やLSPイベントschemaではなく、読み込ませて設定を有効化するものではありません。
+JSON は教材用の合成データで、VS Code 設定や言語サービスのイベント形式ではありません。
 
-Node.js 22以降、Git、Hubと新しい非公開Runtime repositoryを扱える参加権限、利用できるVS Code Stable / Copilotとread/search toolsを用意します。Java/JDK、Maven、DB、アプリ・test実行は不要です。root READMEのアプリ起動手順はこの課題では使いません。新規MCP、Skill、Hook、Custom Agent、拡張、indexを導入せず、User/Profile・workspace設定や除外も変更しません。
+## 準備
 
-## Open Question
-
-**OrderService.allocateの説明に必要なJavaとXMLへ、必要な情報を削りすぎず到達するには、どこから探し、何を明示添付しますか。全文添付の負担が大きい場合や、自力検索で十分な場合も説明してください。**
-
-本編の統制比較では添付集合をA1/A2に固定します。その制約の中で検索順序、追加readの判断、投入確認の手順を設計してください。別集合のほうがよいという提案も歓迎しますが、本編の途中で入力を替えず別の再設計として説明します。
-
-## Design Time
-
-回答を見る前に、人が次を決めて`participant/hc-015/design.md`へ記録します。
-
-1. 何を「必要な根拠に到達した」とするか。path・symbol・行範囲がsourceへ戻れること、XMLへの移動と不確実さの説明などから観測基準を作ります。
-2. 検索語の順序、対象範囲、全文を開く時点、importや参照を辿る基準、探索を止める条件。文字列一致と定義読解のどちらを観測したかを区別します。
-3. A1/A2の全文準備、Bの実添付表示、Cのsection別raw hashを確かめる方法。A3を追加で読んだ操作は別欄にします。
-4. 操作数の定義。検索・file read・添付・貼付・追問を分け、予定手順数を実UI操作数としません。実測できない時間・token・call数はnullにします。
-5. 同じrequest、source/access、model/effort、実効tools、承認方法、tabs/selectionの扱いと、変わったときの停止。home・User・組織指示・Memory・設定同期の残留も記録します。
-
-試作と比較runを分け、設計revisionと共通入力hashを凍結してから始めます。新しいrepositoryやprofileでもhomeを完全分離したことにはなりません。既存設定や他人の資料を削除して条件を揃えず、分離できなければincomparable / blockedとします。
-
-## Build
-
-### 1. Hubで計画し、Packを作る
-
-以下は**Hub checkoutのroot**です。teamとrun IDを自分用に置き換えます。dry-runはrepositoryを作らず、live操作もしません。
+この README がある `challenges\hc-015` を作業ディレクトリにします。
 
 ```powershell
-node .\scripts\plan-run.mjs --dry-run --route core --challenge HC-015 --condition baseline --team team-sora --run hc015-baseline-01
-node .\scripts\plan-run.mjs --dry-run --route core --challenge HC-015 --condition explicit-context --team team-sora --run hc015-context-01
-node .\scripts\plan-run.mjs --dry-run --route core --challenge HC-015 --condition manual-equivalent --team team-sora --run hc015-manual-01
-node .\scripts\build-pack.mjs --challenge HC-015 --output .runtime/packs
-```
-
-`--output .runtime/packs`の値だけはCLIが要求するliteralです。実際の出力は`.runtime\packs\hc-015-v1`という**ディレクトリ**と隣接hashです。既存出力を消して上書きせず停止します。未公開・version不一致なら運営へ確認してください。
-
-### 2. 条件ごとに新しいRuntimeを用意する
-
-[Runtime template](https://github.com/shinyay/github-copilot-customization-runtime-template)の**Use this template → Create a new repository**で自分のOwnerに三つの新しい**Private repository**を作ります。それぞれのCodeに表示されたURLを使い、`git clone "コピーしたURL" "条件専用の新規フォルダー名"`で取得します。Hubと各Runtimeは別フォルダーに置き、入れ子にしません。通常の参加準備は[Getting Started](../../docs/getting-started.md)でも確認できます。
-
-一つのrepositoryでbranchを切り替えて条件を使い回してはいけません。本Packはrepository tier、separate-repository、branchSafe:falseです。fresh repository / workspace / conversation / profileを条件ごとに用意し、同じRuntime template version 1を使います。
-
-次は**各Runtime checkoutのroot**で一条件ずつ行います。`$Pack`は先ほどの展開済みPack directoryの絶対パスです。run IDも条件専用にします。失敗したコマンドがあれば続けず原因を確認してください。
-
-```powershell
-$condition = "baseline"
-$runId = "hc015-baseline-01"
-$Pack = "C:\work\hub\.runtime\packs\hc-015-v1"
-git switch -c $runId
-node .\.hackathon\scripts\verify-template.mjs
-node .\.hackathon\scripts\apply-pack.mjs $Pack --team team-sora --condition $condition --run-id $runId
-node .\.hackathon\scripts\verify-run.mjs $Pack --stage in-progress
-```
-
-Bでは`explicit-context` / `hc015-context-01`、Cでは`manual-equivalent` / `hc015-manual-01`を、その条件専用のrepositoryで指定します。中立状態の`verify-template.mjs`と、apply後の`verify-run.mjs`は目的が違います。`.hackathon/run.json`を手で変更せず、applyしたnamed branchを維持します。[Runtime repository guide](../../docs/runtime-repository-guide.md)も参照できます。
-
-### 3. 設計票とEvidenceを新規作成する
-
-これは**人の準備作業**です。固定taskのAgentにはsourceの調査だけを頼みます。apply済みRuntimeで実行し、既存の自分の成果物も上書きしません。
-
-```powershell
-$ErrorActionPreference = "Stop"
-$root = (Get-Location).Path
-$starter = "$root\.hackathon\challenge\hc-015"
-New-Item -ItemType Directory -Path .\participant\hc-015
-New-Item -ItemType Directory -Path .\.hackathon\evidence\hc-015
-[System.IO.File]::Copy("$starter\design.md.template", "$root\participant\hc-015\design.md", $false)
-if ($condition -eq "baseline") {
-    New-Item -ItemType File -Path .\participant\hc-015\search-plan.md
-} elseif ($condition -in @("explicit-context", "manual-equivalent")) {
-    [System.IO.File]::Copy("$starter\context-plan.md.template", "$root\participant\hc-015\context-plan.md", $false)
-} else {
-    throw "このPackにないconditionです。"
-}
-foreach ($name in @("comparison", "recovery", "context")) {
-    [System.IO.File]::Copy("$starter\$name.md.template", "$root\.hackathon\evidence\hc-015\$name.md", $false)
+$RuntimeRoot = (Resolve-Path (Read-Host 'Runtime workspace root')).Path
+$RequiredSource = @(
+  'wholesale-core\src\main\java\jp\co\tsubame\wholesale\service\OrderService.java',
+  'wholesale-core\src\main\resources\application-context.xml',
+  'wholesale-core\src\main\resources\spring\module-operations.xml'
+)
+$RequiredSource | ForEach-Object {
+  if (-not (Test-Path -LiteralPath (Join-Path $RuntimeRoot $_) -PathType Leaf)) {
+    throw "runtime workspaceにsourceがありません: $_"
+  }
 }
 ```
 
-`Copy`の`$false`と新規作成は上書きを拒否します。途中まで作成して失敗しても、既存のファイルを削除して再実行しません。状態を確認してください。
+local `HEAD` は検査しません。helperが各sourceのbyte数とSHA-256をupstream template revisionの固定値へ
+照合します。一致しない場合は既存workspaceをresetせず、変更内容を確認するか新しいruntime workspaceを用意してください。
 
-Baselineの`search-plan.md`には、query/search-planのJSONを読んで、検索順・範囲・XMLへ進む判断・停止基準を自分のMarkdownで書きます。JSONを設定として実行しません。B/Cは`context-plan.md`を具体化します。Cの`manual-input.txt`は次のbyte-copyで作ります。設計票はUTF-8/BOMなし・LFで保存し、凍結した判断を三条件に揃えます。
+固定 source:
 
-### 4. 固定sourceのraw bytesを照合し、Cだけpacketを作る
-
-次は各Runtime rootで実行するNodeのファイル検査です。JavaやDBを起動しません。全三fileを固定oracleへ照合し、CだけA1/A2のraw全文を組み立てます。`$condition`はこのrepositoryへapplyした値です。
-
-```powershell
-@'
-import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
-import path from "node:path";
-const condition = process.argv[2];
-assert.ok(["baseline", "explicit-context", "manual-equivalent"].includes(condition));
-const hash = (value) => createHash("sha256").update(value).digest("hex");
-const targets = JSON.parse(readFileSync(path.join(".hackathon", "challenge", "hc-015", "source-targets.json.template"), "utf8"));
-const files = targets.sources.map((source) => {
-  const content = readFileSync(path.join(...source.path.split("/")));
-  assert.equal(content.length, source.bytes, source.path);
-  assert.equal(hash(content), source.sha256, source.path);
-  console.log(JSON.stringify({ path: source.path, bytes: content.length, sha256: hash(content) }));
-  return { ...source, content };
-});
-if (condition === "manual-equivalent") {
-  const packet = Buffer.concat([
-    Buffer.from("HC-015 MANUAL FULL-SOURCE v1\n", "utf8"),
-    ...files.slice(0, 2).flatMap((file) => [
-      Buffer.from(`<<<BEGIN FILE ${file.path}>>>\n`, "utf8"),
-      file.content,
-      Buffer.from(`<<<END FILE ${file.path}>>>\n`, "utf8"),
-    ]),
-  ]);
-  writeFileSync(path.join("participant", "hc-015", "manual-input.txt"), packet, { flag: "wx" });
-  console.log(JSON.stringify({ packetBytes: packet.length, packetSha256: hash(packet) }));
-}
-'@ | node --input-type=module - $condition
-```
-
-`flag: "wx"`は既存packetを上書きしません。各fileのbytesとhash、Cのpacket全体のhashを`context.md`へ記録します。Gitの改行変換等で不一致になった場合、sourceや期待hashをその場で変更して通さず停止してください。B/Cが同じ誤hashでも、固定sourceとの照合なしに同一としません。
-
-### 5. 通常のStableで比較を実施する
-
-新規会話で、各条件とも`request.txt.template`の**全文**を送ります。共通の読む候補とsource/access、model/effort、実効read/search tools、承認方式を変えません。不要な添付・selection・前の回答・無関係なtabsの混入を確認します。他人のtabsや設定は勝手に消しません。
-
-- **A / baseline**: 二fileを先に添付せず、通常のtext/file searchと全文readで探します。Aにも全baselineは読める状態にします。検索語、開いたpath、読めた範囲を記録します。
-- **B / explicit-context**: Chatの**Add Context → Files & Folders**でA1、A2を**fileそのものとして**選び、exact pathと二つの添付表示を確認してから同じ依頼を送ります。Symbolsからのsymbol添付、selectionだけ、同名別ファイルではありません。UIが示す範囲と、内部投入で確認できない範囲を分けます。
-- **C / manual-equivalent**: Bと同じA1/A2全文を含む`manual-input.txt`を開き、preamble・filename delimiterも含む**全体**を同じ依頼とともに手動供給します。Bとは別の要約・抜粋・前の回答を使いません。
-
-全条件でA3や必要な参照先を追加readできます。どのpathを何のために読んだか、要求した範囲・返却範囲・実際に読んだ範囲を記録します。検索能力をBだけ増やしたり、Aだけ全文を読めなくしたりしません。
-
-全文が収まらない、切り詰めが疑われる、内部投入を確認できない場合はその状態を記録します。**片側だけ要約して比較を通しません**。同じ原稿を用意できたことと、同じ全文が実際に投入されたことは別です。未対応clientならSupport / Fallbackの設計提出へ切り替え、実検索・添付成功とは数えません。
-
-## Compare
-
-Baselineは`baseline`、Customizedに当たる本編経路は`explicit-context`、同全文の手動対照は`manual-equivalent`です。condition名はこの三つだけで、LSP/index診断を第四の条件にしません。
-
-| condition | 固定入力とアクセス | 変える要因 | 許可されたparticipant成果物 |
+| ID | runtime workspace root からの相対パス | byte 数 / SHA-256 | 調べること |
 |---|---|---|---|
-| `baseline` | 同じtaskと全baseline、同じread/search | 自力で探す | `design.md`, `search-plan.md` |
-| `explicit-context` | 同上、事前供給はA1/A2全文 | Add Contextによる供給 | `design.md`, `context-plan.md` |
-| `manual-equivalent` | 同上、Bと同じA1/A2全文 | filename delimiter付き手動供給 | `design.md`, `context-plan.md`, `manual-input.txt` |
+| A1 | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` | 29357 / `a9586d7b43c4577d548180f4ea883ae522f7d97c78927f6a53e1bd48a382b072` | `allocate` の定義。333–349 行を入口に前後と参照先を読む |
+| A2 | `wholesale-core/src/main/resources/application-context.xml` | 5169 / `ff96dd85980eb533693bd8df6111eead091796f3192645c50944db599d7d081c` | transaction 設定と import。44–53、82–89 行を入口に全文を読む |
+| A3 | `wholesale-core/src/main/resources/spring/module-operations.xml` | 1405 / `284d8e50c62a952aecfab1b3fab6877db5eebd9c5d674e2da40d1a6ef6359eb9` | A2 から辿る bean 定義。10–14 行を入口に読む |
 
-表のfileはすべて`participant/hc-015/`直下のexact pathです。A3は全条件に等しく利用可能で、追加readは供給効果と分けて数えます。別添付集合を試すなら別design revision・別比較groupとし、同じ比較内の入力をこっそり変更しません。
+A1 と A2 の本文は合計 34526 bytes、A3 まで含めると 35931 bytes です。
+依頼、ファイル名、区切りの bytes と、実際の token 数は別です。
+これらは読む候補であり ACL ではありません。必要な参照先は同じ source checkout から追加で読めます。
 
-初回に必要な根拠へ到達したか、不要な検索や追問があったか、全文準備の負担はどうかを見ます。操作数・時間は測れたものだけです。回答のpath/symbol/行範囲を人が元sourceへ戻って確かめ、引用件数だけで勝敗を決めません。
-
-B/Cで準備したsource bytesが一致しても、UI metadata、文脈の優先度、内部投入量まで同じとは保証しません。unobserved / pending / unsupportedは0件でも正しい回答の証拠でもありません。LSPが使えなければLSPだけunsupported、index未確認ならsemanticResultsはnullとし、同じtext/file能力で比較できる範囲を限定します。
-
-負例は本比較の回答を汚さない別の確認にします。自分の不活性成果物について、正常確認→一要因変更→意図したpost-image確認→具体的理由での拒否→元の完全なbytesへ復元→同じ検査で正常、の順を記録します。manualの1行欠落、filename違い、queryのallocate→approve、333行を外すscope、両条件共通の誤hashなどを使えます。sourceや配布原本は変更せず、実施しなければdesign-onlyと明示します。
-
-## Evidence
-
-各conditionにexact三ファイルが必要です。`.hackathon/evidence/hc-015/`はRuntime所有のrun-stateであり、allowedAdditionsではありません。未記入のひな型を提出せず、次のH2を維持して自分の観測へ置き換えます。
-
-| ファイル | 必須H2 |
-|---|---|
-| `comparison.md` | Fixed task / Environment / Design / Observations / Comparison / Outcome |
-| `recovery.md` | Case / Expected boundary / Observed result / Restoration / Non-claims |
-| `context.md` | Requested context / Provided context / Source references / Search and language status / Non-claims |
-
-当該run ID、condition、comparisonGroupId、request/source/成果物hash、実施・design-only・fixture-onlyの区別、未観測理由を書きます。Bの実添付表示、Cのsection別raw照合、A3への追加read、LSP/indexの状態は別欄です。literal scanの成功をVS Code検索・LSP・semantic検索・Add Context成功へ再ラベルしません。
-
-制作側の[構造検査](../../tests/support/hc-015-context-checks.mjs)はtests内だけに置き、PackやRuntimeへ追加しません。これもRuntimeの見出し・template hash検査も、業務の答えを採点するoracleではありません。sourceを静的に読めても、実proxy・実transaction・Java/DBテスト・過去の設計意図は未確認です。未実施のruntimeBehavior / educationalEffectは`not-observed`とします。
-
-## Submit
-
-各Runtimeの当該branchで、設計成果物と三つのEvidenceを揃えてから実行します。
+作業用ひな型を新規コピーします。
 
 ```powershell
-node .\.hackathon\scripts\verify-run.mjs $Pack --stage submitted
-node .\.hackathon\scripts\export-submission.mjs $Pack
+New-Item -ItemType Directory -Path .\work
+Copy-Item .\starter\worksheets\design.md.template .\work\design.md
+Copy-Item .\starter\worksheets\context-plan.md.template .\work\context-plan.md
+Copy-Item .\starter\worksheets\observations.md.template .\work\observations.md
 ```
 
-submittedが失敗したらexportへ進みません。独立したsubmit CLIはありません。exportされたbundleと許可された成果物を自分のRuntime PRに含め、[共通Challenge Result Issue](../../.github/ISSUE_TEMPLATE/challenge-result.yml)でHC-015、当該run・condition、Runtime repository/PR、比較結果を提出します。[Submission guide](../../docs/submission-guide.md)も参照できます。
+既存の `work` や宛先ファイルがある場合は上書きせず、内容と所有者を確認してください。
 
-当該conditionの上表の全追加物と三つのEvidenceがexport対象です。他conditionのpath、任意診断の設定、生transcript、別sourceのコピーをbundleへ混ぜません。Cのmanual-inputは固定教材全文だけであり、実データを追加しません。秘密・認証値・実アカウント情報が入っていないか点検し、固定sourceをredactionで改変して同一だとは言いません。
+## 試してみる
 
-`Challenge-specific design`には「到達経路を選んだ理由、固定した二全文、実際に投入・読取できた範囲、A3への追加read、未観測」を記入します。三条件を一つのrunとして偽装せず、横断比較はcomparisonGroupIdとそれぞれのrun/PRへのリンクで結びます。未実施conditionは未実施のまま残します。
+### 1. 到達経路を設計する
 
-## Judging
+回答を見る前に `work\design.md` を記入します。
 
-- 探索の順序・停止基準・供給方法に、自分の理由と具体的な工夫があるか。
-- task/source/access/model/toolsを揃え、準備した全文と実投入の同等性を区別したか。
-- Javaの定義、XMLのimport、bean定義へ戻れる根拠と、確認できない点を示したか。
-- 文字列検索、言語機能、semantic index、添付の状態を混同していないか。
-- 負例の狙いと復元、全文準備の負担や追加不要という判断を説明できるか。
+- 何を「必要な根拠へ到達した」とするか。
+- 検索語、対象範囲、全文を開く時点、XML import を辿る基準。
+- 検索、file read、添付、貼付、追問をどう数えるか。
+- A1/A2 の全文準備と添付表示をどう確認するか。
+- A3 などを追加で読む基準。
+- 版違い、切り詰め、別タブ混入、言語機能・index 不明で止める条件。
 
-機能を使った回数、引用の数、改善だけで採点しません。`equal`、`worse`、`incomparable`、`blocked`、`unsupported`も根拠があれば有効な結果です。構造テストのpassだけで教育効果を認定せず、人がsourceと記録を読みます。
+### 2. 検索から始める
 
-## Bonus Mission
+新しい会話で `starter\request.txt.template` の全文を送り、A1/A2 を事前添付せずに開始します。
 
-本編を凍結したまま、「A3も最初から添付したい」「まず自力で探したい」など別の候補を選ぶ理由と費用を考えてください。入力集合が変わるため別design revisionです。本文を削ったB/Cを元の比較へ混ぜたり、追加Challengeの完了を本編の前提にしたりしません。提案だけでも十分です。
+1. `allocate` を text search する。
+2. exact path と定義を確認し、A1 全文を読む。
+3. A2 を探して全文を読む。
+4. A2 の import を辿り、必要なら A3 を読む。
+5. 検索した語、開いた path、要求範囲、返却範囲、実際に読んだ範囲を記録する。
 
-## Support / Fallback
+文字列一致を定義・参照解決として扱わないでください。Java 言語機能を使った場合は、
+text search とは別に何を実行し、どの位置が返ったか記録します。
 
-- [language-tools: 定義・参照と言語サービスの準備](optional/language-tools.md)はJava拡張が既にある場合の任意ガイドです。人のエディター操作とAgent Usagesを分け、実機利用は別承認です。
-- [index-exclusions: 索引・除外の準備とblocked境界](optional/index-exclusions.md)は別診断のガイドです。Runtime v1でworkspace設定を追跡する経路はblockedです。設定変更、index構築、force-add、User/Profileへの黙った迂回を本編へ足しません。
+### 3. A1/A2 を明示添付して始める
 
-どちらもOPTIONAL_GUIDE_ONLY / live-unobservedで、読むだけで実機を開始・許可しません。任意未実施でも本編を提出できます。
+別の新しい会話で、Chat の **Add Context → Files & Folders** から A1 と A2 のファイルそのものを選びます。
 
-利用予定clientが通常の検索や全文添付に未対応なら、作れる設計票と三つのEvidenceを完成させ、未実施理由と`unsupported`を記録します。全文が入らない・投入範囲不明なら準備の同一性だけを報告し、必要に応じて`incomparable`にします。設計/read-only確認だけの完了をroute成功へ昇格しません。Runtime自体が用意できない場合は、その準備ブロックを運営へ伝え、架空のrun/PR・検証成功を作りません。
+- exact path が二つ表示されていることを確認する。
+- symbol、selection、folder、同名別ファイルで代用しない。
+- 同じ `starter\request.txt.template` の全文を送る。
+- A3 は事前添付せず、必要になった追加読取として記録する。
+- 添付表示と、内部で使われた全文の範囲を分ける。
 
-終了時はexportとbaselineの不変確認を行い、自分の添付・selection・当該会話だけを整理します。source、既存ignore、他人のtabs、User/home/組織設定やindexを消しません。次のconditionは新しいrepository・workspace・conversation・profileから始めます。
+内部投入範囲を確認できない場合は、その状態を `not-observed` として残してください。
+
+### 4. 同じ raw 全文を手動で用意する
+
+添付との同等性を考えるため、A1/A2 の raw bytes を filename delimiter 付きで一つのテキストへまとめます。
+helper は `.template` のまま標準入力へ渡します。
+
+```powershell
+Get-Content -Raw -Encoding UTF8 .\starter\tools\prepare-manual-input.mjs.template |
+  node --input-type=module - prepare --runtime-root $RuntimeRoot --output .\work\manual-input.txt
+
+Get-Content -Raw -Encoding UTF8 .\starter\tools\prepare-manual-input.mjs.template |
+  node --input-type=module - verify --runtime-root $RuntimeRoot --output .\work\manual-input.txt
+```
+
+helper は A1/A2/A3 を固定値へ照合し、A1/A2 の raw 全文だけを
+`starter\references\manual-input-layout.txt.template` と同じ順序・delimiter で新規作成します。
+既存宛先は上書きしません。
+
+別の新しい会話で、`work\manual-input.txt` 全体と同じ固定依頼を渡します。
+行の削除、trim、要約、改行変換、前の回答の追記をしないでください。
+
+## 任意: 比較する
+
+検索から始めた方法、A1/A2 を明示添付した方法、同じ raw 全文を手動供給した方法を比較します。
+固定するのは依頼、source 版、アクセス、model、利用可能な read/search、A3 の追加読取条件です。
+
+見る項目は、必要な根拠へ到達したか、不要な検索や追問、全文準備の負担、
+添付・貼付の確認可能範囲です。時間や token は実測できた場合だけ記録します。
+片方だけ要約したり、別の source 集合へ変えたりしないでください。
+
+## 確認ポイント
+
+- `OrderService.allocate` の path・symbol・支持範囲へ戻れるか。
+- A2 の transaction 設定と import、A3 の bean 定義を対応付けられるか。
+- text search、file read、LSP、semantic search、Add Context を区別したか。
+- A1/A2 の byte 数・SHA-256・順序を確認したか。
+- 準備した全文、添付表示、内部投入範囲、実際に読めた範囲を分けたか。
+- A3 や追加 source を読んだ理由と範囲を記録したか。
+- 静的読解で実 proxy、実 transaction、DB 動作、過去の設計意図を断定していないか。
+
+## 発展
+
+- [Java の文字列検索と定義・参照を分けるガイド](optional/language-tools.md)
+- [index・検索除外・開いたファイルを分けるガイド](optional/index-exclusions.md)
+
+どちらも補足の探索ガイドです。本シナリオの完了条件ではありません。
+
+## 制約・Fallback・安全
+
+- source、Java、XML、テスト、DB、workspace 設定、User/Profile 設定を変更しません。
+- Java 拡張、JDK、index を自動で導入・構築しません。
+- `search.exclude`、`files.exclude`、`.gitignore`、組織の content exclusion を変更・回避しません。
+- 検索候補や除外を ACL として扱いません。
+- A1/A2 の全文が収まらない、切り詰めが疑われる、版が違う場合は片方だけ短縮せず停止します。
+- 言語機能が使えない場合は text/file search だけで続け、LSP の結果を作りません。
+- semantic index が未確認なら semantic results を 0 件にせず、確認不能のまま残します。
+- Copilot のファイル添付が使えない場合は、検索経路と手動全文経路、または設計票のレビューだけで完了できます。
+- helper を使えない場合は A1/A2 を複製せず、固定 path・hash とレイアウトを使って供給計画だけをレビューしてください。

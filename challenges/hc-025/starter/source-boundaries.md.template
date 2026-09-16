@@ -1,0 +1,18 @@
+# HC-025 source / support 境界
+
+- 固定 packet のcanonicalな基準は public upstream template `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` です。
+- 3 pathは現在のruntime workspaceにあるsourceを示します。template由来workspaceのlocal HEAD一致やrevisionへのcheckout / resetは要求しません。
+- Prompt FilesはAgent Hostでは読み込まれないという文書上の境界を保持します。
+- Skill、Prompt、Custom Agentのmetadataは種類ごとに異なります。
+- Pluginの標準componentとclient固有namespaceを分けます。
+- 宣言tools、client接続、実効tools、OS権限、approvalは別です。
+- 製品の対応状況や配置は変わり得るため、実利用前に公式文書を確認します。
+
+静的診断での観測値:
+
+- observedDiscovery: null
+- loading: null
+- effectiveTools: null
+- approvalObserved: null
+
+文書を読んだことを、実clientで観測したfalse / trueや全harness対応へ変換しません。

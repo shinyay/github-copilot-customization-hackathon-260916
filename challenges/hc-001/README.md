@@ -1,136 +1,121 @@
-# HC-001 根拠を大切にするJavaチームメイトを育てよう
+# HC-001 根拠を大切にする Java チームメイトを育てよう
 
-## Challenge Story
+## Scenario
 
-チームのJava調査で、AIがもっともらしい説明を返しても、ファイルを読んだのか、テストを実行したのか、推測なのかが分からずレビューに時間がかかっています。毎回プロンプトで注意する代わりに、このリポジトリで守る「根拠のある働き方」をRepository Instructionsとして設計します。
+Java の調査や変更を Copilot に頼むと、もっともらしい説明は返ってきても、実際にどのファイルを読んだのか、何を実行したのか、どこからが推測なのか分からないことがあります。
 
-このChallengeはこのページとStarter Kitだけで完結します。別の教材を先に終える必要はありません。
+このシナリオでは、毎回同じ注意をプロンプトへ足す代わりに、リポジトリ全体で守る「根拠のある働き方」を Repository Instructions として設計します。題材は `Money.tax` の不正な丸め指定です。production behavior と既存 test を保ちながら、境界 test を追加する依頼で試します。
 
 ## この機能とは
 
-Repository Instructionsは、リポジトリ内でCopilotへ継続的に伝えたい作業規則をMarkdownで置く仕組みです。ここでは、Javaの回答内容そのものを固定するのではなく、次の行動を促します。
+Repository Instructions は、リポジトリ内で Copilot に継続して伝えたい作業規則を Markdown で置く仕組みです。GitHub Copilot が対応する環境では、通常 `.github/copilot-instructions.md` を使います。
 
-- 指定されたsourceとtestを先に読む
-- fact / inference / unknownを分ける
-- 重要な主張をfileとsymbolへ結びつける
-- 実行可能なら最小のcompile/testを走らせる
-- 実行していないことを「成功」と書かない
+ここで指示するのはコードの答えではなく、再利用できる行動です。
 
-Instructionsはテストや人の判断を置き換えません。モデル、client、host、tool権限によって反映のされ方も変わり得るため、実際のEvidenceで評価します。
+- 指定された source と test を先に読む
+- 事実・推論・未確認を分ける
+- 重要な主張を file と symbol に結び付ける
+- 利用できるなら、対象を絞った compile/test を実行する
+- 実行していない検証を成功と書かない
+
+Instructions は test、レビュー、人の判断を置き換えません。client、model、利用可能な tool によって反映や出力が変わるため、最終的には source と terminal の結果を人が確認します。
 
 ## 向いていること / 向いていないこと
 
 **向いていること**
 
-- 多くのJava調査で繰り返す品質ルール
-- repository全体で共通にしたいEvidenceの書き方
+- 多くの Java 調査で繰り返す品質ルール
+- リポジトリ全体で共通にしたい根拠の示し方
 - 「実行したこと／していないこと」を明確にする習慣
 
 **向いていないこと**
 
-- 1回だけの長い作業手順
-- secret、URL、個人名など環境固有情報の埋め込み
-- 特定の答えを必ず返させること
-- unit test、review、人の承認の代替
+- 一度だけ使う長い手順
+- 特定の bug の正解や test code の丸暗記
+- secret、個人名、環境固有 URL の保存
+- unit test、review、承認、アクセス制御の代替
 
-## Starter Kit
+## ゴール
 
-[Pack manifest](pack/manifest.json) は次をRuntimeへ安全に配置する計画です。
+1. Java 作業へ再利用できる短い Repository Instructions を作る。
+2. 次の固定依頼に対して、source/test の根拠、実行結果、未確認事項が分かる回答を得る。
+3. `validation.rounding` という入力検証と、金額計算に使う rounding mode を混同していないか確認する。
 
-- Runtime baselineの `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java`
-- Runtime baselineの `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java`
-- `copilot-instructions.md.template` — Hubでは不活性なRepository Instructions案
-- `comparison.md.template` — Baseline / Customized / manual-equivalentの記録用紙
+固定依頼:
 
-Java sourceと既存testはRuntimeのpinned 515-file baselineにすでに存在し、Packは複製しません。課題は既知bugの修正ではなく、`Money.tax` の `UNKNOWN` / invalid rounding境界をどうtestとして追加するかを、production behaviorと既存expectationを保ちながら調査することです。結果を先に決めつけず、`validation.rounding` と金額計算のroundingを区別します。
+> `Money.tax` の `UNKNOWN` / invalid rounding 境界について、production code と既存 expectation を保った test を `CommonRulesTest.java` に追加してください。`validation.rounding` と金額計算の rounding を区別し、根拠、実行結果、未確認事項を報告してください。
 
-## Open Question
+## 用意するもの
 
-あなたのチームで「根拠を大切にした」と判断できる観測可能な行動は何ですか。
+- Repository Instructions に対応した GitHub Copilot 環境
+- 変更してよい Java リポジトリの作業用 branch または worktree
+- 次の対象ファイル
+  - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java`
+  - `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java`
+- test を実行する場合は、そのリポジトリが指定する Java/JDK と build tool
 
-少なくとも3つ選び、測り方を決めます。例:
+このディレクトリの `starter\` には、次の不活性な素材があります。
 
-- source/testの引用が正しい
-- factとinferenceが分離される
-- test commandとexit resultが記録される
-- 実行不能時にunknownを残す
-- 最小変更を選ぶ
+- [Repository Instructions の編集例](starter/customization/copilot-instructions.md.template)
+- [Money.java の固定抜粋](starter/reference/Money.java.excerpt.md.template)
+- [CommonRulesTest.java の固定抜粋](starter/reference/CommonRulesTest.java.excerpt.md.template)
+- [任意比較メモ](starter/worksheet/comparison.md.template)
 
-「丁寧だった」だけでは測れません。回答を読む前に基準を決めてください。
+すべて `.template` のままなので、このリポジトリでは active customization になりません。
 
-## Design Time
+## 準備
 
-1. 固定taskを作ります。推奨:
+1. まず [リポジトリ全体の始め方](../../README.md#始め方) を確認します。
+2. 対象リポジトリの `Money.java` と `CommonRulesTest.java` を読みます。対象リポジトリを用意できない場合は、`starter\reference\` の固定抜粋を静的な設計練習に使えます。
+3. 回答を見る前に、確認したい行動を 2〜4 個決めます。例:
+   - source/test の引用が主張を支えている
+   - 事実と推論が分かれている
+   - 実行した command と結果が書かれている
+   - 実行できない場合に未確認を残している
+4. `starter\customization\copilot-instructions.md.template` を読み、対象リポジトリ用に必要な規則だけを選びます。challenge 側の `.template` はそのまま残し、対象リポジトリでだけ `.github/copilot-instructions.md` として配置します。
+5. 特定の test の答え、例外 assertion の形、今回だけの file 名は Instructions へ埋め込まないでください。
 
-   > `Money.tax` の `UNKNOWN` / invalid rounding境界について、production codeと既存expectationを保ったtestを `CommonRulesTest.java` に追加してください。`validation.rounding` と金額計算のroundingを区別し、根拠、実行結果、未確認事項を報告してください。
+## 試してみる
 
-2. scorecardを作ります。各項目を `yes / partial / no / not-observable` で記録します。
-3. Baseline、Customized、manual-equivalentで変えない条件を決めます。
-4. client / host / OS / channel、model / effort / tools、Java versionを記録します。分からない値は `unknown` で構いません。
-5. Instructionsに書きすぎないようにします。コードの正解ではなく、再利用できる作業規則だけを残します。
+1. 対象リポジトリを GitHub Copilot で開き、新しい会話を開始します。
+2. 上の固定依頼をそのまま送ります。
+3. Copilot が提案または編集した差分を確認します。
+4. 次を source と照合します。
+   - `Money.tax` が受け付ける丸め指定と、不正値で進む分岐
+   - 既存 test が守っている有効な丸め境界
+   - production code を変えず、境界 test だけを追加しているか
+   - `validation.rounding` と計算結果の丸めを別の論点として説明しているか
+5. 対象リポジトリに公式の test 手順があり、実行環境も利用できる場合だけ、最小の関連 test を実行します。Copilot の自己申告ではなく、terminal の command、終了結果、失敗内容を自分で確認します。
 
-## Build
+## 任意: 比較する
 
-1. [Getting Started](../../docs/getting-started.md) に従い、Runtime templateから専用の非公開repositoryを作ります。
-2. **Hub checkout** で `plan-run.mjs --dry-run` を `--condition baseline`、`customized`、`manual-equivalent` ごとに実行し、計画だけを確認します。このscriptはRuntimeにはありません。
-3. **Runtime checkout** ではRuntime READMEのapply-pack手順を使い、対象conditionを明示します。PackはStarterを `.hackathon/challenge/hc-001/**` へ不活性に置くだけです。
-4. Baselineの間は `.github/copilot-instructions.md` を作りません。
-5. Baseline完了後、`.hackathon/challenge/hc-001/starter/copilot-instructions.md.template` を読み、自分のscorecardに必要な最小ルールを `.github/copilot-instructions.md` として**参加者が新規作成**します。
-6. Runtime baselineに記載された標準test commandを使い、`wholesale-core` の対象testを実行します。Hubは別のbuild commandを発明しません。
-7. AIがtestを実行したと主張した場合も、terminal outputとexit codeを自分で確認します。
+効果を見たい場合は、短い手動 self-check にします。
 
-## Compare
+1. Instructions を置かない状態で固定依頼を一度試す（Baseline）。
+2. 同じ source、依頼、model、tool 条件を保ち、新しい会話で Instructions を有効にして試す（Customized）。
+3. [比較メモ](starter/worksheet/comparison.md.template) に、引用、事実／推論／未確認、test の扱い、回答の長さや不要な作業を記録する。
 
-3条件をfresh conversationで実行します。
+完全に同じ条件を作れない場合は、優劣を断定せず差分を明記します。差がない、長くなった、余計な command が増えた、という結果も有用です。
 
-| 条件 | Repository Instructions | 追加の手作業 |
-|---|---|---|
-| Baseline | 無効 | 固定taskだけ |
-| Customized | 有効 | 固定taskだけ |
-| manual-equivalent | 無効 | Instructionsの公開checklistを固定taskへ貼る |
+## 確認ポイント
 
-入力、対象file、scorecard、できるだけmodel / effort / toolsを揃えます。Customizedだけに追加ヒントを渡してはいけません。条件が揃わなければ、その差を記録して `incomparable` を選べます。
+- Instructions は今回の正解ではなく、別の Java 作業にも使える規則か
+- 重要な主張に file と symbol の根拠があるか
+- code reading と実行確認を分けているか
+- 実行していない test を成功と表現していないか
+- 既存 expectation と production behavior を不用意に変えていないか
+- 不正な入力の検証と金額計算の rounding を区別しているか
 
-## Evidence
+## 発展
 
-`.hackathon/evidence/hc-001/comparison.md` に次を残します。
+- 同じ Instructions を別の小さな Java 調査へ使い、過剰な引用や回答の長文化が起きないか確かめる
+- 規則を一つ削り、失われる品質と保守しやすさを比べる
+- test を実行できる作業と、静的読解だけの作業で、報告形式をどう変えるか考える
 
-- 固定task
-- environment
-- 各条件の回答
-- 実際に実行したcommandとexit code
-- 正しい引用、誤った引用
-- fact / inference / unknown
-- testの失敗と成功
-- scorecard
-- Instructionsによる差と、単にchecklistを貼った差
+## 制約・Fallback・安全
 
-結果は `improved`、`equal`、`worse`、`incomparable`、`blocked`、`unsupported` のどれでも提出できます。都合の良いrunだけを選ばず、否定的なEvidenceも残します。
-
-## Submit
-
-Runtime Pull Requestへ、編集したInstructions、comparison、再現手順を含めます。その後
-[Challenge Result Issue Form](../../.github/ISSUE_TEMPLATE/challenge-result.yml)
-を使い、Runtime URLとPR URL、outcome、failure、unknown、privacy確認をHubへ提出します。
-
-[Submission Guide](../../docs/submission-guide.md) のredaction規則に従い、local path、token、private code、個人情報をIssue本文へ貼らないでください。
-
-## Judging
-
-- 根拠ある行動を回答前に定義したか
-- Instructionsが特定bugの答えではなく再利用可能な規則か
-- Baseline / Customized / manual-equivalentが公平か
-- 「testを実行した」という主張をterminal evidenceで確認したか
-- equalやworseを含む反証を残したか
-- Instructionsが向かない場面を説明したか
-
-## Bonus Mission
-
-同じInstructionsを別の小さなJava taskへ適用し、過剰な引用、不要なcommand実行、回答の長文化などの副作用を探します。元taskだけに最適化されていた場合は、その制約を明記してください。
-
-## Support / Fallback
-
-Repository Instructionsをclientが認識しない場合は、内容を固定taskへ貼るmanual-equivalentだけを実行します。その結果をCustomizedと同一扱いせず、`unsupported` または `incomparable` として機能差を記録します。
-
-Javaを実行できない場合は、compile/test未実行を明記し、sourceとtestから手動確認できる範囲だけをEvidenceにします。権限回避や未承認softwareの導入はしません。詳細は
-[Support and Fallbacks](../../docs/support-and-fallbacks.md) を参照してください。
+- Repository Instructions が利用できない場合は、選んだ本文を依頼の前に手動で貼れます。これは手動 fallback であり、自動発見を確認したことにはなりません。
+- Java を実行できない場合は、compile/test 未実行と明記し、source と test から確認できる範囲だけを報告します。
+- 固定抜粋は設計練習用です。対象リポジトリを利用できる場合は、実ファイルを正とします。
+- 未承認 software の導入、権限回避、secret や private data の貼り付けは行いません。
+- Copilot の提案は必ず差分と test でレビューし、実在する金額や業務判断へそのまま適用しません。

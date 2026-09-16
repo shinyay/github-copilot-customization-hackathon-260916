@@ -1,0 +1,19 @@
+# HC-017 manual comparison protocol
+
+## Experiment M: model
+
+| trial | fixed | changed |
+|---|---|---|
+| M-A | fixed input、request、follow-up、tools、approval、context、可能な範囲の effort / adaptive 条件 | 承認済み model A |
+| M-B | M-A と同じ | model だけ B |
+
+## Experiment E: effort
+
+| trial | fixed | changed |
+|---|---|---|
+| E-1 | fixed input、request、follow-up、同じ model E、provider、tools、approval、context | picker で確認した effort e1 |
+| E-2 | E-1 と同じ | effort だけ e2 |
+
+M と E は別の比較です。それぞれ新しい会話を使い、M の応答を E へ渡しません。同じ effort label を異なる model 間の同じ計算量とみなしません。
+
+M で effort / adaptive 条件を揃えられなければ model 構成の限定観察とし、E で model / provider が変われば effort だけの比較を止めます。欠測した trial も除外せず、未観測理由を記録します。

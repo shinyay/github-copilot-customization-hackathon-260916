@@ -1,48 +1,45 @@
-# review scope観測の準備境界
+# Code review で Instructions scope を観測する
 
-## Guide scope
+[← HC-031 のメインシナリオ](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-031本編](../README.md)のscope/product設計とは別に、標準reviewでJava/XML/mixed taskへの規則供給を将来観測する前の準備だけを整理するガイドです。
+## 目的
 
-review commentへのreplyを新しいprompt投入の代わりにしません。
+標準の Copilot code review で、Java、XML、mixed diff に対する Instructions の供給範囲を限定的に観測します。
 
-## Prerequisites
+## 前提
 
-environment:
+- Copilot code review と対象 repository を利用できる
+- 対象 PR/head、Java/XML/mixed の diff を特定できる
+- Instructions 原稿の revision と raw bytes を保存できる
+- attribution の表示範囲を確認できる
 
-- 対象repository、PR/head、Java/XML/mixedの各diff、Instructions原稿、attributionの表示範囲を確認できること。
+## 権限と安全
 
-entitlements:
+- active Instructions の配置、review 要求、再要求、head 更新について事前承認を得ます。
+- private review log、actor、source は共有時に redact します。
+- review comment への reply を、新しい prompt や再 review の代わりにしません。
 
-- Copilot code review、対象repository、PR、repository Instructionsの利用資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. Java、XML、mixed の各 diff と head SHA を記録します。
+2. Instructions を置かない確認と、承認済みの原稿を置く確認を分けます。
+3. 各 head へ 1 回ずつ review を要求します。
+4. attribution から直接確認できる原稿、path、revision だけを記録します。
+5. 設計上の予測と実観測を scope matrix に分けて戻します。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観測すること
 
-additionalApprovals:
+- PR/head と task の対応
+- 原稿の hash と attribution
+- Java/XML/mixed での供給差
+- `excludeAgent` が意図した製品除外
+- 回答内容が似ているだけの推測をしていないか
 
-- active Instructions配置、対象PRへのreview要求、再review、head更新、限定観測を操作ごとに別途承認すること。
+## 停止条件
 
-private review log、actor、sourceを公開Evidenceへ無加工で貼らず、製品除外をsource access拒否として扱いません。
+- review 資格、承認、対象 revision、原稿 bytes、attribution 範囲のいずれかが不明
+- Java/XML/mixed の入力を同じ条件で用意できない
+- reply、回答言語、source access だけで供給を推測する必要がある
+- review 要求を無制限に繰り返す必要がある
 
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| review-scope-observation | not-checked | 本編とRuntime v1は標準reviewでのInstructions発見、対象path判定、本文投入、attributionを実行または観測しません。 |
-
-local matrixのshapeだけでGitHub.com上の採用を保証しません。
-
-## Stop / Block
-
-- 資格、承認、対象revision、原稿bytes、attribution範囲のいずれかが不明な場合は停止します。
-- review要求、再review、active配置の承認がない場合は停止します。
-- Java/XML/mixedの入力を同じ条件で用意できない場合は停止します。
-- reply、回答言語、source accessだけで規則供給を推測する必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-PR/head、task、原稿hash、attribution、観測できた範囲、unknownを別に記録します。設計上の予測を実review採用成功へ書き換えません。
+[← HC-031 のメインシナリオへ戻る](../README.md)

@@ -1,0 +1,80 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { readFileSync, readdirSync } from "node:fs";
+import { basename, join, resolve } from "node:path";
+
+const PLUGIN_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json";
+
+function entries(directory) {
+  const values = readdirSync(directory, { withFileTypes: true });
+  assert(
+    values.every((value) => value.isFile() || value.isDirectory()),
+    "Symlinks and special files are outside this example",
+  );
+  return values;
+}
+
+function validatePluginTemplate(directory) {
+  const root = entries(directory);
+  assert.deepEqual(
+    root.map((entry) => entry.name).sort(),
+    ["plugin.json.template", "skills"],
+    "Expected one manifest template and the skills directory",
+  );
+
+  const manifest = JSON.parse(readFileSync(join(directory, "plugin.json.template"), "utf8"));
+  assert.equal(manifest.$schema, PLUGIN_SCHEMA, "Expected Agent Plugins 1.0");
+  assert.deepEqual(Object.keys(manifest).sort(), ["$schema", "description", "name", "version"]);
+  assert.equal(typeof manifest.name, "string");
+  assert(
+    manifest.name.length <= 64
+      && /^(?!.*(?:--|\.\.))[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/.test(manifest.name),
+    "Invalid package name for this example",
+  );
+  assert.equal(typeof manifest.version, "string");
+  assert(manifest.version.length > 0);
+  assert.equal(typeof manifest.description, "string");
+  assert(manifest.description.trim().length > 0);
+
+  const skills = entries(join(directory, "skills"));
+  assert.equal(skills.length, 1, "Expected exactly one Skill");
+  assert(skills[0].isDirectory());
+  const skillDirectory = join(directory, "skills", skills[0].name);
+  const skillEntries = entries(skillDirectory);
+  assert.deepEqual(skillEntries.map((entry) => entry.name), ["SKILL.md.template"]);
+
+  const bytes = readFileSync(join(skillDirectory, "SKILL.md.template"));
+  assert(!bytes.subarray(0, 3).equals(Buffer.from([0xef, 0xbb, 0xbf])), "Do not use a UTF-8 BOM");
+  const skill = bytes.toString("utf8");
+  assert(!skill.includes("\r"), "Use LF line endings");
+  const frontmatter = skill.match(/^---\nname: ([^\n]+)\ndescription: ([^\n]+)\n---\n([\s\S]+)$/);
+  assert(frontmatter, "Expected name and single-line description frontmatter");
+  assert.equal(frontmatter[1], basename(skillDirectory));
+  assert(
+    frontmatter[1].length <= 64 && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(frontmatter[1]),
+    "Invalid Skill name",
+  );
+  assert(frontmatter[2].length > 0 && frontmatter[2].length <= 1024);
+  assert(frontmatter[3].includes("未確認"), "Keep an explicit unknowns boundary");
+
+  return {
+    format: "Agent Plugins 1.0 example subset",
+    packageName: manifest.name,
+    version: manifest.version,
+    skillName: frontmatter[1],
+    skillSha256: createHash("sha256").update(bytes).digest("hex"),
+    componentCount: 1,
+    note: "This structural check does not test discovery or Skill loading.",
+  };
+}
+
+if (process.argv[1] === "-") {
+  try {
+    const args = process.argv.slice(2);
+    assert.equal(args.length, 1, "Usage: node --input-type=module - <package-directory>");
+    console.log(JSON.stringify(validatePluginTemplate(resolve(args[0])), null, 2));
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  }
+}

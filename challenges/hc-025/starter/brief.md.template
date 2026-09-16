@@ -1,0 +1,18 @@
+# HC-025 可搬性ブリーフ
+
+固定 packet `LAB25-APP-01` と同じ4種類の原稿を、VS Code Local Agent と Agent Host の観点から静的に診断します。
+
+packetはpublic upstream template `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` をcanonicalな参照とし、sourceは現在のruntime workspaceにある3 pathから読みます。template由来workspaceのlocal HEAD一致は要求しません。
+
+各 sample で分ける層:
+
+1. file format
+2. documented discovery
+3. observed discovery
+4. loading
+5. effective tools
+6. approval
+
+この starter は不活性な原稿だけを提供します。実 client、model、MCP、Plugin install は起動しません。実測していない observed discovery、loading、effective tools、approval は `null` です。
+
+Agent Host を Cloud Agent の別名にせず、Prompt の Agent Host 非読込を Skill の成功へ置き換えません。書き込み、外部送信、shell、install、同期、user home の設定変更は行いません。

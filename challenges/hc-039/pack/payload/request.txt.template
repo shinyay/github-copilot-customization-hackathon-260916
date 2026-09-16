@@ -1,5 +1,0 @@
-SYNTHETIC_TRAINING_ONLY
-
-Using all twelve ownership records, separate current evidence, unknown values, participant proposals, and approvals still required.
-
-For baseline, diagnose the supplied policy without inventing an owner or selected revision. For governed-design, apply a participant-authored ownership, review, update, retirement, and restoration policy to the same records. Keep repository Instructions precedence separate from same-name profile deduplication, and keep storage ACL separate from usage scope.

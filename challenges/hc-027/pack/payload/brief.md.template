@@ -1,7 +1,0 @@
-# HC-027 Starter brief
-
-SYNTHETIC_TRAINING_ONLY
-
-このPackは、結果を見る前に評価を固定するための不活性教材です。task、condition、block、initial、follow-up、欠測、個別回帰、全体rollupを別々に記録します。
-
-固定identityは2 task × 3 condition × 3 blockの18行です。各Runtime conditionは6行を担当し、未実施や失敗の行も削除しません。

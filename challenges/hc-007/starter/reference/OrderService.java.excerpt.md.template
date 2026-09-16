@@ -1,0 +1,20 @@
+# OrderService.java approval excerpt
+
+Source path:
+`wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`
+
+```java
+public SalesOrder approve(Long id, int expectedVersion, Actor actor) {
+    require(actor, "MANAGER");
+    SalesOrder order = lockOrder(id);
+    Checks.version(order.getVersion(), expectedVersion);
+    Checks.state("SUBMITTED".equals(order.getStatus()), "order.notSubmitted",
+            "承認待ちの受注だけ承認できます。");
+    Checks.state(!order.getCreatedBy().equals(actor.getLogin()), "approval.self",
+            "自分で起票した受注は承認できません。");
+    validateActive(order);
+    creditService.checkApproval(order, actor);
+    order.setStatus("APPROVED");
+    // ...
+}
+```

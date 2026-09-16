@@ -1,169 +1,117 @@
-# HC-031 Java・XML・製品別にInstructionsを出し分けよう
+# HC-031 Java・XML・製品別に Instructions を出し分けよう
 
-## Challenge Story
+## Scenario
 
-注文処理の調査では、Javaの制御フローとXMLの配線を行き来します。Java向け規則をXMLへ広く配るとnoiseになり、XML向け規則をすべてのJavaへ配ると保守範囲が曖昧になります。さらに、Cloud Agentとcode reviewで同じ原稿を使うかどうかも、file scopeとは別に設計する必要があります。
-
-このChallengeはRuntimeの4つのmain `sourcePaths`、source mapから必要に応じて辿る共通guardの補助参照、不活性な原稿だけで完結します。以前のChallenge、実Cloud実行、実reviewは必要ありません。
+注文処理の調査では、Java の制御フローと XML の配線を行き来します。Java 向け規則を XML へ広く配ると noise になり、XML 向け規則をすべての Java へ配ると保守範囲が曖昧になります。さらに、Cloud Agent と code review のどちらへ同じ原稿を届けるかは、file scope とは別の設計問題です。
 
 ## この機能とは
 
-Path-specific Instructionsは、frontmatterの `applyTo` で対象pathを表し、そのpathを扱うときに規則を供給する仕組みです。`applyTo` は供給scopeであり、fileを読めるかどうかを制御するACLではありません。
+Path-specific Instructions は frontmatter の `applyTo` で供給対象の path を表します。`applyTo` は Instructions の供給 scope であり、file の read/write 権限を制御する ACL ではありません。
 
-製品別に原稿を使わない場合は、frontmatterの正式key `excludeAgent` を使います。値は `code-review` または `cloud-agent` です。製品除外はそのInstructions原稿を供給しない設計であり、対象sourceへのアクセス禁止ではありません。
+製品別に原稿を除外する場合は `excludeAgent` を使います。有効な値は次の 2 つです。
 
-このChallengeでは、次の2軸を分けます。
+- `code-review`
+- `cloud-agent`
 
-- path軸: core Java / core XML / 範囲外web Java
-- product軸: Cloud Agent / code review
+製品除外は原稿をその製品へ供給しない設計であり、対象 source への access 拒否ではありません。
 
 ## 向いていること / 向いていないこと
 
 **向いていること**
 
-- JavaとXMLで異なる読解規則を保守すること
-- core限定scopeと範囲外web sourceを区別すること
-- 同じbodyを保ちながら製品別metadataだけを比較すること
-- mixed taskで複数原稿を供給する順序を設計すること
+- Java と XML で異なる読解規則を保守する
+- core 限定 scope と範囲外 web source を区別する
+- body を固定したまま製品 metadata だけを比較する
+- mixed task で複数原稿を渡す順序を設計する
 
 **向いていないこと**
 
-- `applyTo` をread/write権限やsandboxと説明すること
-- 製品除外をsource accessの拒否と説明すること
-- すべての規則を広いglobへ置くことを唯一解にすること
-- local checkerだけでGitHub.com上の実採用を保証すること
-- 紙上のmatrixを実Cloudや実reviewの成功記録にすること
+- `applyTo` を権限や sandbox と説明する
+- `excludeAgent` を source access の拒否と説明する
+- すべての規則を広い glob へまとめることを唯一解にする
+- 紙上の matrix を実製品での採用結果と呼ぶ
 
-## Starter Kit
+## ゴール
 
-[Pack manifest](pack/manifest.json) は `sourceKind: baseline` とし、`sourcePaths` はRuntimeのpinned baselineにある次の4 exact pathです。
+path 軸と product 軸を分けて、次を設計します。
+
+1. core Java 用の Instructions
+2. core XML 用の Instructions
+3. Java / XML / mixed task への供給方法
+4. 範囲外 web Java を除外できる scope
+5. Cloud Agent / code review への供給または除外
+
+## 用意するもの
+
+固定する main source:
 
 - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`
 - `wholesale-core/src/main/resources/application-context.xml`
 - `wholesale-core/src/main/resources/spring/module-operations.xml`
 - `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java`
 
-source mapから、必要に応じて次の補助読取りへ辿ります。これらはcatalogのmain `sourcePaths` へ追加しません。
+共通 guard を辿る補助 source:
 
 - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java`
 - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java`
 
-補助参照は `OrderService` から共通guardを辿るために使います。sourceを読んだことを、transactionやruntime behaviorの実観測として扱いません。
+`starter/` には固定依頼、source map、設計票、Java/XML の inactive な customization 原稿、scope/product matrix、delivery plan、任意比較票があります。
 
-前3件はcore Java/XMLの候補scope、最後の `OrderAction.java` は範囲外web Javaを確認する固定入力です。Packはmain sourceや補助参照を複製・変更せず、source map、空のJava/XML rules draft、scope matrix、product matrix、delivery plan、comparison templateをexact `.hackathon/challenge/hc-031/starter/` 配下へ不活性にmaterializeします。これは参加者が読む固定starter locationであり、manifestの許可をfolder globへ広げる意味ではありません。
-
-Starter Kitは最小のfrontmatter構文と次の候補patternを説明しますが、Java/XML bodyの完成答案は含みません。
+候補 pattern:
 
 - `wholesale-core/src/main/java/**/*.java`
 - `wholesale-core/src/main/resources/**/*.xml`
 
-metadata案は、`excludeAgent` なし、`excludeAgent: "code-review"`、`excludeAgent: "cloud-agent"` の3つです。
+## 準備
 
-## Open Question
+共通の準備は [始め方](../../README.md#始め方) を参照してください。
 
-Javaの制御とXMLの配線を行き来する作業で、どの規則を分け、どこを共有しますか。非対象fileや異なる製品へ不要な規則を届けないために、scopeと製品除外をどう組み合わせますか。
+1. `starter/request.md.template` と `starter/source-map.md.template` を読みます。
+2. `starter/customization/*.template` は active `.github/instructions/**` へ移しません。
+3. Java と XML の body を書く前に `starter/design.md.template` で目的、対象外 path、製品方針を決めます。
 
-広いscope、細かいscope、共通bodyを持つ設計のいずれも選べます。保守負担、誤適用、mixed taskでの重複を比較し、理由を記録してください。
+## 試してみる
 
-## Design Time
+1. `OrderService` から `BaseService` と `Actor` へ辿る Java の読解規則を作ります。
+2. 2 つの XML に対する配線確認の規則を作ります。
+3. `starter/customization/java-rules.md.template` と `xml-rules.md.template` に、それぞれの body と `applyTo` を記入します。
+4. `starter/scope-matrix.md.template` で次の 3 task と 4 main source の対象/非対象を確認します。
+   - `java-reading`
+   - `xml-reading`
+   - `mixed-reading`
+5. `starter/product-matrix.md.template` の 12 行を使い、2 原稿 × 2 製品 × 3 metadata 案を確認します。
+6. `starter/delivery-plan.md.template` に mixed task での原稿順序と manual supply の方法を記録します。
+7. scope の予測、製品での予測、実観測を別欄にします。
 
-sourceを読んだうえで、結果を記入する前に次を固定します。
+## 任意: 比較する
 
-1. Java原稿の目的、body、`applyTo`、対象外path
-2. XML原稿の目的、body、`applyTo`、対象外path
-3. `java-reading`、`xml-reading`、`mixed-reading` の3 task
-4. mixed taskで両bodyを渡す順序
-5. core Java、2つのXML、範囲外web Javaを残すscope確認表
-6. Cloud Agent / code reviewごとの利用または除外方針
-7. scope予測、製品予測、実観測を別欄にする方法
-8. body変更とmetadata変更を同じ比較へ混ぜない規則
+`starter/worksheets/comparison.md.template` を使い、次を短く手動比較できます。
 
-製品別matrixは、2原稿 × 2製品 × 3metadata案 = 12行です。この12行は診断軸であり、12 conditionではありません。
+- **Baseline**: 固定依頼だけ
+- **Customized**: Java/XML body をそれぞれの scope へ供給する設計
+- **Manual-equivalent**: 同じ body 全文を同じ順序で手動供給
 
-## Build
+body 変更と metadata 変更を同じ比較へ混ぜず、実製品で未確認の欄は `not-checked` のままにします。
 
-1. conditionごとに独立したRuntime repositoryと新しいrunを用意します。
-2. Hub checkoutで `baseline`、`scoped-design`、`manual-equivalent` のdry-run計画だけを確認します。Runtime checkoutではRuntime READMEの手順でPackを適用します。
-3. すべてのconditionで次を作成します。
-   - `participant/hc-031/scope-matrix.md`
-   - `participant/hc-031/product-matrix.md`
-   - `participant/hc-031/delivery-plan.md`
-4. `scoped-design` と `manual-equivalent` だけで次を作成します。
-   - `participant/hc-031/java-rules.md.template`
-   - `participant/hc-031/xml-rules.md.template`
-5. `baseline` は十分な固定依頼、4つのmain `sourcePaths`、同じ補助読取り導線を使いますが、scoped規則を追加供給しません。
-6. `scoped-design` では凍結したJava/XML bodyを対象scopeへ供給する計画を記録します。
-7. `manual-equivalent` では同じbody全文をtaskへ手動供給します。mixed taskでは両bodyを同じ順序で含め、要約しません。
-8. 実 `.github/instructions/**`、Java、XML、POMを変更しません。
+## 確認ポイント
 
-各conditionで3 taskを1回ずつ扱い、scope matrixには4 sourceをすべて残します。product matrixは12行のexact集合を保持し、行数だけ同じ別組合せへの置換を許しません。
+- Java/XML body と scope の理由を説明したか
+- 4 main source を残し、web Java を core Java と区別したか
+- `applyTo` を ACL と混同していないか
+- `excludeAgent` と 2 つの正式値を正しく使ったか
+- 9 行の task/source 表と 12 行の product 表を混同していないか
+- manual supply の body が customization 原稿と一致しているか
+- source を読めたことだけで Instructions 採用成功としていないか
 
-## Compare
+## 発展
 
-| 条件 | scoped規則 | 固定するもの | 変更するもの |
-|---|---|---|---|
-| `baseline` | なし | 3 task、4 main `sourcePaths`、補助読取り導線、十分な依頼 | 追加bodyなし |
-| `scoped-design` | Java/XML bodyをscope別に供給する設計 | baselineと同じtask/source | scopeと製品metadataの設計 |
-| `manual-equivalent` | 同じbody全文を手動供給する設計 | baselineと同じtask/source | 自動scopeを使わない供給方法 |
+- Java または XML の一方だけ scope を狭め、4 source と product matrix への影響を再評価する
+- Cloud Agent で scope を観測する準備は [Cloud scope の補足ガイド](optional/cloud-scope-observation.md) を使う
+- code review で scope を観測する準備は [review scope の補足ガイド](optional/review-scope-observation.md) を使う
 
-比較表示では `baseline` を **Baseline**、`scoped-design` と `manual-equivalent` を目的の異なる **Customized** 条件と呼びます。Customizedは実Cloudや実reviewでの採用成功、またはACLを意味せず、Baselineと同じ3 task、4 sourceでscope別の供給案と同全文の手動供給案を比較するための呼称です。
+## 制約・Fallback・安全
 
-scope比較ではcore Java、2 XML、範囲外web Javaを確認します。product比較ではbodyを固定し、metadataだけを変えた12行を確認します。bodyまで変えた行は同じ対照へ含めません。
-
-結論は `improved`、`not-needed`、`equal`、`worse`、`blocked`、`incomparable` のいずれでも構いません。実製品のglob評価、Instructions採用、source accessを観測していない欄は `unknown` または `not-checked` とします。
-
-## Evidence
-
-`.hackathon/evidence/hc-031/comparison.md` に、次の見出しをこの表記で残します。
-
-- `Fixed task`
-- `Environment`
-- `Baseline`
-- `Scoped design`
-- `Manual-equivalent`
-- `Scope coverage`
-- `Product coverage`
-- `Outcome`
-
-`Scope coverage` には3 task × 3 conditionと4 sourceの対象/非対象を記録します。`Product coverage` には2原稿 × 2製品 × 3metadata案の12行を記録し、設計上の予測と実観測欄を分けます。実Cloud/reviewを行っていない場合は `live-unobserved` と明記します。
-
-## Submit
-
-各conditionのRuntimeで許可された成果物とcomparisonを完成させ、submitted検査後にcondition別exportを作ります。`baseline` には3つのmatrix/planとcomparisonを含め、`scoped-design` と `manual-equivalent` にはJava/XML rules原稿も含めます。
-
-Runtime Pull Requestとexportを対応付け、Hubの
-[Challenge Result Issue Form](../../.github/ISSUE_TEMPLATE/challenge-result.yml)
-へ、3 task、4 sourceのscope、12行のproduct coverage、非対象webの扱い、outcomeを提出します。実製品で確認していない供給結果を成功値で埋めません。
-
-private source、local path、raw review logは
-[Submission Guide](../../docs/submission-guide.md)
-に従ってredactします。
-
-## Judging
-
-- Java/XML bodyとscopeの理由を説明したか
-- 4 sourceを残し、範囲外webをcore Javaと区別したか
-- `applyTo` を供給scopeとして扱い、ACLと混同していないか
-- `excludeAgent` と2つの正式値を正しく使ったか
-- 3 conditionと12行product matrixを混同していないか
-- `scoped-design` と `manual-equivalent` のbody全文を揃えたか
-- body変更とmetadata変更を分離したか
-- 紙上設計を実Cloud/review採用成功へ昇格させていないか
-
-## Bonus Mission
-
-JavaまたはXMLのどちらか一方だけ `applyTo` を狭める探索案を作り、4 sourceと12行matrixへの影響を再評価します。本編の凍結body、condition、outcomeは上書きせず、別の設計案として残してください。
-
-## Support / Fallback
-
-本編はsource readingと不活性な設計表だけで完了できます。実Cloudでscopeを観測する場合は、統合後の
-[cloud-scope-observation optional guide](optional/cloud-scope-observation.md)
-を使用します。このrouteは `OPTIONAL_GUIDE_ONLY`、`live-unobserved` で、Runtime v1の `cross-branch-handoff` capabilityは `blocked` です。
-
-標準reviewで供給scopeを観測する場合は
-[review-scope-observation optional guide](optional/review-scope-observation.md)
-を使用します。このrouteも `OPTIONAL_GUIDE_ONLY`、`live-unobserved` で、`review-scope-observation` capabilityは `not-checked` です。資格、承認、対象revision、attributionが不足する場合は停止し、review commentへのreplyをprompt投入の代わりにしません。
-
-Path-specific Instructionsを使えない環境ではmanual-equivalentの設計を提出できますが、scope採用は `unsupported` または `incomparable` とし、sourceを読めたことだけでInstructions供給成功としません。
-
-Cloudまたはreview機能の資格、availability、Preview status、対応versionが未確認の場合は、optional routeを停止し、設計上の予測を実観測へ書き換えません。
+- active `.github/instructions/**`、Java、XML、POM、repository 設定は変更しません。
+- 実 Cloud Agent や code review を使わなくても、source reading と matrix の設計だけで完了できます。
+- Path-specific Instructions が利用できない場合は manual-equivalent を使い、自動 scope 適用は `unsupported` または `not-observed` とします。
+- 製品の availability、対応 version、資格を確認できない場合は実観測へ進みません。

@@ -1,0 +1,25 @@
+# HC-041 Memory scope notes
+
+SYNTHETIC_TRAINING_ONLY
+
+## Product and phase
+
+- GitHub Copilot Memory may have release-state and entitlement constraints that must be checked before live use.
+- Repository facts are checked for the same repository and against citations on the current branch.
+- Standard code review uses repository facts only.
+
+## Separate concepts
+
+- A citation exists.
+- The current cited text supports the claim.
+- The fact is eligible for a product surface.
+- Direct evidence shows that the current response or review used it.
+- A service stored, retained, reused, or deleted a record.
+
+These are separate observations.
+
+## Separate products and scopes
+
+Do not transfer behavior between repository facts, user preferences, the VS Code Local Memory tool, and Copilot App memory. Do not use a 28-day retention description to claim that a fact remains correct, that waiting creates a no-memory control, or that a new session is empty.
+
+No live Memory record or service behavior was observed.

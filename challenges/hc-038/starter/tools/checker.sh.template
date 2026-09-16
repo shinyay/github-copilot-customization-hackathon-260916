@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# SYNTHETIC_TRAINING_ONLY
+# Inert source text. Keep it under starter/tools with the .template suffix.
+set -euo pipefail
+
+payload="$(cat)"
+
+if [[ "${payload}" == *'"trainingMarker":"ALLOW_READONLY"'* ]]; then
+  printf '%s\n' '{"permissionDecision":"allow"}'
+elif [[ "${payload}" == *'"trainingMarker":"DENY_OUTSIDE_SCOPE"'* ]]; then
+  printf '%s\n' '{"permissionDecision":"deny","permissionDecisionReason":"outside approved training scope"}'
+else
+  printf '%s\n' 'unrecognized synthetic packet' >&2
+  exit 2
+fi

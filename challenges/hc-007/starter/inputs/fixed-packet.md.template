@@ -1,0 +1,29 @@
+# HC-007 固定調査パケット
+
+investigatorとreviewerへ同じ全文を渡してください。質問、対象source、claimを途中で変更しません。
+
+## Question
+
+Trace the complete approval decision for `OrderAction.perform` when `op=approve`. Determine which checks are visible in the allowed source and which runtime facts remain unknown. Do not approve a business conclusion or edit code.
+
+## Allowed source
+
+- `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java`
+- `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`
+- `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java`
+- `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java`
+
+## Claims to evaluate
+
+- The web action checks a role before dispatch.
+- The service repeats authorization and checks version and state.
+- The creator of an order may have an additional approval restriction.
+- ADMIN and MANAGER are handled identically at every layer.
+- Source reading alone proves whether a particular database order can be approved.
+
+## Evaluation questions
+
+1. Which claims are supported, contradicted, or not decidable in scope?
+2. Which exact method supplies each piece of evidence?
+3. What is the smallest verification needed beyond static reading?
+4. Is any code change justified by this packet alone?

@@ -1,76 +1,79 @@
-# 用途別生成の入口とRuntime制約を確認する
+# 用途別生成の入口を小さく試す
 
-## Guide scope
+[HC-005 本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved
+## 目的
 
-このページは、review・commit message・PR descriptionの生成設定についての任意の準備確認です。[HC-005本編](../README.md) の設定草稿は不活性な設計物であり、このガイドを読んでも有効化されません。本編の提出に生成UI、追加の拡張、commitや投稿は必要ありません。
+選択範囲の review、commit message、pull request description のうち一つについて、
+用途別 instruction の保存と生成入口での利用を小さく観察する補足ガイドです。
+通常の Chat と用途別生成は別の入口なので、同じものとして扱いません。
 
-通常のworkspace設定を追跡する試行は、Runtime v1の既知の制約でblockedです。実機用Packや追加conditionを提供しているガイドではありません。
+参考: [VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions)
 
-## Prerequisites
+| 用途 | 設定 key | 固定する入力 |
+| --- | --- | --- |
+| 選択範囲の review | `github.copilot.chat.reviewSelection.instructions` | 同じ file の同じ選択範囲 |
+| commit message 生成 | `github.copilot.chat.commitMessageGeneration.instructions` | 同じ staged diff |
+| pull request description 生成 | `github.copilot.chat.pullRequestDescriptionGeneration.instructions` | 同じ差分と pull request の前提 |
 
-### environment
+値は `text` または `file` を持つ object の配列です。本編は `text` の不活性な草稿だけを扱います。
 
-- 対象のVS Code版とreview・commit message・PR descriptionの生成入口を特定できること。
-- 通常のworkspace設定を追跡する試行には、別途承認されたRuntimeの対応が必要である。
+## 前提
 
-### entitlements
+- 対象 VS Code と拡張の版、選んだ生成入口を特定できる
+- その入口を利用できる契約・権限を確認できる
+- 合成 input だけを持つ、使い捨て可能な workspace を用意できる
+- 既存設定と今回の追加分を区別し、元へ戻せる
 
-- 選んだ生成入口の利用資格と必要な拡張の有無を本人が確認すること。
+## 権限・安全
 
-環境と利用資格はnot-checkedです。生成入口は用途ごとに異なり、通常Chatが使えるだけでは条件を満たしません。
+- workspace 所有者から、選んだ設定一つと合成 input だけを扱う承認を得ます。
+- 三つの key を同時に有効化しません。
+- 既存設定を全文置換せず、元値と今回の追加分を記録します。
+- commit、push、pull request 作成、投稿は生成とは別の副作用です。このガイドでは実行しません。
+- この教材 repository の
+  [`generation-settings.json.template`](../starter/generation-settings.json.template) は不活性なまま保ちます。
+- `.vscode/settings.json` が repository 方針で無視される場合、ignore の変更や force-add をしません。
 
-[VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions) の文書確認日は2026-09-15です。現行の設定と将来そろえるべき入力を分けて読みます。
+## 手順
 
-| 用途 | 設定キー | 同じにする必要がある入力 |
-|---|---|---|
-| 選択範囲のreview | `github.copilot.chat.reviewSelection.instructions` | 同じファイルの同じ選択範囲 |
-| commit message生成 | `github.copilot.chat.commitMessageGeneration.instructions` | 同じstaged diff |
-| PR description生成 | `github.copilot.chat.pullRequestDescriptionGeneration.instructions` | 同じ差分とPRの前提 |
+1. 三つの用途から一つだけ選ぶか、「追加なし」を選びます。
+2. [`generation-settings.json.template`](../starter/generation-settings.json.template) の作業用コピーへ、選んだ key と
+   `{"text": "自分で設計した本文"}` だけを残します。
+3. instruction なしと instruction ありで共通に使う合成 input を決めます。
+   - review: 同じ file と同じ選択範囲
+   - commit message: 同じ staged diff。作業用 repository 以外の stage は変更しない
+   - pull request description: 公開や投稿を伴わない test 用の同じ差分と前提
+4. 承認済みの使い捨て環境で、既存値を上書きしない方法が確認できた場合だけ設定を追加します。
+5. fresh context で instruction なしとありを一度ずつ呼び出し、生成 button や command をそのまま記録します。
+6. 出力を保存した後、今回の設定だけを取り除き、stage や外部項目を変更していないことを確認します。
 
-値は `text` または `file` を持つobjectの配列です。`file` なら参照先の実在・本文・版を別に確認する必要があります。本編は `text` の草稿だけに限定しています。三つのキーを同時に有効化する手順ではなく、非推奨のcode generation / test generation用設定も混ぜません。
+通常 Chat に同じ本文を貼る試行は参考にはなりますが、同じ用途別入口へ同じ追加本文が渡ったと
+確認できない限り、等価な比較とは呼びません。
 
-本編S2の二行は合成の文書資料です。tracked fileやstaged diffを作成した証拠ではなく、その短文案も生成機能の出力ではありません。Chatのmodel pickerと用途別のutility modelを同じ条件だと決めつけません。
+## 観察すること
 
-## Permissions / Safety
+- 選んだ key、保存場所、追加した `text`
+- 固定した選択範囲または差分
+- 実際に使った生成入口
+- client / extension / version と、利用された設定 source の表示
+- 出力の構造、事実誤認、不要な長文化
+- 保存、発見、本文投入、入口の呼出し、出力、外部投稿の有無
+- utility model など、通常 Chat と同じだと確認できない要因
 
-このガイドは権限を付与せず、実機実行を開始しません。
+構文が正しいことや見出しがそろったことだけで、内容の正確性や instruction の効果を証明しません。
 
-- 環境の所有者から、選んだ用途の設定一つと合成入力だけを扱う独立試行の承認を得ること。
+## 中止条件
 
-承認はnot-checkedです。今は生成ボタンを押さず、設定、Gitのstage、既存PRを変更しません。必要な拡張をこのページから導入することもありません。
+- 対象入口、権限、固定 input、元へ戻す方法のいずれかが不明
+- 既存設定の上書きや、ignore 規則の変更、force-add が必要
+- 既存の stage、pull request、remote item を変更する必要がある
+- commit、push、投稿、追加拡張の導入が必要
+- instruction なしとありで同じ input を用意できない
 
-将来別途承認された試行では、選んだ一つのpropertyだけを扱い、既存設定の全文置換を避け、元値と今回の追加分を区別できる設計が必要です。生成と、commit・push・PR作成・投稿は別の副作用です。投稿先や既存リモート項目を必要とする入口を、このガイドの権限で用意しません。
+中止した場合は、不活性な構文草稿または「追加なし」の理由までで十分です。
 
-通常Chatへ同じ文を貼る案は別の参考対照です。同じ生成入口が同じ追加本文を受け取ると確認できない限り、等価な手動対照とは呼べません。
+## 本編へ戻る
 
-## Runtime capabilities
-
-tracked-vscode-settings — blocked
-
-Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings.
-
-generation-entrypoint-delivery — not-checked
-
-用途別設定が選んだ生成入口へ投入されることと、その出力は実機未確認である。
-
-通常の `.vscode/settings.json` はgitignoredで、例外は `.vscode/mcp.json` だけです。ignoreの変更、設定のforce-add、別pathへの偽装、allowlistの拡大で通過させません。既知の制約はnot-checkedに弱めず、全体のRuntime readinessもblockedです。
-
-不活性な草稿をexportできることと、追跡したworkspace設定を使う実機試行が検証可能なことは別です。Runtimeの拡張は別途承認する将来の作業であり、このガイドは実行サポートを追加しません。
-
-## Stop / Block
-
-- Runtime v1で通常の.vscode/settings.jsonの追跡が必要な間は停止する。
-- 通常Chatしか使えない、同じ選択範囲や差分を用意できない、または既存のstageを動かす必要がある場合は停止する。
-- 投稿・commit・push・PR作成や追加の拡張導入が必要なら、このガイドでは実施しない。
-
-停止後はblockedまたは未実施の記録で構いません。本編では `participant/hc-005/generation-settings.json.template` の草稿、または追加なしの理由だけを残せます。実機の代替成功とは呼びません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-共通Issue Formの任意欄へ、読解のみか、既知の制約で停止したかを書き、本編の二条件のoutcomeやEvidenceとは分けます。実機未実施なら独立run IDや生成結果を作らず、live-unobservedを維持します。
-
-将来の記録でも、設定の保存、発見、本文投入、生成ボタンの呼出し、出力内容、外部投稿の有無を別々に示す必要があります。構文が正しい、言語が変わった、見出しがそろっただけで正確性や設定の効果を証明しません。RuntimeのruntimeBehaviorとeducationalEffectはnot-observedのままです。
+この補足の出力を、S1・S2 の手作業の短文案や本編の設計比較へ混ぜません。
+[HC-005 の手順と安全境界へ戻る](../README.md)。

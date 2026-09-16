@@ -1,0 +1,4 @@
+case-01の固定packetと共通briefだけを使い、読み取り分析に追加する最小の準備方法、または追加不要を選び、その理由を説明してください。
+sourceを参照する場合は、starter/brief.json.templateのpublic upstream template revisionを基準にし、列挙pathを現在のruntime workspaceから読んでください。local HEADの一致やcheckoutは要求しないでください。
+trigger、scope、resources、permissions、maintenanceを分け、少なくとも一つの別案も示してください。
+業務上の答えを作らず、設定・source・外部serviceを変更しないでください。別caseの回答を使わないでください。

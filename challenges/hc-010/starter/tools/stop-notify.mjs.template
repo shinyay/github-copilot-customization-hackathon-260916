@@ -1,0 +1,97 @@
+import { spawnSync } from 'node:child_process';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { report, REQUIRED_HEADINGS, RESULT_CODES, RESULT_EXIT } from './checker.mjs';
+import {
+  inputFailure,
+  isMain,
+  isObject,
+  readHookInput,
+  ScenarioError,
+  writeHookOutput
+} from './hook-io.mjs';
+
+export const MAX_CHECKER_OUTPUT_BYTES = 8192;
+export const DEFAULT_DRAFT_PATH = path.join('manual', 'hc-010', 'draft.md');
+const checkerPath = fileURLToPath(new URL('./checker.mjs', import.meta.url));
+const failure = code => report('uncheckable', code);
+
+export function checkProcessResult(processResult) {
+  if (!isObject(processResult)) return failure('CHECKER_PROCESS_RESULT_MISSING');
+  if (processResult.error) {
+    return failure(processResult.error.code === 'ETIMEDOUT' ? 'CHECKER_TIMEOUT' : 'CHECKER_START_OR_IO_FAILED');
+  }
+  if (!Number.isInteger(processResult.status) || processResult.signal) {
+    return failure('CHECKER_STATUS_NOT_INTEGER_OR_SIGNAL');
+  }
+  if (typeof processResult.stdout !== 'string' ||
+      Buffer.byteLength(processResult.stdout) > MAX_CHECKER_OUTPUT_BYTES) {
+    return failure('CHECKER_OUTPUT_INVALID_OR_TOO_LARGE');
+  }
+  if (typeof processResult.stderr !== 'string' || processResult.stderr.trim()) {
+    return failure('CHECKER_UNEXPECTED_STDERR');
+  }
+  let parsed;
+  try {
+    parsed = JSON.parse(processResult.stdout);
+  } catch {
+    return failure('CHECKER_PROTOCOL_INVALID_JSON');
+  }
+  const keys = 'code,missingHeadings,result,scenario,schemaVersion';
+  if (!isObject(parsed) || Object.keys(parsed).sort().join(',') !== keys ||
+      parsed.schemaVersion !== 1 || parsed.scenario !== 'HC-010' ||
+      typeof parsed.result !== 'string' || typeof parsed.code !== 'string' ||
+      !Object.hasOwn(RESULT_EXIT, parsed.result) || !RESULT_CODES[parsed.result].includes(parsed.code) ||
+      !Array.isArray(parsed.missingHeadings) ||
+      parsed.missingHeadings.some(heading => !REQUIRED_HEADINGS.includes(heading)) ||
+      new Set(parsed.missingHeadings).size !== parsed.missingHeadings.length ||
+      (parsed.code === 'MISSING_REQUIRED_HEADING'
+        ? parsed.missingHeadings.length === 0
+        : parsed.missingHeadings.length !== 0)) {
+    return failure('CHECKER_PROTOCOL_INVALID_SCHEMA');
+  }
+  if (processResult.status !== RESULT_EXIT[parsed.result]) return failure('CHECKER_STATUS_MISMATCH');
+  return parsed;
+}
+export function notification(result) {
+  const missing = result.missingHeadings.length ? ` Missing: ${result.missingHeadings.join(', ')}.` : '';
+  return {
+    continue: true,
+    systemMessage: `[HC-010] ${result.result}: ${result.code}.${missing} ` +
+      'Format check only; semantic accuracy not evaluated. No file changed; no continuation requested.'
+  };
+}
+
+export function handleStop(
+  input,
+  { cwd = process.cwd(), draftPath = DEFAULT_DRAFT_PATH, runner = spawnSync } = {}
+) {
+  if (!isObject(input) || input.hook_event_name !== 'Stop' || typeof input.stop_hook_active !== 'boolean') {
+    return notification(failure('STOP_INPUT_INVALID_SCHEMA'));
+  }
+  if (input.stop_hook_active) return notification(report('skipped', 'STOP_HOOK_ALREADY_ACTIVE'));
+  try {
+    const result = runner(process.execPath, [checkerPath, draftPath], {
+      cwd,
+      shell: false,
+      windowsHide: true,
+      timeout: 3000,
+      maxBuffer: MAX_CHECKER_OUTPUT_BYTES,
+      encoding: 'utf8'
+    });
+    return notification(checkProcessResult(result));
+  } catch {
+    return notification(failure('CHECKER_START_FAILED'));
+  }
+}
+
+if (isMain(import.meta.url)) {
+  let output;
+  try {
+    if (process.argv.length !== 2) throw new ScenarioError('UNEXPECTED_ARGUMENTS');
+    output = handleStop(await readHookInput());
+  } catch (error) {
+    output = inputFailure(error);
+  }
+  writeHookOutput(output);
+}

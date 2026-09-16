@@ -1,0 +1,439 @@
+import { createHash } from "node:crypto";
+import { lstat, readFile, unlink, writeFile } from "node:fs/promises";
+import path from "node:path";
+
+const POLICY_ID = "hc013-full-display-v1";
+const UPSTREAM_TEMPLATE_REPOSITORY = "shinyay/github-copilot-customization-runtime-template";
+const UPSTREAM_TEMPLATE_REVISION = "8f0b3aa25c4f33facdea691642c2f1cb3901391c";
+const IDS = ["B1", "B2", "B3", "P1", "P2", "P3"];
+const SOURCE_PINS = [
+  {
+    id: "B1",
+    sourcePath: "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+    sha256: "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+    bytes: 5047,
+    lineCount: 97,
+    displaySha256: "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+    displayBytes: 5047,
+  },
+  {
+    id: "B2",
+    sourcePath: "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+    sha256: "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986",
+    bytes: 5408,
+    lineCount: 126,
+    displaySha256: "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986",
+    displayBytes: 5408,
+  },
+  {
+    id: "B3",
+    sourcePath: "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java",
+    sha256: "4512773a9a39ba25e61b1c1b1d0d9150d8004bfe43fb94617fb1bbe1c4a2ee63",
+    bytes: 27073,
+    lineCount: 467,
+    displaySha256: "a9db7fae855db85ce87d0fc2e83c69d6d6f1862fdc95b75669a17714a6eab32a",
+    displayBytes: 27214,
+  },
+];
+const REDACTED_LINE_SHAPES = new Map([
+  [86, /^        admin = login\("[^"\\]*", "([^"\\]*)"\);$/u],
+  [87, /^        manager = login\("[^"\\]*", "([^"\\]*)"\);$/u],
+  [237, /^        Cli refused = cli\("[^"\\]*", "([^"\\]*)", "[^"\\]*", "[^"\\]*", input\.toString\(\), "[^"\\]*", key\(\)\);$/u],
+  [242, /^        String password = "([^"\\]*)";$/u],
+  [431, /^        return cli\("[^"\\]*", "([^"\\]*)", "[^"\\]*", "[^"\\]*", input\.toString\(\), "[^"\\]*", runKey\);$/u],
+  [437, /^        return cli\("[^"\\]*", "([^"\\]*)", args\.toArray\(new String\[args\.size\(\)\]\)\);$/u],
+]);
+
+const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
+const requireThat = (value, code) => {
+  if (!value) throw new Error(code);
+};
+const nonempty = (value) => typeof value === "string" && value.trim().length > 0;
+const exactKeys = (value, keys) =>
+  value !== null
+  && typeof value === "object"
+  && !Array.isArray(value)
+  && JSON.stringify(Object.keys(value).sort()) === JSON.stringify([...keys].sort());
+const marker = (line) =>
+  `        // HC013_DISPLAY_REDACTED: authentication statement removed at original line ${line}; display only.`;
+
+async function readRegular(file, code) {
+  const info = await lstat(file);
+  requireThat(info.isFile() && !info.isSymbolicLink(), code);
+  return readFile(file);
+}
+
+async function readJson(file, code) {
+  const bytes = await readRegular(file, code);
+  try {
+    return { bytes, value: JSON.parse(bytes.toString("utf8")) };
+  } catch {
+    throw new Error(`${code}_JSON`);
+  }
+}
+
+function parseDesign(bytes) {
+  requireThat(
+    Buffer.isBuffer(bytes) && bytes.at(-1) === 10,
+    "HC013_DESIGN_UTF8",
+  );
+  const rawText = bytes.toString("utf8");
+  requireThat(
+    Buffer.from(rawText).equals(bytes) && !rawText.startsWith("\uFEFF"),
+    "HC013_DESIGN_UTF8",
+  );
+  const text = rawText.replaceAll("\r\n", "\n");
+  requireThat(!text.includes("\r"), "HC013_DESIGN_NEWLINES");
+  const blocks = [...text.matchAll(/^```hc013-design\n([\s\S]*?)^```[ \t]*$/gmu)];
+  requireThat(blocks.length === 1, "HC013_DESIGN_BLOCK");
+  let design;
+  try {
+    design = JSON.parse(blocks[0][1]);
+  } catch {
+    throw new Error("HC013_DESIGN_JSON");
+  }
+  requireThat(exactKeys(design, ["instructions", "organization"]), "HC013_DESIGN_FIELDS");
+  requireThat(nonempty(design.instructions), "HC013_INSTRUCTIONS");
+  const organization = design.organization;
+  requireThat(
+    exactKeys(organization, ["reader", "readingOrder", "groups", "omissionPolicy"])
+      && nonempty(organization.reader)
+      && organization.omissionPolicy === "preserve-full-display-and-metadata",
+    "HC013_ORGANIZATION",
+  );
+  requireThat(
+    Array.isArray(organization.readingOrder)
+      && JSON.stringify([...organization.readingOrder].sort()) === JSON.stringify(IDS),
+    "HC013_READING_ORDER",
+  );
+  requireThat(
+    Array.isArray(organization.groups)
+      && organization.groups.length > 0
+      && organization.groups.every(
+        (group) =>
+          exactKeys(group, ["title", "members"])
+          && nonempty(group.title)
+          && Array.isArray(group.members)
+          && group.members.length > 0
+          && new Set(group.members).size === group.members.length
+          && group.members.every((id) => IDS.includes(id)),
+      )
+      && new Set(organization.groups.flatMap((group) => group.members)).size === IDS.length,
+    "HC013_GROUPS",
+  );
+  return design;
+}
+
+function transformSource(pin, input) {
+  requireThat(input.length === pin.bytes && digest(input) === pin.sha256, `HC013_SOURCE_DRIFT_${pin.id}`);
+  const text = input.toString("utf8");
+  const lines = text.split("\n");
+  requireThat(
+    Buffer.from(text).equals(input)
+      && !input.includes(13)
+      && lines.at(-1) === ""
+      && lines.length - 1 === pin.lineCount,
+    `HC013_SOURCE_SHAPE_${pin.id}`,
+  );
+
+  const redactedLines = pin.id === "B3" ? [...REDACTED_LINE_SHAPES.keys()] : [];
+  const removedValues = [];
+  for (const number of redactedLines) {
+    const match = REDACTED_LINE_SHAPES.get(number).exec(lines[number - 1]);
+    requireThat(match && nonempty(match[1]), "HC013_REDACTION_SHAPE");
+    removedValues.push(match[1]);
+  }
+  if (removedValues.length > 0) {
+    const occurrences = lines.flatMap((line, index) =>
+      removedValues.some((value) => line.includes(value)) ? [index + 1] : []);
+    requireThat(
+      JSON.stringify(occurrences) === JSON.stringify(redactedLines),
+      "HC013_UNDECLARED_VALUE_LOCATION",
+    );
+  }
+
+  const displayLines = [...lines];
+  for (const number of redactedLines) displayLines[number - 1] = marker(number);
+  const displayText = displayLines.join("\n");
+  requireThat(
+    removedValues.every((value) => !displayText.includes(value)),
+    "HC013_REDACTED_VALUE_REMAINED",
+  );
+  const displayBytes = Buffer.from(displayText);
+  requireThat(
+    displayBytes.length === pin.displayBytes && digest(displayBytes) === pin.displaySha256,
+    `HC013_DISPLAY_DRIFT_${pin.id}`,
+  );
+
+  const display = {
+    policyId: POLICY_ID,
+    scope: "whole-file-with-explicit-redactions",
+    sha256: pin.displaySha256,
+    bytes: pin.displayBytes,
+    lineCount: pin.lineCount,
+    originalByteExact: redactedLines.length === 0,
+    redactedLines,
+  };
+  const transformation = {
+    policyId: POLICY_ID,
+    original: {
+      repository: UPSTREAM_TEMPLATE_REPOSITORY,
+      revision: UPSTREAM_TEMPLATE_REVISION,
+      referenceType: "upstream-template-revision",
+      sourceLocation: "runtime-workspace",
+      sourcePath: pin.sourcePath,
+      scope: "whole-file",
+      sha256: pin.sha256,
+      bytes: pin.bytes,
+      lineCount: pin.lineCount,
+    },
+    display,
+    redactedLineCount: redactedLines.length,
+    unchangedLineCount: pin.lineCount - redactedLines.length,
+    spans: redactedLines.map((number) => ({
+      startLine: number,
+      endLine: number,
+      operation: "replace-whole-line",
+      reason: "test-authentication-statement",
+      marker: marker(number),
+    })),
+    scopeNotice: "Safe display with explicit omissions; not executable Java or original-byte equivalence.",
+  };
+  return { displayText, transformation, removedValues };
+}
+
+function renderHandoff(card) {
+  const block = (value) => `\`\`\`json\n${json(value)}\`\`\`\n`;
+  const { materials, ...overview } = card;
+  return Buffer.from([
+    "# HC-013 個別資料の引継ぎ",
+    "",
+    "LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACE / SYNTHETIC_TRAINING_ONLY",
+    "",
+    "## Instructions",
+    "",
+    block(card.instructions),
+    "## 読み手と順序",
+    "",
+    block(card.organization),
+    "## 全体情報",
+    "",
+    block(overview),
+    "## 資料",
+    "",
+    ...materials.flatMap((material) => [`### ${material.id}`, "", block(material)]),
+    "## 未確認事項",
+    "",
+    "六資料の表示全文と metadata を保持しています。原本 hash と表示用 hash は意味が異なります。",
+    "Space の閲覧、各 source の閲覧、同期、Java・DB・テストの実行は確認していません。",
+    "",
+  ].join("\n"));
+}
+
+async function buildArtifacts(challengeRoot, runtimeRoot, workRoot) {
+  const starterRoot = path.join(challengeRoot, "starter");
+  const designBytes = await readRegular(path.join(workRoot, "design.md"), "HC013_DESIGN_FILE");
+  const design = parseDesign(designBytes);
+  const sourcePacket = await readJson(
+    path.join(starterRoot, "fixtures", "source-packet.json.template"),
+    "HC013_SOURCE_PACKET",
+  );
+  requireThat(
+    exactKeys(sourcePacket.value.sourceBaseline, ["kind", "repository", "revision", "sourceLocation"])
+      && sourcePacket.value.sourceBaseline.kind === "upstream-template-revision"
+      && sourcePacket.value.sourceBaseline.repository === UPSTREAM_TEMPLATE_REPOSITORY
+      && sourcePacket.value.sourceBaseline.revision === UPSTREAM_TEMPLATE_REVISION
+      && sourcePacket.value.sourceBaseline.sourceLocation === "runtime-workspace",
+    "HC013_SOURCE_BASELINE",
+  );
+  const snapshot = await readJson(
+    path.join(starterRoot, "fixtures", "snapshot.json.template"),
+    "HC013_SNAPSHOT",
+  );
+  requireThat(
+    snapshot.value.repository === UPSTREAM_TEMPLATE_REPOSITORY
+      && snapshot.value.revision === UPSTREAM_TEMPLATE_REVISION
+      && snapshot.value.referenceType === "upstream-template-revision"
+      && snapshot.value.sourceLocation === "runtime-workspace",
+    "HC013_SNAPSHOT_BASELINE",
+  );
+  const provenanceCandidates = await readJson(
+    path.join(starterRoot, "fixtures", "provenance-packets.json.template"),
+    "HC013_PROVENANCE_CANDIDATES",
+  );
+  requireThat(
+    provenanceCandidates.value.sourceBaseline.repository === UPSTREAM_TEMPLATE_REPOSITORY
+      && provenanceCandidates.value.sourceBaseline.revision === UPSTREAM_TEMPLATE_REVISION
+      && provenanceCandidates.value.sourceBaseline.sourceLocation === "runtime-workspace",
+    "HC013_PROVENANCE_BASELINE",
+  );
+  const cardTemplate = await readJson(
+    path.join(starterRoot, "examples", "context-card.json.template"),
+    "HC013_CARD_TEMPLATE",
+  );
+
+  const transformed = [];
+  for (const pin of SOURCE_PINS) {
+    const sourceFile = path.join(runtimeRoot, ...pin.sourcePath.split("/"));
+    transformed.push(transformSource(pin, await readRegular(sourceFile, `HC013_SOURCE_FILE_${pin.id}`)));
+  }
+
+  const card = structuredClone(cardTemplate.value);
+  requireThat(
+    card.fixtureLabel === "LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACE"
+      && card.trainingLabel === "SYNTHETIC_TRAINING_ONLY",
+    "HC013_CARD_LABELS",
+  );
+  card.instructions = design.instructions;
+  card.organization = design.organization;
+  card.observations.localSourceRead = "runtime-workspace-source-hashes-verified";
+  card.preparation = {
+    kind: "runtime-workspace-safe-display",
+    policyId: POLICY_ID,
+    upstreamTemplateRepository: UPSTREAM_TEMPLATE_REPOSITORY,
+    upstreamTemplateRevision: UPSTREAM_TEMPLATE_REVISION,
+    designSha256: digest(designBytes),
+    instructionsSha256: digest(Buffer.from(design.instructions)),
+    sourceCount: 3,
+    materialCount: 6,
+  };
+  card.materials = SOURCE_PINS.map((pin, index) => {
+    const reference = sourcePacket.value.sourceReferences[index];
+    const result = transformed[index];
+    requireThat(
+      reference.id === pin.id
+        && reference.sourcePath === pin.sourcePath
+        && reference.revision === UPSTREAM_TEMPLATE_REVISION
+        && reference.originalSha256 === pin.sha256
+        && reference.originalBytes === pin.bytes
+        && reference.originalLineCount === pin.lineCount
+        && JSON.stringify(reference.display) === JSON.stringify(result.transformation.display),
+      `HC013_SOURCE_METADATA_${pin.id}`,
+    );
+    return {
+      id: pin.id,
+      sourcePath: pin.sourcePath,
+      metadata: reference,
+      displayText: result.displayText,
+      transformation: result.transformation,
+    };
+  });
+
+  const localMaterials = [
+    ["P1", "source-packet.json.template", sourcePacket.bytes],
+    ["P2", "snapshot.json.template", snapshot.bytes],
+    ["P3", "provenance-packets.json.template", provenanceCandidates.bytes],
+  ];
+  for (const [id, name, bytes] of localMaterials) {
+    card.materials.push({
+      id,
+      sourcePath: `starter/fixtures/${name}`,
+      metadata: {
+        referenceType: "local-fixture",
+        revision: "hc013-materials-v2",
+        scope: "whole-file",
+        bytes: bytes.length,
+        sha256: digest(bytes),
+      },
+      displayText: bytes.toString("utf8"),
+    });
+  }
+
+  const cardBytes = Buffer.from(json(card));
+  const artifacts = [
+    { name: "context-card.json.template", bytes: cardBytes },
+    { name: "handoff.md", bytes: renderHandoff(card) },
+    { name: "manual-input.txt", bytes: Buffer.concat([Buffer.from(`${card.instructions}\n\n`), cardBytes]) },
+  ];
+  const removedValues = transformed.flatMap((item) => item.removedValues);
+  requireThat(
+    artifacts.every((artifact) =>
+      removedValues.every((value) => !artifact.bytes.toString("utf8").includes(value))),
+    "HC013_REDACTED_VALUE_IN_OUTPUT",
+  );
+  return { cardBytes, artifacts, transformed, instructionsSha256: card.preparation.instructionsSha256 };
+}
+
+async function prepare(workRoot, artifacts) {
+  for (const artifact of artifacts) {
+    const target = path.join(workRoot, artifact.name);
+    try {
+      await lstat(target);
+      throw new Error("HC013_DESTINATION_EXISTS");
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+    }
+  }
+  const created = [];
+  try {
+    for (const artifact of artifacts) {
+      const target = path.join(workRoot, artifact.name);
+      await writeFile(target, artifact.bytes, { flag: "wx" });
+      created.push(target);
+    }
+  } catch (error) {
+    for (const target of created) {
+      try {
+        await unlink(target);
+      } catch {
+        // Preserve the original error; only files created by this invocation are cleanup candidates.
+      }
+    }
+    throw error;
+  }
+}
+
+async function verify(workRoot, artifacts) {
+  for (const artifact of artifacts) {
+    const actual = await readRegular(path.join(workRoot, artifact.name), "HC013_OUTPUT_FILE");
+    requireThat(actual.equals(artifact.bytes), `HC013_OUTPUT_MISMATCH_${artifact.name}`);
+  }
+}
+
+function parseArgs(args) {
+  requireThat(args[0] === "prepare" || args[0] === "verify", "HC013_USAGE");
+  const values = { operation: args[0], runtimeRoot: null, workRoot: path.resolve("work") };
+  for (let index = 1; index < args.length; index += 2) {
+    const name = args[index];
+    const value = args[index + 1];
+    requireThat(value && (name === "--runtime-root" || name === "--work-root"), "HC013_USAGE");
+    if (name === "--runtime-root") values.runtimeRoot = path.resolve(value);
+    if (name === "--work-root") values.workRoot = path.resolve(value);
+  }
+  requireThat(values.runtimeRoot !== null, "HC013_RUNTIME_ROOT_REQUIRED");
+  return values;
+}
+
+async function main(args) {
+  const options = parseArgs(args);
+  const challengeRoot = process.cwd();
+  const built = await buildArtifacts(challengeRoot, options.runtimeRoot, options.workRoot);
+  if (options.operation === "prepare") await prepare(options.workRoot, built.artifacts);
+  await verify(options.workRoot, built.artifacts);
+  return {
+    challengeId: "HC-013",
+    operation: options.operation,
+    policyId: POLICY_ID,
+    instructionsSha256: built.instructionsSha256,
+    cardSha256: digest(built.cardBytes),
+    artifacts: built.artifacts.map((artifact) => ({
+      path: path.join(options.workRoot, artifact.name),
+      bytes: artifact.bytes.length,
+      sha256: digest(artifact.bytes),
+    })),
+    sources: built.transformed.map((item) => item.transformation),
+  };
+}
+
+if (process.argv[1] === "-") {
+  try {
+    process.stdout.write(json(await main(process.argv.slice(2))));
+  } catch (error) {
+    const code = /^HC013_[A-Z0-9_.-]+$/u.test(error.message)
+      ? error.message
+      : "HC013_PREPARATION_FAILED";
+    process.stderr.write(`${code}\n`);
+    process.exitCode = 1;
+  }
+}

@@ -1,0 +1,19 @@
+# 書式点検用メモ
+
+SYNTHETIC_TRAINING_ONLY — 業務分析の解答ではありません。
+
+- upstreamTemplateRevision: 8f0b3aa25c4f33facdea691642c2f1cb3901391c
+- sourcePath: wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java
+- readingTarget: Money.tax
+
+## Scope
+
+見出し構造を読むための合成メモです。処理内容の説明とsourceの支持関係は参加者が別に確かめます。
+
+## Evidence
+
+書式練習として根拠を置く節を用意しました。ここにはMoney.taxの処理内容を説明していません。
+
+## Unknowns
+
+この合成メモはsourceの意味を検証していません。実アプリ、DB、LLM、Stopイベントは実行していません。

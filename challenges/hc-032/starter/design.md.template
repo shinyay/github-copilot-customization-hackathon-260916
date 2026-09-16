@@ -1,0 +1,24 @@
+# HC-032 design
+
+## Question
+
+Where should the investigator stop and what must remain unresolved for the change owner?
+
+## Decisions before comparison
+
+- Source and symbol scope: TODO
+- Role body boundary: TODO
+- Declared/effective/called tools separation: TODO
+- Manual body byte-equivalence: TODO
+- Handoff format: TODO
+
+## Stop conditions
+
+- Input, source, revision, permissions, or isolation differs between approaches: TODO
+- A live-only fact would be required to complete a static claim: TODO
+
+## Non-claims
+
+- Live profile selection: not-observed
+- Live behavior: not-observed
+- Educational effect: not-observed

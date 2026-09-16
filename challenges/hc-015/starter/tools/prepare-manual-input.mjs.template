@@ -1,0 +1,101 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { lstatSync, readFileSync, writeFileSync } from "node:fs";
+import path from "node:path";
+
+const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const UPSTREAM_TEMPLATE_REPOSITORY = "shinyay/github-copilot-customization-runtime-template";
+const UPSTREAM_TEMPLATE_REVISION = "8f0b3aa25c4f33facdea691642c2f1cb3901391c";
+
+function readRegular(file) {
+  const info = lstatSync(file);
+  assert(info.isFile() && !info.isSymbolicLink(), `Expected a regular file: ${file}`);
+  return readFileSync(file);
+}
+
+function parseArgs(args) {
+  assert(args[0] === "prepare" || args[0] === "verify", "Expected prepare or verify");
+  const values = { operation: args[0], runtimeRoot: null, output: null };
+  for (let index = 1; index < args.length; index += 2) {
+    const name = args[index];
+    const value = args[index + 1];
+    assert(value && (name === "--runtime-root" || name === "--output"), "Invalid arguments");
+    if (name === "--runtime-root") values.runtimeRoot = path.resolve(value);
+    if (name === "--output") values.output = path.resolve(value);
+  }
+  assert(values.runtimeRoot, "--runtime-root is required");
+  assert(values.output, "--output is required");
+  return values;
+}
+
+function loadSources(runtimeRoot) {
+  const targetFile = path.join(
+    process.cwd(),
+    "starter",
+    "fixtures",
+    "source-targets.json.template",
+  );
+  const targets = JSON.parse(readRegular(targetFile).toString("utf8"));
+  assert.equal(targets.upstreamTemplateRepository, UPSTREAM_TEMPLATE_REPOSITORY);
+  assert.equal(targets.upstreamTemplateRevision, UPSTREAM_TEMPLATE_REVISION);
+  assert.equal(targets.sourceLocation, "runtime-workspace");
+  assert.deepEqual(targets.sources.map((source) => source.id), ["A1", "A2", "A3"]);
+
+  return targets.sources.map((source) => {
+    const content = readRegular(path.join(runtimeRoot, ...source.path.split("/")));
+    assert.equal(content.length, source.bytes, `Byte mismatch: ${source.path}`);
+    assert.equal(digest(content), source.sha256, `SHA-256 mismatch: ${source.path}`);
+    assert.equal(content.includes(13), false, `Expected LF source: ${source.path}`);
+    assert.equal(
+      content.toString("utf8").split("\n").length - 1,
+      source.lineCount,
+      `Line count mismatch: ${source.path}`,
+    );
+    return { ...source, content };
+  });
+}
+
+function buildManualInput(sources) {
+  const selected = sources.slice(0, 2);
+  return Buffer.concat([
+    Buffer.from("HC-015 MANUAL FULL-SOURCE v1\n", "utf8"),
+    ...selected.flatMap((source) => [
+      Buffer.from(`<<<BEGIN FILE ${source.path}>>>\n`, "utf8"),
+      source.content,
+      Buffer.from(`<<<END FILE ${source.path}>>>\n`, "utf8"),
+    ]),
+  ]);
+}
+
+function main(args) {
+  const options = parseArgs(args);
+  const sources = loadSources(options.runtimeRoot);
+  const manualInput = buildManualInput(sources);
+
+  if (options.operation === "prepare") {
+    writeFileSync(options.output, manualInput, { flag: "wx" });
+  }
+  const actual = readRegular(options.output);
+  assert(actual.equals(manualInput), "Manual input does not match the fixed source");
+
+  return {
+    challengeId: "HC-015",
+    operation: options.operation,
+    output: options.output,
+    bytes: manualInput.length,
+    sha256: digest(manualInput),
+    sources: sources.map(({ content, ...source }) => ({
+      ...source,
+      observedSha256: digest(content),
+    })),
+  };
+}
+
+if (process.argv[1] === "-") {
+  try {
+    console.log(JSON.stringify(main(process.argv.slice(2)), null, 2));
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  }
+}

@@ -1,0 +1,43 @@
+# HC-015 全文供給の計画
+
+A1/A2 を Add Context または手動全文で供給する前に具体化します。
+
+## 固定資料
+
+upstream template revision:
+
+runtime workspace root:
+
+request の SHA-256:
+
+A1/A2 の exact path、byte 数、SHA-256:
+
+供給順が A1、A2 であること:
+
+A3 を事前供給せず、必要時の追加読取として扱う理由:
+
+## Add Context
+
+Files & Folders からファイルそのものを選ぶ手順:
+
+候補表示と実添付表示、symbol、selection、folder、同名別ファイルを区別する方法:
+
+## 手動全文
+
+`manual-input-layout.txt.template` の preamble と delimiter を確認する方法:
+
+各 file section の raw bytes を固定値へ独立に照合する方法:
+
+trim、要約、改行変換、前の回答の混入を防ぐ方法:
+
+## 同じアクセスと追加読取
+
+検索能力と source 全文へのアクセスを同じに保つ方法:
+
+A3 や参照先を追加で読んだ path、理由、要求・返却・読取範囲の記録:
+
+## 範囲と停止
+
+原稿 hash、添付表示、内部投入範囲、モデルが使った根拠を分ける方法:
+
+全文が収まらない、切り詰め、版違い、別タブ混入で止める条件:

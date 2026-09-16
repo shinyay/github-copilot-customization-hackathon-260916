@@ -1,0 +1,39 @@
+# HC-040 byte identity and lifecycle ledger
+
+SYNTHETIC_TRAINING_ONLY
+
+## Content checks
+
+Keep the exact four rows and compare the two delivery forms by raw bytes.
+
+| revision | task | manual Skill SHA-256 | package Skill SHA-256 | byteEqual | source/task result | execution boundary |
+|---|---|---|---|---|---|---|
+| v1 | same-key-check | TODO | TODO | TODO | TODO | TODO |
+| v1 | changed-payload-check | TODO | TODO | TODO | TODO | TODO |
+| v2 | same-key-check | TODO | TODO | TODO | TODO | TODO |
+| v2 | changed-payload-check | TODO | TODO | TODO | TODO | TODO |
+
+## Lifecycle states
+
+Keep the exact six rows. `plannedCopyCount` is not an observed active-copy count.
+
+| delivery | state | selected version | manifest metadata | Skill SHA-256 | plannedCopyCount | observed active copies | fetched/discovered/called | restoration source |
+|---|---|---|---|---|---|---|---|---|
+| manual | prepare-v1 | v1 | manual | TODO | 1 | not-observed | not-observed | n/a |
+| manual | update-v2 | v2 | manual | TODO | 1 | not-observed | not-observed | v1 hash |
+| manual | restore-v1 | v1 | manual | TODO | 1 | not-observed | not-observed | frozen v1 bytes |
+| plugin package | prepare-v1 | v1 | plugin.json v1 | TODO | 1 | not-observed | not-observed | n/a |
+| plugin package | update-v2 | v2 | plugin.json v2 | TODO | 1 | not-observed | not-observed | v1 hash |
+| plugin package | restore-v1 | v1 | plugin.json v1 | TODO | 1 | not-observed | not-observed | frozen v1 package |
+
+## Static checks
+
+For each revision:
+
+1. hash the manual Skill file;
+2. hash the package `skills/training-order-evidence/SKILL.md` file;
+3. compare byte length, UTF-8 BOM absence, LF form, and SHA-256;
+4. record `byteEqual: true` only when raw bytes match;
+5. inventory one `plugin.json` and one Skill, with no extra component.
+
+These checks do not prove installation, enablement, active version, discovery, invocation, or knowledge effect.

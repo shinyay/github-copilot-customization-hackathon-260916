@@ -1,0 +1,16 @@
+# HC-024 四セル比較ブリーフ
+
+固定要因はInstructions（I）とSkill（S）の2つです。
+
+| cell | I | S |
+|---|---:|---:|
+| 00 | 0 | 0 |
+| 10 | 1 | 0 |
+| 01 | 0 | 1 |
+| 11 | 1 | 1 |
+
+全セルで同じruntime workspaceの3 source、同じpublic upstream template revision、同じoperations note全文、同じrequest、同じ凍結I/S原稿を使います。workspaceのlocal HEADをrevisionへ合わせる必要はありません。実機で比べる場合はmodel、effort、toolsもそろえます。
+
+原稿のpresence、discovery、loading、usage、output effectを分けます。Skill未利用、equal、worse、追加不要、incomparableも保持します。
+
+Agent、MCP、Hook、別model、manualの第5セルをこの比較へ加えません。Java、DB、test、設定、外部serviceは変更・実行しません。

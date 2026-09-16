@@ -1,9 +1,0 @@
-SYNTHETIC_TRAINING_ONLY
-
-# Event and head correlation
-
-| event ID / type | actor | synthetic PR | target branch | base / head | setting source / scope / ref | request / queue | attempt / start / complete | reviewed head | participant finding / basis / unknown |
-|---|---|---|---|---|---|---|---|---|---|
-| TODO | TODO | TRAINING-PR-36 | TODO | TODO | TODO | TODO | TODO | TODO | TODO |
-
-Do not treat requested as started or completed. A completed attempt for an older reviewed head does not complete the current head.

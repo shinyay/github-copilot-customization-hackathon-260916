@@ -1,0 +1,17 @@
+---
+name: order-import-evidence
+description: 受注CSVの再送処理を説明するとき、既存Javaコードを読み、現行動作・根拠・未確認事項を分けた日本語の読解メモを作る。DB実行や実システムの変更には使わない。
+---
+
+# 受注取込の根拠を整理する
+
+教材版: training-v1
+
+1. public upstream template基準 `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` を確認し、列挙pathは現在のruntime workspaceから読む。local HEADの一致は要求しない。
+2. `OrderImportService.java` の `importDraft` と `replay` を読む。
+3. `OrderGroup.java` の `canonicalHash` を読み、external keyとファイルbytes全体の一致を混同しない。
+4. 必要なら `OrderImportPostgresTest.java` の定義を読む。読んだだけのtestを実行済みにしない。
+5. 現行動作、根拠、未確認、確認案を分ける。合成メモは実履歴と区別する。
+6. アプリや設定を編集せず、回答は自分の作業メモへ保存する。
+
+このSkillは新しいtool、権限、業務知識、強制実行を追加しない。

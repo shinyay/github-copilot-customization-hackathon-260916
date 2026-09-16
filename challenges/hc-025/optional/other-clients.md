@@ -1,56 +1,48 @@
-# CLI / App / Cloud等の準備境界
+# CLI / App / Cloud を別 client として調べる
 
-## Guide scope
+[メインシナリオへ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-025本編](../README.md)のLocal Agent / Agent Host比較とは別に、CLI、Copilot App、Cloud等をそれぞれ別clientとして記録する準備ガイドです。
+## 目的
 
-Agent HostをCloudの別名にせず、同じファイル名だけで全clientが同じように動くと仮定しません。
+CLI、Copilot App、Cloud Agent などを別々の client として調べ、同名のカスタマイズがどこから発見され、どの本文・tool・approval で使われるかを整理します。Agent Host と Cloud Agent を同義語にはしません。
 
-## Prerequisites
+## 前提
 
-environment:
+- 調べる client、version、channel、実行場所を1つに特定できる
+- その client、model、Plugin component、Cloud 実行の利用資格を確認できる
+- 通常環境と分離した検証先と、終了後の復元方法がある
 
-- 対象CLI / App / Cloud、version、channel、実行場所、各clientの独立環境を確認できること。
+## 権限・安全
 
-entitlements:
+- install、login、同期、Cloud 操作、model 利用、外部送信、費用を個別に承認します。
+- credential、token、通常 profile、同期設定、既存 branch を無断で変更しません。
+- 標準 Plugin component と client 固有 namespace を分けて確認します。
+- client が不明な値を、別 client の結果や現在の版から補いません。
 
-- 各client、model、Plugin/component、Cloud実行の利用資格と組織policyを確認できること。
+## 手順
 
-additionalApprovals:
+1. 対象 client を1つ選び、公式文書と version を記録します。
+2. `../starter/customizations/` から確認する形式を1つ選びます。
+3. その client が文書化している配置・install 方法と必要権限を確認します。
+4. 承認済みの隔離環境で、固定依頼と固定 packet を使って1回だけ確認します。
+5. discovery、loading、effective tools、approval、外部通信、費用、error を記録します。
+6. 自分が追加した構成だけを戻してから、別 client を新しい記録として扱います。
 
-- 必要なinstall、login、sync、Cloud操作、model利用、外部送信、費用を操作ごとに別途承認すること。
+## 観察すること
 
-## Permissions / Safety
+- client / version / execution location
+- customization type / source / discovery
+- body loading
+- declared tools / effective tools
+- approval / network / cost
+- result / limitation / cleanup
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 停止条件
 
-additionalApprovals:
+- client、version、公式の対応範囲を確認できない
+- install、login、同期、Cloud 操作、外部送信、費用の承認がない
+- private code や credential を送信対象から除外できない
+- 別 client の結果を流用しなければ結論を作れない
+- 変更を安全に戻せない
 
-- 必要なinstall、login、sync、Cloud操作、model利用、外部送信、費用を操作ごとに別途承認すること。
-
-credential、token、通常profile、同期設定、Cloud branchを無断で作成・変更しません。client不明を別clientのversionや現在日付で補いません。
-
-標準Plugin component、client固有namespace、Prompt/Agent/toolの対応を別々に確認します。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| client-specific-portability | not-checked | CLI / App / Cloudごとの発見、本文投入、tools、approval、versionは本編とRuntime v1で未観測です。 |
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
-
-Cloud別branchへの正式なrun binding移行がないため、その経路はblockedです。CLI/Appの全機能まで非対応と決めつけません。
-
-## Stop / Block
-
-- 対象clientまたはversionが不明な場合は停止します。
-- install/login/sync/Cloud操作の承認がない場合は停止します。
-- Cloudが別branchを作り、Runtime v1 run bindingを移せない場合は停止します。
-- mainや別clientの実機結果を流用する場合は停止します。
-- 全client GAへ外挿する必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-client、harness、version、実行場所、format、discovery、loading、tools、approval、blocked理由を別に記録します。ガイド読了や準備表示exit 0を、login、install、Cloud実行、可搬性成功へ読み替えません。
+停止理由を記録し、[メインシナリオ](../README.md)の可搬性診断へ戻ります。

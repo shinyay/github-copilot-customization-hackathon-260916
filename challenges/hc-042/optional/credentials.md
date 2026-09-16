@@ -1,48 +1,50 @@
-# Credential観測の準備境界
+# Credential presenceを限定観測する
 
-## Guide scope
+[HC-042本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-042本編](../README.md)とは別に、credential値を見ない限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、credentialの存在、認証、認可、live success、本編改善、Runtime completionを意味しません。
+Agents secrets/variablesについて、値を見ずに名称、保存scope、consumer、presenceの観測可能範囲を確認します。credentialの存在、authentication、authorization、外部アクセス成功は別々に扱います。
 
-## Prerequisites
+## 前提
 
-environment:
+- 承認済みの専用repositoryまたはorganizationがある。
+- 対象名称、保存scope、consumerを特定できる。
+- Agents secrets/variablesを管理・利用する資格と組織policyを確認できる。
+- 値を記録しない観察方法と復元担当が決まっている。
 
-- 承認済みの専用repository、Agents secrets / variablesの管理scope、対象consumer、観測する名称とpresenceだけの記録方法を確認できること。
+## 権限と安全
 
-entitlements:
+- presence観察、対象scope、consumer、記録範囲について個別の許可を得る。
+- credential値、値hash、raw log、実送信先を取得しない。
+- redaction表示を値取得の許可として扱わない。
+- Actions、Codespaces、Dependabot等の別保存先へ範囲を広げない。
 
-- 対象repositoryまたはorganizationのAgents secrets / variablesを管理・利用する資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. 対象名称、repository/organization scope、consumer、ownerを記録する。
+2. 値を開かない方法でpresenceを確認する。
+3. presence、consumerへの提供、authentication、authorizationを別欄にする。
+4. 必要なら無害な既存操作の結果を観察するが、秘密値や送信内容を記録しない。
+5. 自分が変更した設定がある場合だけ、承認済み手順で復元する。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+- 名称と保存scope
+- presenceの観測結果
+- consumer
+- authentication結果
+- authorization結果
+- output use
+- unknownと観察不能の理由
 
-- 値を取得しないpresence観測、対象scope、consumer、記録、停止、復元を操作ごとに別承認すること。
+## 停止条件
 
-credential値、値hash、raw log、送信先、別scopeのsecretを取得せず、redactionを取得許可として使いません。
+- 値または値hashの取得が必要。
+- 保存scope、consumer、対象名称が不明。
+- 実送信先、認可scope、復元責任者が不明。
+- 個人credentialや別secret製品へ範囲を広げる必要がある。
 
-## Runtime capabilities
+## 本編へ戻る
 
-| capability | status | reason |
-|---|---|---|
-| external-access-observation | not-checked | 本編とRuntime v1はAgents secrets / variablesの保存、presence、consumer、認証、認可、MCP出力利用を観測しません。 |
-
-not-checkedの表示成功はcredentialの存在、認証、認可、外部アクセス成功ではありません。
-
-## Stop / Block
-
-- 追加承認がない、または値・値hashの取得が必要な場合は停止します。
-- 保存scope、consumer、対象名称、記録範囲のいずれかが不明な場合は停止します。
-- 実送信先、認可scope、復元責任者のいずれかが不明な場合は停止します。
-- 別のsecret製品や個人credentialへ範囲を広げる必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-対象scope、名称、presence、consumer、認証、認可、出力利用、unknown、blocked理由を分けます。値を記録せず、runtimeBehaviorとeducationalEffectは観測した範囲を超えて主張しません。
+結果は [HC-042の六層](../README.md#この機能とは) へ対応付け、presenceをauthentication/authorization成功へ変換しないでください。

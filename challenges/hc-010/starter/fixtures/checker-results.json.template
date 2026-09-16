@@ -1,0 +1,76 @@
+{
+  "materialType": "SYNTHETIC_TRAINING_ONLY",
+  "observation": "fixture-only",
+  "cases": [
+    {
+      "caseId": "complete-draft",
+      "checkerInvoked": true,
+      "checkerExit": 0,
+      "checker": {
+        "schemaVersion": 1,
+        "scenario": "HC-010",
+        "result": "pass",
+        "code": "OK",
+        "missingHeadings": []
+      },
+      "adapterExit": 0,
+      "adapter": {
+        "continue": true,
+        "systemMessage": "[HC-010] pass: OK. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+      }
+    },
+    {
+      "caseId": "missing-unknowns",
+      "checkerInvoked": true,
+      "checkerExit": 1,
+      "checker": {
+        "schemaVersion": 1,
+        "scenario": "HC-010",
+        "result": "invalid",
+        "code": "MISSING_REQUIRED_HEADING",
+        "missingHeadings": [
+          "## Unknowns"
+        ]
+      },
+      "adapterExit": 0,
+      "adapter": {
+        "continue": true,
+        "systemMessage": "[HC-010] invalid: MISSING_REQUIRED_HEADING. Missing: ## Unknowns. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+      }
+    },
+    {
+      "caseId": "missing-draft",
+      "checkerInvoked": true,
+      "checkerExit": 2,
+      "checker": {
+        "schemaVersion": 1,
+        "scenario": "HC-010",
+        "result": "uncheckable",
+        "code": "DRAFT_NOT_FOUND",
+        "missingHeadings": []
+      },
+      "adapterExit": 0,
+      "adapter": {
+        "continue": true,
+        "systemMessage": "[HC-010] uncheckable: DRAFT_NOT_FOUND. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+      }
+    },
+    {
+      "caseId": "reentry",
+      "checkerInvoked": false,
+      "checkerExit": null,
+      "checker": null,
+      "adapterExit": 0,
+      "adapter": {
+        "continue": true,
+        "systemMessage": "[HC-010] skipped: STOP_HOOK_ALREADY_ACTIVE. Format check only; semantic accuracy not evaluated. No file changed; no continuation requested."
+      }
+    }
+  ],
+  "nonClaims": {
+    "realStop": false,
+    "notificationDisplay": false,
+    "llmExecution": false,
+    "semanticAccuracyEvaluated": false
+  }
+}

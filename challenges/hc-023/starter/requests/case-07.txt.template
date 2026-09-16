@@ -1,0 +1,4 @@
+case-07の固定packetと共通briefだけを使い、Agent Host向けの読み取り分析に追加する最小の準備方法、または追加不要を選び、その理由を説明してください。
+sourceを参照する場合は、starter/brief.json.templateのpublic upstream template revisionを基準にし、列挙pathを現在のruntime workspaceから読んでください。local HEADの一致やcheckoutは要求しないでください。
+Prompt FilesのHost境界、trigger、scope、resources、permissions、maintenanceを分け、少なくとも一つの別案も示してください。
+Localの過去結果を成功根拠にせず、設定・source・実Hostを変更または起動しないでください。

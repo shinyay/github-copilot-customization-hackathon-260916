@@ -1,0 +1,7 @@
+# HC-027 Starter brief
+
+SYNTHETIC_TRAINING_ONLY
+
+この starter は、結果を見る前に評価規則を固定するための不活性教材です。task、variant、block、initial、follow-up、欠測、個別回帰、全体rollupを別々に記録します。
+
+固定identityは2 task × 3 variant × 3 blockの18 rowです。variantは `reference`、`reusable-rules`、`manual-rules` です。未実施や失敗のrowも削除しません。

@@ -1,0 +1,25 @@
+# HC-020 設計票
+
+## 固定計算
+
+<!-- 固定4行、終端LF、3状態、期待するliteral countを書く。 -->
+
+## 入出力契約
+
+<!-- exact one text field、nonempty、8,192 code points、error、4 output fieldsを書く。 -->
+
+## Tool境界
+
+<!-- 登録名、参照名、説明、confirmation、cancel、registration、activation、Disposableを書く。 -->
+
+## 代替案
+
+<!-- Node.jsだけで十分な条件、Tool入口が必要な条件、追加しない判断を書く。 -->
+
+## 機構の区別
+
+<!-- Tool / Participant / Custom Agent / Subagent / Agent Pluginの違いを書く。 -->
+
+## 観測限界
+
+<!-- Node.jsやcode reviewで確認できることと、Development Hostでしか観察できないことを分ける。 -->

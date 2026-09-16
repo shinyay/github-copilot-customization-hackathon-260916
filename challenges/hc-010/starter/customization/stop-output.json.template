@@ -1,0 +1,4 @@
+{
+  "continue": true,
+  "systemMessage": "[HC-010] invalid: MISSING_REQUIRED_HEADING. Missing: ## Unknowns. Format check only; semantic accuracy not evaluated."
+}

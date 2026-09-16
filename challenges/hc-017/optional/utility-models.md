@@ -1,52 +1,50 @@
-# utility model経路の観測準備
+# utility model 経路を観察する探索ガイド
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-017本編](../README.md)のChat model比較とは別に、commit message等の一つのutility経路を将来観測する準備ガイドです。本編のM/E groupへ合算しません。
+[HC-017 の本編](../README.md)で扱う Chat model とは別に、commit message 生成など一つの utility model 経路を観察するための補足ガイドです。Chat picker で選んだモデルを、utility 機能の実効モデルとみなしません。
 
-Chat modelを選んだことはutility modelの実効routeを証明しません。手動全文や別Chat応答をutilityの等価conditionにしません。
+## 前提
 
-## Prerequisites
+- 対象を一つの utility 機能に限定できる
+- 同じ非機密の固定入力と、同じ workspace 状態を用意できる
+- 対応する client、Copilot、utility 機能を利用できる
+- 実効モデルの表示または観測方法を公式資料で確認できる
+- 設定変更が必要な場合、自分の変更だけを元へ戻せる
 
-environment:
+## 権限と安全
 
-- 同じ固定utility入力、同じ対象操作、同じworkspace状態を用意し、対象をcommit message等の一つへ限定できること。
+- utility 生成、実効モデルの観測、必要な設定変更は事前に許可を得ます。
+- commit、push、provider 登録、credential 変更は行いません。
+- private code や顧客情報を固定入力にしません。
+- 生成物を repository に保存しません。
 
-entitlements:
+## 手順
 
-- 対応Stable、GitHub Copilot、対象utility機能、実modelの表示または観測手段の利用資格を確認できること。
+1. 観察する utility 機能を一つ選び、Chat との入力経路の違いを確認します。
+2. 非機密の固定入力、workspace 状態、生成前の設定を記録します。
+3. 実効モデルを観測できる UI または公式手順があるか確認します。
+4. 許可がある場合だけ一度生成し、表示と生成結果を記録します。
+5. 同じ入力を通常 Chat へ渡した結果を、utility 経路の代替観測として扱いません。
+6. 自分が変更した設定だけを元へ戻し、復元を確認します。
 
-utility入力と通常Chat入力を混ぜず、生成前後の設定と表示を記録できる必要があります。
+## 観察すること
 
-## Permissions / Safety
+- utility 機能と入力経路
+- 固定入力と workspace 状態
+- 要求設定と観測できたモデル表示
+- 生成結果と欠測
+- Chat model 選択との関係
+- cleanup 後の状態
 
-このガイドは権限を付与せず、実機実行を開始しません。
+utility の一観測を、Chat model の実効経路や本編の品質比較へ外挿しません。
 
-additionalApprovals:
+## 停止条件
 
-- utility生成の実行、実model観測、必要な設定変更を対象限定で別途承認すること。
+- utility 入力経路または実効モデルを確認できない
+- 追跡できない User / Profile 設定変更が必要
+- provider 登録、credential 変更、commit、push が必要
+- private code を使わなければ観察できない
+- 自分の変更だけを安全に戻せない
 
-commit、push、provider登録、credential設定は不要です。生成物をrepositoryへ保存する場合はさらに別の変更承認が必要です。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| utility-route-observation | not-checked | Runtime v1ではutility入力経路、実効model表示、生成結果を確認していません。 |
-| tracked-vscode-settings | blocked | Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings. |
-
-Chat pickerの表示や設定JSONのparseだけではutility routeを確認できません。
-
-## Stop / Block
-
-- utility入力経路または実効modelを確認できない場合は停止します。
-- 追跡できないworkspace設定、User/Profileへの黙った変更、force-addが必要なら停止します。
-- provider登録、credential変更、commit / pushが必要なら本ガイドでは停止します。
-
-未観測をdefault modelやChat model名で補いません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-readiness、設定、入力、観測表示、生成、cleanupを分けます。utility結果をM/Eの品質比較、Chat modelの実効route、教育効果へ外挿しません。
+[HC-017 の本編へ戻る](../README.md)

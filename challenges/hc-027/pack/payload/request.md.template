@@ -1,7 +1,0 @@
-# Fixed evaluation request
-
-SYNTHETIC_TRAINING_ONLY
-
-primaryとtransfer-checkを、baseline / customized / manual-equivalentの3条件で比較する計画を作ってください。結果packetを読む前に5観点、固定分母、順序、終了条件、欠測、initial / follow-up、回帰方針を固定してください。
-
-合成18行を実モデル18回と呼ばず、費用・時間のreceiptがなければnullを保持してください。

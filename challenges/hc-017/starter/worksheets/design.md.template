@@ -1,0 +1,21 @@
+# HC-017 design
+
+- comparison: model / effort / design only
+- manual labels:
+- factor changed:
+
+## Preflight
+
+承認済み model 候補、同一 model の effort 候補、要求値と観測表示、provider、adaptive、tools、Instructions、添付 context を確認します。確認できない値は未知のままにします。
+
+## Fixed controls
+
+固定 7 行、初回依頼、追問、提示順、source access、tools、承認、workspace context の内容と揃え方を記録します。
+
+## Measurements
+
+6 観点の保持・欠落・入力外追加・要修正、修正負担、欠測、観測可能な時間・使用量を記録する方法を決めます。内部思考全文は収集しません。
+
+## Stop rules
+
+model / provider / adaptive の drift、実効表示不明、候補不足、会話や設定の残留を分離できない場合に止める条件を決めます。

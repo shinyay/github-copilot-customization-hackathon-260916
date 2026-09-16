@@ -1,0 +1,25 @@
+# OrderService.java source excerpt
+
+runtime workspace path:
+`wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`
+
+```java
+public SalesOrder approve(Long id, int expectedVersion, Actor actor) {
+    require(actor, "MANAGER");
+    SalesOrder order = lockOrder(id);
+    Checks.version(order.getVersion(), expectedVersion);
+    Checks.state("SUBMITTED".equals(order.getStatus()), "order.notSubmitted",
+            "承認待ちの受注だけ承認できます。");
+    Checks.state(!order.getCreatedBy().equals(actor.getLogin()), "approval.self",
+            "自分で起票した受注は承認できません。");
+    validateActive(order);
+    creditService.checkApproval(order, actor);
+    order.setStatus("APPROVED");
+    // ...
+}
+```
+
+runtime workspace の full source を使って dependency と省略箇所を確認してください。upstream template revision は
+`shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
+ですが、template から作られた workspace の local `HEAD` が一致することは要求しません。
+この excerpt だけでは lock、validation、credit check、永続化の runtime behavior を検証できません。

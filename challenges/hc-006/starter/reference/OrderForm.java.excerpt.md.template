@@ -1,0 +1,25 @@
+# OrderForm.java source excerpt
+
+runtime workspace path:
+`wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java`
+
+```java
+public class OrderForm extends BaseForm {
+    private String orderDate = "";
+    private String requestedDate = "";
+    private String deliveryAddress = "";
+    private String externalReference = "";
+    private String notes = "";
+    private String[] productId = new String[0];
+    private String[] quantity = new String[0];
+    private String[] priceOverride = new String[0];
+    private String[] priceReason = new String[0];
+    // getters, setters, and bounded row growth
+}
+```
+
+Operation、identity、version の field は form hierarchy から継承されます。
+runtime workspace の full source を確認するまで、実際の data binding や runtime behavior を断定しないでください。
+upstream template revision は
+`shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
+ですが、template から作られた workspace の local `HEAD` が一致することは要求しません。

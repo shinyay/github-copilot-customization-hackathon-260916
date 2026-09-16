@@ -1,0 +1,11 @@
+---
+name: "hc025-packet"
+description: "LAB25-APP-01のpublic upstream template参照・runtime workspaceの三path・未確認の境界だけを保持する。"
+---
+# 固定packetの保持
+
+LAB25-APP-01のpacketId、upstreamTemplateRepository、upstreamTemplateRevision、workspaceHeadMatchRequired=false、三つのsourcePaths、boundaryを変更せず返す。
+sourceはruntime workspaceの列挙pathから読み、local HEADの一致やcheckoutを要求しない。
+業務仕様を推測せず、入力不足は不足とする。前会話の出力を補わない。
+形式の互換性、発見、本文投入、実効tools、approvalは別の観測である。
+ファイル変更、外部送信、model上書き、追加委任、shell、installは禁止。

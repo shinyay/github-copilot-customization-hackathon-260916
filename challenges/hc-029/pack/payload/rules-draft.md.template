@@ -1,9 +1,0 @@
-# Repository rules body draft
-
-この空欄へ、複数taskで繰り返す価値がある条件だけを書きます。UNKNOWN境界の完成test、完成patch、今回だけの具体的期待値を書きません。
-
-## Body
-
-- <write one reusable repository rule>
-
-bodyは `participant/hc-029/repository-rules.md.template` に凍結し、customizedとmanual-equivalentで全文を一致させます。

@@ -1,48 +1,46 @@
-# Cloud scope観測の準備境界
+# Cloud Agent で Instructions scope を観測する
 
-## Guide scope
+[← HC-031 のメインシナリオ](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-031本編](../README.md)のscope/product設計とは別に、Cloud Agentで供給scopeを将来観測する前の準備境界だけを整理するガイドです。
+## 目的
 
-実 `.github/instructions/**` 配置やCloud task作成はこのページでは行いません。
+Java、XML、mixed task で、Cloud Agent にどの Instructions が供給されたかを限定的に観測します。`applyTo` を access control として試す手順ではありません。
 
-## Prerequisites
+## 前提
 
-environment:
+- Cloud Agent と対象 repository を利用できる
+- 開始 branch、対象 revision、4 つの main source を特定できる
+- 比較する Java/XML 原稿の raw bytes を保存できる
+- Java、XML、mixed の task を同じ条件で用意できる
 
-- 対象Cloud Agent、repository、開始branch、Java/XML task、4 main source、比較するInstructions原稿を確認できること。
+## 権限と安全
 
-entitlements:
+- active Instructions の配置、Cloud task、model、branch、費用、終了時の解除について事前承認を得ます。
+- `applyTo` を ACL に変えず、`excludeAgent` を source access 拒否として扱いません。
+- 自分が追加した設定だけを解除し、共有設定や履歴を消しません。
 
-- Cloud Agent、対象repository、model、repository Instructionsの利用資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. 対象 revision と Java/XML 原稿の hash を記録します。
+2. Java、XML、mixed の 3 task と固定 request を準備します。
+3. 承認された範囲で active Instructions を配置します。
+4. 各 task を独立した conversation で実行します。
+5. attribution や利用記録から直接確認できる供給範囲だけを記録します。
+6. 実験後は自分が追加した active Instructions を解除します。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観測すること
 
-additionalApprovals:
+- task と対象 path
+- Java/XML 原稿の revision と hash
+- 供給されたと直接確認できる原稿
+- `excludeAgent` の予測と実観測
+- source を読めた事実と Instructions 供給の違い
 
-- active Instructions配置、Cloud task、model利用、別branch作成、限定観測、終了時解除を操作ごとに別途承認すること。
+## 停止条件
 
-`applyTo` をACLへ変えず、`excludeAgent` をsource access拒否として扱いません。
+- 資格、承認、対象 revision、原稿 bytes のいずれかが不明
+- 3 task の入力を公平にそろえられない
+- source access だけから Instructions 供給を推測する必要がある
+- 既存設定を削除または広く変更しないと続行できない
 
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
-
-active配置と実Instructions採用もnot-checkedですが、既知のbranch handoff blockerを先に解消しないまま実行へ進みません。
-
-## Stop / Block
-
-- Cloud機能、資格、対象revision、原稿bytesのいずれかが不明な場合は停止します。
-- active配置、Cloud task、model、branch、観測の承認がない場合は停止します。
-- 別branchから既存Runtime runへ正式にbindingを移せない場合は停止します。
-- sourceを読めたことだけでInstructions供給成功を主張する必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-task、source、原稿hash、対象revision、予測、実観測、blocked理由を分けて記録します。runtimeBehaviorとeducationalEffectはnot-observedのままです。
+[← HC-031 のメインシナリオへ戻る](../README.md)

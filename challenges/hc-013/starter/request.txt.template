@@ -1,0 +1,22 @@
+受注 CSV 再送を読むための B1/B2/B3 と、三つの合成資料 P1/P2/P3 を整理してください。
+
+目的は、現行コード、テスト定義、合成の運用メモ、提供されていない歴史的理由を混同せず、
+資料の版・種類・読めた範囲・未確認の権限を次の保守担当へ伝えることです。
+
+別添の instructions と六資料の表示全文・metadata・revision・scope・limitations を使ってください。
+資料を要約して欠落を隠さず、読む順序とグループを選んだ理由を説明してください。
+
+B1/B2/B3 の表示は、固定 source の hash を照合した後に作られた安全な表示版です。
+B3 の認証情報を含む六行全体だけが HC013_DISPLAY_REDACTED マーカーへ置き換えられています。
+原本の hash と表示用 hash、行番号・件数だけの変換記録を分け、除去した値や原文を復元しないでください。
+
+missing、error、empty、partial、未解決 branch を区別し、取得不能を不存在やアクセス拒否と断定しないでください。
+ローカル source の読取、Space の閲覧権、各 source の閲覧権、実際の Space 取得は別々の確認事項です。
+
+LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACE、SYNTHETIC_TRAINING_ONLY、
+actualHistoricalDecision: NOT_PROVIDED を保持し、ローカルカードを Space の応答と呼ばないでください。
+
+Java、DB、テスト、サーバーを実行せず、source や設定を変更しないでください。
+コードの結論は B1/B2/B3 の支持範囲へ戻って確かめ、資料にない採用理由や障害履歴を作らないでください。
+
+整理方法が不要、同等、使いにくい、比較不能、利用不可という結論でも、理由と未確認事項を残してください。

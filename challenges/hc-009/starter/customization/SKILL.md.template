@@ -1,0 +1,32 @@
+---
+name: csv-resend-investigation
+description: Use for a bounded source investigation of order-import replay behavior without running an import
+---
+
+# CSV resend investigation
+
+Use this Skill only for a read-only investigation of order-import replay behavior.
+
+## Steps
+
+1. Read `checklist.md`.
+2. Prefer these exact source paths:
+   - `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java`
+   - `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java`
+3. If full source is unavailable, read only the bundled files under `reference/` and mark missing context as unknown.
+4. Trace `importDraft`, both existing-claim lookups, `replay`, the new-claim path, and `canonicalHash`.
+5. Explain the matching-hash replay path, different-hash conflict path, and new-key path from source evidence.
+6. Keep Skill selection, Skill body loading, checklist/reference loading, and script execution as separate observations.
+7. State that static reading does not prove database state, transaction results, or production incident history.
+8. If the user supplies an investigation-note path and asks for validation, run the bundled `scripts/check-investigation-note.mjs` against only that path. Do not create or edit the note.
+
+## Stop conditions
+
+- Stop rather than reading a source path outside the two listed files.
+- Stop if the task would require a real CSV, order, customer record, credential, database, server, or external connection.
+- Do not import, resend, replay, mutate an order, or edit application files.
+- Do not treat a successful note-format check as proof of Java behavior.
+
+## Output
+
+Return a compact source map for the three key cases, the `canonicalHash` inputs, explicit unknowns, and the note-format result if it was requested.

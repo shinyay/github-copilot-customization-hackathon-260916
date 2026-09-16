@@ -1,51 +1,49 @@
-# BYOK provider登録前の準備境界
+# BYOK provider を評価する探索ガイド
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-017本編](../README.md)とは別のreadinessガイドです。本編4 conditionsへprovider、credential、Custom Endpoint、実modelを追加しません。
+[HC-017 の本編](../README.md)とは別に、Bring Your Own Key の provider を安全に評価できる条件を整理する補足ガイドです。本編の固定 7 行や private code は使わず、承認済みの無害な合成文だけを通信候補にします。
 
-初回通信候補は承認済みの架空短文だけに限定します。private code、固定7行、Runtime成果を未承認providerへ送る案ではありません。
+## 前提
 
-## Prerequisites
+- 許可済み provider、API、実モデル ID を一次資料で確認できる
+- provider とモデルの利用資格、組織 policy、データ取扱い条件、費用範囲を確認できる
+- credential を secure input で扱える
+- 既存 provider 設定と今回の変更を区別し、元へ戻せる
 
-environment:
+## 権限と安全
 
-- 許可済みprovider / API / 実model IDと、secure inputを使える分離環境を確認できること。
+- provider 登録、credential 入力、初回通信、費用発生はそれぞれ事前に許可を得ます。
+- secret を repository、設定原稿、チャット、画面共有、shell 履歴へ記録しません。
+- private code、本編の固定入力、顧客データは送信しません。
+- 既存 provider や鍵を一括削除して比較条件を作りません。
 
-entitlements:
+## 手順
 
-- provider利用資格、model利用資格、組織policy、データ取扱い条件、費用範囲を確認できること。
+1. endpoint、API、実モデル ID、region、データ保持、費用上限を provider の公式資料で確認します。
+2. 対象 client の公式 UI が secure input を提供することを確認します。
+3. 開始前の provider 選択と設定の見える範囲を記録します。
+4. 許可がある場合だけ provider を登録し、無害な合成文を一度送ります。
+5. 要求したモデルと、client 上で観測できたモデル表示を分けて記録します。
+6. 自分が追加した設定だけを元へ戻し、復元を確認します。
 
-placeholderのprovider名やmodel IDは送信先ではありません。endpoint、API、modelの組合せを一次資料と実環境で確認します。
+## 観察すること
 
-## Permissions / Safety
+- provider、API、要求モデル、観測表示
+- 通信先とデータ取扱い条件
+- secure input を使えたか
+- 応答の有無と、観測できなかった項目
+- 費用の確認方法
+- cleanup 後の状態
 
-このガイドは権限を付与せず、実機実行を開始しません。
+接続できたことは、本編タスクの品質や provider 全体の安全性を示しません。
 
-additionalApprovals:
+## 停止条件
 
-- provider登録、credentialのsecure input、架空短文の初回通信、費用発生をそれぞれ対象限定で別途承認すること。
+- provider 登録または送信の許可がない
+- endpoint、API、モデル ID、費用、データ取扱いのいずれかが不明
+- credential を平文で扱う必要がある
+- private code や本編の固定入力を送らなければ評価できない
+- 自分の変更だけを安全に戻せない
 
-秘密値をIssue、Evidence、設定原稿、shell履歴へ記録しません。既存providerや鍵を一括削除して比較条件を作りません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| provider-registration | blocked | Runtime v1はcredentialやUser-level provider登録を管理しないため、この経路はblockedです。 |
-
-JSON parseや設定原稿の存在は、疎通、model能力、実model選択、品質を証明しません。
-
-## Stop / Block
-
-- provider登録または送信の承認がない場合は停止します。
-- endpoint、API、実model ID、費用、データ取扱いのいずれかが不明なら停止します。
-- private codeや固定分析を送らなければ成立しない場合は停止します。
-
-blockedを平文credential、User設定への黙った変更、別providerへの切替で回避しません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-readiness、登録、初回通信、応答、費用、cleanupを別に記録します。実施した場合も承認済み架空短文の限定観測であり、HC-017固定taskの品質、controlled comparison、provider全体の安全性を示しません。
+[HC-017 の本編へ戻る](../README.md)

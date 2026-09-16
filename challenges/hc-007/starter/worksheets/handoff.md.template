@@ -1,0 +1,32 @@
+# HC-007 Handoff Worksheet
+
+## Investigator packet
+
+- Fixed packet unchanged: yes / no
+- Allowed source only: yes / no / unknown
+- Packet saved without repair: yes / no
+
+Paste or link the unmodified packet:
+
+## Human confirmation
+
+- Scope and citations checked:
+- Secret or private data checked:
+- Handoff candidate displayed but not sent:
+- Confirmed for review: yes / no
+- What remains intentionally unresolved:
+- Sent only after confirmation: yes / no
+
+## Reviewer result
+
+- Decision: ACCEPT / REVISE / INSUFFICIENT ENVIRONMENT
+- Supported claims:
+- Contradicted or unsupported claims:
+- Verification gaps:
+- New unknowns:
+
+## Final human decision
+
+- Proceed / revise / stop:
+- Reason:
+- Remaining unknowns:

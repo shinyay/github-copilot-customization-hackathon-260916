@@ -1,0 +1,30 @@
+# HC-037 evaluation design
+
+SYNTHETIC_TRAINING_ONLY candidate material
+
+Complete all four cells with the same support and burden criteria.
+
+| requested effort | candidate | state | source support unit | false-positive check | reviewer burden | missing observations |
+|---|---|---|---|---|---|---|
+| Lite | candidate-01 | planned-not-requested | TODO | TODO | TODO | TODO |
+| Lite | candidate-02 | planned-not-requested | TODO | TODO | TODO | TODO |
+| Balanced | candidate-01 | planned-not-requested | TODO | TODO | TODO | TODO |
+| Balanced | candidate-02 | planned-not-requested | TODO | TODO | TODO | TODO |
+
+## Decisions before comparison
+
+- Source context and three source paths: TODO
+- Candidate raw-byte hashes: TODO
+- Frozen request and rules hashes: TODO
+- Finding support unit and unsupported handling: TODO
+- Normal-change false-positive review: TODO
+- Duplicate and reviewer-burden handling: TODO
+- Missing-side and incomparable boundary: TODO
+- Design revision: TODO
+
+## Non-claims
+
+- Live standard review request/result: `not-observed`
+- Effective effort and internal model: `not-observed`
+- Cost, agentic fallback, and CI visibility: `not-observed`
+- Java/test behavior: `not-observed`

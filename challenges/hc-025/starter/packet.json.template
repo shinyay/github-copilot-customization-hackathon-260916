@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "packetId": "LAB25-APP-01",
+  "upstreamTemplateRepository": "shinyay/github-copilot-customization-runtime-template",
+  "upstreamTemplateRevision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+  "workspaceSourceMode": "read-listed-paths-from-current-runtime-workspace",
+  "workspaceHeadMatchRequired": false,
+  "sourcePaths": [
+    "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java",
+    "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java",
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
+  ],
+  "boundary": "public upstream template revisionはcanonicalな参照であり、template由来workspaceのlocal HEAD一致は要求しません。三つのpathは現在のruntime workspaceから読むsourceを示し、業務仕様の正解や以前の回答ではありません。",
+  "request": "packetId、upstream template fields、三つのpath、HEAD一致不要という境界を保持してください。業務事実の調査・推論は要求しません。"
+}

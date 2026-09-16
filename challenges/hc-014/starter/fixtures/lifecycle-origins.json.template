@@ -1,0 +1,34 @@
+{
+  "fixtureLabel": "SYNTHETIC_LIFECYCLE_NOT_PLUGIN_DISCOVERY",
+  "scope": "紙上の候補メモ。実在するユーザー、home 設定、Plugin 一覧ではありません。",
+  "snapshot": "v2",
+  "candidates": [
+    {
+      "origin": "sample/package-current",
+      "skill": "order-import-evidence",
+      "enabled": true,
+      "declaredVersion": "2.0.0",
+      "bodyMarker": "training-v2"
+    },
+    {
+      "origin": "sample/manual-copy",
+      "skill": "order-import-evidence",
+      "enabled": false,
+      "declaredVersion": "1.0.0",
+      "bodyMarker": "training-v1"
+    },
+    {
+      "origin": "sample/another-copy",
+      "skill": "order-import-evidence",
+      "enabled": true,
+      "declaredVersion": "2.0.0",
+      "bodyMarker": "training-v2"
+    }
+  ],
+  "questions": [
+    "全 origin をまとめて、同名・旧版・余分なコピーをどう調べますか。",
+    "enabled が false と書かれた候補を、版の確認対象から外してよいですか。",
+    "この合成メモだけでは確認できない client の状態は何ですか。"
+  ],
+  "observedClientState": null
+}

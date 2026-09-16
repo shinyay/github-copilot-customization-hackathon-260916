@@ -1,0 +1,36 @@
+# HC-039 governance design
+
+SYNTHETIC_TRAINING_ONLY
+
+Complete all twelve records. Preserve current facts and participant proposals in separate columns.
+
+| task | record | current evidence | unknowns | proposed owner/reviewer | selected revision | approval / restoration |
+|---|---|---|---|---|---|---|
+| root-rules | record-01 | TODO | TODO | TODO | TODO | TODO |
+| root-rules | record-02 | TODO | TODO | TODO | TODO | TODO |
+| root-rules | record-03 | TODO | TODO | TODO | TODO | TODO |
+| org-instructions | record-01 | TODO | TODO | TODO | TODO | TODO |
+| org-instructions | record-02 | TODO | TODO | TODO | TODO | TODO |
+| org-instructions | record-03 | TODO | TODO | TODO | TODO | TODO |
+| org-profile | record-01 | TODO | TODO | TODO | TODO | TODO |
+| org-profile | record-02 | TODO | TODO | TODO | TODO | TODO |
+| org-profile | record-03 | TODO | TODO | TODO | TODO | TODO |
+| enterprise-profile | record-01 | TODO | TODO | TODO | TODO | TODO |
+| enterprise-profile | record-02 | TODO | TODO | TODO | TODO | TODO |
+| enterprise-profile | record-03 | TODO | TODO | TODO | TODO | TODO |
+
+## Decisions before comparison
+
+- Current-value evidence and unknown policy: TODO
+- Owner, author, reviewer, and maintenance responsibilities: TODO
+- Storage repository/path, ACL, and usage scope: TODO
+- Instructions precedence rule: TODO
+- Same-name profile deduplication and selected branch/ref/revision: TODO
+- Change approval, retirement, and restoration: TODO
+- Design revision: TODO
+
+## Non-claims
+
+- Organization write/repository/ruleset operation: `not-observed`
+- Profile discovery/selection/use: `not-observed`
+- ACL and entitlement verification: `not-observed`

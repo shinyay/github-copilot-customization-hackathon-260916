@@ -1,0 +1,11 @@
+# HC-037 source map
+
+Read-only source context:
+
+| path | symbols / reason to inspect |
+|---|---|
+| `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java` | `TaxAmounts.add`, `TaxAmounts.getTaxAmount`, `TaxAmounts.getTotalAmount` |
+| `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java` | `Money.tax` and rounding behavior |
+| `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java` | `CommonRulesTest.taxIsRoundedPerRateRatherThanPerLine` |
+
+The main scenario summarizes the relevant aggregation and rounding behavior so the exercise can be completed without fetching another repository. The candidate diffs are `SYNTHETIC_TRAINING_ONLY` material. Reading a test definition is not evidence that Java, Maven, a database, or the test ran.

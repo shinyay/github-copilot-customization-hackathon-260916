@@ -1,0 +1,9 @@
+# Three-task scope matrix
+
+| task | core Java | core XML | web Java | predicted supplied drafts | live observation |
+|---|---|---|---|---|---|
+| java-reading | record | record | record | TBD | not-checked |
+| xml-reading | record | record | record | TBD | not-checked |
+| mixed-reading | record | record | record | TBD | not-checked |
+
+`record` は4 main sourceを確認表から削除しないという意味です。適用予測や製品での実採用を示しません。任意比較を行う場合は、この表を各 approach で複製します。

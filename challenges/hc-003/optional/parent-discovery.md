@@ -1,63 +1,66 @@
-# 親repositoryの発見条件を確認する
+# 親 repository からの customization 発見を探索する
 
-## Guide scope
+[HC-003 本編へ戻る](../README.md)
 
-**OPTIONAL_GUIDE_ONLY / live-unobserved** — [HC-003本編へ戻る](../README.md)。これは親探索の準備を整理する任意ガイドです。本編はrepository rootをworkspace rootとして使い、親探索を有効化しません。このページから実機操作を開始することはありません。
+## 目的
 
-サブフォルダーだけを開く場合、見えているworkspaceとrepositoryのrootは一致しないことがあります。公式説明にある `chat.useCustomizationsInParentRepositories` は、その親repositoryからの発見を扱う別の設定です。既定は無効と説明されています。名前を知ることは有効化の許可ではありません。
+repository の subdirectory だけを workspace として開いたとき、親 repository の customization を利用中の client がどのように発見するかを、本編とは別の安全な環境で観察します。
 
-出典: [VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions) と [Monorepo customization discovery](https://code.visualstudio.com/docs/agent-customization/overview#_use-customizations-in-a-monorepo)（文書確認: **2026-09-15**）。このガイドはその条件を紙上で点検し、実機のtrust状態を推定しません。
+`chat.useCustomizationsInParentRepositories` は、対応する VS Code で親 repository からの発見を扱う設定です。既定値や前提は version によって公式説明を確認してください。設定名を知っていることは、未知の親 repository を信頼したり機能を有効化したりする許可ではありません。
 
-準備条件の表示だけを行うHub CLIです。coreの `--condition`、`--team`、`--run` とは混在させません。
+参考:
 
-```powershell
-node scripts\plan-run.mjs --dry-run --challenge HC-003 --route parent-discovery
-```
+- [VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions)
+- [Monorepo customization discovery](https://code.visualstudio.com/docs/agent-customization/overview#_use-customizations-in-a-monorepo)
 
-## Prerequisites
+## 前提
 
-environment:
+- 自分が管理する、破棄または元に戻せる親 repository を用意できる
+- 親 repository と、workspace として開く subdirectory の境界を説明できる
+- 現在の client/version で親 repository 発見の対応状況と設定を確認できる
+- workspace、親 repository、対象 source の違いを本編とは別に記録できる
+- 新しい会話を用意できる
 
-- 開くworkspace rootと親repositoryの境界を、実行せず図で区別できること。
-- workspace自身には.gitフォルダーがなく、親に.gitフォルダーがあるという公式の前提を確認できること。
+`.git` の形や workspace 境界が公式説明の前提と異なる場合は、同じ挙動だと一般化せず停止します。
 
-entitlements:
+## 権限と安全
 
-- 教材と親repositoryを閲覧する通常の権限を確認できること。
+- 親 repository を trust してよいかは、その所有者が判断します。
+- 内容を理解していない親 `AGENTS.md` や他の customization を読み込ませません。
+- 既存の親 file、home/User/organization settings、Memory を変更・削除・退避しません。
+- 他人の repository へ書き込まず、trust や policy を迂回しません。
+- secret、private data、local の個人情報を記録へ含めません。
 
-公式説明は、開いたworkspaceから親のrepository rootまでの範囲と、親がtrustedであることを前提にしています。`.git` がファイルの場合などを、説明と同じだと未確認のまま一般化しません。必要な環境値と資格はnot-checkedです。
+## 手順
 
-計画では、workspace root、親の境界、読むsource、候補の保存元を分けて図示します。workspaceを変えると参照できる入力も変わり得るため、本編の回答品質との単純比較にはしません。nested探索とも独立に考えます。
+1. 自分が管理する使い捨て親 repository と、その中で workspace として開く subdirectory を用意します。
+2. 親 repository、subdirectory、`.git` の位置、workspace root を図または短いメモで区別します。
+3. 現在の client/version、親 repository 発見の対応状況、設定値を記録します。設定変更が必要なら、所有者の許可と元の値を確認します。
+4. 親 repository に、出力形式など無害な観察用規則だけを含む短い `AGENTS.md` を新規作成します。既存 file がある場合は上書きせず中止します。
+5. subdirectory だけを workspace として開き、新しい会話で短い読み取り依頼を送ります。
+6. 親 file の保存、client 上の発見、本文利用を示す情報、回答を分けて記録します。明示添付した試行は親からの自動発見と分けます。
+7. workspace を repository root で開いた場合との比較が必要なら、入力条件が変わることを明記して別の新しい会話で行います。
+8. 自分が作成した file と変更した設定だけを元に戻します。
 
-## Permissions / Safety
+## 観察すること
 
-このガイドは権限を付与せず、実機実行を開始しません。
+- 親 repository と開いた workspace の境界
+- client が親の参照元を表示したか
+- 親本文が利用されたと確認できる範囲
+- workspace の開き方による source や参照可能範囲の差
+- root へ手動配置した場合や明示添付した場合との違い
+- trust、権限、設定について未確認の箇所
 
-additionalApprovals:
+回答が観察用の形式になったことだけで、親からの自動発見を確定しません。
 
-- 親repositoryを信頼してよいかは所有者が判断し、追加の実機計画を承認すること。
+## 停止条件
 
-既存の親AGENTS.mdや他の親ファイルは変更・削除・退避しません。親にはInstructions以外のcustomizationがある可能性もあるので、内容や影響が分からないままtrustを受け入れません。このガイドはtrust操作、home・User設定の変更、他人のrepositoryへの書込みを求めません。別repositoryやProfileだけでhome、組織、Memoryの影響が消えたとは記録しません。
+- 親 repository の所有者、信頼性、workspace 境界のいずれかが不明
+- 既存の親 file や共有 settings を変更しないと試せない
+- client の対応状況や、変更した設定を元へ戻す方法が分からない
+- trust や organization policy の回避が必要
+- 本編と入力条件を分離できない
 
-## Runtime capabilities
+停止した場合は「未確認」として終え、親を利用できないことを本編の root `AGENTS.md` の失敗とは扱いません。
 
-- capability: `parent-repository-discovery`
-- status: `not-checked`
-- reason: 親探索、trust、投入元とRuntimeによる任意実機検証の組合せは未確認です。
-
-本編Packには親を操作する許可も任意実機の検証契約もありません。準備CLIのexit 0はガイド表示だけで、環境・資格・追加承認・Runtime readinessはnot-checkedです。親の発見を実行済み、対応済みとは表示しません。
-
-## Stop / Block
-
-- 親の信頼性、所有者の承認、workspace境界のいずれかが不明なら止めます。
-- 既存の親ファイルやhomeの変更、trustの迂回が必要なら未実施にします。
-
-未実施でも本編を提出できます。親へ読みに行けないことを本編の失敗へ読み替えず、`.hackathon/run.json` の改変や許可範囲の拡張で回避しません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-準備の図、公式条件との差、未確認のtrust・権限、止めた理由を共通Issue FormのOPTIONAL欄へ分離します。親の個人情報や絶対pathを転載しません。読んだだけなら `guide-only`、実施しないなら `unperformed` とし、架空のrun識別子を発行しません。
-
-将来別途承認された試行でも、保存元、発見、本文投入、出力と、workspace変更による入力差を別々に残します。rootに置いた手動対照の成功は親探索の成功ではありません。静的検証の `runtimeBehavior` / `educationalEffect` は `not-observed` のままです。
+[HC-003 本編へ戻る](../README.md)

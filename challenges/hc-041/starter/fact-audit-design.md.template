@@ -1,0 +1,36 @@
+# HC-041 fact audit design
+
+SYNTHETIC_TRAINING_ONLY
+
+Complete the twelve card/surface rows using one explicit revalidation policy.
+
+| task | card | current citation check | supported scope | eligible / reason | used evidence | retain / hold / revalidate trigger |
+|---|---|---|---|---|---|---|
+| cloud-fact-audit | F01 | TODO | TODO | TODO | TODO | TODO |
+| cloud-fact-audit | F02 | TODO | TODO | TODO | TODO | TODO |
+| cloud-fact-audit | F03 | TODO | TODO | TODO | TODO | TODO |
+| cloud-fact-audit | F04 | TODO | TODO | TODO | TODO | TODO |
+| cloud-fact-audit | F05 | TODO | TODO | TODO | TODO | TODO |
+| cloud-fact-audit | F06 | TODO | TODO | TODO | TODO | TODO |
+| review-fact-audit | F01 | TODO | TODO | TODO | TODO | TODO |
+| review-fact-audit | F02 | TODO | TODO | TODO | TODO | TODO |
+| review-fact-audit | F03 | TODO | TODO | TODO | TODO | TODO |
+| review-fact-audit | F04 | TODO | TODO | TODO | TODO | TODO |
+| review-fact-audit | F05 | TODO | TODO | TODO | TODO | TODO |
+| review-fact-audit | F06 | TODO | TODO | TODO | TODO | TODO |
+
+## Decisions before comparison
+
+- Same-repository/current-branch citation check: TODO
+- Meaning-support scope: TODO
+- `eligible`, `not-eligible`, and `unknown` rule: TODO
+- Direct evidence required for `used`: TODO
+- Repository fact versus user preference rule by surface: TODO
+- Hold, update proposal, retirement, and revalidation triggers: TODO
+- Design revision: TODO
+
+## Non-claims
+
+- Memory store/reuse/delete/retention: `not-observed`
+- Cloud or standard review use: `not-observed`
+- Empty-memory state from a new session or disabled setting: `not-observed`

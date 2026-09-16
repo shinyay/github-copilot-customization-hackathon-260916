@@ -1,0 +1,17 @@
+# HC-025 移植診断票
+
+固定入力では、public upstream template repository / revision、runtime workspaceの3 source path、`workspaceHeadMatchRequired: false` を別fieldとして保持します。
+
+| probe | file format / properties | unsupported properties | documented discovery | observed discovery | loading | effective tools | approval observed | proposed action / reason |
+|---|---|---|---|---|---|---|---|---|
+| skill | | | | null | null | null | null | |
+| prompt | | | Agent Host: not-loaded | null | null | null | null | |
+| agent | | | | null | null | null | null | |
+| plugin | | | | null | null | null | null | |
+
+不正例:
+
+- SkillへPrompt由来の `model` / `tools` をコピーした原稿。
+- Plugin manifest rootへ `agents` を置いた原稿。
+
+別機構へ置き換えて元probeの成功とせず、そのまま・移植・非対応・未確認・停止を理由付きで選びます。

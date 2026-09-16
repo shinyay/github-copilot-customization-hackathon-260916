@@ -1,52 +1,53 @@
-# stdio MCP sandboxの準備境界
+# stdio MCP sandbox を評価する探索ガイド
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-018本編](../README.md)と[terminal-sandbox](terminal-sandbox.md)とは別の、local stdio MCP sandbox readinessガイドです。terminal資料からWSL2対応や境界結果を転用しません。
+[HC-018 の本編](../README.md)や [terminal sandbox のガイド](terminal-sandbox.md)とは別に、local stdio MCP server の sandbox 境界を限定的に評価できる条件を整理する補足ガイドです。terminal の結果を MCP の結果へ転用しません。
 
-対象候補はmacOS / Linuxのlocal stdioです。別transport、remote server、Windows対応を推測しません。
+## 前提
 
-## Prerequisites
+- macOS または Linux の local stdio 経路を利用できる
+- 既に review 済みの限定 server と dummy operation がある
+- server の起動方法、transport、trust、sandbox 設定、approval の動作を確認できる
+- 分離 workspace、開始前状態、復元方法を用意できる
+- 対応 client、Copilot、MCP 機能を利用できる
 
-environment:
+remote server、別 transport、Windows 対応は推測しません。
 
-- macOS / Linux、local stdio、既存依存、分離workspace、review済みの限定serverとdummy操作を確認できること。
+## 権限と安全
 
-entitlements:
+- local stdio server の trust と起動、sandbox 設定、approval の動作、dummy operation、復元は事前に許可を得ます。
+- 新しい server、依存、credential、remote transport、home / network probe を追加しません。
+- server の source と起動方法を review できない場合は実行しません。
+- この repository に active な MCP 設定や probe program を追加しません。
 
-- 対応するVS Code / Copilot、MCP機能、server trust、教材repositoryの通常利用資格と組織policyを確認できること。
+## 手順
 
-serverの起動方法、transport、sandbox設定、auto-approval挙動、開始前状態と復元方法を事前に確認します。
+1. server の source、起動 command、transport、利用する tool を review します。
+2. sandbox と approval がどの段階へ作用するか、境界 map に整理します。
+3. 開始前の server、workspace、dummy target の状態を記録します。
+4. 許可が揃う場合だけ local stdio server を起動し、限定された dummy operation を一度提案します。
+5. tool 選択、proposal、approval、execution、OS result、program result を別々に記録します。
+6. server を停止し、自分が変更した設定と dummy target だけを元へ戻します。
 
-## Permissions / Safety
+## 観察すること
 
-このガイドは権限を付与せず、実機実行を開始しません。
+- client、host OS、server、transport、tool
+- server trust と起動方法
+- sandbox と approval の見える範囲
+- proposal と人の判断
+- OS と program の結果
+- server 停止と workspace の復元
+- 観察できなかった境界
 
-additionalApprovals:
+一つの stdio server の観察を、terminal、remote MCP、すべての tool、すべての OS へ外挿しません。
 
-- local stdio serverのtrust / 起動、sandbox設定、auto-approval挙動の受入、限定dummy操作、復元を対象限定で別途承認すること。
+## 停止条件
 
-新しいserver、依存、credential、remote transport、home / network probeを黙って追加しません。
+- Windows、remote transport、未 review server しか使えない
+- approval の動作が許可条件と一致しない
+- credential、network、home、依存導入、追加 probe path が必要
+- server source や復元方法を確認できない
+- User 設定や別 server へ迂回しなければ進めない
 
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| stdio-mcp-sandbox | not-checked | Runtime v1ではmacOS / Linux local stdio MCP sandbox、server起動、tool call、auto-approval挙動を確認していません。 |
-| owned-boundary-probe | blocked | 本編PackはMCP sandbox probe用pathや実行を許可しないため、この経路はblockedです。 |
-
-terminal sandboxの結果、合成packet、server設定のparseをMCP sandbox成功へ読み替えません。
-
-## Stop / Block
-
-- Windows、別transport、未review serverしか使えない場合は停止します。
-- auto-approval挙動が許可条件と一致しない場合は停止します。
-- credential、network、home、依存導入、probe path追加が必要なら停止します。
-
-User設定や別serverへの迂回でblockedを隠しません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-server trust、起動、sandbox、tool call、auto-approval、OS結果、program結果、復元を別に記録します。一つのstdio server観測をterminal、remote MCP、全tool、全OS、教育効果へ外挿しません。
+[HC-018 の本編へ戻る](../README.md)

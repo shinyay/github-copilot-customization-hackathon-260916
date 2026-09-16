@@ -1,88 +1,89 @@
-# HC-014 Plugin有効化前の準備ガイド
+# Plugin を有効化する前の確認ガイド
 
-## Guide scope
+[HC-014 本編へ戻る](../README.md)
 
-**OPTIONAL_GUIDE_ONLY / live-unobserved**
+## 目的
 
-[HC-014本編へ戻る](../README.md)。これは任意の準備確認で、本編のDRAFT比較だけで提出できます。
-将来、workspace設定を再現可能な成果物として追跡する経路を検討するためのガイドです。
-Pluginそのものが利用不能という意味ではなく、この経路をRuntime v1で完走する準備がblockedです。
-本編の二条件、Packのpath許可、Evidenceの要件を増やしません。
+HC-014 で作った不活性な Agent Plugin 原稿を、将来、承認済みの実験環境で試す前に確認する項目を整理します。
+このページは install、register、enable の実行手順ではありません。本編の `.template` を有効なファイルへ変更しません。
 
-## Prerequisites
+観察したいことは、次のように分けます。
 
-### Environment
+1. client が Agent Plugins 1.0 をサポートしているか。
+2. package 全体をレビューできたか。
+3. 設定上の登録・有効状態がどう保存されるか。
+4. Plugin が発見されたか。
+5. `order-import-evidence` の本文が必要な場面で読み込まれたか。
+6. 更新・無効化後に、古いコピーや同名 Skill が残っていないか。
 
-- レビュー済みの Agent Plugins 1.0・一つの Skill の package と、対応する VS Code Stable / local plugin 設定を確認できること。
-- 本編とは別の専用 workspace と、workspace 設定を再現可能な成果物として追跡する計画があること。
+設定値、UI 表示、discovery、本文 loading は別々の観察です。
 
-### Entitlements
+## 前提
 
-- 利用予定の Copilot・教材 repository の利用資格と、組織の Plugin policy を確認できること。
+- HC-014 本編の v1 / v2 原稿、version ledger、完全復元の確認が完了していること。
+- Agent Plugins 1.0 に対応する client と、その時点の公式文書を確認できること。
+- 本編とは別の専用 workspace と新しい会話を使えること。
+- Copilot と対象 repository の利用資格、組織の Plugin policy を確認できること。
+- package に含まれる全 component をレビューできること。
 
-これらは必要条件の説明で、閲覧者の環境・資格を確認した記録ではありません。
-仕様を読むときは [VS Code Agent plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins) と
-[Agent Plugins manifest](https://agent-plugins.org/plugin-authors/manifest) の対象形式・clientを確認します。
-VS Code Agent pluginsの該当節の確認日は **2026-09-15** です。公式文書の確認であり、installやUI操作の観測ではありません。
-別のharnessやUIの説明を、手元の環境の対応実績にはしません。
+実施時点の仕様は次で確認してください。
 
-## Permissions / Safety
+- [VS Code Agent plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins)
+- [Agent Plugins manifest](https://agent-plugins.org/plugin-authors/manifest)
 
-**このガイドは権限を付与せず、実機実行を開始しません。**
+ほかの client や古い UI の説明を、現在の環境での利用可否として扱わないでください。
 
-- 対象を限定した install / register / enable と workspace 設定変更には、環境所有者の別承認が必要です。
+## 権限と安全
 
-本編のparticipant原稿は探索先へ移さず、`.template` を外しません。
-対応の確認だけを理由に、マーケットプレイス追加、download、install、publish、Profile変更、homeの削除を始めません。
-一つのSkillという制約を保ち、HookやMCPを足しません。他のPluginに実行可能なcomponentが含まれ得ることを踏まえ、
-名称だけで信頼せず中身全体のレビューが必要です。
+- install、register、enable、設定変更には、環境所有者の別承認が必要です。
+- 本編の `starter\` や `work\` にある `.template` は変更せず、実験は承認された使い捨て環境で行います。
+- package 名だけで信頼せず、Skill 以外の component が含まれていないか全 tree を確認します。
+- marketplace からの追加 download、publish、Profile 変更、home の削除を確認作業の副作用にしません。
+- 既存 Plugin、手動 Skill、ユーザー設定、組織設定を削除して条件を作りません。
+- Hook、MCP、Agent、rules、prompts が追加されていたら、本シナリオの package としては停止します。
 
-## Runtime capabilities
+## 手順
 
-| Capability | Status | Reason |
-|---|---|---|
-| `tracked-vscode-settings` | `blocked` | Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings. |
-| `plugin-discovery` | `not-checked` | Plugin の実 discovery、Skill 本文 loading、無効化後の残留は未確認です。 |
+1. `work\package\v1` と `work\package\v2` の全ファイルを一覧し、manifest と一つの Skill だけか確認する。
+2. helper の結果と raw hash を再確認し、同じ版の手動 Skill と package Skill が一致するか確認する。
+3. client の公式文書から、local Plugin の場所、設定 scope、有効状態の保存方法を確認する。
+4. `chat.plugins.enabled`、`chat.pluginLocations` など、利用中の client が実際に案内する設定名と意味を確認する。
+5. workspace 設定として再現するのか、Profile または user scope に置くのかを決め、追跡可能性と実行権限を分けて考える。
+6. 別承認が得られた場合だけ、使い捨て環境で対象 package 一つを登録する。
+7. package の発見、Skill 候補、本文 loading、version 表示を別々に観察する。
+8. v2 への更新後、古い v1 や同名 Skill がほかの origin に残っていないか確認する。
+9. 無効化または実験終了後も、設定、候補、本文、会話 context の残留を別々に確認する。
 
-一件のblockedがあるため全体もblockedです。環境・資格・追加承認のreadinessはnot-checkedで、空の確認欄もreadyではありません。
-`.vscode\settings.json` はRuntime v1でGit除外、例外は `.vscode\mcp.json` だけです。
-本編Packはどちらのactive設定も許可しません。追跡可能性と実行許可は別です。
-force-add、Runtimeの除外変更、User/Profileだけに保存する迂回でこのblockedを弱めません。
-Profile限定の再現計画へ変えるなら別の設計と承認が必要で、同じrouteの成功扱いにはしません。
+本リポジトリでは手順 6 以降を実行しません。実験環境で行う場合も、公式文書と承認範囲を優先してください。
 
-設定の**意味を読む**ときは次を区別します。ここには有効化する操作手順はありません。
+## 観察すること
 
-- `chat.plugins.enabled` はPluginのサポートを切り替える設定です。設定値と今回のpackageの発見・本文loadingは別の観測です。
-- `chat.pluginLocations` はlocal packageのdirectoryと設定上の有効状態の対応です。値が `true` なら有効、`false` なら登録済みで無効という設定です。
-- Enable / Disable のUI操作による有効状態は設定ファイルとは別に保存されます。設定JSONを読むだけで、その時点の実UI状態まで確認したことにはなりません。
-- 設定のファイル保存、UI上の出所表示、Skillの候補、本文loading、更新の反映、無効化後の残留は別々に確かめる必要があります。
-- Copilot CLIがホームへ導入した installed plugins も発見され得ます。手動Skillも残る可能性があり、新規workspaceやProfileだけで同名候補が一つになるとは限りません。
-- 合成資料の enabled / disabled は実clientの状態を観測した記録ではありません。
+- client、版、Plugin 対応状態
+- package の exact path と raw hash
+- 設定を保存した scope と出所
+- Plugin の発見、Skill の候補表示、本文 loading
+- package version と Skill marker の対応
+- 同名候補、旧版、手動コピー、home にある別 origin
+- 無効化後に残る設定、候補、会話 context
 
-Hubで準備条件だけを表示するコマンドです。PackのapplyやVS Code操作は始まりません。
+`starter\fixtures\lifecycle-origins.json.template` の `enabled` は合成値です。
+実際の client の有効状態、候補消失、本文停止を証明しません。
 
-```powershell
-node .\scripts\plan-run.mjs --dry-run --challenge HC-014 --route plugin-enable
-```
+## 停止条件
 
-`--condition` / `--team` / `--run` を混ぜません。
-この経路はstdoutにガイドJSON、stderrに `OPTIONAL_ROUTE_BLOCKED`、exit 2を返します。
-これは既知の停止理由の表示で、実機へのinstall失敗や成功ではありません。
+- 対応 client、利用資格、組織 policy、環境所有者の承認を確認できない。
+- package 全体をレビューできない、または想定外の component がある。
+- 本編の `.template` を外す、実際の探索先へ移す、既存設定を変更する必要がある。
+- 既存 Plugin や他人の設定を削除しなければ同名候補を分離できない。
+- package と手動 Skill の raw bytes、または v1/v2 の一要因差分が一致しない。
+- 設定値、discovery、本文 loading のどれを観察したか区別できない。
 
-## Stop / Block
+停止した場合も、HC-014 本編の版・構成・復元の学習は完了できます。
 
-- 追跡済みの .vscode/settings.json が必要なこの経路は Runtime v1 では blocked のため、実機操作を開始しません。
-- 対応環境・利用資格・追加承認・package のレビューを確認できない場合は未実施にします。
-- 既存の home / User / 組織設定や他人の Plugin に触れる必要がある場合は停止します。
+## 終了時の扱い
 
-停止後は未実施のままで構いません。本編は続けて提出できます。
-同じrunへ設定pathを追加する、force-addする、権限を増やす、Profileだけへ黙って切り替える手順は提供しません。
+実験で得られる結果は、特定の client、版、設定 scope、時点に限られます。
+構造 helper の成功だけで install、discovery、loading、更新、無効化を成功としないでください。
+片付けは自分が承認の下で追加したものだけに限定し、既存 Plugin、home、他人の設定へ触れません。
 
-## Evidence / Non-claims
-
-**任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。**
-
-ガイドを読んだこと、準備条件の表示、blocked / not-checked、未実施理由だけを本編と分離して記録します。
-実機記録用の新しいEvidenceファイルやconditionをこのrouteで作りません。
-構造validatorの合格、同じSkill hash、合成disabledの記載を、実install / discovery / loading / update / Disableの証拠にしません。
-`runtimeBehavior` / `educationalEffect` は未観測です。将来別承認で観測しても、対象clientと版の実機記録として扱います。
+[HC-014 本編へ戻る](../README.md)

@@ -1,0 +1,21 @@
+# HC-017 controls
+
+| field | recorded value | source / observation | unknown reason |
+|---|---|---|---|
+| experiment M / E |  |  |  |
+| manual trial label |  |  |  |
+| requested model |  |  |  |
+| observed model display |  |  |  |
+| provider |  |  |  |
+| requested effort |  |  |  |
+| observed effort |  |  |  |
+| adaptive visibility |  |  |  |
+| utility selection unchanged |  |  |  |
+| tools |  |  |  |
+| Instructions / attached context |  |  |  |
+| approval state |  |  |  |
+| fixed input exact match |  |  |  |
+| request exact match |  |  |  |
+| follow-up exact match |  |  |  |
+
+未観測値を 0、default、要求名、fixture placeholder で埋めません。

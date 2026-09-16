@@ -1,3 +1,0 @@
-case-08の固定packetだけを使い、同じ全文の手動供給と将来のread-only resource案を含む最小の準備、または追加不要を比較してください。
-trigger、scope、resources、permissions、maintenanceを分け、server trust・content authority・call approvalを混同しないでください。
-実server、認証、設定、source、外部serviceを変更または起動しないでください。

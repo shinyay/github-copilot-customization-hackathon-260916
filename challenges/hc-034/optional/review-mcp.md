@@ -1,49 +1,47 @@
-# Review MCP確認の準備境界
+# Code review で MCP 接続を観測する
 
-## Guide scope
+[← HC-034 のメインシナリオ](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-034本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+Copilot code review で、研修専用 MCP tool の採用と read-only lookup を限定的に観測します。
 
-## Prerequisites
+## 前提
 
-environment:
+- Copilot code review と対象 repository を利用できる
+- 対象 PR/head と要求者を特定できる
+- 共有 MCP 設定の所有者と利用者範囲を確認できる
+- `training-v1` の raw bytes と expected hash を保存できる
 
-- 対象repository、PR/head、研修専用server、training-v1 raw bytes、共有利用者とreadOnlyHint表示範囲を確認できること。
+## 権限と安全
 
-entitlements:
+- 共有設定への最小追加、review 要求、tool call、終了時の解除について事前承認を得ます。
+- `readOnlyHint` を認可、ACL、無害性の保証として扱いません。
+- 既定 server、共有利用者、private log を保護します。
 
-- Copilot code review、対象repository、共有MCP設定を管理・利用する資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. 対象 head、設定 revision、note revision/hash を記録します。
+2. 共有設定へ研修 server だけを追加します。
+3. 承認された 1 回の review を要求します。
+4. tool の採用、call、return を直接確認できる記録だけ残します。
+5. return の code-derived section を source へ照合します。
+6. 実験後は自分が追加した設定だけを解除します。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観測すること
 
-additionalApprovals:
+- review 対象 head と設定 revision
+- tool 採用、call ID、arguments、return
+- returned revision/body hash
+- `NOT_FOUND`、取得 error、版不一致
+- read-only annotation と実装安全性の違い
 
-- 共有設定所有者による最小追加、review要求、研修toolの限定call、共有利用者への影響確認、終了時解除を操作ごとに別途承認すること。
+## 停止条件
 
-共有設定の全消去、履歴巻戻し、allow-all、run.json手編集、秘密値の回避策は使いません。整理対象は自分が追加した設定だけです。
+- review 資格、対象 head、要求者、設定所有者、note bytes のいずれかが不明
+- 共有利用者への影響または review 要求の承認がない
+- `readOnlyHint` を安全性の保証にしないと続行できない
+- `NOT_FOUND` と取得 error を区別できない
+- review 要求を無制限に繰り返す必要がある
 
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| standard-review-observation | not-checked | 本編とRuntime v1は標準reviewでのMCP採用、tool call、attribution、review結果を実行または観測しません。 |
-| shared-mcp-configuration | not-checked | 本編とRuntime v1は共有MCP設定の所有権、保存、既定server保護、共有利用者への影響を観測しません。 |
-
-blockedとnot-checkedを区別します。not-checkedの表示成功は実機成功ではなく、既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- review資格、対象head、要求者、設定所有者、training-v1 bytesのいずれかが不明な場合は停止します。
-- 共有利用者への影響または実review要求の承認がない場合は停止します。
-- readOnlyHintを認可、ACL、無害性の保証として扱う必要がある場合は停止します。
-- NOT_FOUNDと取得error、返却版不一致を区別できない場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-対象revision、承認scope、予測、観測手段、実観測、unknown、blocked理由を分けます。runtimeBehaviorとeducationalEffectはnot-observedのままです。
+[← HC-034 のメインシナリオへ戻る](../README.md)

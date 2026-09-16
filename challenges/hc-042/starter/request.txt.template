@@ -1,0 +1,5 @@
+SYNTHETIC_TRAINING_ONLY
+
+Use the supplied packet set to assess D01 through D07 in order. For each task, record the supported conclusion, cited facts, remaining alternatives, missing observation, next safe check, consultation owner, and stop condition.
+
+Before classifying the packets, freeze a diagnosis policy that keeps discovery, tool call, network, authentication, authorization, output use, presence, server trust, and instruction authority distinct. Do not perform live access, retrieve secret values, or turn `unknown` into `false`.

@@ -1,99 +1,88 @@
-# HC-013 / space-read — 許可済みSpaceの読取条件を確認する
+# 許可済み Copilot Space を読み取る前の確認ガイド
 
-## Guide scope
+[HC-013 本編へ戻る](../README.md)
 
-`OPTIONAL_GUIDE_ONLY` / `live-unobserved`。
-[HC-013本編](../README.md) とは別の、任意の準備確認ガイドです。ガイドを読んだだけで実機試行を始めません。
-本編はローカル資料設計だけで提出でき、実Space、認証、source ACL、同期は本教材作成時には未観測です。
-新しいSpaceを作って教材を揃える手順ではありません。
+## 目的
 
-## Prerequisites
+HC-013 で設計したローカルカードと、既に用意されている専用 Copilot Space の内容を
+安全に照合するための補足ガイドです。新しい Space を作る手順ではありません。
 
-- 本編とは別の使い捨てworkspace・新規会話で、IDEの版、Agentモード、remote GitHub MCPの既存構成を確認できること。
-- 所有者が既に承認した専用教材Spaceのexact owner/nameと、凍結したinstructions・カードJSON全文を照合できること。
-- 本人のCopilot利用資格、既存の正規認証、組織のMCP policy、対象Spaceと各sourceの既存閲覧権を個別に確認できること。
+確認する層を分けます。
 
-上記は条件であり、確認済みの資格ではありません。
-[Using Spaces](https://docs.github.com/en/copilot/how-tos/provide-context/use-copilot-spaces/use-copilot-spaces)
-のIDE説明（参照日2026-09-15）ではAgentモードとremote MCPが必要です。
-IDEで利用できるのはAdd text content、GitHubの個別ファイル、issues、pull requests、Space instructionsです。
-**repository contextとuploadしたファイルはIDE非対応**です。Webで見えることからIDE対応を推測しません。
-同じ文章でもAdd text contentとUpload a fileはsource typeが違います。
+1. remote GitHub MCP へ接続できるか。
+2. Copilot Spaces の tool が利用できるか。
+3. 対象 Space を閲覧できるか。
+4. Space が参照する各 source を閲覧できるか。
+5. 返された本文・版・範囲が、ローカルの固定資料と一致するか。
 
-[About Spaces](https://docs.github.com/en/copilot/concepts/context/spaces) はFreeを含むCopilot licenseと、
-利用者にseatを与える組織に基づく資格を説明します。組織名だけで利用可否を決めません。
-[GitHub MCPのIDE利用](https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp-in-your-ide/use-the-github-mcp-server?tool=vscode)
-の一般資格・policyと、Spaces固有の利用条件は別に確認します。
+接続成功や Space 名の表示だけで、source 本文を取得できたとは判断しません。
 
-## Permissions / Safety
+## 前提
 
-このガイドは権限を付与せず、実機実行を開始しません。
+- HC-013 本編を完了し、`work\context-card.json.template` を検証済みであること。
+- 本編とは別の使い捨て workspace と新しい会話を使えること。
+- 所有者が既に承認した専用教材 Space の exact owner/name が分かっていること。
+- Copilot の利用資格、既存の正規認証、組織の MCP policy を確認できること。
+- 対象 Space と各 source の既存閲覧権を、別々に確認できること。
 
-- 環境と教材の所有者から、既知のexact owner/nameに対するget_copilot_spaceの読み取りだけを行う独立試行の承認を別途得ること。
-- 承認は既存の認証・閲覧権の範囲に限り、新規共有、source追加、upload、PAT発行、OAuth・ACL・組織policy変更を含めないこと。
+IDE から Spaces を使うための現在の要件と対応 source type は、実施時点の
+[Using Copilot Spaces](https://docs.github.com/en/copilot/how-tos/provide-context/use-copilot-spaces/use-copilot-spaces)
+と [GitHub MCP server in your IDE](https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp-in-your-ide/use-the-github-mcp-server?tool=vscode)
+で確認してください。Web で見える source type が IDE でも同じように返るとは限りません。
 
-条件が揃った将来の実機計画でも、対象は既知owner/nameの `get_copilot_space` だけです。
-実引数は**その場で発見したtool schemaを読む**ことが必要で、推測した引数JSONは送りません。
-`list_copilot_spaces` で候補を探しません。曖昧な名前での自動list探索も許可しません。
-既存設定を削除・追加して接続条件を作ることや、通常アカウントの認証解除はこのガイドの対象外です。
+## 権限と安全
 
-本編の `github-spaces.mcp.json.template` は不活性な参照で、有効化手順ではありません。
-[公式remote-server資料](https://github.com/github/github-mcp-server/blob/main/docs/remote-server.md)
-にある `copilot_spaces` はremote-onlyのserver側toolsetで、VS Code Tool Setsとは別です。
-local serverへ同名flagを付けても代用できません。`X-MCP-Readonly: "true"` はread toolへの絞込みで、
-Space/source閲覧権の付与ではありません。本編Packは `.vscode/mcp.json` を許可しません。
-Runtime v1でpathを追跡できることも、今回のgrantや実call成功の根拠にはなりません。
+- 環境と Space の所有者から、既知の owner/name を読み取る試行について別承認を得てください。
+- 承認範囲は既存認証による読み取りだけに限定します。
+- 新規共有、source 追加、upload、PAT 発行、OAuth・ACL・組織 policy の変更は行いません。
+- `list_copilot_spaces` などで候補を探索せず、exact owner/name が分からなければ停止します。
+- tool の引数は、実施時に表示される schema を確認してから指定し、推測で組み立てません。
+- `starter\examples\github-spaces.mcp.json.template` は参照例です。このリポジトリへ有効な設定としてコピーしません。
 
-## Runtime capabilities
+`X-MCP-Readonly: "true"` は tool を読み取り系へ絞る指定であり、Space や source の閲覧権を付与するものではありません。
 
-| capability | status | reason |
-|---|---|---|
-| remote-spaces-read | not-checked | Runtime v1はremote MCPの初期化・tool発見・認証・get_copilot_spaceの実callを観測しない。 |
-| source-acl-observation | not-checked | Runtime v1はSpace閲覧権と個別source閲覧権、返却内容の版・範囲を実機検証しない。 |
+## 手順
 
-どちらも対応済み・readyという表示ではありません。準備情報が空でも未確認であり、実行支援にはなりません。
-準備表示だけならHubで次を使えます。exit 0でもnot-checkedで、条件・team・runは混ぜません。
+1. 新しい workspace と会話を開き、利用中の IDE、Copilot、remote GitHub MCP の状態を記録する。
+2. Copilot Spaces の tool が発見・有効化されているかを確認する。
+3. 正規認証と組織 policy が対象の読み取りを許可しているか確認する。
+4. 承認済みの exact owner/name と、その場で確認した tool schema を使って対象を一度だけ読み取る。
+5. Space instructions、description、source type、source ごとの revision・範囲・返却状態を分けて記録する。
+6. Add text content にカードがある場合は、`textContent.text` だけでなくカード全体を
+   `work\context-card.json.template` と比較する。
+7. 配列順、値、欠落、`missing` / `error` / `empty` / `partial` を確認する。
+8. B1/B2/B3 の原本 hash と表示用 hash を混同せず、Space がどちらを保持しているか確認する。
+9. 確認後は会話に取得済み context が残り得ることを記録し、承認済みの追加物だけを片付ける。
 
-```powershell
-node .\scripts\plan-run.mjs --dry-run --challenge HC-013 --route space-read
-```
+## 観察すること
 
-別承認の将来計画では、通信/MCP初期化、tool discovery、enabled状態、正規認証、組織policy、
-Space ACL、source ACL、source type、実callの返却内容・版・範囲、解釈を個別の観測欄にします。
-接続成功、tool名の表示、Spaceが見えることのどれも、資料本文が読めたこととは違います。
+- MCP の接続、tool discovery、tool enabled、認証、組織 policy
+- Space の owner/name、instructions、description
+- Space ACL と各 source の ACL
+- source type、revision、解決 commit、返却範囲
+- 全文、空、部分、欠落、エラーの違い
+- ローカルカードと返却内容の一致・不一致・確認不能
+- B3 の表示が、六行を除いた安全な表示版かどうか
 
-## Stop / Block
+ローカル source を読めることは、Space 経由で同じ source を取得できたことの代わりにはなりません。
 
-- exact owner/nameが不明、対象が他人のSpace、または事前承認の対象と違う場合は停止する。
-- instructions・JSON全文・source種別・版・範囲が一致しない、またはpartial/empty/error/missingで全文を確認できない場合は停止する。
-- 新しい認証、権限拡大、新規共有、資料追加、upload、PAT発行、設定変更が必要なら実機試行は未実施にする。
-- 組織policy、利用資格、Space ACL、source ACL、追加承認のどれかが未確認なら実機試行は未実施にする。
+## 停止条件
 
-停止後は未実施でよく、本編へ戻れます。404、読取失敗、本文なしから不存在やdenyの原因を断定しません。
-他人のSpaceを探索して穴埋めせず、未解決mainの本文を固定sourceから補充しません。
-[Creating Spaces](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/copilot-spaces/create-copilot-spaces)
-の最新mainへの追随という説明は、固定Runtimeとの版一致を保証しません。
-[Collaborating](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/copilot-spaces/collaborate-with-others)
-にあるSpaceのviewer/editor/admin/no accessと、元sourceの閲覧権は別です。
+次のいずれかに当てはまる場合は実施しません。
 
-## Evidence / Non-claims
+- exact owner/name、所有者の承認、利用資格、組織 policy、Space ACL、source ACL のどれかが不明。
+- 他人の Space や候補一覧を探索する必要がある。
+- 新しい認証、権限拡大、共有、source 追加、upload、設定変更が必要。
+- instructions、カード全文、source type、版、範囲が固定資料と一致しない。
+- 本文が空・部分・欠落・エラーで、必要な範囲を確認できない。
+- B3 に除去対象の認証情報が含まれている疑いがある。
 
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
+404 や読取失敗だけから、対象の不存在や ACL 拒否を断定しないでください。
 
-既に許可された教材Spaceがある将来の実機試行では、Space instructionsを凍結instructions文字列と照合し、
-Add text contentにある**カードJSON全文**をB/Cの全文と比較します。新たに追加する手順ではありません。
-`textContent.text` だけを取り出す方法では、limitations、配列、revision、未提供の履歴、source ACL属性が欠けます。
-MCPのenvelopeと教材JSONを分け、objectのkey順だけは正規化できますが、配列順・値・欠落を無視できません。
-本編B/Cのraw bytes一致と、実取得の全field一致は別欄です。返却を観測できなければ一致はunknownであり、
-手元原稿から欠けたfieldやhashを補って取得済みにしません。
+## 終了時の扱い
 
-本編のformatVersion 2カードは、原本の認証値を含む6行全体だけを明示markerへ置換した
-sanitized全体displayを運びます。原本whole-source hashとdisplay whole-text hash、変換receiptを区別し、
-原本byte-exactの取得とは呼びません。もし将来の許可済み教材Spaceがこの同じdisplay版を持たない場合は
-比較不能で停止し、Spaceの更新やsource追加をして揃えることはしません。IDEのsource種別・ACL条件は変わりません。
+このガイドで確認できるのは、特定の client・時点・権限における読み取り結果です。
+共有や同期の一般的な保証、ほかの利用者のアクセス、教育効果を証明するものではありません。
+秘密、実アカウント名、生の応答全文を不用意に保存しないでください。
 
-実callの対象・source種別・版・範囲と本文投入の観測、保存hash、解釈を別々に記録します。
-原稿の再hash、local source読取、合成の `aclVerified: false` を実Space取得・実ACL拒否へ昇格しません。
-本編runへ実機設定や生ログを入れず、[Submission Guide](../../../docs/submission-guide.md) の任意欄に
-未実施理由または別承認の独立runへの安全な参照だけを残します。secret、実アカウント名、実データは保存しません。
-実機終了後の片付けも承認済み追加分だけを対象とし、同じ会話には取得済みcontextが残り得ることを記録します。
+[HC-013 本編へ戻る](../README.md)

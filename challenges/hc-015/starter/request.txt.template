@@ -1,0 +1,27 @@
+受注の在庫引当の入口と、適用される transaction 設定を説明してください。
+OrderService と application-context.xml の対応を調べ、必要ならそこから参照される XML も読んでください。
+path・symbol・確認できる範囲を示し、静的に確定できない点を分けてください。
+
+共通 source:
+upstream template: shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c
+source location: templateから作成したruntime workspace
+
+upstream revisionはsourceの出所であり、runtime workspaceのlocal HEADとの一致条件ではありません。
+
+読む候補:
+- A1: wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java
+- A2: wholesale-core/src/main/resources/application-context.xml
+- A3: wholesale-core/src/main/resources/spring/module-operations.xml
+
+A1 の `OrderService.allocate` を起点に、文字列一致と定義・参照解決を区別してください。
+A2 の import から A3 を追加で読んだ場合は、path、目的、要求範囲、返却範囲、実際に読んだ範囲を示してください。
+候補 path は ACL ではなく、必要な参照先を同じ source から追加で読めます。
+
+添付や手動入力がある場合は、版、path、byte 数、範囲を確認してください。
+添付表示、準備した全文、内部で実際に使われた範囲を分け、欠落・切り詰め・別タブ混入が疑われれば報告してください。
+
+index や言語機能が未準備・未確認の場合は結果を 0 件にせず、確認できない状態として残してください。
+文字列検索を LSP や semantic search の成功と呼ばないでください。
+
+アプリ、DB、テストを実行せず、Java、XML、設定、index、拡張を変更しないでください。
+静的読解で、実 proxy、実 transaction、過去の設計意図を断定しないでください。

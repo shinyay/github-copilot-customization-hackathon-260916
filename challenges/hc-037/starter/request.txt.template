@@ -1,0 +1,5 @@
+SYNTHETIC_TRAINING_ONLY candidate material
+
+Prepare, but do not send, an evaluation request for task amount-review.
+
+Evaluate candidate-01 and candidate-02 for requested effort Lite and Balanced. Keep the candidate bytes, rules, evaluation fields, and stopping rules identical. Record every cell as planned-not-requested. Do not invent effective effort, model, findings, cost, agentic fallback, or CI visibility.

@@ -1,0 +1,22 @@
+# HC-017 response review
+
+## Initial response
+
+応答、または設計だけにした理由を記録します。
+
+## Follow-up response
+
+同じ試行内で固定追問を使った場合だけ記録します。別の試行の応答を渡しません。
+
+## Fixed-input review
+
+| review point | retained | missing | added beyond input | correction needed | source |
+|---|---|---|---|---|---|
+| actor and role |  |  |  |  |  |
+| version and SUBMITTED |  |  |  |  |  |
+| self-approval and ADMIN |  |  |  |  |  |
+| active and credit check |  |  |  |  |  |
+| APPROVED / approver / approved-at updates |  |  |  |  |  |
+| Java / DB / auth / transaction / rationale remain unconfirmed |  |  |  |  |  |
+
+文量、長い思考表示、parse 成功だけで品質を判定しません。

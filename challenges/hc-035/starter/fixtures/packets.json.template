@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "challengeId": "HC-035",
+  "packets": [
+    {
+      "id": "P35-01",
+      "setupStatusClaim": "success",
+      "steps": [
+        {
+          "name": "jdk-report",
+          "status": "success",
+          "value": "1.8"
+        },
+        {
+          "name": "maven-report",
+          "status": "success",
+          "value": "3.9.x"
+        }
+      ],
+      "agentStarted": "unknown",
+      "unitTests": "not-observed",
+      "databaseTests": "not-observed"
+    },
+    {
+      "id": "P35-02",
+      "setupStatusClaim": "unknown",
+      "steps": [
+        {
+          "name": "maven-report",
+          "status": "success",
+          "value": "3.8.x"
+        }
+      ],
+      "agentStarted": "unknown",
+      "unitTests": "not-observed",
+      "databaseTests": "not-observed"
+    },
+    {
+      "id": "P35-03",
+      "setupStatusClaim": "failure",
+      "steps": [
+        {
+          "name": "prepare-jdk",
+          "status": "failure",
+          "exitCode": 17
+        },
+        {
+          "name": "prepare-dependencies",
+          "status": "skipped"
+        }
+      ],
+      "agentStarted": true,
+      "unitTests": "not-observed",
+      "databaseTests": "not-observed"
+    },
+    {
+      "id": "P35-04",
+      "setupStatusClaim": "success",
+      "steps": [
+        {
+          "name": "dependency-preparation",
+          "status": "success"
+        }
+      ],
+      "agentStarted": true,
+      "unitTests": "not-observed",
+      "databaseTests": "not-observed"
+    },
+    {
+      "id": "P35-05",
+      "setupStatusClaim": "success",
+      "steps": [
+        {
+          "name": "database-opt-in",
+          "status": "skipped",
+          "reason": "not enabled"
+        }
+      ],
+      "agentStarted": "unknown",
+      "unitTests": "not-observed",
+      "databaseTests": "skipped"
+    }
+  ],
+  "nonClaims": [
+    "Packet status is synthetic and does not prove a live setup execution.",
+    "java17 is an Animal Sniffer signature name, not a JDK 17 requirement."
+  ]
+}

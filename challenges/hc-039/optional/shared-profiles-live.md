@@ -1,49 +1,51 @@
-# 共有profile観測の準備境界
+# 共有profileを限定観測する
 
-## Guide scope
+[HC-039本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-039本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+承認済みのorganizationまたはenterpriseで、共有profileの保存、発見、同名profileの選択、利用範囲を限定的に観察します。保存repositoryのACLとprofileを利用できる人の範囲を別々に確認します。
 
-## Prerequisites
+## 前提
 
-environment:
+- 対象scope、governance repository、固定branch/refを確認できる。
+- profile名、owner、reviewer、保存ACL、利用scopeを確認できる。
+- 共有profile機能のrelease stateと利用資格を確認できる。
+- 他利用者への影響、停止、復元担当が決まっている。
 
-- 対象organization/enterprise、governance repositoryと固定branch/ref、profile名、保存ACL、利用scope、Public Previewを確認できること。
+## 権限と安全
 
-entitlements:
+- profileの保存・更新、限定利用、他利用者への影響について個別の許可を得る。
+- 実人名や未知ownerを補わず、追加toolsや権限をprofileへ混ぜない。
+- 同名profileがある場合は、選択規則と各revisionを先に確認する。
+- 既存profileを削除せず、自分の追加分だけを識別して復元する。
 
-- 対象organization/enterprise、governance repository、共有profileを保存・利用する資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. repository、organization、enterpriseに同名profileがないか確認する。
+2. 保存path、branch/ref、content hash、owner、reviewer、ACL、利用scopeを記録する。
+3. 承認後に不活性sampleを基に最小profileを保存する。
+4. 対応surfaceで発見されたprofile名、selected scope/revision、利用結果を観察する。
+5. 保存、発見、選択、本文利用を別々に記録する。
+6. 観察後、自分の追加分だけを復元する。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+| 項目 | 記録 |
+|---|---|
+| storage | repository/path、branch/ref、ACL |
+| governance | owner、author、reviewer、hash |
+| selection | 同名profile、selected scope/revision |
+| use | 利用資格、対応surface、発見、実利用 |
+| cleanup | 他利用者影響、復元 |
 
-- profile保存・更新、限定利用、他利用者への影響、Cloud/review試行、停止・復元を操作ごとに別承認すること。
+## 停止条件
 
-実人名、未知owner、追加tools、ruleset、repository作成、User設定への迂回、run.json手編集を使いません。
+- governance repository、selected revision、owner、利用資格が不明。
+- 保存ACLと利用scopeを同じ値として扱う必要がある。
+- 同名profileの選択結果を確認できない。
+- 自分の追加分だけを復元できない。
 
-## Runtime capabilities
+## 本編へ戻る
 
-| capability | status | reason |
-|---|---|---|
-| shared-profile-observation | not-checked | 本編とRuntime v1は共有profileの保存ACL、利用scope、selected revision、発見、選択、本文投入、利用を観測しません。 |
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
-
-blockedとnot-checkedを区別します。既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- 保存ACLと利用scopeを同一視する必要がある場合は停止します。
-- governance repository、selected branch/ref/revision、owner、Public Preview、利用資格のいずれかが不明な場合は停止します。
-- 管理policyと不整合、または自分の追加分だけを復元できない場合は停止します。
-- Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-保存repository/path、ACL、利用scope、profile名、dedup scope、selected branch/ref/revision、発見、利用、unknown、blocked理由を分けます。Public Preview資料を実利用や全client対応の証拠にせず、runtimeBehaviorとeducationalEffectは観測した範囲を超えて主張しません。
+観察結果は [HC-039の仕組みの境界](../README.md#この機能とは) と照合し、Instructionsの優先規則をprofile選択へ流用していないか確認します。

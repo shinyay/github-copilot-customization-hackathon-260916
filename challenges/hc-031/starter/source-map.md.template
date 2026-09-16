@@ -1,0 +1,12 @@
+# Source map
+
+| role | path | inspect for |
+|---|---|---|
+| main | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` | core Javaの制御フロー |
+| main | `wholesale-core/src/main/resources/application-context.xml` | application wiring |
+| main | `wholesale-core/src/main/resources/spring/module-operations.xml` | module wiring |
+| main | `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java` | core scope外のweb Java |
+| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java` | 共通guardへの継承経路 |
+| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java` | role要求の実装 |
+
+main 4件はscope表に残し、supplemental 2件は共通guardを辿るときに使います。source読解はtransactionやlive behaviorの観測ではありません。

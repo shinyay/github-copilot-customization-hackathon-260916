@@ -1,0 +1,127 @@
+{
+  "id": "P3",
+  "fixtureLabel": "SYNTHETIC_PROVENANCE_CARDS_NOT_SPACES",
+  "trainingLabel": "SYNTHETIC_TRAINING_ONLY",
+  "revision": "hc013-materials-v2",
+  "actualHistoricalDecision": "NOT_PROVIDED",
+  "sourceBaseline": {
+    "kind": "upstream-template-revision",
+    "repository": "shinyay/github-copilot-customization-runtime-template",
+    "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+    "sourceLocation": "runtime-workspace"
+  },
+  "candidates": [
+    {
+      "id": "candidate-01",
+      "referenceType": "commit",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "resolvedRevision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "scope": "whole-file",
+      "sha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+      "retrieval": "available-fixture-only",
+      "bodyReference": "B1",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed"
+    },
+    {
+      "id": "candidate-02",
+      "referenceType": "synthetic-commit",
+      "revision": "1111111111111111111111111111111111111111",
+      "resolvedRevision": null,
+      "scope": "whole-file",
+      "sha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+      "retrieval": "available-fixture-only",
+      "bodyReference": "B1",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed"
+    },
+    {
+      "id": "candidate-03",
+      "referenceType": "branch",
+      "revision": "main",
+      "resolvedRevision": null,
+      "scope": "whole-file",
+      "sha256": null,
+      "retrieval": "not-observed",
+      "bodyReference": null,
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed"
+    },
+    {
+      "id": "candidate-04",
+      "referenceType": "commit",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "resolvedRevision": null,
+      "scope": "whole-file",
+      "sha256": null,
+      "retrieval": "unavailable-fixture-only",
+      "bodyReference": null,
+      "spaceAccess": "allowed-fixture-only",
+      "sourceAccess": "denied-fixture-only"
+    },
+    {
+      "id": "candidate-05",
+      "referenceType": "commit",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "resolvedRevision": null,
+      "scope": "not-observed",
+      "sha256": null,
+      "retrieval": "missing-fixture-only",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed"
+    },
+    {
+      "id": "candidate-06",
+      "referenceType": "commit",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "resolvedRevision": null,
+      "scope": "not-observed",
+      "sha256": null,
+      "retrieval": "error-fixture-only",
+      "bodyText": null,
+      "readError": "SYNTHETIC_READ_ERROR_NOT_A_SERVICE_RESPONSE",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed"
+    },
+    {
+      "id": "candidate-07",
+      "referenceType": "commit",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "resolvedRevision": null,
+      "scope": "empty-body",
+      "sha256": null,
+      "retrieval": "empty-fixture-only",
+      "bodyText": "",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed"
+    },
+    {
+      "id": "candidate-08",
+      "referenceType": "commit",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "resolvedRevision": null,
+      "scope": "line-range",
+      "lineRange": { "start": 1, "end": 2 },
+      "sha256": null,
+      "retrieval": "partial-fixture-only",
+      "bodyText": "package jp.co.tsubame.wholesale.batch.service;\n\n",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed"
+    }
+  ],
+  "observations": {
+    "spaceRead": "not-observed",
+    "authentication": "not-observed",
+    "spaceAcl": "not-observed",
+    "sourceAcl": "not-observed",
+    "synchronization": "not-observed"
+  },
+  "limitations": [
+    "各 candidate は合成属性であり、実際の Copilot Space の応答ではない。",
+    "available、unavailable、missing、error、empty、partial は別の状態として扱う。",
+    "synthetic-commit は実在 commit の取得記録ではない。",
+    "sha256 がない候補へ、ローカル source から値を補充しない。",
+    "Space の閲覧権と source の閲覧権を分け、合成の allowed/denied を実観測へ読み替えない。",
+    "ローカルの限定置換は、remote の部分取得とは異なる。"
+  ]
+}

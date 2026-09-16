@@ -1,0 +1,9 @@
+# HC-020 literal count記録票
+
+| state | exact change | bytes | sha256（任意） | evidenceSections | unknownSections | citationMarkers | semanticValidation | notes |
+|---|---|---:|---|---:|---:|---:|---|---|
+| original | fixed 4 lines + final LF |  |  |  |  |  |  |  |
+| missing-heading | remove only `## Unknowns` and its LF; keep the final sentence |  |  |  |  |  |  |  |
+| restored | exact original text restored |  |  |  |  |  |  |  |
+
+期待するliteral countは `[1,1,1] → [1,0,1] → [1,1,1]` です。hashはrestoredがoriginalと同じ本文かを確認する補助であり、意味の正しさを示しません。

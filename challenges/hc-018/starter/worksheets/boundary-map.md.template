@@ -1,0 +1,13 @@
+# HC-018 boundary map
+
+| stage | required observation | human check | stop if missing |
+|---|---|---|---|
+| tool candidate |  |  |  |
+| proposal |  |  |  |
+| approval |  |  |  |
+| execution |  |  |  |
+| OS / sandbox result |  |  |  |
+| program result |  |  |  |
+| cleanup |  |  |  |
+
+`false` は ask へ戻す設定案であり deny ではありません。この map は設定を適用せず、必要な人の判断と unknown の停止位置を設計します。

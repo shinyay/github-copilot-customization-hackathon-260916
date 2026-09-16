@@ -1,0 +1,26 @@
+SYNTHETIC_TRAINING_ONLY
+
+# Exact setting and event matrix
+
+| setting | event | your decision | evidence | unknown / stop |
+|---|---|---|---|---|
+| no-automatic-request | new-open | TODO | TODO | TODO |
+| no-automatic-request | first-ready | TODO | TODO | TODO |
+| no-automatic-request | still-draft | TODO | TODO | TODO |
+| no-automatic-request | new-push | TODO | TODO | TODO |
+| no-automatic-request | manual-rereview | TODO | TODO | TODO |
+| basic-request | new-open | TODO | TODO | TODO |
+| basic-request | first-ready | TODO | TODO | TODO |
+| basic-request | still-draft | TODO | TODO | TODO |
+| basic-request | new-push | TODO | TODO | TODO |
+| basic-request | manual-rereview | TODO | TODO | TODO |
+| draft-request | new-open | TODO | TODO | TODO |
+| draft-request | first-ready | TODO | TODO | TODO |
+| draft-request | still-draft | TODO | TODO | TODO |
+| draft-request | new-push | TODO | TODO | TODO |
+| draft-request | manual-rereview | TODO | TODO | TODO |
+| push-request | new-open | TODO | TODO | TODO |
+| push-request | first-ready | TODO | TODO | TODO |
+| push-request | still-draft | TODO | TODO | TODO |
+| push-request | new-push | TODO | TODO | TODO |
+| push-request | manual-rereview | TODO | TODO | TODO |

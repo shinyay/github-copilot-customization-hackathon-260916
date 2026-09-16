@@ -1,0 +1,14 @@
+# Delivery options
+
+| option | Java body source | XML body source | delivery |
+|---|---|---|---|
+| scoped | starter/customization/java-rules.md.template | starter/customization/xml-rules.md.template | applyTo別の供給設計 |
+| manual equivalent | starter/customization/java-rules.md.template | starter/customization/xml-rules.md.template | 同じbody全文を同じ順序で手動供給 |
+
+## Task order
+
+- java-reading:
+- xml-reading:
+- mixed-reading:
+
+mixed-readingではJava/XML bodyを要約せず、scoped原稿で凍結した順序を保ちます。供給設計は実採用やsource accessを保証しません。

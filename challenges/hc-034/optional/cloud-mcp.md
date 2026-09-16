@@ -1,49 +1,47 @@
-# Cloud MCP確認の準備境界
+# Cloud Agent で MCP 接続を観測する
 
-## Guide scope
+[← HC-034 のメインシナリオ](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-034本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+研修専用の read-only MCP server だけを使い、Cloud Agent で設定保存、server 起動、tool 一覧、採用、call、return を限定的に観測します。
 
-## Prerequisites
+## 前提
 
-environment:
+- Cloud Agent と対象 repository を利用できる
+- repository の共有 MCP 設定所有者を特定できる
+- `training-v1` の raw bytes と expected hash を保存できる
+- secret 不要の研修 server と安全な配置先を用意できる
 
-- 研修専用server、承認済み専用repository、開始branch、training-v1 raw bytes、placeholder解決案を確認できること。
+## 権限と安全
 
-entitlements:
+- 共有設定への最小追加、server 起動、Cloud task、tool call、費用、終了時の解除について事前承認を得ます。
+- 既定の MCP server を削除せず、allowlist は `lookup_training_note` だけにします。
+- production data、顧客情報、secret、実 endpoint を扱いません。
 
-- Cloud Agent、対象repository、共有MCP設定を管理・利用する資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. 既存共有設定を記録し、追加部分と復元方法を決めます。
+2. `training-v1` の revision と raw body hash を保存します。
+3. 承認済みの研修 server を起動し、protocol と tool schema を確認します。
+4. Cloud Agent で対象 server/tool が採用されたことを直接確認します。
+5. `lookup_training_note` を 1 回呼び、arguments、return revision、body hash を記録します。
+6. code-derived section を source へ照合します。
+7. 自分が追加した設定と server だけを停止・解除します。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観測すること
 
-additionalApprovals:
+- config saved / syntax / started / listed / adopted / called / returned / supported
+- expected revision と returned revision の一致
+- `NOT_FOUND`、invalid argument、transport error の区別
+- local protocol 成功と Cloud 採用の違い
 
-- 共有設定所有者による最小追加、既定設定保護、server起動、Cloud task、限定call、費用上限、終了時解除を操作ごとに別途承認すること。
+## 停止条件
 
-共有設定の全消去、履歴巻戻し、allow-all、run.json手編集、秘密値の回避策は使いません。整理対象は自分が追加した設定だけです。
+- 資格、承認、設定所有者、training note bytes のいずれかが不明
+- 既定設定を保護できない
+- secret 不要の研修環境に限定できない
+- 返却 revision または body hash が一致しない
+- local protocol 結果だけで Cloud 採用を主張する必要がある
 
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
-| shared-mcp-configuration | not-checked | 本編とRuntime v1は共有MCP設定の保存、研修server起動、Cloud採用、tools/list、tools/callを実行または観測しません。 |
-
-blockedとnot-checkedを区別します。not-checkedの表示成功は実機成功ではなく、既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- 資格、承認、設定所有者、開始branch、training-v1 bytesのいずれかが不明な場合は停止します。
-- 既定MCP設定を保護できない、secret不要の研修配置に限定できない、返却版が不一致の場合は停止します。
-- 別branchから既存Runtime runへbindingを移せない場合は停止します。
-- local protocol検査をCloud接続成功へ読み替える必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-対象revision、承認scope、予測、観測手段、実観測、unknown、blocked理由を分けます。runtimeBehaviorとeducationalEffectはnot-observedのままです。
+[← HC-034 のメインシナリオへ戻る](../README.md)

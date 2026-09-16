@@ -1,0 +1,52 @@
+# HC-016 review cards
+
+すべて教材用です。ID は採否や正誤を表しません。各 card を現在の source、scope、鮮度、再確認条件と照合してください。
+
+## card-p
+
+- material: current fixed-source reading
+- proposed scope: repository
+- source paths:
+  - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java`
+  - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java`
+- symbols: `BaseService.require`, `Actor.require`
+- runtime observation: not performed
+
+教材用の固定事実。対象はこの演習用repositoryだけであり、個人の好みではない。
+BaseService.requireはactorがnullならauthentication.requiredを送出し、それ以外はActor.requireへ委譲する。
+Actor.requireはADMINを許可し、そうでなければ指定されたroleのどれかを要求する。
+根拠: wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java の require、
+wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java の require。
+これは固定ソースの読解であり、Java/DB実行や実際の利用者の権限を確認した結果ではない。
+
+## card-q
+
+- material: `SYNTHETIC_TRAINING_ONLY`
+- proposed scope: repository
+- quoted location candidate: `BaseService.java` の package / import 付近
+- claimed source history: none
+
+教材用の固定事実。対象はこの演習用repositoryだけであり、個人の好みではない。
+BaseService.requireはactorがnullでも認証済みとして通す。
+Actor.requireはADMINを許可し、そうでなければ指定されたroleのどれかを要求する。
+根拠候補: `BaseService.require`、`Actor.require`。
+Java/DBと実権限は未確認。
+
+## card-r
+
+- material: `SYNTHETIC_TRAINING_ONLY`
+- proposed scope: user
+- source paths: card-p と同じ
+- symbols: `BaseService.require`, `Actor.require`
+
+card-p と同じ固定 fact を、他 repository にも適用される User 全体へ残す案です。scope の妥当性、別 workspace への影響、再確認 trigger を検討してください。
+
+## card-s
+
+- material: `SYNTHETIC_TRAINING_ONLY`
+- proposed scope: unrelated training workspace
+- relation to HC-016 source: none
+
+KEEP-UNCHANGED
+
+別の架空演習 workspace のメモです。この課題の採否を理由に本文を書き換えたり、一括削除したりしません。

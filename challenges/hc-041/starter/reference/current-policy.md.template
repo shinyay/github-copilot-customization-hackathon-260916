@@ -1,0 +1,13 @@
+# Current fact-audit policy
+
+SYNTHETIC_TRAINING_ONLY
+
+1. Confirm source repository, target repository, scope, current branch/revision, and citation path.
+2. Read the current cited text and record only the claim scope it supports.
+3. Keep `eligible`, `not-eligible`, and `unknown` separate from direct evidence of `used`.
+4. For standard review, evaluate repository facts only; do not require a user preference.
+5. A missing path, inaccessible source, or mismatched revision remains unknown or held for revalidation.
+6. A participant proposal does not overwrite the current fact.
+7. A new session, disabled setting, response text, or elapsed time is not proof of an empty, stored, reused, or deleted Memory.
+
+The policy is sufficient starting material; the participant may conclude that no replacement policy is needed.

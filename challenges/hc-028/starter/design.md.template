@@ -1,0 +1,30 @@
+# Revision audit design worksheet
+
+SYNTHETIC_TRAINING_ONLY
+
+## Stored revision fields
+
+- ref:
+- path:
+- body hash:
+- file hash:
+
+## Documented rule fields
+
+- product:
+- asset:
+- documented source ref:
+- checked date:
+- scope:
+
+## Observed attribution fields
+
+- observation:
+- actor:
+- target revision:
+- instruction revision:
+- direct evidence:
+
+## Invalidation and investigation order
+
+head変更、証拠競合、欠測時の扱いを結果を見る前に固定してください。

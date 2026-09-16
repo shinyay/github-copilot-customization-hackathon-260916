@@ -1,52 +1,54 @@
-# Language Model ToolのHost準備
+# Language Model ToolをDevelopment Hostで観察する
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-020本編](../README.md)のNode / stub契約とは別に、Language Model ToolをDevelopment Hostで観測する前の準備ガイドです。本編でfolder展開、install、F5起動を行いません。
+[メインシナリオ](../README.md)のpure analyzerを変えずに、Language Model Toolのregistration、selection、confirmation、call、cancel、disposeを実機で分けて観察します。
 
-同じanalyzerを使用し、別実装や通常profileへのinstallを作りません。
+## 前提
 
-## Prerequisites
+- Language Model Tool APIに対応するVS Code / GitHub Copilot
+- Extension Development Hostを起動できる承認済み環境
+- このリポジトリとは別の、使い捨て可能な開発folder
+- 現在のAPIドキュメントと、利用版に合うextension設定
 
-environment:
+## 権限・安全
 
-- 承認済みDevelopment Host、独立した開発用folder、対応API / client接続、同じanalyzerとfixed textを確認できること。
+- 開発folderの作成、Host起動、Tool選択、confirmation、cancelを対象限定で承認します。
+- 通常profileへのinstall、Marketplace公開、既存folder / package上書きを行いません。
+- このリポジトリ内の `starter/**/*.template` はrenameしません。
+- 固定4行以外のprivate contentを入力せず、未知のmodel callが発生したら停止します。
 
-entitlements:
+## 手順
 
-- 対応するVS Code / Copilot、Extension Development Host、Language Model Tool API、教材folderの通常利用資格と組織policyを確認できること。
+1. 現在の公式ドキュメントで、利用版がLanguage Model Tool APIに対応するか確認します。
+2. 独立した開発folderへ次の3ファイルをcopyします。
+   - `starter/examples/package.json.template` → `package.json`
+   - `starter/examples/extension.cjs.template` → `extension.cjs`
+   - `starter/helpers/analyzer.cjs.template` → `analyzer.cjs`
+3. `package.json` のengine、Tool名、activation、input schemaを利用版と照合します。
+4. `extension.cjs` が `require('./analyzer.cjs')` を保ち、別counterを実装していないことを確認します。
+5. 製品のextension debugging手順でDevelopment Hostを起動します。
+6. `count_workshop_evidence` の登録と候補表示を確認します。
+7. 固定4行を入力し、confirmation文、call結果、4 output fieldsを記録します。
+8. 別の一回でcancelを要求し、cancel messageと副作用の有無を確認します。
+9. Hostを閉じ、Toolが解除され、開発folderだけを整理できることを確認します。
 
-selection、confirmation、call、cancel、disposeを一件ずつ観測でき、開始前状態と終了方法を記録できる必要があります。
+## 観察すること
 
-## Permissions / Safety
+- 宣言名、登録名、activationが一致するか
+- selectionとconfirmationを別に確認できるか
+- Node.jsと同じresult shapeか
+- cancelがいつ確認されるか
+- Host終了後にDisposableが解放されるか
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 停止条件
 
-additionalApprovals:
+- 対応API / client、Tool候補、登録名を確認できない
+- 通常profileへのinstallや既存package上書きが必要
+- 同じanalyzerを使えない
+- 未知の追加model call、file access、network accessが発生する
+- cleanupを確認できない
 
-- 独立folderの作成 / materialization、Development Host起動、Tool selection、confirmation、call、cancel、終了時解除を対象限定で別途承認すること。
+live Toolが成功しても、literal counterのsemantic accuracyやsource accuracyは証明されません。
 
-通常profileへのinstall、Marketplace公開、既存folder / package上書き、未知の追加model callを行いません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| extension-development-host | blocked | Runtime v1本編は開発用folderのmaterialization、Development Host起動、extension lifecycleを許可しないためblockedです。 |
-| extension-tool-observation | not-checked | Toolのregistration、candidate selection、confirmation、call、cancel、disposeは未観測です。 |
-
-Node結果やAPI stubはlive HostのEvidenceではありません。
-
-## Stop / Block
-
-- 通常profileへのinstall、既存package上書き、Marketplace公開が必要なら停止します。
-- 対応API / client、Tool候補、登録名、confirmationを確認できない場合は停止します。
-- 同じanalyzerを使えない、未知の追加model callが発生する、cleanupを確認できない場合は停止します。
-
-将来のfolderでは`package.json.template`から`package.json`、`extension.cjs.template`から`extension.cjs`、同じ`analyzer.cjs.template`から`analyzer.cjs`を作り、`require('./analyzer.cjs')`を保ちます。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-materialization、Host起動、registration、selection、confirmation、call、result、cancel、dispose、cleanupを別に記録します。live観測があってもliteral counterのsemantic accuracy、source accuracy、教育効果を証明しません。
+[メインシナリオの発展へ戻る](../README.md#発展)

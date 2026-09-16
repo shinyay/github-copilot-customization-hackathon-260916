@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "SYNTHETIC_TRAINING_ONLY=true bash starter/tools/checker.sh.template",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

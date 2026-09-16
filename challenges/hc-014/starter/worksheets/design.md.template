@@ -1,0 +1,45 @@
+# HC-014 配布設計
+
+原稿を作る前に、自分の判断を記入します。
+
+## 読み手と source
+
+誰へ渡すか:
+
+B1/B2/B3 のどこを入口にし、path・symbol・行範囲をどう残すか:
+
+テスト定義の読取と、未実行の Java・DB をどう区別するか:
+
+## 三つの制御
+
+package name / description / version を選ぶ理由:
+
+Skill frontmatter の name / description:
+
+本文の読む順序、根拠、未確認の残し方:
+
+package metadata を追加の業務知識として扱わない理由:
+
+## v1 と v2
+
+v1 全文を固定する時点と SHA-256:
+
+v2 で教材 marker 一行だけを変える方法:
+
+同じ版の手動 Skill と package Skill を raw bytes で照合する方法:
+
+## 更新と復元
+
+更新前に確認する内容:
+
+手動方式の一ファイルと、package 方式の二ファイルを完全に戻す方法:
+
+同名候補、旧版、余分なコピーを全 origin で確認する方法:
+
+## 限界
+
+実際の install、discovery、loading、更新配信を確認していないこと:
+
+手動配布で十分と判断する条件:
+
+不一致、所有者不明、予期しない component で停止する条件:

@@ -1,0 +1,30 @@
+# 固定packet web: 画面の入口
+
+読者は受注機能の保守担当です。業務仕様を承認する作業ではありません。
+
+## Scope
+
+- `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java`
+- `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java`
+- `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`
+
+画面の入力を保持する箇所と、処理へ受け渡す箇所を追います。batch側は調べません。別のfileが必要ならpathと理由をunknownに挙げ、読みません。
+
+入力の保持、入力の検査、業務処理を混同せず、対象範囲から言えることと推測を分けます。
+
+## 返却形式
+
+最大5項目で返してください。各項目は次を含めます。
+
+1. 観測
+2. path・symbol・line range
+3. 限界
+
+表示順と統合時の参照方法は事前に完成したdesignに従います。親の過去の会話や別担当の結果を推測しません。不足入力はunknownとして返します。source readingだけでruntime behaviorや権限境界全体を実証したとは書きません。
+
+## Safety
+
+- 指定sourceだけを読み、fileを変更しません。
+- 実データ、資格情報、DB、server、build、test、shell、無許可networkを使いません。
+- 再委任、入れ子、追質問、再試行ループ、model上書きを行いません。
+- fileを生成せず、チャットにだけ返します。

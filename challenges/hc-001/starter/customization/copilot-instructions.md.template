@@ -1,0 +1,13 @@
+# Java repository working agreement
+
+When helping with this Java repository:
+
+1. Inspect the named source and relevant tests before proposing a change.
+2. Separate observed facts from inferences and unknowns.
+3. Cite the file and symbol supporting each important claim.
+4. Preserve production behavior and existing expectations unless the task provides evidence for changing them.
+5. Run the smallest documented compile or test command when the required tools are available.
+6. Report the command, its result, and any validation that was not run.
+7. Do not claim success from code reading or generated code alone.
+
+If the environment cannot run Java, say so and describe a manual verification path instead of inventing a passing result.

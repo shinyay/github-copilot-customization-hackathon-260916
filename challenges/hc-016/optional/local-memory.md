@@ -1,52 +1,55 @@
-# local Memoryを操作する前の準備境界
+# VS Code local Memory を試す前の探索ガイド
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-016本編](../README.md)から任意で読む準備ガイドです。本編の`baseline` / `curated-design`へ実Memory condition、保存結果、権限、設定を追加しません。
+[HC-016 の本編](../README.md)で設計した短い fact 候補を、将来 VS Code local Memory で安全に試せるか確認するための補足ガイドです。この文書を読むだけでは Memory の保存や設定変更は行われません。
 
-VS Code local Memory、GitHub Copilot Memory、Copilot Appの記憶は別の面です。このページは前者の将来観測に必要な条件を整理するだけで、Memoryのsave、read、update、delete、clearを実行しません。
+VS Code local Memory、GitHub Copilot Memory、Copilot App の記憶は別の仕組みです。試す対象と scope を最初に明示します。
 
-## Prerequisites
+## 前提
 
-environment:
+- 利用中の VS Code と GitHub Copilot が対象機能をサポートしている
+- 組織 policy と workspace の利用条件を確認できる
+- User / Repository / Session など、実際に選べる scope を確認できる
+- 開始前の状態と、自分が追加した候補だけを識別できる
+- 対象 client の公式手順を参照できる
 
-- 対応Stable / Local / Preview tool、組織policy、専用scope、保存・限定更新と元状態確認を準備できること。
+## 権限と安全
 
-entitlements:
+- 専用 scope への保存、読出し、限定更新、削除を行う場合は、それぞれ事前に許可を得ます。
+- secret、個人の好み、実在人物の権限、第三者情報、private log は保存しません。
+- 既存メモの全消去、他人のメモの変更、User 設定の初期化は行いません。
+- この repository の `.template` を active な Memory 設定へ自動配置しません。
 
-- 利用予定のVS Code Stable、GitHub Copilot、対象workspaceへの通常の利用資格と組織policyを確認できること。
+## 手順
 
-既存記憶と今回のself-owned training noteを識別でき、開始前状態と終了後状態を比較できる必要があります。個別削除未対応を架空APIで補いません。
+1. 対象が **VS Code local Memory** であることと、利用可能な scope を公式 UI または文書で確認します。
+2. 開始前に、対象 scope、既存状態の見える範囲、復元方法を記録します。
+3. 本編の card-p を参考に、個人情報を含まない短い教材用 fact を一つだけ用意します。
+4. 許可がある場合だけ、対象 client が公開している手順でその一件を保存します。未確認の API 名やコマンドは作りません。
+5. 同じ会話での読出しと、対応している場合だけ別会話での再参照を分けて確認します。
+6. source が変わった想定で、同じ一件の限定更新または撤回方法を確認します。
+7. 自分が追加した一件だけを元に戻し、開始前状態と比較します。
 
-## Permissions / Safety
+## 観察すること
 
-このガイドは権限を付与せず、実機実行を開始しません。
+- client と機能名
+- 選んだ scope と、その根拠
+- 開始前に見えた状態
+- 保存、読出し、別会話での再参照、更新、削除のうち実際に行った操作
+- source path、symbol、確認した版、再確認 trigger
+- 復元結果と、確認できなかったこと
 
-additionalApprovals:
+原稿を作ったこと、保存を依頼したこと、実際に保存・再参照できたことは別々に記録します。
 
-- 専用scopeへの保存、限定更新、元状態確認をそれぞれ対象を限定して別途承認すること。
+## 停止条件
 
-全消去、既存User設定の削除、他人のnote変更、assistantの`store_memory`呼出しを教材の実行手順にしません。復元できない操作や既存状態を巻き込む操作は開始しません。
+- 既存メモと今回の一件を分離できない
+- 自分が追加した一件だけを安全に戻せない
+- 全消去、他人のメモ変更、User 設定削除が必要になる
+- 対象 scope や製品面を確認できない
+- 未確認の API や別の記憶サービスへ迂回しなければ進めない
 
-## Runtime capabilities
+該当したら live 操作をやめ、本編の不活性な設計だけを完成させます。
 
-| capability | status | reason |
-|---|---|---|
-| persistent-memory-lifecycle | blocked | Runtime v1はlocal storeのbinding / 復元を管理しないため、この経路はblockedです。 |
-| tracked-vscode-settings | blocked | Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings. |
-
-Runtime v1はMemory storeの内容、scope、持続、次会話での再参照、own-note-only復元を検証しません。本文hashや保存依頼への応答は、保存された証拠ではありません。
-
-## Stop / Block
-
-- 既存記憶を今回のnoteから分離できない場合は停止します。
-- 自分のnoteだけを安全に戻せない場合は停止します。
-- 全消去、既存User設定削除、個別削除を装う未確認APIが必要な場合は停止します。
-
-blockedをUser/Profileへの迂回、force-add、別storeの利用で隠しません。本編はsourceと不活性原稿だけで完了できます。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-このページを読んだこと、原稿を作ったこと、実際に保存・読出し・更新・再参照したことを別に記録します。live観測を別承認で行った場合も、版、harness、scope、開始前状態、操作、復元確認、未確認を限定して残します。Memoryの品質、永続性、教育効果を本編の静的検査から主張しません。
+[HC-016 の本編へ戻る](../README.md)

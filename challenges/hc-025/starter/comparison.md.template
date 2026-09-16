@@ -1,0 +1,29 @@
+# HC-025 可搬性比較ワークシート
+
+## Fixed input
+
+<!-- packet ID、public upstream template repository / revision、runtime workspaceの3 source path、workspaceHeadMatchRequired=false、比較する4種類のsample。 -->
+
+## Documentation
+
+<!-- 参照した公式文書と、各形式のdocumented discovery / support。 -->
+
+## Local Agent view
+
+<!-- format、discovery、loading、effective tools、approval、unknown。 -->
+
+## Agent Host view
+
+<!-- format、discovery、loading、effective tools、approval、unknown。 -->
+
+## Invalid fixtures
+
+<!-- 問題のproperty、理由、最小修正。別形式への置換は元形式の成功にしない。 -->
+
+## Proposed actions
+
+<!-- そのまま、移植、非対応、未確認、停止の判断と理由。 -->
+
+## Limits
+
+<!-- 静的診断で未観測の値、client / version固有の境界、安全上試していない操作。 -->

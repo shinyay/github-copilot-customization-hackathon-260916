@@ -1,0 +1,17 @@
+# HC-026 design worksheet
+
+SYNTHETIC_TRAINING_ONLY
+
+結果を分類する前に、review単位、owner / reviewerの責任、更新理由、共有順、停止条件、撤回条件、previousとrollbackの照合方法を記録してください。
+
+## Frozen decisions
+
+- review unit:
+- responsibility:
+- update evidence:
+- rollout order:
+- wait / withdraw:
+- restore verification:
+- unknown handling:
+
+この用紙は完成方針ではありません。結果を見る前に決めた内容だけを書き、recordの判定に合わせて後から変更しません。

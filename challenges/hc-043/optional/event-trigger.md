@@ -1,48 +1,53 @@
-# Event trigger観測の準備境界
+# Event triggerを限定観測する
 
-## Guide scope
+[HC-043本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-043本編](../README.md)とは別に、限定eventでCloud Agents Automationを将来観測する前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、automation登録、event発火、session起動、live success、本編改善、Runtime completionを意味しません。
+承認済みのprivate/internal repositoryで、一つの限定eventからread-only Cloud Agent sessionが起動するまでを観察します。actor、creator、session visibility、billing、stop/resumeを分けて記録します。
 
-## Prerequisites
+## 前提
 
-environment:
+- 対象repository、creator、event、headを特定できる。
+- Cloud/automation policyと利用資格を確認できる。
+- 読取task、出力先、session閲覧範囲を限定できる。
+- Actions minutes、AI credits、回数、時間の上限が決まっている。
+- 停止依頼と復元の担当者が決まっている。
 
-- 承認済みのprivate / internal repository、creator、限定event、固定head識別、読取task、出力先、停止担当、費用上限を確認できること。
+## 権限と安全
 
-entitlements:
+- automation登録、event発火、読取operation、費用、停止、復元について個別の許可を得る。
+- non-write actorの受理範囲を広げない。
+- label、review投稿、repository更新、commit、pushを追加しない。
+- privateな設定に機密情報を入れず、session outputの閲覧範囲を確認する。
 
-- Cloud Agents Automations、対象repository、cloud / automation policy、Actions minutes、AI creditsを利用する資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. creator、eligible actor、repository visibility、policy、billing ownerを記録する。
+2. trigger kind、head identity、read-only operation、output boundary、上限を固定する。
+3. 承認後にautomationを登録し、一つのeventだけを発生させる。
+4. event受理、session起動、operation利用、output、billingを別々に観察する。
+5. duplicate eventまたはnew headが発生した場合は、事前のdedup/staleness ruleに従う。
+6. stop requestを出した場合は、将来のtriggerが止まったことを確認してから再開を判断する。
+7. 終了後、自分のautomationだけを承認済み手順で整理する。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+- creator、actor、write access
+- event ID/kind/head
+- accepted/ignored/held
+- read/write/session-output効果
+- configuration/session visibility
+- Actions minutes、AI credits
+- stop request、stop confirmation、resume
 
-- automation登録、限定event、読取tools、session閲覧範囲、費用上限、停止、復元を操作ごとに別承認すること。
+## 停止条件
 
-non-write actorの受理拡大、label更新、repository更新、review投稿、commit、pushを読取taskへ追加しません。
+- 費用主体、上限、停止責任者が不明。
+- repository visibility、creator権限、policy、session visibilityが不明。
+- non-write actorの受理拡大やwrite operationが必要。
+- duplicate event、新head、停止依頼を識別できない。
 
-## Runtime capabilities
+## 本編へ戻る
 
-| capability | status | reason |
-|---|---|---|
-| automation-session-observation | not-checked | 本編とRuntime v1はautomation登録、event発火、actor eligibility、session起動、tool効果、visibility、billing、停止、再開を観測しません。 |
-
-Cloud Agents Automations、standard code review ruleset、Copilot App scheduled workflowを一つの保存/API/runtime契約へまとめません。
-
-## Stop / Block
-
-- 課金主体、費用上限、停止責任者のいずれかが不明な場合は停止します。
-- private / internal、creator権限、cloud / automation policy、session visibilityのいずれかが不明な場合は停止します。
-- non-write actorの受理拡大または投稿・書込toolが必要な場合は停止します。
-- 重複event、新head、停止依頼を識別できない場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-creator、actor、event、head、read/write効果、configuration / session visibility、Actions minutes、AI credits、停止、再開、unknown、blocked理由を分けます。runtimeBehaviorとeducationalEffectは観測した範囲を超えて主張しません。
+結果は [HC-043の確認ポイント](../README.md#確認ポイント) に戻し、自動化率ではなく権限、visibility、費用、停止責任を評価します。

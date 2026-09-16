@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "HC023_PUBLIC_SELECTION_VOCABULARY",
+  "mechanisms": [
+    {
+      "id": "none",
+      "meaning": "追加のCustomizationを作らず、固定依頼と既に渡された資料で分析する。"
+    },
+    {
+      "id": "repository-instructions",
+      "meaning": "repository全体へ反復して供給したい読み方を置く。権限強制ではない。"
+    },
+    {
+      "id": "scoped-instructions",
+      "meaning": "対象ファイル・作業に必要な読み方を絞る。scope一致と実投入は別に確認する。"
+    },
+    {
+      "id": "prompt-file-local",
+      "meaning": "対応するLocal Agentで人が明示的に再利用する依頼。Agent Hostの対応を仮定しない。"
+    },
+    {
+      "id": "custom-agent",
+      "meaning": "役割とtool宣言を分けて設計する。宣言だけで実効権限を決めない。"
+    },
+    {
+      "id": "skill",
+      "meaning": "繰り返す手順と関連資料をまとめる。発見、本文利用、script実行は別。"
+    },
+    {
+      "id": "manual-context",
+      "meaning": "同じ資料を明示添付し、設定を増やさず手動の準備を記録する。"
+    },
+    {
+      "id": "mcp-read-only",
+      "meaning": "許可された読み取り資源の供給経路を計画する。この演習ではserverを起動しない。"
+    },
+    {
+      "id": "plugin-package",
+      "meaning": "同じSkill等の版付き配布を計画する。全component・全harness対応を仮定しない。"
+    }
+  ],
+  "nonClaim": "これは候補語彙であり、case IDから一つの正解機能名を引く表ではない。"
+}

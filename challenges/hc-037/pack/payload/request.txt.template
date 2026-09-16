@@ -1,5 +1,0 @@
-SYNTHETIC_TRAINING_ONLY candidate material
-
-Prepare, but do not send, an evaluation request for task amount-review.
-
-Use candidate-01 and candidate-02 in both conditions. Map baseline to requested effort Lite and balanced-plan to requested effort Balanced. Keep the source revision, candidate bytes, rules, evidence fields, and stopping rules identical. Record every cell as planned-not-requested. Do not invent effective effort, model, findings, cost, agentic fallback, or CI visibility.

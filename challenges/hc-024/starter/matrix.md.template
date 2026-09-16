@@ -1,0 +1,10 @@
+# HC-024 四セル記録
+
+| cell | I | S | Iの版 | Sの版 | source / note / request | presence | discovery | loading | usage | outcome |
+|---|---:|---:|---|---|---|---|---|---|---|---|
+| 00 | 0 | 0 | 同じ凍結原稿 | 同じ凍結原稿 | fixed | 0 / 0 | unobserved | unobserved | unobserved | |
+| 10 | 1 | 0 | fixed-I | 同じ凍結原稿 | fixed | 1 / 0 | unobserved | unobserved | unobserved | |
+| 01 | 0 | 1 | 同じ凍結原稿 | fixed-S | fixed | 0 / 1 | unobserved | unobserved | unobserved | |
+| 11 | 1 | 1 | fixed-I | fixed-S | fixed | 1 / 1 | unobserved | unobserved | unobserved | |
+
+4行の一つを複製して件数だけ合わせません。Iは10/11、Sは01/11で同じ内容にします。

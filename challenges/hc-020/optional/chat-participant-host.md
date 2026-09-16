@@ -1,52 +1,49 @@
-# Chat ParticipantのHost準備
+# Chat ParticipantをDevelopment Hostで観察する
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-020本編](../README.md)と[extension-tool-host](extension-tool-host.md)とは別に、Chat Participant入口をDevelopment Hostで観測する準備ガイドです。Participant応答をTool conditionの得点へ合算しません。
+同じpure analyzerをChat Participantから呼び、registration、`@`入口、prompt、stream応答、cancel、disposeを観察します。Language Model Toolとは別の入口として扱います。
 
-同じanalyzerとfixed textを使い、ParticipantをTool、Custom Agent、Subagent、Agent Pluginの別名として扱いません。
+## 前提
 
-## Prerequisites
+- Chat Participant APIに対応するVS Code / GitHub Copilot
+- Extension Development Hostを起動できる承認済み環境
+- このリポジトリとは別の、使い捨て可能な開発folder
+- [Tool探索ガイド](extension-tool-host.md)と同じ固定4行、analyzer、extension例
 
-environment:
+## 権限・安全
 
-- 承認済みDevelopment Host、独立したParticipant用開発folder、対応Chat入口、同じanalyzerとfixed textを確認できること。
+- 開発folderの作成、Host起動、Participant呼出し、cancelを対象限定で承認します。
+- 通常profileへのinstall、Marketplace公開、既存folder上書きを行いません。
+- このリポジトリ内の `starter/**/*.template` はrenameしません。
+- Tool結果とParticipant結果を混ぜず、未知のmodel callが発生したら停止します。
 
-entitlements:
+## 手順
 
-- 対応するVS Code / Copilot、Extension Development Host、Chat Participant API、教材folderの通常利用資格と組織policyを確認できること。
+1. 現在の公式ドキュメントで、利用版がChat Participant APIに対応するか確認します。
+2. [Tool探索ガイド](extension-tool-host.md)と同じ3ファイルを独立した開発folderへcopyします。
+3. Participant ID `workshop-local.evidence-counter.reader` と参照名 `workshop-evidence` を宣言・登録箇所で照合します。
+4. Development Hostを起動し、`@workshop-evidence` の入口を確認します。
+5. 固定4行をpromptとして一度送り、streamされたJSONと注意書きを記録します。
+6. 別の一回でcancelを要求し、cancel messageと副作用の有無を確認します。
+7. Hostを閉じ、Participantが解除され、開発folderだけを整理できることを確認します。
 
-Participant registration、`@`入口、prompt、stream応答、cancel、disposeを分けて観測できる必要があります。
+## 観察すること
 
-## Permissions / Safety
+- Participant registrationと`@`入口を別に確認できるか
+- promptが同じanalyzerの `text` へ渡るか
+- stream結果がTool callやLLM推論ではないと説明されているか
+- cancelとdisposeを確認できるか
+- Toolのconfirmation / selectionへ結果を外挿していないか
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 停止条件
 
-additionalApprovals:
+- 対応Chat入口やParticipant IDを確認できない
+- Tool結果が混入する
+- 未知の追加model callが発生する
+- 通常profileへのinstall、既存package上書きが必要
+- 同じanalyzerを使えない、またはcleanupできない
 
-- 独立folderの作成 / materialization、Development Host起動、Participant call、cancel、終了時解除を対象限定で別途承認すること。
+Participantが応答しても、Tool registration、semantic accuracy、source accuracyは証明されません。
 
-通常profileへのinstall、既存folder上書き、未知の追加model call、Tool結果との混入を行いません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| extension-development-host | blocked | Runtime v1本編は開発用folderのmaterialization、Development Host起動、extension lifecycleを許可しないためblockedです。 |
-| chat-participant-observation | not-checked | Participantのregistration、Chat入口、prompt、stream、cancel、disposeは未観測です。 |
-
-固定stream応答やAPI stubはlive Participant、LLM推論、Tool callのEvidenceではありません。
-
-## Stop / Block
-
-- Tool結果が混入する、未知の追加model callが発生する、client接続がない場合は停止します。
-- 通常profileへのinstall、既存package上書き、Marketplace公開が必要なら停止します。
-- 同じanalyzerを使えない、Participant ID / referenceを確認できない、cleanupできない場合は停止します。
-
-Participant観測をToolのregistration、confirmation、selectionへ外挿しません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-materialization、Host起動、registration、`@`入口、prompt、stream、result、cancel、dispose、cleanupを別に記録します。固定stream応答をLLM推論、Tool成功、semantic accuracy、教育効果へ昇格しません。
+[メインシナリオの発展へ戻る](../README.md#発展)

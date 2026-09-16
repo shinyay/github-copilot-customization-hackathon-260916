@@ -1,51 +1,46 @@
-# Cloud setup確認の準備境界
+# Cloud Agent setup を観測する
 
-## Guide scope
+[← HC-035 のメインシナリオ](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-035本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+承認済みの専用 repository と Ubuntu runner で、Cloud Agent setup の保存、採用、各 step、失敗後の agent start を限定的に観測します。
 
-## Prerequisites
+## 前提
 
-environment:
+- Cloud Agent、GitHub Actions、対象 repository、runner を利用できる
+- default branch と setup file の revision を特定できる
+- JDK 8、Maven 3.9 系、network 要件を確認できる
+- runner/Actions/model の費用上限を決められる
 
-- 承認済みUbuntu環境、default branchのsetup草稿、採用候補ref、JDK8/Maven要件、準備stepを確認できること。
+## 権限と安全
 
-entitlements:
+- active workflow 保存、検査 trigger、runner 利用、Cloud task、終了時の解除について事前承認を得ます。
+- secret 値を読み、表示、移動、要求しません。
+- firewall、TLS、proxy、共有 runner 設定を緩和しません。
 
-- Cloud Agent、GitHub Actions、対象repository、runner利用の資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. setup file の revision、job、steps、permissions、runner、timeout を記録します。
+2. workflow syntax と version check の設計を確認します。
+3. 承認された最小の検査で setup の採用と各 step を観測します。
+4. required step が失敗した場合は、残り skip、残状態、agent start を分けて記録します。
+5. test を実行した場合だけ command と結果を記録します。
+6. 実験後は自分が追加した workflow だけを解除します。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観測すること
 
-additionalApprovals:
+- default branch 上の setup revision
+- JDK/Maven の実際の版と range 適合
+- dependency preparation と tests の差
+- failed step、skip、agent start
+- workflow 検査と Cloud Agent 採用の違い
 
-- active setup workflow保存、検査用trigger、runner/Actions利用、Cloud task起動、準備処理、費用上限、終了時解除を操作ごとに別途承認すること。
+## 停止条件
 
-共有設定の全消去、履歴巻戻し、allow-all、run.json手編集、秘密値の回避策は使いません。整理対象は自分が追加した設定だけです。
+- 資格、承認、Ubuntu runner、default branch/ref、setup bytes のいずれかが不明
+- Actions/runner/model の費用上限がない
+- secret や network policy の緩和が必要
+- setup failure 後の agent start を success と扱う必要がある
 
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
-| active-setup-workflow | not-checked | 本編とRuntime v1はdefault branchのsetup保存、採用ref、runner実行、各step、失敗後のAgent開始を観測しません。 |
-
-blockedとnot-checkedを区別します。not-checkedの表示成功は実機成功ではなく、既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- 資格、承認、Ubuntu runner、default branch/ref、setup bytesのいずれかが不明な場合は停止します。
-- 準備処理、Actions/runner費用、Cloud task、active保存の個別承認がない場合は停止します。
-- 別branchから既存Runtime runへbindingを移せない場合は停止します。
-- setup非0終了後のAgent開始をsetup成功へ読み替える必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-現在の公式Docsはrepository / organizationの **Agents secrets and variables** を案内し、旧GitHub Actions `copilot` environmentの値はrepository-level Agentsへ自動移行済みと説明します。このガイドは対象repositoryの移行済み・設定済み・資格ありを主張せず、secret値を読み、登録し、表示し、移動し、要求しません。
-
-対象revision、承認scope、予測、観測手段、実観測、unknown、blocked理由を分けます。runtimeBehaviorとeducationalEffectはnot-observedのままです。
+[← HC-035 のメインシナリオへ戻る](../README.md)

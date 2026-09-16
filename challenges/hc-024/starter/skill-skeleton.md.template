@@ -1,0 +1,14 @@
+---
+name: hc024-replay
+description: 受注CSV再送の静的読解で使う手順を参加者が設計するための未完成Skill原稿。
+---
+
+# HC-024 replay調査手順
+
+<!-- 完成回答ではありません。比較前に参加者が編集して凍結します。 -->
+
+1. public upstream template revisionと、現在のruntime workspaceにある3 sourceを確認する。local HEADの一致は要求しない。
+2. starter/operations-note.json.templateを合成資料として区別する。
+3. 新規作成、同内容再送、異内容再送、canonicalization、test定義を分ける。
+4. TODO: 引用、unknown、停止条件、出力形式を自分で設計する。
+5. アプリ、DB、test、設定、外部serviceを実行・変更しない。

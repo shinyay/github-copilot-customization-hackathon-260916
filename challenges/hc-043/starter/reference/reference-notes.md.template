@@ -1,0 +1,21 @@
+# HC-043 reference notes
+
+SYNTHETIC_TRAINING_ONLY
+
+This is a short exercise summary of public GitHub documentation, not a product schema or live account observation.
+
+## Boundaries to preserve
+
+- Cloud Agents Automations may be triggered by schedules or repository events, but product eligibility, repository visibility, and policy must be checked separately.
+- Creator, event actor, billing subject, repository reader, session viewer, and stop/resume owner may differ.
+- A private automation configuration does not imply that the resulting session has the same visibility.
+- A read-only analysis task does not need label, review, commit, push, or other write effects.
+- Duplicate events and synchronized PR heads require an identity and staleness policy; the training fields do not claim a built-in dedup setting.
+- Cloud Agents Automations, standard code review rulesets, and Copilot App scheduled workflows have overlapping UI concepts without becoming one storage/API/execution contract.
+
+## Public references
+
+- https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-automations
+- https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review
+
+Automation creation, event firing, session execution, tool use, billing, stop, and resume remain unobserved until checked in an authorized environment.

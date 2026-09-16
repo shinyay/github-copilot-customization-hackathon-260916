@@ -1,70 +1,68 @@
-# User指示の保存元と隔離を確認する
+# User 指示の保存元と隔離を確認する
 
-## Guide scope
+[HC-005 本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved
+## 目的
 
-このページは、User指示を将来別途承認された環境で検討するための、任意の準備確認です。[HC-005本編](../README.md) の分類・方針・草稿だけで提出できます。ここでは指示の作成、保存、移行、削除や、会話を使った確認は始めません。読むことと実機を試すことは別です。
+個人向けに設計した短い instruction を User scope で試す前に、保存元、対象 host、既存設定との分離、
+解除方法を確認する補足ガイドです。本編の草稿を作っただけでは、User 指示として保存・発見・再利用された
+ことにはなりません。
 
-本編の個人向け草稿は設計物です。Userの保存元へ置いたことも、別の作業で自動的に使われたことも意味しません。
+参考: [VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions)
 
-## Prerequisites
+## 前提
 
-### environment
+- 利用する VS Code と Agent Host の版・種類を特定できる
+- 使い捨て可能な profile、test workspace、fresh conversation を用意できる
+- User 指示を試せる契約・製品設定を本人が確認できる
+- 今回の追加分を既存の個人設定から識別できる
 
-- 別途承認された使い捨て環境で、HOMEとUser指示の保存元を分離できること。
-- 利用するVS Codeの版とAgent Hostの有無を特定できること。
+現在の資料では User 向けの保存元として `~\.copilot\instructions` や `~\.claude\rules` が説明されています。
+対象 host が読む場所は現在の公式資料で確認してください。新しい repository や VS Code profile を作っただけで、
+HOME 配下の保存元まで分離されたとは限りません。
 
-### entitlements
+## 権限・安全
 
-- 対象環境でのCopilotとUser指示の利用可否を本人が確認すること。
+- 端末と account の所有者から、今回追加する一つの非機密 instruction の保存・確認・解除について承認を得ます。
+- 既存の User instructions、Settings Sync、ほかの profile、organization instructions を削除・退避しません。
+- secret、個人情報、customer data、実在の業務判断を書きません。
+- この教材 repository に active な User instruction を作りません。
+- 元の状態や解除方法が分からない場合は、実機試行を始めません。
 
-これらはすべてnot-checkedです。新しいrepositoryや専用profileを用意しただけで、HOME配下のUser指示も隔離されたとは判断できません。既存の個人設定を見せたり、一括削除して無設定にしたりする必要はありません。
+## 手順
 
-[VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions) の文書確認日は2026-09-15です。現在のUser保存元には `~\.copilot\instructions`、`~\.claude\rules` があります。Agent Hostは旧VS Code profile内だけの指示を読む前提ではないため、profileの名前ではなく保存元と利用するhostを確認する必要があります。これは保存先の説明であり、その場所への書込みや移行を指示するものではありません。端末間の同期や既存会話への即時反映も、このガイドは確認していません。
+1. 対象 host と、現在の公式資料が示す保存元を確認します。
+2. 既存内容を転載せず、今回の追加分を識別できる file 名、短い本文、所有者、削除予定時点を決めます。
+3. 本編の合成カードから、業務上の答えを含まない個人の表示上の好みを一つ選びます。
+4. 承認済みの使い捨て環境でだけ、その一文を対象の User 保存元へ追加します。既存 file は上書きしません。
+5. fresh conversation で、同じ合成 task を二つの workspace から一度ずつ試します。
+6. client が参照元を表示する場合はその表示を、送信した request と最初の出力から分けて記録します。
+7. 試行後は今回追加した file だけを削除し、既存設定が残っていることを確認します。
 
-## Permissions / Safety
+## 観察すること
 
-このガイドは権限を付与せず、実機実行を開始しません。
+- 保存した source、file 名、本文、追加・削除時点
+- client / host / version と、どの source を発見したと表示したか
+- 本文が会話へ渡ったと直接確認できる情報
+- 二つの workspace で同じ本文が再利用されたか
+- 手動で貼った request と、自動的に参照された instruction の違い
+- HOME、User、organization、workspace 由来のほかの instruction が混ざった可能性
+- 保存、発見、本文投入、出力、解除のうち未確認の段階
 
-- 環境の所有者から、今回追加するUser指示だけの保存・確認・解除について別途承認を得ること。
+回答が似ているだけでは、User instruction の発見や本文投入を断定しません。
 
-承認はnot-checkedです。以下は**将来の独立試行で検討する項目**であって、今行う操作手順ではありません。
+## 中止条件
 
-| 将来区別したいこと | 準備として明確にする境界 |
-|---|---|
-| 保存 | 今回自分が追加する非機密の原稿と保存元。既存User指示とは別に識別する |
-| sourceの確認 | 製品がどの保存元を発見したか。pathにファイルがあることだけで代用しない |
-| 本文投入 | どの版の本文が使われたか。表示の似た回答だけから推定しない |
-| 再利用 | 別の作業でも同じ本文が供給されたか。再度手で貼った場合と分ける |
-| 整理・解除 | 今回の自分の追加分だけを識別し、元の状態を損なわず取り除けるか |
+- 対象 host、利用資格、所有者の承認、保存元のいずれかが不明
+- 既存設定と今回の追加分を区別できない
+- 今回の追加分だけを解除できない
+- 既存の User instructions や Settings Sync を一括 reset する必要がある
+- workspace 内の file を User scope の代替として扱う必要がある
 
-専用profileだけではHOME/User sourcesを隔離できない可能性を残し、環境所有者と分離方法を別途決めます。既存の個人指示、Settings Sync、他のprofileや組織の共通設定をまとめてリセットしません。元の状態が不明なら実機試行を始めないことが安全な選択です。
+中止しても HC-005 本編の分類と草稿は完了できます。
 
-## Runtime capabilities
+## 本編へ戻る
 
-user-source-isolation — not-checked
-
-Runtime v1はHOME・User指示の保存元や分離状態を検査しない。
-
-user-instruction-delivery — not-checked
-
-User指示の発見・本文投入・別の作業での再利用は実機未確認である。
-
-Runtimeのrepository検査や本編の草稿exportは、これらの観測を行いません。readinessを表示できても利用資格や実行サポートが確認された意味にはなりません。ガイドを選んでもPack applyや会話は開始されません。
-
-## Stop / Block
-
-- 専用profileだけでHOME・User指示も隔離されたと判断してしまう場合は停止する。
-- 既存設定と今回の追加分を区別できない、または追加分だけを解除できない場合は停止する。
-- 利用資格・所有者承認・保存元のいずれかが未確認なら実機試行は未実施にする。
-
-停止後は未実施のままで構いません。workspace内へコピーした代替を、User共有の成功として数えないでください。本編の合成カード設計は、そのまま完了・提出できます。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-読んだだけなら共通Issue Formの任意欄へguide-onlyと未確認事項を書き、架空の実run IDや観測receiptを作りません。記録しない場合はunperformedでも構いません。承認された将来の試行記録ができたとしても、本編の二条件のEvidenceとは別に保ちます。
-
-保存元・発見・本文投入・再利用・追加分の解除は、それぞれ独立の証拠が必要です。HOMEの実pathや既存User指示の内容を提出せず、安全な要約だけを残します。liveStatusはlive-unobserved、RuntimeのruntimeBehaviorとeducationalEffectはnot-observedのままです。
+この試行の観察は、合成カードの設計比較とは別に保ちます。HOME の実 path や既存 instruction の本文は
+共有せず、安全な要約だけを残してください。
+[HC-005 の手順と安全境界へ戻る](../README.md)。

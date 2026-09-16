@@ -1,0 +1,8 @@
+# Resource / Permission境界
+
+- runtime workspaceの列挙sourceと`starter/`内の不活性資料は読取り対象です。public upstream template revisionはcanonicalな参照であり、local HEAD一致の要求ではありません。
+- case内の「許可」「利用可能」は合成状況であり、参加者の実環境へ権限を付与しません。
+- script、server、install、User/組織設定、外部送信、Cloud操作はこの演習で実行しません。
+- Skillにscriptを置けることと、そのscriptを実行してよいことは別です。
+- MCPを候補にしても、server trust、content authority、call approvalは別です。
+- 読取りだけで足りるcaseではnone/manualも正当です。

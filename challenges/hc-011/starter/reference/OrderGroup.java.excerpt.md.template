@@ -1,0 +1,21 @@
+# OrderGroup.java canonical hash excerpt
+
+固定source:
+
+- upstream template: `shinyay/github-copilot-customization-runtime-template`
+- upstream revision: `8f0b3aa25c4f33facdea691642c2f1cb3901391c`
+- runtime workspace path: `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java`
+
+```java
+payload.add("order-import-v1");
+payload.addAll(first.subList(0, 7));
+payload.add(first.get(9));
+for (List<String> row : records) {
+    lines.add(Fingerprints.of(
+            row.get(7),
+            Integer.toString(ImportFields.integer(row.get(8), "quantity"))));
+}
+Collections.sort(lines);
+```
+
+このexcerptは引用箇所だけの固定入力です。ファイル全体、実際のDB状態、実行結果は証明しません。

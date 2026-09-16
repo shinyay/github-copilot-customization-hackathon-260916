@@ -1,0 +1,39 @@
+# HC-013 個別資料の引継ぎ票
+
+これはローカルな引継ぎ用ひな型です。Space の取得ログや API 応答ではありません。
+
+## Instructions
+
+設計票で確定した instructions:
+
+## 読み手と順序
+
+読み手、用途、B1/B2/B3/P1/P2/P3 の読む順序、グループ:
+
+未確認事項をどこに表示するか:
+
+## 資料
+
+六資料それぞれについて、次を省略せず対応付けます。
+
+- ID と source path
+- reference type、revision、scope
+- 表示全文
+- original whole-source hash または資料全体の hash
+- 表示用 hash と限定置換の行番号・件数
+- limitations と確認できないアクセス状態
+
+B1/B2/B3 はruntime workspaceのsource hashをupstream template revisionへ照合後に作った安全な表示全文です。
+B3 の除去対象行や値を戻しません。P1/P2/P3 は JSON 全文を保持します。
+
+## 引継ぎ時の確認
+
+実際に渡せた資料、添付表示、切り詰めの有無:
+
+未解決 branch、`missing`、`error`、`empty`、`partial`:
+
+ローカル source の読取、Space の閲覧、各 source の閲覧を分けた記録:
+
+## 断定しないこと
+
+Java・DB・テストの実行結果、実際の認証・ACL・同期、提供されていない採用理由:

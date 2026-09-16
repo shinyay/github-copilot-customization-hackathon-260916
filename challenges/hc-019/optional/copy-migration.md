@@ -1,52 +1,44 @@
-# customization copy migrationの準備境界
+# 自己所有copyのmigrationを観察する
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-019本編](../README.md)とは別に、Insiders Experimentalのcopy migrationを検討する準備ガイドです。原本削除、通常profile移行、実home書込みを本編へ追加しません。
+対応製品のcopy migrationを、自己所有の無害なcopyで観察します。sourceとdestination、metadata、原本保持を分けて確認し、copy成功をapplicationや自動同期と誤認しません。
 
-PromptからSkill、User data、location settingsは対象が異なります。保持した二つのcopyは自動同期せず、本文一致はmetadata継承を保証しません。
+## 前提
 
-## Prerequisites
+- migrationに対応する製品版と対象host
+- 自分が所有する使い捨てcopy
+- source、destination、同名collision、metadata、location設定を確認できること
+- 原本を保持したまま戻せること
 
-environment:
+## 権限・安全
 
-- Insiders Experimental、対象Hostとmigration種別、自己所有copy、原本保持、開始前状態を確認できること。
+- destination作成や設定変更の対象を限定し、事前に承認します。
+- `deleteOriginal`、同名上書き、通常profile / home変更は行いません。
+- このリポジトリの `starter/**/*.template` はmigration対象にしません。
+- private contentや他人のcopyを使いません。
 
-entitlements:
+## 手順
 
-- 対応Insiders / Copilot、対象Host、migration UI / command、source / destinationへの通常利用資格と組織policyを確認できること。
+1. 現在の製品ドキュメントで、対象形式、source、destination、引き継がれるmetadataを確認します。
+2. 自己所有copyの本文、metadata、location、開始前状態を記録します。
+3. 原本を保持する設定で、許可されたmigration操作を一度行います。
+4. destinationの本文とmetadataをsourceと比較します。
+5. listed、enabled、discovery、applicationは別項目として観察し、本文一致から補いません。
+6. rollbackが必要なら、原本を残したまま自分が作ったdestinationだけを整理します。
 
-source、destination、同名collision、metadata、location settings、rollback copyを事前に一覧化します。
+## 観察すること
 
-## Permissions / Safety
+- 本文とmetadataのどちらが引き継がれたか
+- sourceとdestinationが自動同期するかは未確認のままか
+- location設定や同名collisionがどう扱われたか
+- migration後のdiscovery / applicationに直接情報があるか
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 停止条件
 
-additionalApprovals:
+- 原本削除、同名上書き、通常profile / home変更が必須
+- source、destination、metadata、rollbackを確認できない
+- 自己所有copyを分離できない
+- 製品ドキュメントと実画面が一致しない
 
-- 自己所有copyだけの変換、destination作成、原本保持、必要な設定変更を対象限定で別途承認すること。
-
-deleteOriginal、clearLocationSettings、同名上書き、通常profile / home変更は別の破壊的判断であり、このガイドでは実行しません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| profile-migration | blocked | Runtime v1はprofile / home間のmigration、metadata継承、原本保持、rollbackを管理しないためblockedです。 |
-| tracked-vscode-settings | blocked | Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings. |
-
-不活性copyの本文一致は、実migration、discovery、application、metadata継承のEvidenceではありません。
-
-## Stop / Block
-
-- deleteOriginal、clearLocationSettings、同名上書きが必要なら停止します。
-- 原本保持、自己所有copy、source / destination、rollbackを確認できない場合は停止します。
-- 通常profile、User / home、追跡不能settingsへの変更が必要なら停止します。
-
-force-addや別Hostへの迂回でblockedを隠しません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-readiness、source copy、destination copy、metadata、settings、原本保持、cleanupを別に記録します。copy成功を自動同期、application、usefulness、全migration種別の成功へ外挿しません。
+[メインシナリオの発展へ戻る](../README.md#発展)

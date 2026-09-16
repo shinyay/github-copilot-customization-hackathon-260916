@@ -1,0 +1,30 @@
+# 固定packet batch: CSVの入口
+
+読者は受注取込の保守担当です。業務仕様を承認する作業ではありません。
+
+## Scope
+
+- `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderCsv.java`
+- `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java`
+- `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java`
+
+CSVのまとまりと取込処理への入力の受け渡しを追います。実データのCSVは開きません。web側や取込先serviceの別fileは調べません。必要ならpathと理由をunknownに挙げ、読みません。
+
+この入口だけのsourceから言えることを整理し、別packetの結論を根拠として使いません。
+
+## 返却形式
+
+最大5項目で返してください。各項目は次を含めます。
+
+1. 観測
+2. path・symbol・line range
+3. 限界
+
+表示順と統合時の参照方法は事前に完成したdesignに従います。親の過去の会話や別担当の結果を推測しません。不足入力はunknownとして返します。source readingだけでtransaction、復旧、再送安全性を実証したとは書きません。
+
+## Safety
+
+- 指定sourceだけを読み、fileを変更しません。
+- 実CSV、資格情報、DB、server、build、test、shell、無許可networkを使いません。
+- 再委任、入れ子、追質問、再試行ループ、model上書きを行いません。
+- fileを生成せず、チャットにだけ返します。

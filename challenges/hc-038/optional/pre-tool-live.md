@@ -1,49 +1,51 @@
-# Cloud preToolUse観測の準備境界
+# `preToolUse` Hookを限定観測する
 
-## Guide scope
+[HC-038本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-038本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+承認済みの専用環境で、無害な一つのtool操作に対する `preToolUse` の呼出しとpermission handlingを観察します。checker結果、fail-open、通常のpermission flow、tool完了を別々に記録します。
 
-## Prerequisites
+## 前提
 
-environment:
+- 対象repository、default branch、固定checker、Cloud Linux/bashを確認できる。
+- 無害でscopeが明確なtool操作を選べる。
+- Copilot coding agent、対象tool、必要な実行資源を利用できる。
+- 回数、時間、費用、ログ、停止、復元の上限が決まっている。
 
-- 承認済みCloud専用環境、default branchのactive Hook変更計画、固定checker、Cloud Linux/bash、無害な限定tool操作を確認できること。
+## 権限と安全
 
-entitlements:
+- active Hook、checker、限定tool操作、費用、ログ取得について個別の許可を得る。
+- endpointやfirewallを広げず、secretやprompt全文を記録しない。
+- 破壊的tool、広い書込権限、allow-allを使わない。
+- 既存Hookを上書きせず、自分の変更だけを復元できるようにする。
 
-- Copilot coding agent、対象repository、default branch、対象toolと必要な実行資源を利用する資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. checker revision、hash、event設定、対象tool、期待する安全scopeを記録する。
+2. allow、deny、必要なら一つのfailure caseを事前に選ぶ。回数上限を超えて試さない。
+3. 承認後に実験用Hookを反映し、限定tool操作を一回実行する。
+4. 宣言、呼出し、transport、exit/HTTP response、`permissionDecision`、通常flow、tool結果を別々に記録する。
+5. timeoutやHTTP failureをcommand denyへ読み替えず、fail-open後のtool結果を別途確認する。
+6. 観察後、自分の変更だけを復元する。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+| 層 | 記録 |
+|---|---|
+| Hook | event、revision、呼出し |
+| checker | command/HTTP、exit、response、timeout |
+| permission | decisionとreason、通常flowへの復帰 |
+| tool | 実行されたか、完了したか、結果 |
+| safety | scope、上限、ログ、復元 |
 
-- active Hook/script保存、無害な限定tool操作、実行資源・費用上限、ログ取得、停止・復元を操作ごとに別承認すること。
+## 停止条件
 
-endpoint、firewall、secret、prompt全文log、破壊操作を追加せず、run.json手編集やbranch制約の偽装を行いません。
+- checker、default branch、対象tool、permission観測範囲が不明。
+- endpoint/firewall変更、秘密、prompt全文log、破壊操作が必要。
+- timeoutやHTTP failureを実tool完了として扱う必要がある。
+- 個別許可または復元方法がない。
 
-## Runtime capabilities
+## 本編へ戻る
 
-| capability | status | reason |
-|---|---|---|
-| cloud-hook-observation | not-checked | 本編とRuntime v1はpreToolUseの発火、checker実行、permissionDecision、通常permission flow、tool完了を観測しません。 |
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
-
-blockedとnot-checkedを区別します。既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- checker版、default branch、Cloud Linux/bash、限定tool、permission観測範囲のいずれかが不明な場合は停止します。
-- endpoint、firewall変更、秘密、prompt全文log、破壊操作が必要な場合は停止します。
-- Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。
-- timeoutやHTTP failureを実tool完了またはcommand denyへ読み替える必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-対象revision、checker hash、宣言、呼出し、transport、exit/response、permission field、通常flow、tool結果、unknown、blocked理由を分けます。runtimeBehaviorとeducationalEffectは観測した範囲を超えて主張しません。
+結果は [HC-038のfailure境界](../README.md#この機能とは) と照合し、denyとfail-openを正しく分けます。

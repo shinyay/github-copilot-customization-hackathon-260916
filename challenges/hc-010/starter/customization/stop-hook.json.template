@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "node manual\\hc-010\\tools\\stop-notify.mjs",
+        "windows": "node manual\\hc-010\\tools\\stop-notify.mjs",
+        "cwd": ".",
+        "timeout": 10
+      }
+    ]
+  }
+}

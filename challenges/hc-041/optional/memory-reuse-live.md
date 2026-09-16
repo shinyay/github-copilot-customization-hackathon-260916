@@ -1,49 +1,52 @@
-# Memory reuse観測の準備境界
+# Memory reuseを限定観測する
 
-## Guide scope
+[HC-041本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-041本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+専用repositoryで、自分が追加した識別可能なrepository factについて、保存候補、eligible、Cloudでの利用、standard reviewでの利用、残留を限定的に観察します。全Memory削除や「空の対照」を作る手順ではありません。
 
-## Prerequisites
+## 前提
 
-environment:
+- 対象account、専用repository、current branchを特定できる。
+- GitHub Copilot Memory、Cloud、標準reviewの利用資格を確認できる。
+- user単位設定の影響範囲を理解している。
+- 自分の追加記録と既存記録を区別できる。
+- Cloudとreviewを独立して観察する計画がある。
 
-- 対象account、専用repository、現在branch、Cloudとreviewの独立した観測計画、自分の追加記録と残留・復元範囲を確認できること。
+## 権限と安全
 
-entitlements:
+- Memory設定、限定記録、Cloud/review試行、終了時の整理について個別の許可を得る。
+- 実秘密、個人情報、private内容をfactへ入れない。
+- 全Memory削除、識別不能な記録の削除、他製品のMemory操作を行わない。
+- 新sessionや設定解除を削除・空状態の証拠にしない。
 
-- GitHub Copilot Memory、Cloud、標準review、対象repositoryを利用する資格とuser単位設定の影響範囲を確認できること。
+## 手順
 
-## Permissions / Safety
+1. 対象repository/branch、fact本文、citation path/revision、識別子を記録する。
+2. current citationがfactを支持することと、対象surfaceでeligibleであることを別々に確認する。
+3. 承認後に限定記録を作り、保存を示す直接Evidenceの有無を記録する。
+4. Cloudで一回、standard reviewで一回、同じrepository factが使われた直接Evidenceを独立して確認する。
+5. response本文の自己申告だけでusedと判断しない。
+6. 残留、retention、整理の各観測を分け、自分の追加分だけを承認済み手順で扱う。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+- repository、branch、fact、citation
+- 設定scopeと保存を示すEvidence
+- Cloud/reviewそれぞれのeligibleとused
+- current source support
+- 残留、retention、整理
+- unknownと確認不能の理由
 
-- Memory設定・限定記録・Cloud/review試行・残留確認・自分の追加分だけの整理を操作ごとに別承認すること。
+## 停止条件
 
-全Memory削除、新sessionを空対照とする操作、設定解除を削除とする扱い、他製品のMemory操作、run.json手編集を使いません。
+- 自分の追加記録を識別できない。
+- user全体への設定影響を確認できない。
+- Cloudとreviewを独立して観察できない。
+- 既存Memoryの全削除や識別不能な記録の削除が必要。
+- 別製品のMemory操作を同じ検証へ混ぜる必要がある。
 
-## Runtime capabilities
+## 本編へ戻る
 
-| capability | status | reason |
-|---|---|---|
-| memory-reuse-observation | not-checked | 本編とRuntime v1はMemoryの保存、eligible、reuse、Cloud/reviewでの実利用、残留、retention、削除を観測しません。 |
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
-
-blockedとnot-checkedを区別します。既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- 実記録または自分の追加分を識別できない場合は停止します。
-- user全体の設定影響、対象repository/current branch、Cloud/reviewの独立観測を固定できない場合は停止します。
-- 既存Memoryの全削除、識別不能な記録の削除、他製品の操作が必要な場合は停止します。
-- Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-対象repository/branch、fact/citation、設定範囲、保存候補、eligible、Cloud/reviewの使用Evidence、残留、retention、整理、unknown、blocked理由を分けます。新session、設定解除、応答文を保存・削除・reuseの証拠にせず、runtimeBehaviorとeducationalEffectは観測した範囲を超えて主張しません。
+観察結果は [HC-041の確認ポイント](../README.md#確認ポイント) へ戻し、supported、eligible、used、stored、retained、deletedを分けて記録します。

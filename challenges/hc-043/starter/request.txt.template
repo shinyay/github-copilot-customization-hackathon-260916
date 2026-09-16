@@ -1,0 +1,5 @@
+SYNTHETIC_TRAINING_ONLY
+
+Use the supplied automation packet and event sequence to assess E01 through E05. For each task, record the event/head, actor and creator facts, repository and session visibility, accepted/ignored/held decision, permitted read effects, excluded write effects, output boundary, cost owner, unknowns, and stop owner.
+
+Freeze a minimum-permission trigger/tools/output/stop policy before classifying the event sequence. Do not register an automation, fire an event, write to a repository, post a review, or claim observed stop/resume behavior.

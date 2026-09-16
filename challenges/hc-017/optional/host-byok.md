@@ -1,53 +1,47 @@
-# Agent Host BYOKの準備境界
+# Agent Host で BYOK を評価する探索ガイド
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-017本編](../README.md)やLocal BYOKとは別のAgent Host経路を確認するための準備ガイドです。Local疎通をHost成功へ転記しません。
+[HC-017 の本編](../README.md)や local client の BYOK とは別に、Agent Host から provider を利用する経路を安全に観察するための補足ガイドです。local での接続成功を Host の成功として扱いません。
 
-Experimental設定、provider、鍵、Hostの実行場所を本編へ導入しません。送信候補は承認済みの架空短文だけです。
+## 前提
 
-## Prerequisites
+- 対応する Agent Host と実行 OS を確認できる
+- 必要な Experimental 設定、provider、実モデル ID、secure input の利用条件を確認できる
+- Host、Copilot、provider、モデルの利用資格と組織 policy を確認できる
+- Host の実行場所、profile data、設定の保存先、local client との違いを記録できる
 
-environment:
+## 権限と安全
 
-- 対応Agent Host / 実行OS、Experimental設定、provider、実model ID、secure inputの可用性を確認できること。
+- Experimental 設定、provider 登録、credential 入力、Host からの初回通信、費用発生は個別に許可を得ます。
+- 送信候補は承認済みの無害な合成文だけにします。
+- private code、本編の固定入力、既存 profile data、通常の User 設定は送信・変更しません。
+- secret を repository やログへ残しません。
 
-entitlements:
+## 手順
 
-- Host、Copilot、provider、modelの利用資格、組織policy、データ取扱い条件、費用範囲を確認できること。
+1. Host の対応 OS、設定面、provider 対応、実行場所を公式資料で確認します。
+2. local client と Host で共有される設定、共有されない設定を整理します。
+3. 開始前の Host 設定と provider 選択の見える範囲を記録します。
+4. 許可が揃う場合だけ、Host 側の公式手順で provider を選び、無害な合成文を一度送ります。
+5. Host 上で観測できたモデル表示、応答、費用情報を記録します。
+6. 自分が変更した Host 設定だけを元へ戻し、復元を確認します。
 
-Hostの実行OS、profile user data、対応user folder、Localとの違いを記録できる必要があります。
+## 観察すること
 
-## Permissions / Safety
+- Host と実行 OS
+- local client との設定差
+- 要求した provider / モデルと観測表示
+- secure input、通信、応答、費用の確認結果
+- cleanup 後の Host 状態
 
-このガイドは権限を付与せず、実機実行を開始しません。
+Host で一度応答したことは、本編のモデル比較、local 経路、private task の品質を示しません。
 
-additionalApprovals:
+## 停止条件
 
-- Experimental設定、provider登録、credentialのsecure input、Hostからの架空短文送信、費用発生を個別に別途承認すること。
+- 対応 Host / OS、Experimental 設定、provider、credential、費用の許可が揃わない
+- local client でしか確認できない
+- private code、本編の固定入力、通常 profile の変更が必要
+- Host 側の変更だけを安全に戻せない
 
-private code、固定分析、既存profile、通常User設定を送信・変更しません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| agent-host-byok | not-checked | Runtime v1ではAgent HostのBYOK設定、provider接続、実model選択、応答を確認していません。 |
-| provider-registration | blocked | Runtime v1はcredentialやUser-level provider登録を管理しないため、この経路はblockedです。 |
-| tracked-vscode-settings | blocked | Runtime v1 ignores .vscode/settings.json; only .vscode/mcp.json is exempt. Do not force-add settings. |
-
-LocalでのJSON parseや疎通はHost経路のEvidenceではありません。
-
-## Stop / Block
-
-- 対応Host / OS、Experimental設定、provider、credential、費用の承認が揃わない場合は停止します。
-- Localでしか疎通を確認できない場合はHostを未観測のまま停止します。
-- private code、固定分析、通常profileの変更が必要なら停止します。
-
-blockedをUser設定、別Host、未承認providerへの迂回で隠しません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-Host readiness、設定、provider、架空短文、応答、cleanupを別に記録します。観測できても本編のmodel / effort比較、Local route、private taskの品質、Agent Host全般を証明しません。
+[HC-017 の本編へ戻る](../README.md)

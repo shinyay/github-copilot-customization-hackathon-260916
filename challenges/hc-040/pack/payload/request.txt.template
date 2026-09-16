@@ -1,5 +1,0 @@
-SYNTHETIC_TRAINING_ONLY distribution material
-
-Create Skill revision v1, freeze its raw bytes, and use byte-identical copies for the manual and plugin-package conditions. Create one clearly described v2 revision, freeze it, and again use byte-identical copies for both conditions.
-
-Apply same-key-check and changed-payload-check to both revisions. Record prepare-v1, update-v2, and restore-v1 separately. Compare distribution, update, and restoration burden only. Do not claim install, enablement, discovery, invocation, Java/DB behavior, or a knowledge-effect difference.

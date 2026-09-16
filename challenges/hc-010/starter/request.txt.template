@@ -1,0 +1,21 @@
+HC-010 / 固定依頼
+
+固定source:
+upstream template: shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c
+source location: templateから作成したruntime workspace
+wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java
+Money.tax
+
+upstream revisionはsourceの出所であり、runtime workspaceのlocal HEADとの一致条件ではありません。
+runtime workspaceのMoney.java全文を利用できる場合はMoney.taxを読み、支持される説明と、このファイルだけでは確認できないことをdesign.mdへ記録してください。利用できない場合は、コードの意味を推測せず未確認としてください。
+
+次に、同じ形式検査の結果を担当者へ届ける方法を設計してください。合成草稿、同じchecker、固定結果、Stop入出力の契約は変えません。
+
+手動確認では、誰が、いつ、どのresult/codeを読み、検査不能や未実施をどう保留するかを書きます。
+通知設計では、同じ結果を誰へどの長さで伝えるか、重複・再入をどう扱うか、通知を追加しない場面を決めます。
+
+通知はcontinue: trueのnonblockingとし、自動修正、新しいAIターン、反復を要求しません。
+stop_hook_active: trueではcheckerを再実行せずskippedとして扱います。
+passは## Evidenceと## Unknownsの形式だけの合格であり、Money.taxの説明の正しさではありません。
+
+草稿と結果はSYNTHETIC_TRAINING_ONLYです。実際に観察していないHook発火、画面表示、LLM性能、アプリやDBの状態を補わないでください。

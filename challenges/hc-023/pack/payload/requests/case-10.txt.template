@@ -1,3 +1,0 @@
-case-10の固定packetだけを使い、一回限りで既に十分な入力に追加する準備方法、または追加不要を選び、その理由を説明してください。
-trigger、scope、resources、permissions、maintenanceと、少なくとも一つの別案を示してください。
-この追加確認caseは最初から公開されています。別caseの回答を使わず、設定・source・外部serviceを変更しないでください。

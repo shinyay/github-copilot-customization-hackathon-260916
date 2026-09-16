@@ -1,49 +1,50 @@
-# Cloud sessionStart観測の準備境界
+# `sessionStart` Hookを限定観測する
 
-## Guide scope
+[HC-038本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-038本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+承認済みの専用環境で、`sessionStart` の宣言、実際の呼出し、checker exit、取得したログの範囲を分けて観察します。後続toolのpermission enforcementを検証する手順ではありません。
 
-## Prerequisites
+## 前提
 
-environment:
+- 対象repositoryとdefault branchを確認できる。
+- Cloud Linux/bashで実行できる固定checkerがある。
+- Copilot coding agentと必要な実行資源を利用できる。
+- ログ範囲、費用上限、停止担当、復元方法が決まっている。
 
-- 承認済みCloud専用環境、default branchのactive Hook変更計画、Cloud Linux/bash、採用checkerの固定bytesと実行環境を確認できること。
+## 権限と安全
 
-entitlements:
+- active Hookとcheckerの保存、session開始、費用発生について個別の許可を得る。
+- 既存Hookを上書きせず、自分の変更だけを識別できるようにする。
+- secret、prompt全文、顧客データをログへ残さない。
+- 本編の `.template` をそのままactive pathへ移さない。内容をレビューした別の実験用コピーを使う。
 
-- Copilot coding agent、対象repository、default branch、Actionsまたは必要な実行資源を利用する資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. checker revision、hash、実行command、timeout、対象branchを記録する。
+2. 既存Hookと競合しない実験用設定をレビューする。
+3. 承認後に設定を反映し、一回だけCloud sessionを開始する。
+4. Hook宣言、呼出し記録、checker exit、stdout/stderr、session開始結果を別項目で記録する。
+5. `sessionStart` の成功から後続toolのpermissionを推定しない。
+6. 観察後、自分の変更だけを承認済み手順で復元する。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+- 宣言したeventと対象revision
+- checkerの同一性
+- 呼出しの有無
+- exit、出力、timeout
+- ログに含めなかった機密情報
+- 復元結果
 
-- active Hook/script保存、session開始、実行資源・費用上限、ログ取得、停止・復元を操作ごとに別承認すること。
+## 停止条件
 
-秘密、prompt全文、顧客データをログへ残さず、run.json手編集、branch制約の偽装、既存Hookの全消去を行いません。
+- default branch、checker版、実行環境、ログ範囲が不明。
+- 設定変更、session開始、費用、復元の許可がない。
+- 既存Hookを安全に分離できない。
+- `sessionStart` 成功を後続toolの保護証明として扱う必要がある。
 
-## Runtime capabilities
+## 本編へ戻る
 
-| capability | status | reason |
-|---|---|---|
-| cloud-hook-observation | not-checked | 本編とRuntime v1はsessionStartの発火、checker実行、exit、Cloud環境、ログを観測しません。 |
-| cross-branch-handoff | blocked | Runtime v1 binds branchSafe:false runs to the named apply branch; cross-branch handoff is not supported. |
-
-blockedとnot-checkedを区別します。既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- checker版、Cloud Linux/bash、JDK等の実行前提、default branch、ログ取得範囲のいずれかが不明な場合は停止します。
-- active Hook変更、session開始、実行資源・費用、停止・復元の個別承認がない場合は停止します。
-- Cloud-created branchの観測を既存Runtime runへ束ねる必要がある場合は停止します。
-- sessionStart成功を後続toolのpermission enforcementへ拡張する必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-対象revision、default branch、checker hash、宣言、呼出し、exit、ログ取得、unknown、blocked理由を分けます。sessionStart、後続tool、runtimeBehavior、educationalEffectは観測した範囲を超えて主張しません。
+結果は [HC-038の確認ポイント](../README.md#確認ポイント) に照らし、宣言・呼出し・checker結果を混同していないか確認します。

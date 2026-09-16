@@ -1,0 +1,33 @@
+# HC-027 評価比較ワークシート
+
+## Fixed task
+
+<!-- primary / transfer-check、3 variant、3 block、固定packet。 -->
+
+## Preregistered plan
+
+<!-- 5観点、分母、順序、終了条件、結果を読む前後の時点。 -->
+
+## Trial coverage
+
+<!-- 18 row exact集合、variantごとの6 row、欠落、重複、混入。 -->
+
+## Reference
+
+<!-- referenceの6 row。initial / follow-upを分ける。 -->
+
+## Reusable rules
+
+<!-- reusable-rulesの6 rowと凍結body。 -->
+
+## Manual rules
+
+<!-- manual-rulesの6 rowと、同じbody全文を同じ順序で供給したか。 -->
+
+## Missing and failures
+
+<!-- 未実施、process failure、採点不能、null、観測された0を分ける。 -->
+
+## Outcome
+
+<!-- task別の結果、一部回帰、全体rollup、合成データから主張できないこと。 -->

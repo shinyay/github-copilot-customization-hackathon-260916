@@ -1,48 +1,55 @@
-# 標準review effort観測の準備境界
+# 標準review effortを限定観測する
 
-## Guide scope
+[HC-037本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-037本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+同じcandidate PRへLiteとBalancedを一回ずつ依頼し、requested effort、表示されたeffective effort、finding、確認負担、費用の観測範囲を分けて記録します。本編の評価計画を実サービスで確かめるための補足であり、実施は必須ではありません。
 
-## Prerequisites
+## 前提
 
-environment:
+- 変更してよい専用candidate PRがある。
+- diff、依頼全文、base/head、評価規約を固定できる。
+- Copilot code reviewと両effortを利用できる。
+- 既存の自動reviewや共有設定の影響を確認できる。
+- 回数、費用、時間の上限と終了時の担当者が決まっている。
 
-- 承認済みcandidate PR環境、固定diffと指示、base/head、既存自動reviewの残留、回数・費用・時間上限を確認できること。
+## 権限と安全
 
-entitlements:
+- PR変更と各review requestについて、対象repositoryの明示的な許可を得る。
+- private diff、token、個人情報、未加工logを外部へ転記しない。
+- 共有設定の削除、履歴の巻き戻し、無制限の再要求を行わない。
+- 整理するのは自分が追加したcandidateと依頼だけに限定する。
 
-- Copilot code reviewとLite/Balanced effortを対象repositoryで利用できる資格を確認できること。
+## 手順
 
-## Permissions / Safety
+1. candidate revision、base/head、依頼全文、評価規約を記録する。
+2. 既存review、Memory、Instructions、Skills等の残留条件を確認し、不明なものはunknownにする。
+3. Liteを一回だけ依頼し、requested/effective effort、actor、finding、開始・終了、確認負担、費用のうち見える項目を記録する。
+4. 同じheadと依頼でBalancedを一回だけ依頼し、同じ項目を記録する。
+5. 各findingを変更行とsource/testへ戻し、supported、unsupported、duplicate、false positive候補を分類する。
+6. 片側の失敗や欠測を0 findingsへ変換せず、比較可能性を判断する。
+7. 終了後は、承認範囲に従って自分の試験用成果だけを整理する。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+| 項目 | 分けて記録する内容 |
+|---|---|
+| effort | requestedと画面・結果で確認できたeffective |
+| review | actor、対象head、finding本文、根拠 |
+| 品質 | supported、unsupported、false positive、見落とし候補 |
+| 負担 | 重複、確認時間、追加調査 |
+| 運用 | 回数、時間、費用、既存自動reviewの影響 |
 
-- candidate変更、各review要求、費用・回数・時間上限、終了時の整理を実施前に個別承認すること。
+内部model、agentic fallback、CI visibilityなど見えない値は推測しません。
 
-共有設定の全消去、履歴巻戻し、allow-all、run.json手編集、無制限の再要求は使いません。整理対象は自分が追加した候補PRと依頼だけです。
+## 停止条件
 
-## Runtime capabilities
+- diff、依頼、base/head、実effort表示を固定できない。
+- review requestまたは費用発生の承認がない。
+- 片側だけの結果を、未実施側の0 findingsと比較する必要がある。
+- 上限を超える再要求、共有設定の変更、機密情報の転記が必要になる。
 
-| capability | status | reason |
-|---|---|---|
-| review-effort-observation | not-checked | 本編とRuntime v1は標準reviewの実effort、actor、内部model、finding、費用、agentic fallback、CI visibilityを観測しません。 |
+## 本編へ戻る
 
-blockedとnot-checkedを区別します。not-checkedの表示成功は実機成功ではありません。
-
-## Stop / Block
-
-- diff、依頼全文、残留条件、base/head、実effort表示のいずれかを固定できない場合は停止します。
-- 本編Packがsource mutationを許可しないままcandidate PR作成まで同じrunで行う必要がある場合は停止します。
-- 回数・費用・時間上限またはreview要求の個別承認がない場合は停止します。
-- 片側だけの結果をもう片側の0 findingsと比較する必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-対象revision、承認scope、requested/effective effort、actor、base/head、観測結果、unknown、blocked理由を分けます。実サービス、内部model、費用、agentic fallback、CI visibility、runtimeBehavior、educationalEffectは観測した範囲を超えて主張しません。
+観測結果は本編の評価項目へ対応付け、[HC-037の確認ポイント](../README.md#確認ポイント) で過剰な主張がないか確認します。

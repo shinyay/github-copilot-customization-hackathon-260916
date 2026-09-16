@@ -1,0 +1,31 @@
+# HC-012 任意の手動比較
+
+同じsource、request、固定四参照を使い、変えるのは選択手順だけにする。
+
+## Fixed inputs
+
+- sourceを読めた範囲:
+- request:
+- 固定四参照:
+- 比較中に変えなかったもの:
+
+## Individual selection
+
+- 初回手順:
+- 再設定手順:
+- 分かりやすかった点:
+- 選び漏れに気付く方法:
+
+## Named Tool Set
+
+- name / description / icon:
+- 初回手順:
+- 再設定手順:
+- 分かりやすかった点:
+- 集合を展開して確認する負担:
+
+## Conclusion
+
+- 個別選択 / Tool Set / 追加不要のどれを選ぶか:
+- 理由:
+- sourceやUIについて未確認のこと:

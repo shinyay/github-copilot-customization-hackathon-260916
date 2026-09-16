@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "HC023_FIXED_SOURCE_PATHS",
+  "upstreamTemplateRepository": "shinyay/github-copilot-customization-runtime-template",
+  "upstreamTemplateRevision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+  "workspaceSourceMode": "read-listed-paths-from-current-runtime-workspace",
+  "workspaceHeadMatchRequired": false,
+  "paths": [
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java",
+    "wholesale-core/src/main/resources/application-context.xml",
+    "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java",
+    "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+    "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/OrderStates.java",
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java"
+  ],
+  "boundary": "pathはruntime workspaceから読み、local HEADのupstream revision一致は要求しない。pathの実在は意味・実行結果・採用すべき機構の証明ではない。"
+}

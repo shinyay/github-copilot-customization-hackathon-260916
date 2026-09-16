@@ -1,0 +1,18 @@
+# CommonRulesTest.java 固定抜粋
+
+対象リポジトリでの想定 path:
+`wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java`
+
+この既存 test は有効な rounding の境界を確認しています。今回の依頼では、この expectation を変えずに不正な rounding の境界を検討します。
+
+```java
+@Test
+public void roundingModesHaveDistinctBoundaries() {
+    assertEquals(new BigDecimal("0.00"), Money.tax(new BigDecimal("5.00"), new BigDecimal("0.10"), "DOWN"));
+    assertEquals(new BigDecimal("1.00"), Money.tax(new BigDecimal("5.00"), new BigDecimal("0.10"), "HALF_UP"));
+    assertEquals(new BigDecimal("1.00"), Money.tax(new BigDecimal("1.00"), new BigDecimal("0.10"), "UP"));
+    assertEquals(new BigDecimal("0.00"), Money.tax(new BigDecimal("100.00"), BigDecimal.ZERO, "UP"));
+}
+```
+
+実ファイルを利用できる場合は、抜粋ではなく実ファイルと周辺 test を正として確認してください。

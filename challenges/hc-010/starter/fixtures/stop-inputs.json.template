@@ -1,0 +1,37 @@
+{
+  "materialType": "SYNTHETIC_TRAINING_ONLY",
+  "cases": [
+    {
+      "caseId": "complete-draft",
+      "draftPath": "starter/fixtures/draft-complete.md.template",
+      "input": {
+        "hook_event_name": "Stop",
+        "stop_hook_active": false
+      }
+    },
+    {
+      "caseId": "missing-unknowns",
+      "draftPath": "starter/fixtures/draft-missing-unknowns.md.template",
+      "input": {
+        "hook_event_name": "Stop",
+        "stop_hook_active": false
+      }
+    },
+    {
+      "caseId": "missing-draft",
+      "draftPath": "manual/hc-010/missing.md",
+      "input": {
+        "hook_event_name": "Stop",
+        "stop_hook_active": false
+      }
+    },
+    {
+      "caseId": "reentry",
+      "draftPath": "manual/hc-010/draft.md",
+      "input": {
+        "hook_event_name": "Stop",
+        "stop_hook_active": true
+      }
+    }
+  ]
+}

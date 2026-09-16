@@ -1,0 +1,56 @@
+# CSV resend investigation note
+
+## Fixed task
+
+`OrderImportService.importDraft` と `OrderGroup.canonicalHash` を調査し、新しい `external_key`、同じhashの既存claim、異なるhashの既存claimでsourceが定義する結果を説明する。database stateや実際のincident historyは推測せず、import/replayを実行しない。
+
+## Source map
+
+| Claim | Path and symbol | Source observation | Limit or unknown |
+|---|---|---|---|
+|  |  |  |  |
+
+## New external_key
+
+- First and second claim lookup:
+- `saveDraft`:
+- Claim fields and persistence:
+- Source-defined return:
+- Unknowns:
+
+## Matching payload hash
+
+- Hash comparison:
+- Original order lookup:
+- Source-defined return:
+- Unknowns:
+
+## Different payload hash
+
+- Hash comparison:
+- Error code:
+- Why this is not an edit of the original order:
+- Unknowns:
+
+## canonicalHash
+
+- Version marker:
+- Common header fields:
+- Quantity normalization:
+- Sorted line fingerprints:
+- Final fingerprint:
+
+## Skill observations
+
+- Skill explicitly selected or auto-discovered:
+- Skill body used:
+- Checklist or reference used:
+- Checker used:
+- What was not observable:
+
+## Unknowns and safety
+
+- Database contents and transaction result:
+- Production incident history:
+- Import, replay, server, test, or external connection not run:
+- Secret or private data excluded:

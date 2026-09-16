@@ -1,0 +1,13 @@
+# CSV resend investigation checklist
+
+- Locate `OrderImportService.importDraft`.
+- Record where `OrderGroup.canonicalHash()` is computed.
+- Record the first lookup of the existing `external_key` claim.
+- Record the lock boundary and the second lookup of the same claim.
+- For an existing claim, distinguish matching `payloadHash` from `orderImport.keyConflict`.
+- For a matching hash, confirm that `replay` returns the original order without claiming an edit.
+- For a new key, trace `saveDraft`, claim fields, claim persistence, and the returned code without claiming a database result.
+- In `OrderGroup.canonicalHash`, record `order-import-v1`, common header fields, normalized integer quantity, sorted line fingerprints, and the final fingerprint.
+- Keep Skill selection, body loading, checklist/reference loading, and checker execution as separate observations.
+- Keep database contents, transaction outcome, and incident history as unknown unless directly observed outside this source-only exercise.
+- Never run an import, resend, replay, database connection, server, build, test, or external connection.

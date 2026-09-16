@@ -1,51 +1,45 @@
-# PostgreSQL readiness確認の準備境界
+# PostgreSQL readiness を確認する
 
-## Guide scope
+[← HC-035 のメインシナリオ](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-035本編](../README.md)とは別に、将来の限定観測へ進む前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、実行許可、live success、本編改善、Runtime completionを意味しません。
+DB test を始める前に、専用 PostgreSQL、接続範囲、opt-in、cleanup の条件がそろっているかを確認します。このガイド自体は DB を provision せず、接続や test を実行しません。
 
-## Prerequisites
+## 前提
 
-environment:
+- JDK 8 と Maven 3.9 系を確認できる
+- DB test の opt-in 条件を確認できる
+- 承認済みの専用 PostgreSQL instance/database がある
+- DB 所有者、network/runner policy、復元範囲を特定できる
 
-- JDK8、Maven 3.9系、DB opt-in条件、承認済み専用PostgreSQL、専用DB名、復元範囲を確認できること。
+## 権限と安全
 
-entitlements:
+- DB 利用、接続、fixture、限定 test、停止、cleanup について DB 所有者の承認を得ます。
+- shared/production DB、production data、未承認 fixture を使いません。
+- credential を教材へ保存、表示、転載しません。
 
-- 対象repositoryと専用PostgreSQLを利用する資格、DB所有者の許可、network/runner policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. engine/version、専用 DB 名、所有者、network 経路を記録します。
+2. opt-in が有効な場合だけ実行対象 test を特定します。
+3. fixture と cleanup の対象を、自分が追加するデータだけに限定します。
+4. JDK/Maven の適合と DB 接続可否を別々に確認します。
+5. 承認後に test を行う場合は、command、終了結果、cleanup 結果を別途記録します。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観測すること
 
-additionalApprovals:
+- 専用 DB と shared/production DB の分離
+- opt-in の有無
+- 接続成功と test 成功の違い
+- skip と pass の違い
+- cleanup が自分の追加分だけに限定されているか
 
-- DB所有者による専用instance/databaseの利用、接続、fixture、限定test、停止・cleanupを操作ごとに別途承認すること。
+## 停止条件
 
-共有設定の全消去、履歴巻戻し、allow-all、run.json手編集、秘密値の回避策は使いません。整理対象は自分が追加した設定だけです。
+- JDK/Maven、DB 所有者、専用 DB、network、復元範囲のいずれかが不明
+- shared/production DB または production data が必要
+- opt-in なしの skip を test success と扱う必要がある
+- cleanup の対象を限定できない
 
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| dedicated-postgres | not-checked | 本編とRuntime v1はPostgreSQLのprovision、認証、接続、DB opt-in、test、cleanupを実行または観測しません。 |
-
-blockedとnot-checkedを区別します。not-checkedの表示成功は実機成功ではなく、既知blockedが一件でもあれば全体はblockedです。
-
-## Stop / Block
-
-- JDK/Maven適合、DB所有者許可、専用DB、network/runner、復元範囲のいずれかが不明な場合は停止します。
-- 共有DB、実credential、未承認fixture、production dataが必要な場合は停止します。
-- DB opt-inなしのskipをDB test成功として扱う必要がある場合は停止します。
-- cleanupが自分の追加分だけに限定できない場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-現在の公式Docsはrepository / organizationの **Agents secrets and variables** を案内し、旧GitHub Actions `copilot` environmentの値はrepository-level Agentsへ自動移行済みと説明します。このガイドは対象repositoryの移行済み・設定済み・資格ありを主張せず、secret値を読み、登録し、表示し、移動し、要求しません。
-このガイドはPostgreSQLのprovision、接続、test、cleanup完了を提供しません。
-
-対象revision、承認scope、予測、観測手段、実観測、unknown、blocked理由を分けます。runtimeBehaviorとeducationalEffectはnot-observedのままです。
+[← HC-035 のメインシナリオへ戻る](../README.md)

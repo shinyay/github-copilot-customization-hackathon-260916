@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "SYNTHETIC_EXTERNAL_NOTE",
+  "noteId": "order-import-boundary-22",
+  "upstreamTemplateRepository": "shinyay/github-copilot-customization-runtime-template",
+  "upstreamTemplateRevision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+  "workspaceSourcePath": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+  "workspaceHeadMatchRequired": false,
+  "symbol": "replay",
+  "upstreamStartLine": 84,
+  "upstreamEndLine": 90,
+  "quote": "Checks.state(claim.getPayloadHash().equals(hash), \"orderImport.keyConflict\",",
+  "upstreamTemplateSourceSha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+  "sourceAuthenticity": "not-established"
+}

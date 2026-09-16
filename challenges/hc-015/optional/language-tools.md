@@ -1,56 +1,76 @@
-# Javaの文字列検索と定義・参照を分ける準備
+# Java の文字列検索と定義・参照を分けるガイド
 
-## Guide scope
+[HC-015 本編へ戻る](../README.md)
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-015本編](../README.md)から任意で読む準備ガイドです。本編の三条件にLSPの利用を足すページではありません。実機未観測のまま、準備と停止境界を確認します。
+固定 query `allocate` について、文字列検索と Java 言語サービスによる定義・参照解決を分けて観察します。
+手動で全文を渡すことは言語サービスの再現ではありません。人の Go to Definition / Find All References と、
+Agent が Usages を使った結果も別々に扱います。
 
-`allocate`のliteral text検索と、JavaのGo to Definition / Find All Referencesは別の観測です。Usagesはreferences・implementations・definitionsを組み合わせて調べる経路です。人の一つのエディター操作と、AgentがUsagesを呼んだ記録も区別し、同じ位置集合が返ると決めません。手動で全文を渡しても言語サービスは再現されないため、「同等manual C」を発明しません。[index-exclusions](index-exclusions.md)のindex診断も別です。
+## 前提
 
-## Prerequisites
+- HC-015 本編とは別の workspace と新しい会話を使えること。
+- 公開upstream template revision
+  `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
+  を出所とするsourceを、templateから作成したruntime workspaceで読めること。
+- runtime workspaceのlocal `HEAD` をupstream revisionと比較しないこと。
+- 対応する Java 拡張が既に導入され、初期化状態と版を確認できること。
+- 同じ query、source、tabs、selection、model、利用可能な tools を保てること。
+- Copilot と教材 source の利用資格を確認できること。
 
-environment:
+Java 拡張や JDK がない場合、このガイドのために自動導入しません。
 
-- 対応するJava拡張が既に導入済みで、同じworkspaceの初期化状態を確認できること。
-- 本編とは別の診断として、同じquery・source・tabs・selection・model・toolsを固定できること。
+## 権限と安全
 
-entitlements:
+- エディター操作や Agent の Usages 利用は、環境所有者が許可した範囲に限定します。
+- source、既存拡張、User/Profile、workspace 設定を変更しません。
+- 追加 source が必要な場合は、その読取権限を別に確認します。
+- 候補 path は ACL の付与ではありません。
+- index 構築や設定変更を、このガイドへ追加しません。
 
-- 利用予定のVS Code Stable・GitHub Copilotと教材sourceへの通常の利用資格を確認できること。
+## 手順
 
-拡張の名前・版、Java言語機能の初期化表示、extension hostとworkspaceを記録する準備をします。入っていない拡張の自動installや、JDKの導入を案内の副作用にしません。前提の文章は導入済みの証明ではありません。
+1. IDE、Java 拡張、extension host、workspace、初期化表示を記録する。
+2. `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` を開く。
+3. `allocate` を通常の text search で探し、返された文字列位置を記録する。
+4. `OrderService.allocate` で Go to Definition を実行し、返された path・symbol・範囲を記録する。
+5. Find All References を実行し、要求と返却位置を記録する。
+6. 別承認の下で Agent の Usages を使う場合は、definitions / references / implementations の
+   どれが返ったかを、人のエディター操作と分けて記録する。
+7. 333–349 行の anchor だけで判断せず、必要な前後と参照先を読む。
+8. XML の `application-context.xml` から `spring/module-operations.xml` を辿る操作は、
+   Java 言語サービスの結果と分けて記録する。
 
-## Permissions / Safety
+## 観察すること
 
-このガイドは権限を付与せず、実機実行を開始しません。
+- text search の query、対象範囲、ヒット位置
+- Java 言語サービスの初期化状態
+- 定義、参照、実装として返された path・symbol・範囲
+- 人の操作と Agent tool の違い
+- 要求した位置、返された位置、実際に読んだ範囲
+- 追加読取が必要になった理由
 
-additionalApprovals:
+文字列ヒット数は呼出し回数や実行結果ではありません。定義へ移動できても、Spring の実 proxy や
+実 transaction、Java・DB の動作を確認したことにはなりません。
 
-- 人のエディター操作とAgentのUsages利用は区別し、実機操作・LLM利用の対象を環境所有者が別途承認すること。
+## 停止条件
 
-source、既存拡張、User/Profile、workspace設定は変更しません。別承認の診断でも読み候補は本編と同じ固定sourceに限定して説明し、追加で必要な参照先の読取り権限を別に確認します。候補pathはACLの付与ではありません。
+- Java 拡張がない、初期化が完了しない、対象言語に対応していない。
+- 返却範囲や tool の種類を確認できない。
+- source、設定、拡張、index を変更する必要がある。
+- 別 source の読取権限が不明。
 
-## Runtime capabilities
+未観察の定義・参照位置を空配列や 0 件で補わず、確認不能として停止してください。
+停止後も、HC-015 本編は text/file search で確認できる範囲を続けられます。
 
-| capability | status | reason |
-|---|---|---|
-| java-language-service | not-checked | Java言語サービスの初期化、定義・参照の返却範囲とAgentからの利用は未確認です。 |
+## 終了時の扱い
 
-Runtime readinessはnot-checkedです。guide出力や静的fixtureの検査成功は、language serviceのreadyではありません。
+このガイドの結果は、特定の IDE、Java 拡張、版、初期化状態に限られます。
+静的な位置解決を、実行時の呼出し、transaction、教育効果へ広げないでください。
 
-固定queryは`allocate`、symbolは`OrderService.allocate`、sourceは`wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`です。333–349行の要求、返却された位置、実際に読んだ範囲を分ける計画を立てます。XML側では`application-context.xml`のimportから`spring/module-operations.xml`のbean定義へ辿る読解と、言語サービスによるJavaの位置解決を混ぜません。
+参考:
 
-## Stop / Block
+- [Workspace context](https://code.visualstudio.com/docs/agents/reference/workspace-context)
+- [Tools in VS Code](https://code.visualstudio.com/docs/agents/run/tools)
 
-- Java拡張が未導入なら自動installせず、unsupportedまたは未実施として止めます。
-- 初期化中、未対応、返却範囲不明なら未観測のまま止め、参照0件へ補完しません。
-- 別の設定変更、index構築、source編集が必要なら本編へ混ぜず、別承認まで止めます。
-
-`languageService: pending`に`resolvedLocations: []`を付けるのは、未知をゼロへ変える誤記です。未観測はnullと理由で残します。停止後は任意未実施でよく、言語機能が未対応でも本編の同じtext/file searchが使える範囲は別に扱えます。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-guideを読んだ記録、実エディターでの操作、実Agent tool callを別にします。観測前の値をfixtureから補いません。Nodeの`node-literal-scan`はLSP解決ではなく、文字列の位置は実呼出し回数でもありません。Go to Definitionが使えても、Spring実proxy・実transaction・Java/DB実行や教育効果を確認したことにはなりません。
-
-一次資料: [Workspace context](https://code.visualstudio.com/docs/agents/reference/workspace-context)（取得確認日: **2026-09-15**）。補足: [Tools in VS Code](https://code.visualstudio.com/docs/agents/run/tools)。これは文書確認であり、実UX・LSP・Agent利用の観測ではありません。このページは実機の可用性を認定しません。別承認の観測を行った場合も本編の三条件やRuntime bundleと混同せず、版・時点・要求範囲・返却範囲・未観測を分けて記録します。
+[HC-015 本編へ戻る](../README.md)

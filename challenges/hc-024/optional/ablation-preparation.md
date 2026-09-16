@@ -1,55 +1,52 @@
-# 四機構ablationの準備境界
+# 四機構を一つずつ外す
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-024本編](../README.md)のInstructions×Skill四セルとは別に、Instructions / Skill / Custom Agent / MCPのfull構成から一つずつ外す比較を準備するガイドです。
+[HC-024 のメインシナリオ](../README.md)は Instructions と Skill の2要因を扱います。この補助ガイドでは、Instructions / Skill / Custom Agent / MCP の full 構成から1つずつ外し、どの構成要素が観察結果に関係したかを整理します。
 
-五行はfullと各一除去であり、全16組合せではありません。本編PackはAgent/MCP条件や実行支援を提供しません。
+調べるのは full と4つの一要素除去、合計5行です。全16組合せを網羅する設計ではありません。
 
-## Prerequisites
+## 前提
 
-environment:
+- メインシナリオの固定 source、合成運用メモ、request、評価観点を理解している。
+- Custom Agent と MCP を利用できる、許可済みの使い捨て検証環境がある。
+- 同じ model、実効 tools、source、メモ全文、request を各行でそろえられる。
+- Agent 選択、local server 起動、server trust、resource 添付を個別に承認できる。
 
-- 対象Stable Local、独立workspace、同一source・operations note・requestを確認できること。
+## 権限と安全
 
-entitlements:
+- このガイド自体は権限を付与しません。
+- MCP は承認済みの read-only resource だけを対象にします。
+- Agent の tool 宣言を実効 tools や OS 権限と同一視しません。
+- 書込み、terminal、外部送信、通常 profile の変更は追加しません。
+- MCP を外す行でも、同じ運用メモ全文を通常 file として渡し、情報量をそろえます。
+- この教材 repository には active な Agent / MCP 設定を作りません。
 
-- 対象model、Custom Agent、承認済みread-only resourceの利用資格と組織policyを確認できること。
+## 手順
 
-additionalApprovals:
+1. full 構成の I、Skill、Agent role、MCP resource を固定します。
+2. 次の5行を作ります: full、without-instructions、without-skill、without-agent、without-mcp。
+3. 各行で同じ source、メモ、request、model、実効 tools、評価観点を使います。
+4. without-mcp では、MCP が返す予定だったメモと同じ全文を file として提供します。
+5. presence、discovery、loading、resource 取得、usage、output effect を別々に記録します。
+6. 一度に複数要素が変わった行は比較対象から分けます。
 
-- Agent選択、local server起動、server trust、resource添付、各runの停止・cleanupを個別に別途承認すること。
+## 観察すること
 
-## Permissions / Safety
+- Agent が選択されたことと、その指示・tools が実際に使われたこと。
+- resource を添付したことと、model が tool を選び call したこと。
+- MCP 経由と file 経由で情報量が同じか。
+- full から1要素を外したときの差が、事前評価観点で説明できるか。
+- 未観測や未利用を `false` や成功に置き換えていないか。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+5行だけから、未実施の組合せ全体や一般的な因果関係を主張しません。
 
-additionalApprovals:
+## 停止条件
 
-- Agent選択、local server起動、server trust、resource添付、各runの停止・cleanupを個別に別途承認すること。
+- 未承認の server、trust、Agent 選択、resource 添付が必要になった。
+- without-mcp だけ情報量が変わった。
+- model や実効 tools をそろえられない。
+- resource 取得や tool call を観察できない。
+- 書込み、外部送信、追加権限が必要になった。
 
-MCPを外す行でも同じoperations note全文を通常fileとして残し、情報量を同じにします。resource添付はmodelがtoolを選びcallした証拠ではありません。
-
-Agentの宣言toolsを実効toolsやOS権限と呼ばず、書込み、terminal、外部送信、通常profile変更を追加しません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| four-component-ablation | not-checked | 本編Runtime v1 PackはAgent/MCP条件を提供せず、full＋各一除去の追加計画とconsumer検証が必要です。 |
-
-ガイドの準備表示はPack適用、server起動、Agent選択、resource添付を行いません。
-
-## Stop / Block
-
-- 未承認server、trust、Agent選択、resource添付が必要なら停止します。
-- MCPなしの行だけoperations noteの情報量が変わる場合は停止します。
-- 実効toolsまたはmodelを揃えられない場合は停止します。
-- resource添付を観測できない場合は停止します。
-- 追加Packが提供されていない場合は実行へ進みません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-full / without-instructions / without-skill / without-agent / without-mcpの準備、同じnote供給、実効controls、未観測を別に記録します。五行から未実施の組合せ全体、一般的な因果性、製品効果を主張しません。
+[HC-024 のメインシナリオへ戻る](../README.md#発展)

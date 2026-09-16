@@ -1,245 +1,148 @@
 # HC-021 競合するInstructionsの犯人を見つけよう
 
-## Challenge Story
+## Scenario
 
-チームは、2行だけの表示カードをCopilotに整形してもらおうとしています。ところが、規則ファイルを置いたはずなのに表示が変わらないこともあれば、同じ規則を2か所へ置いたあとに、どちらが使われたのか説明できなくなることもあります。
+2行だけの表示カードをGitHub Copilotに整形してもらいます。規則ファイルを置いたのに表示が変わらない場合もあれば、同じ規則を複数の場所へ置いたあと、どの本文が使われたか説明できなくなる場合もあります。
 
-このChallengeでは「期待どおりの答えを出すまで指示を増やす」のではなく、**配置、発見、本文の利用、出力の従い方を順番に切り分ける診断**を設計します。正しい場所へ置いたことだけで本文利用を断定せず、よい出力だけから指示の投入元を逆算しません。
-
-このページは単独で読めます。以前のLABやChallengeの設定、回答、個人用Instructionsは使いません。題材はすべて無害な合成表示カードで、Javaの業務仕様や秘密情報を扱いません。
+このシナリオでは、期待する答えが出るまで指示を増やすのではなく、**placement、discovery、content use、output compliance**を順番に切り分けます。素材はすべて無害な合成fixtureで、activeなInstructionsは作りません。
 
 ## この機能とは
 
-Instructionsは、Copilotへ作業上の読み方や出力上の規則を伝えるMarkdownです。ただし、次の4段階は別々の事実です。
+Instructionsは、Copilotへ作業上の読み方や出力規則を伝えるMarkdownです。ただし、次の4段階は別の事実です。
 
-1. **placement（配置）** — ファイルがどのpath・拡張子で保存されているか。
-2. **discovery（発見）** — clientがそのファイルを候補や参照元として認識したか。
-3. **content use（本文利用）** — 規則の本文が実際の会話へ供給されたと確認できたか。
-4. **output compliance（出力の従い方）** — 回答が規則どおりか、矛盾を指摘したか、別の形になったか。
+1. **placement（配置）** — ファイルがどのpath・名前・拡張子で保存されているか。
+2. **discovery（発見）** — clientが候補や参照元として認識したか。
+3. **content use（本文利用）** — 規則本文が実際の会話へ供給されたと確認できたか。
+4. **output compliance（出力準拠）** — 回答が規則へ従ったか、矛盾を指摘したか、別の形になったか。
 
-たとえば `.github/copilot-instructions.md.template` は配布には安全な不活性名ですが、通常のRepository Instructionsとして有効な名前ではありません。`notes/copilot-instructions.md` はMarkdownとして読めても、文書化された配置とは異なります。`.github/copilot-instructions.md` は文書化された配置ですが、保存だけで発見・本文利用・出力準拠まで証明するわけではありません。
+`*.instructions.md.template` は安全な不活性サンプル名であり、通常のInstructionsとして有効な名前ではありません。文書化されたpathへファイルが存在しても、それだけでdiscovery、content use、output complianceは証明されません。
 
-複数のInstructionsが利用される場合、本文は組み合わされ得ますが、ファイル名や保存順による一般的な優先順位は保証されません。このChallengeでは、同じ本文の重複と、一行だけ反対の本文を診断します。どちらの見出しが「勝つか」を当てる課題ではありません。
+複数のInstructionsが使われる場合、本文は組み合わされ得ますが、ファイル名や保存順による一般的な優先順位を推測しません。Instructionsはtool権限、OS権限、承認、アクセス制御も追加しません。
 
-Instructionsはtool権限、OS権限、承認、アクセス制御を追加しません。出典は [VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions)（文書確認日: 2026-09-15）です。文書を確認したことと、参加者環境での実発見・実投入は別です。
+参考: [VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions)
 
 ## 向いていること / 向いていないこと
 
 **向いていること**
 
-- 指示ファイルを置いたのに、どの段階で止まったか分からないとき。
-- 不活性な配布原稿、標準外の配置、有効な配置を同じ本文で比較するとき。
-- 同文重複と一行矛盾を、別々の問題として切り分けるとき。
-- 原因候補、反証、未観測、最小修正案を次の担当者へ渡すとき。
+- 指示ファイルを置いたのに、どの段階で止まったか分からない状況
+- 不活性名、標準外path、文書化されたpathを机上で比較する診断
+- 同文重複と一行矛盾の切り分け
+- 原因候補、反証、未観測、最小修正案の引き継ぎ
 
 **向いていないこと**
 
-- 特定の見出しを必ず出させるまで試行を繰り返すこと。
-- この小さなfixtureから、すべてのInstructions形式の優先順位を決めること。
-- 出力が似ていることだけで、本文が投入されたと断定すること。
-- 個人・home・組織の指示を削除し、「完全に無設定」と見せること。
-- Instructionsを権限や安全な実行の仕組みとして扱うこと。
+- 特定の見出しが出るまで指示を増やし続けること
+- 出力が似ているだけで本文利用を断定すること
+- 小さなfixtureから全Instructionsの優先順位を決めること
+- 個人、home、組織のInstructionsを削除して条件を整えること
+- activeなcustomizationをこのリポジトリへ作ること
 
-## Starter Kit
+## ゴール
 
-[Pack manifest](pack/manifest.json) は、次の固定素材をRuntimeへ不活性な `.template` として配置します。PackはactiveなInstructions、完成した設計、完成Evidenceを作りません。
+1. 4段階を混同しない診断順を作る。
+2. 同じpacket、依頼、規則本文を保った7つの静的caseを説明する。
+3. 同文重複と一行矛盾を別の問題として診断する。
+4. 観測できない項目を `not-observed` のまま残し、次の最小確認を提案する。
 
-`SYNTHETIC_TRAINING_ONLY` — source種別は `synthetic`、`sourcePaths` は空です。表示カード、依頼、規則、状況はこのChallenge用の合成教材であり、実アプリの仕様や実Copilotの観測結果ではありません。Runtime v1の固定515-file baselineとprovenance検査は残りますが、この課題ではJavaを読みません。基準sourceは `shinyay/code-to-doc-workshop-260910@398d7d1982a1402bcdba00d6c3ded67d8d338787`、515-file tree SHA-256は `c3cd74e0d65b1ae88a29a4392eb42f9d51ba2c671d111796aacc69fd9cc5b111` です。
+## 用意するもの
 
-予定PackはschemaVersion / challengeVersion / minimumTemplateVersionがすべて1、`allowedMutations: []`、condition strategyはseparate-repository、`branchSafe: false` です。
+- [リポジトリ共通の始め方](../../README.md#始め方)を終えた作業環境
+- Markdown / JSONを読めるエディター
+- `starter/` の次の素材
+  - [固定依頼](starter/request.txt.template)
+  - [固定2行の表示カード](starter/fixtures/packet.txt.template)
+  - [手動供給用の規則本文](starter/customizations/rules.md.template)
+  - [同文のscoped原稿](starter/customizations/variant-a.instructions.md.template)
+  - [一行だけ反対のscoped原稿](starter/customizations/variant-b.instructions.md.template)
+  - [静的case plan](starter/worksheets/case-plan.json.template)
+  - [診断設計票](starter/worksheets/design.md.template)
 
-全7条件へ、次の9個の不活性なpayloadを同じbytesで配る予定です。
+Copilotを使えない場合でも、静的診断だけで進められます。
 
-| payload leaf | 用途 |
-|---|---|
-| `brief.md.template` | 4段階の診断境界と安全条件 |
-| `request.txt.template` | 全条件で同じ固定依頼 |
-| `packet.txt.template` | 2行の固定表示カード |
-| `rules.md.template` | 見出しと箇条書き方法を示す同一規則 |
-| `variant-a.instructions.md.template` | 同文重複に使うscoped原稿 |
-| `variant-b.instructions.md.template` | metadataを保ち、見出し一行だけ反対にした原稿 |
-| `case-plan.json.template` | 条件・配置・空の観測欄。講師の結論は含めない |
-| `design.md.template` | 調査順、仮説、反証、最小修正の設計票 |
-| `evidence/comparison.md.template` | 完成回答を含まないEvidenceひな型 |
+## 準備
 
-Pack適用後の配置先は `.hackathon/challenge/hc-021/starter/` です。PackはactiveなInstructions、完成した設計、完成Evidenceを作りません。
-
-固定packetは全条件で次の2行です。
+固定packetは次のexact 2行です。
 
 ```text
 青いノートを机に置きます。
 白いカードを隣に置きます。
 ```
 
-固定taskは、この2行を文字と順序を変えずに表示し、業務分析、source引用、ファイル変更、tool・command・別Agent・network実行をしない依頼です。`participant/hc-021/display.txt` を対象にし、競合条件だけ別packetへ差し替えません。
+固定依頼は、2行の文字と順序を変えずに表示し、規則の出所を直接確認できる場合だけ分けて説明し、内部状態は `not-observed` とする内容です。業務分析、source引用、ファイル変更、tool、command、別Agent、network実行を禁止しています。
 
-exact condition IDsは次の7件です。
+規則本文は次の2行です。
 
-`baseline`, `inert`, `misplaced`, `valid`, `manual`, `duplicate`, `conflict`
-
-## Open Question
-
-**表示が想定と違うとき、どの順番で何を調べれば、変更を最小限にして原因候補を減らせるでしょうか。**
-
-最初にpathを見る案、clientの参照表示から見る案、手動全文との比較を先に置く案など、複数の進め方があります。実投入を観測できない環境でも、配置不一致を根拠付きで説明し、次の確認を小さく設計できます。
-
-「有効なpathへ全部移す」「矛盾する方を削除する」を最初から正解にしません。観測できること、まだ観測できないこと、修正で変わる要因を説明できる問いにしてください。
-
-## Design Time
-
-比較用の回答を見る前に、次を `participant/hc-021/design.md` へ決めます。
-
-1. placement → discovery → content use → output complianceをどの順番で確認するか。
-2. 各段階で使う直接Evidenceと、推測に留める項目。
-3. `baseline` から `valid` までの配置診断と、`duplicate` から `conflict` までの競合診断を別々に読む方法。
-4. `valid` と `manual` へ渡す規則本文を同一にする方法。manualでは要約やvalidの回答を使いません。
-5. duplicateとconflictで同じにするfrontmatter、`applyTo`、path、依頼、packetと、反対にする一行。
-6. 比較不能にする条件。例: model、tools、外部指示、packet、本文bytes、workspace rootが揃わない。
-7. 最小修正案と再確認手順。今回の測定runを変更せず、修正後の試行は別runにします。
-
-原稿はUTF-8、BOMなし、LFで凍結し、SHA-256を記録します。全variantがPack内に存在することは、全variantを会話へ送ってよい意味ではありません。選ばれない原稿、case-plan、他条件の出力をChatへ混ぜません。
-
-## Build
-
-### Hub checkoutで統合状態を確認する
-
-次のコマンドは、**Hub checkout** でconditionごとの計画とPackを確認します。
-
-```powershell
-$Runs = [ordered]@{
-  baseline  = 'hc021-baseline-01'
-  inert     = 'hc021-inert-01'
-  misplaced = 'hc021-misplaced-01'
-  valid     = 'hc021-valid-01'
-  manual    = 'hc021-manual-01'
-  duplicate = 'hc021-duplicate-01'
-  conflict  = 'hc021-conflict-01'
-}
-foreach ($Condition in $Runs.Keys) {
-  node .\scripts\plan-run.mjs --dry-run --challenge HC-021 --condition $Condition --team team-sora --run $Runs[$Condition]
-}
-node .\scripts\build-pack.mjs --challenge HC-021 --output .runtime/packs
+```text
+表示カードの見出しは「案内」にしてください。
+固定メッセージは一行ずつ箇条書きで表示してください。
 ```
 
-dry-runは計画表示だけで、repository作成、Pack適用、Instructions有効化を行いません。build済み出力は `.runtime\packs\hc-021-v1` ディレクトリです。既存出力を削除・上書きして作り直しません。
+`variant-a.instructions.md.template` はこの本文に、対象を `starter/fixtures/packet.txt.template` へ限定するfrontmatterを付けた不活性原稿です。`variant-b.instructions.md.template` はfrontmatterと箇条書き規則を同じに保ち、見出しだけを「確認」へ変えています。
 
-### conditionごとに独立したRuntime checkoutを用意する
+すべてUTF-8の教材として読み、`.template` を外したり `.github/` へcopyしたりしないでください。
 
-[Getting Started](../../docs/getting-started.md) に従い、Runtime templateから**7つの新しい非公開repository**を用意します。各conditionで別repository、別の名前付きbranch、fresh workspace、fresh conversation、可能なら専用profileを使います。repositoryやprofileだけでhome、User、組織、Memoryが消えたとはしません。
+## 試してみる
 
-各Runtime checkoutで、対応するconditionを一度だけ適用します。
+1. [静的case plan](starter/worksheets/case-plan.json.template)を開き、各caseで変わる要因を一つずつ確認します。
+2. 次のcaseをplacementの事実と仮説に分けます。
 
-```powershell
-$Pack = 'C:\work\hub\.runtime\packs\hc-021-v1'
-$Condition = 'baseline'
-$RunIds = @{
-  baseline  = 'hc021-baseline-01'
-  inert     = 'hc021-inert-01'
-  misplaced = 'hc021-misplaced-01'
-  valid     = 'hc021-valid-01'
-  manual    = 'hc021-manual-01'
-  duplicate = 'hc021-duplicate-01'
-  conflict  = 'hc021-conflict-01'
-}
-$RunId = $RunIds[$Condition]
-if (-not $RunId) { throw 'HC-021の固定conditionを選んでください' }
-git status --short --branch
-git switch -c "hc-021-$Condition-01"
-npm run verify
-node .\.hackathon\scripts\apply-pack.mjs $Pack --team team-sora --condition $Condition --run-id $RunId
-node .\.hackathon\scripts\verify-run.mjs $Pack --stage in-progress
-```
-
-`$Condition` とbranch名はそのrepositoryの1条件に対応させ、Hub dry-runの `--run` とRuntime applyの `--run-id` には同じ `$RunId` を使います。apply後にbranchを移動せず、`.hackathon/run.json` を手編集しません。既存ファイル、既存run、dirty state、template version不一致があれば停止します。
-
-参加者が新規作成できる予定pathは次のとおりです。
-
-| path | conditions |
-|---|---|
-| `participant/hc-021/display.txt` | 全7条件 |
-| `participant/hc-021/design.md` | 全7条件 |
-| `participant/hc-021/repair-plan.md` | 全7条件 |
-| `.github/copilot-instructions.md.template` | `inert` |
-| `notes/copilot-instructions.md` | `misplaced` |
-| `.github/copilot-instructions.md` | `valid`, `duplicate`, `conflict` |
-| `.github/instructions/hc021-display.instructions.md` | `duplicate`, `conflict` |
-
-`baseline` は規則を配置・手動供給しません。`manual` はactiveファイルを作らず、凍結した `rules.md.template` の本文全文を固定taskの後へ貼ります。`duplicate` はvalidの規則と同本文のscoped原稿、`conflict` は追加側の見出し一行だけを反対にします。
-
-`repair-plan.md` は測定中のファイルを変更する実行指示ではありません。修正を試す場合は新しい比較group・全条件・run IDを用意します。Java、既存test、Runtime設定、User/home/組織設定は変更しません。
-
-## Compare
-
-このページでは `baseline` を **Baseline**、残る6条件を目的の異なる **Customized** 診断条件と呼びます。Customizedが常に改善するという意味ではありません。
-
-| condition | 規則の供給 | 主な比較 |
+| case | 規則の供給を想定する方法 | 診断の焦点 |
 |---|---|---|
-| `baseline` | 配置なし、手動供給なし | 十分な固定taskだけの基準 |
-| `inert` | 同じ規則を `.github/copilot-instructions.md.template` に保存 | Baselineとの配置差 |
-| `misplaced` | 同じ規則を `notes/copilot-instructions.md` に保存 | Baselineとの配置差 |
-| `valid` | 同じ規則を `.github/copilot-instructions.md` に保存 | Baselineとの文書化path差、競合群のsingle |
-| `manual` | active化せず同じ規則全文を手動供給 | `valid` と同本文・別供給経路 |
-| `duplicate` | `valid` + 同じ本文のscoped原稿 | `valid` との同文重複差 |
-| `conflict` | `duplicate` の追加側だけ見出し一行を反対にする | `duplicate` との一行矛盾差 |
+| no-instructions | 配置なし、手動供給なし | 固定依頼だけの出力 |
+| inactive-template | `.template` の不活性素材 | ファイル存在とactive化の違い |
+| nonstandard-path | `notes/copilot-instructions.md` を仮定 | Markdownであることと文書化pathの違い |
+| documented-path | `.github/copilot-instructions.md` を仮定 | 正しいplacementだけでは残る未知 |
+| manual-body | 規則本文を全文手動供給 | discoveryを介さないcontent use |
+| duplicate-text | base本文 + 同文のvariant Aを仮定 | 同文重複 |
+| conflicting-text | base本文 + variant Bを仮定 | 見出し一行だけの矛盾 |
 
-全7条件でpacket、固定task、全variantの配布集合、版、harness、指定・実効model、effort、tools、承認をできるだけ揃えます。保存hashが同じでも、実際の投入本文が同じとは限りません。候補表示が同じでも、本文利用や出力は別に記録します。
+`notes/...` と `.github/...` は診断用の仮想pathです。このリポジトリへ実ファイルを作りません。
 
-`baseline` → `valid` の出力差と、`duplicate` → `conflict` の診断を一つの改善率へ合算しません。`valid` → `manual` は内容と供給経路、`valid` → `duplicate` は同文追加、`duplicate` → `conflict` は一行差です。比較要因が混ざったrunは `incomparable` とします。
+3. [variant A](starter/customizations/variant-a.instructions.md.template)と[variant B](starter/customizations/variant-b.instructions.md.template)を比較します。
+   - `description` と `applyTo` は同じ
+   - 箇条書き規則は同じ
+   - 見出しの「案内」 / 「確認」だけが異なる
+4. [診断設計票](starter/worksheets/design.md.template)へ、各段階の直接観察、原因候補、反証、停止条件を書きます。
+5. 各caseで次を別々に記録します。
+   - placement: 実在するstarter pathと、仮想pathの区別
+   - discovery: clientの表示がなければ `not-observed`
+   - content use: 手動で全文を渡した場合以外は推測しない
+   - output compliance: 実際に応答を得た場合だけ記録
+6. 原因を一つへ決め打ちせず、次に一要因だけ変える最小確認を提案します。
 
-結果は `improved` に限りません。`equal`、`worse`、`incomparable`、`blocked`、`unsupported`、追加不要、投入未観測も有効です。
+よい出力からdiscoveryやcontent useを逆算せず、悪い出力だけでplacement不良と断定しないことがポイントです。
 
-## Evidence
+## 任意: 比較する
 
-各Runtimeで `.hackathon/evidence/hc-021/comparison.md` を参加者が作ります。Packが完成Evidenceを作ることはありません。必須見出しは次の9件です。
+新しい会話を2つ使い、同じmodelと設定で短い手動確認を行います。
 
-`Fixed task`, `Environment`, `Condition`, `Materials`, `Observations`, `Design rationale`, `Comparison set`, `Outcome`, `Limits`
+1. [固定依頼](starter/request.txt.template)の後に固定packetだけを貼る。
+2. 別の会話で、固定依頼、[規則本文](starter/customizations/rules.md.template)、固定packetの順に全文を貼る。
 
-特に `Observations` では、次を別々に残します。
+比較するのはoutput complianceだけです。2では手動供給した本文を確認できますが、repositoryからのdiscoveryは確認していません。出力差がない、悪化する、比較不能も有効な観察です。
 
-- placement: 実在path、拡張子、raw SHA-256、active / inertの区別。
-- discovery: clientが示した候補・参照元。予測だけなら予測と書く。
-- content use: 実際に供給された本文を確認できた範囲。確認不能なら `not-observed`。
-- manual delivery: 貼った規則全文、body hash、固定taskとの順序。
-- output compliance: 初回の未修正出力、見出し、箇条書き、矛盾の指摘、逸脱。
-- diagnosis: 原因候補、反証、残るunknown、最小修正案。
-- comparison identity: condition、Runtime repository、branch、run ID、Hub commit、Pack hash、比較相手のbundle参照。
+## 確認ポイント
 
-よい出力から発見や本文投入を逆算しません。実機を使えない場合、discovery、content use、outputはnull / `not-observed` のままです。Runtime exporterの `runtimeBehavior` と `educationalEffect` は静的検査後も `not-observed` を維持します。
+- placement、discovery、content use、output complianceを分けたか
+- 7つのcaseでpacket、依頼、規則本文の関係を保ったか
+- manualでは要約ではなく規則全文を使ったか
+- 同文重複と一行矛盾を別に説明したか
+- active pathの存在だけで本文利用を断定していないか
+- 特定の見出しが常に「勝つ」と一般化していないか
+- 未観測を `not-observed` のまま残したか
 
-## Submit
+## 発展
 
-各Runtime checkoutで、自分のconditionのEvidenceと許可された成果物だけを完成させます。
+- 4段階、直接観察、停止条件、最小修正を一枚にまとめる。
+- 既存caseを変更せず、「scopeが曖昧」「対象harnessが異なる」など一境界だけを変えた不活性 `*.template` 案を設計する。
+- 実環境で確認する必要がある場合は、まず一要因だけを変える隔離された試行を計画し、このリポジトリの素材はactive化しない。
 
-```powershell
-node .\.hackathon\scripts\verify-run.mjs $Pack --stage submitted
-node .\.hackathon\scripts\export-submission.mjs $Pack
-```
+## 制約・Fallback・安全
 
-検査器を変更したり許可pathを広げたりせず、失敗理由を確認します。各conditionのRuntime Pull Requestへ、そのconditionの配置、設計、repair plan、Evidenceを含めます。別conditionを同じbranchで実施済みと書きません。
-
-その後、[共通Challenge Result Issue Form](../../.github/ISSUE_TEMPLATE/challenge-result.yml) へ7条件のRuntime URL / PR / run対応、調査順、最小修正、比較結果、failure、unknownをまとめます。[Submission Guide](../../docs/submission-guide.md) に従い、secret、個人情報、local絶対path、private code、raw logを転載しません。
-
-## Judging
-
-- placement、discovery、content use、output complianceを混同していないか。
-- 全7条件を同じpacket・task・規則本文の関係で設計したか。
-- manualへ要約ではなく、凍結した規則全文を渡したか。
-- Baseline→validとduplicate→conflictを別の診断として説明したか。
-- 同文重複と一行矛盾のraw bytes・metadata差を確認したか。
-- 観測できない層をnull / `not-observed` のまま残したか。
-- 修正案が小さく、何を再確認するか説明できるか。
-- 特定の見出しの勝利やInstructionsの数を採点基準にしていないか。
-
-## Bonus Mission
-
-今回の固定比較を変更せず、次の担当者が同じ診断を再現できる「一枚の診断票」を設計します。各段階のEvidence、停止条件、最小修正、別runでの再確認を短く対応付けてください。
-
-Bonusは新しいconditionでも、未作成の任意ガイドでもありません。実際に修正を試す場合は、元7条件を上書きせず別の比較groupとして記録します。
-
-## Support / Fallback
-
-StableのLocal AgentやInstructions参照表示を利用できない場合でも、7条件のpath・原稿・本文差を机上で診断できます。その場合、候補表示、本文投入、出力は未観測であり、active pathを置いたことを実機成功と呼びません。
-
-HC-021には今回のoptional routeはありません。Previewの管理UI、親repository探索、User/home/組織Instructions、別形式の優先順位確認を追加しません。これらが必要になった時点で本編を止めます。
-
-条件分離ができない場合は `incomparable`、Runtimeや権限で止まる場合は `blocked`、対象機能がない場合は `unsupported` とします。自分の追加分だけを整理し、既存設定、他人のファイル、広いdirectoryを削除・reset・stashしません。
+- 素材は `SYNTHETIC_TRAINING_ONLY` の合成表示カードです。実アプリの仕様、private code、秘密を扱いません。
+- `starter/customizations/` のサンプルはすべて不活性な `*.template` のまま保ちます。
+- `.github/copilot-instructions.md` や `.github/instructions/*.instructions.md` をこのリポジトリへ作りません。
+- Instructionsは権限や安全な実行を追加しません。固定依頼のtool / command / network禁止を守ります。
+- Copilotや参照表示を利用できなければ、placementと本文差の静的診断まで行い、discovery、content use、output complianceは `not-observed` とします。
+- 条件を揃えるために既存設定、個人・home・組織Instructions、他人のファイルを削除・reset・stashしません。

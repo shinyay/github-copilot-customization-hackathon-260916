@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "caseId": "case-01",
+  "taskId": "case-01",
+  "title": "毎週のrepository全体の根拠整理",
+  "targetHarness": "local-agent",
+  "scope": "workspace",
+  "sourcePaths": [
+    "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
+  ],
+  "situation": "同じチームが週に数回、固定アプリを読み、事実・推論・未確認を分けた説明を作る。対象fileは毎回変わる。",
+  "resources": [
+    "固定source",
+    "共通の読み取りbrief"
+  ],
+  "constraints": [
+    "業務上の答えを常設しない。",
+    "User/home/組織設定は変更しない。",
+    "少人数のrepository内で所有者が原稿を保守できる。"
+  ]
+}

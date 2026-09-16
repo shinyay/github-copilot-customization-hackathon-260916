@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "wholesale-evidence",
+  "version": "1.0.0",
+  "description": "受注取込の読解手順を一つの Skill として配る不活性なサンプル。"
+}

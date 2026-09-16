@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "HC023_FIXED_SELECTION_MATERIALS",
+  "upstreamTemplateRepository": "shinyay/github-copilot-customization-runtime-template",
+  "upstreamTemplateRevision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+  "workspaceSourceMode": "read-listed-paths-from-current-runtime-workspace",
+  "workspaceHeadMatchRequired": false,
+  "purpose": "同じ卸売アプリの読み取り分析に必要な最小の準備を、trigger/scope/resources/permissions/maintenanceで選ぶ。",
+  "allowedOperations": [
+    "read-fixed-source",
+    "inspect-inert-materials",
+    "draft-only"
+  ],
+  "forbiddenOperations": [
+    "edit-application",
+    "modify-user-settings",
+    "organization-write",
+    "start-external-service",
+    "install-extension",
+    "publish",
+    "push",
+    "checkout-upstream-revision",
+    "reset-workspace-history"
+  ]
+}

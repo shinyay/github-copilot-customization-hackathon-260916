@@ -1,0 +1,21 @@
+# repo-a current snapshot
+
+SYNTHETIC_TRAINING_ONLY
+
+Revision: `training-r2`
+
+## docs/verify.md
+
+The repository verification command is:
+
+```text
+npm run verify
+```
+
+Run it from the repository root. Record an integer process status and any spawn error or signal separately.
+
+## docs/output.md
+
+The challenge index is maintained in the static file `challenges/README.md`.
+
+This snapshot contains no `docs/release-check.md`.

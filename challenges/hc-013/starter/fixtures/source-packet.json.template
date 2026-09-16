@@ -1,0 +1,111 @@
+{
+  "id": "P1",
+  "fixtureLabel": "LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACE",
+  "revision": "hc013-materials-v2",
+  "title": "TRAINING-IMPORT-CONTEXT",
+  "sourceBaseline": {
+    "kind": "upstream-template-revision",
+    "repository": "shinyay/github-copilot-customization-runtime-template",
+    "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+    "sourceLocation": "runtime-workspace"
+  },
+  "textContent": {
+    "id": "TRAINING-SPACE-NOTE-013",
+    "label": "SYNTHETIC_TRAINING_ONLY",
+    "text": "架空の照合票では external_key と正規化後の payload が一致する再送と、内容を変えた再送を別に扱います。研修上の担当ロール名は「再送確認係」、照合票の識別語は「白樺-13」です。この文章は実在するチームの規約・障害記録・設計決定ではありません。"
+  },
+  "sourceReferences": [
+    {
+      "id": "B1",
+      "sourceKind": "upstream-template-source",
+      "sourcePath": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+      "referenceType": "upstream-template-revision",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "scope": "whole-file",
+      "originalSha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+      "originalBytes": 5047,
+      "originalLineCount": 97,
+      "display": {
+        "policyId": "hc013-full-display-v1",
+        "scope": "whole-file-with-explicit-redactions",
+        "sha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+        "bytes": 5047,
+        "lineCount": 97,
+        "originalByteExact": true,
+        "redactedLines": []
+      },
+      "use": "read-source-definition",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed",
+      "spaceRead": "not-observed"
+    },
+    {
+      "id": "B2",
+      "sourceKind": "upstream-template-source",
+      "sourcePath": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+      "referenceType": "upstream-template-revision",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "scope": "whole-file",
+      "originalSha256": "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986",
+      "originalBytes": 5408,
+      "originalLineCount": 126,
+      "display": {
+        "policyId": "hc013-full-display-v1",
+        "scope": "whole-file-with-explicit-redactions",
+        "sha256": "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986",
+        "bytes": 5408,
+        "lineCount": 126,
+        "originalByteExact": true,
+        "redactedLines": []
+      },
+      "use": "read-source-definition",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed",
+      "spaceRead": "not-observed"
+    },
+    {
+      "id": "B3",
+      "sourceKind": "upstream-template-source",
+      "sourcePath": "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java",
+      "referenceType": "upstream-template-revision",
+      "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+      "scope": "whole-file",
+      "originalSha256": "4512773a9a39ba25e61b1c1b1d0d9150d8004bfe43fb94617fb1bbe1c4a2ee63",
+      "originalBytes": 27073,
+      "originalLineCount": 467,
+      "display": {
+        "policyId": "hc013-full-display-v1",
+        "scope": "whole-file-with-explicit-redactions",
+        "sha256": "a9db7fae855db85ce87d0fc2e83c69d6d6f1862fdc95b75669a17714a6eab32a",
+        "bytes": 27214,
+        "lineCount": 467,
+        "originalByteExact": false,
+        "redactedLines": [86, 87, 237, 242, 431, 437]
+      },
+      "use": "read-test-definition-do-not-execute-java-or-db",
+      "spaceAccess": "not-observed",
+      "sourceAccess": "not-observed",
+      "spaceRead": "not-observed"
+    }
+  ],
+  "deliveryPolicy": {
+    "id": "hc013-full-display-v1",
+    "label": "SANITIZED_FULL_SOURCE_DISPLAY",
+    "sourceScope": "whole-file",
+    "displayScope": "whole-file-with-explicit-redactions",
+    "sourceFilesChanged": false,
+    "sameDisplayForEveryMethod": true,
+    "removedContent": "entire test authentication statements on the six declared B3 lines",
+    "recordedDetails": "line numbers, marker, counts, original whole-source hash and display whole-text hash"
+  },
+  "readingTask": "同じ B1/B2/B3 の安全な表示全文を読み、必要なら固定 source の同じ path へ戻ってください。除去した認証値や原文を回答・資料へ転記せず、コードの完成済み説明や提供されていない歴史的理由を作らないでください。",
+  "actualHistoricalDecision": "NOT_PROVIDED",
+  "limitations": [
+    "これはローカル教材であり、Copilot Space の応答を模倣したものではない。",
+    "ローカル source を読めても、Space 経由の取得や ACL を確認したことにはならない。",
+    "テスト定義の静的読解は Java または DB の実行結果ではない。",
+    "originalSha256/originalBytes は変換前の原本、display の hash/bytes は共有する表示全文を表す。",
+    "B3 の六行全体を説明マーカーへ置き換え、ほかの行と行数を保持する。",
+    "認証値、除去行の原文、個々の値の hash を資料へ保存しない。"
+  ]
+}

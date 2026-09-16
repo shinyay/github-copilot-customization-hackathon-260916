@@ -1,0 +1,21 @@
+# HC-016 design
+
+## Reading paths
+
+source から読む経路、固定 fact を手動供給する経路、将来 Memory から参照する経路の違いを記録します。三つ目はこの演習で実行しません。
+
+## Selection and scope
+
+残す候補、残さない候補、保留する候補と、Repository / User / Session などの scope 判断を記録します。保存ゼロも選べます。
+
+## Provenance and freshness
+
+source path、symbol、確認した版、引用範囲、再確認 trigger、陳腐化条件を記録します。
+
+## Maintenance and stop
+
+更新、撤回、対象外メモを保持する担当と手順、全消去を使わず停止する条件を記録します。
+
+## Fixed inputs
+
+固定 fact、4 枚の cards、固定依頼、source map のどれを使ったか記録します。入力を変えた比較結果は混ぜません。

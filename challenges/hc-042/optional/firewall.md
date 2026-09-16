@@ -1,48 +1,52 @@
-# Firewall経路観測の準備境界
+# Firewall経路を限定観測する
 
-## Guide scope
+[HC-042本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-042本編](../README.md)とは別に、Bash、MCP、setupの経路差を将来観測する前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、通信成功、安全性、認証、認可、live success、本編改善、Runtime completionを意味しません。
+Bash、MCP、setupの経路ごとに、どのnetwork policyが関係し、何を実際に観察できたかを分けます。Bash firewallの対象外を、安全・到達可能・認可済みと解釈しません。
 
-## Prerequisites
+## 前提
 
-environment:
+- 承認済みの専用環境がある。
+- Bash/MCP/setupの対象経路、現行policy、許可先を特定できる。
+- network policyを確認できる資格がある。
+- 回数、時間、ログ、停止、復元の上限が決まっている。
 
-- 承認済みの専用環境、Bash / MCP / setupの対象経路、現行firewall方針、許可先、観測上限、復元責任者を確認できること。
+## 権限と安全
 
-entitlements:
+- 無害な限定経路、許可先、観察回数について個別の許可を得る。
+- firewallの無効化・迂回、任意endpoint probe、許可先拡大を行わない。
+- credentialや業務データを送信しない。
+- ログには必要最小限のroute/resultだけを残す。
 
-- 対象Cloud / review環境、network policy、MCPまたはsetup経路を利用・管理する資格と組織policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. route、process origin、対象policy、許可先、ownerを記録する。
+2. Bash firewallの対象内/対象外を資料で確認する。
+3. 承認済みの無害な経路だけを一回観察する。
+4. network結果、authentication、authorization、output useを別々に記録する。
+5. MCP/setupがBash制御の対象外でも、成功や安全を推定しない。
+6. 自分の変更がある場合だけ復元する。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+| 項目 | 記録 |
+|---|---|
+| route | Bash / MCP / setup |
+| policy | 対象scope、owner、許可先 |
+| transport | 到達、拒否、timeout、unknown |
+| identity | authentication |
+| access | authorization |
+| use | returned outputと実利用 |
 
-- 無害な限定経路の観測、許可先、回数・時間上限、ログ範囲、停止、復元を操作ごとに別承認すること。
+## 停止条件
 
-firewallの無効化、迂回、任意endpoint probe、秘密送信、許可先の拡大を行いません。
+- firewall無効化または迂回が必要。
+- route、許可先、上限、ログ範囲が不明。
+- 停止・復元担当が不明。
+- 対象外であることを成功・安全の証拠にする必要がある。
 
-## Runtime capabilities
+## 本編へ戻る
 
-| capability | status | reason |
-|---|---|---|
-| network-route-observation | not-checked | 本編とRuntime v1はBash / MCP / setup経路の実通信、firewall適用、許可先、認証、認可、復元を観測しません。 |
-
-Bash firewallの対象外を、接続成功、無制限許可、安全、認可済みへ読み替えません。
-
-## Stop / Block
-
-- firewallの無効化または迂回が必要な場合は停止します。
-- 許可経路、許可先、回数・時間上限、ログ範囲のいずれかが不明な場合は停止します。
-- 復元責任者または停止手順が不明な場合は停止します。
-- MCP / setup対象外を成功または安全の証拠にする必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-route、Bash firewall scope、network結果、認証、認可、出力利用、復元、unknown、blocked理由を分けます。runtimeBehaviorとeducationalEffectは観測した範囲を超えて主張しません。
+結果は [HC-042のroute map](../README.md#試してみる) に戻し、network以外の層を自動的に成功扱いしないでください。

@@ -1,0 +1,5 @@
+SYNTHETIC_TRAINING_ONLY
+
+Use the supplied policy snapshot and review events to assess A01 through A07. For each task, record the assessment, formal events, actor/head/stale/duplicate facts, per-event eligibility, distinct count, all-files result, required count, effective policy unknowns, other merge gates, supported claim, and escalation owner.
+
+Freeze an approval-check process that keeps event eligibility and aggregate rollups separate before classifying the packets. Do not create a vote, change settings, request review, or merge.

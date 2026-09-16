@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "fixtureLabel": "FIXED_HC024_BATCH_IMPORT_CONTEXT",
+  "upstreamTemplateRepository": "shinyay/github-copilot-customization-runtime-template",
+  "upstreamTemplateRevision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+  "workspaceSourceMode": "read-listed-paths-from-current-runtime-workspace",
+  "workspaceHeadMatchRequired": false,
+  "sources": [
+    {
+      "path": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+      "upstreamTemplateSha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2"
+    },
+    {
+      "path": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
+      "upstreamTemplateSha256": "6fd51123ea20d737192c90ebe9d06bc9cd893e1f352ba31d036c00350237f986"
+    },
+    {
+      "path": "wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java",
+      "upstreamTemplateSha256": "4512773a9a39ba25e61b1c1b1d0d9150d8004bfe43fb94617fb1bbe1c4a2ee63"
+    }
+  ],
+  "note": {
+    "path": "starter/operations-note.json.template",
+    "sha256": "3b0b00cafcbcbe10f4b523723248385abec0268e89aa5afd15651c994bef3cbb"
+  },
+  "citationIds": [
+    "import-draft",
+    "import-replay",
+    "canonical-hash",
+    "replay-test-definition"
+  ]
+}

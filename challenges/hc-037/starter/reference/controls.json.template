@@ -1,0 +1,40 @@
+{
+  "label": "SYNTHETIC_TRAINING_ONLY",
+  "task": "amount-review",
+  "requestedEfforts": [
+    {
+      "name": "Lite"
+    },
+    {
+      "name": "Balanced"
+    }
+  ],
+  "candidates": [
+    "candidate-01",
+    "candidate-02"
+  ],
+  "state": "planned-not-requested",
+  "fixed": [
+    "source context and paths",
+    "candidate raw bytes",
+    "request raw bytes",
+    "rules raw bytes",
+    "evaluation fields",
+    "design revision"
+  ],
+  "residualChecks": [
+    "skills",
+    "mcp",
+    "existing review",
+    "memory",
+    "ci visibility"
+  ],
+  "liveObservations": {
+    "effectiveEffort": null,
+    "internalModel": null,
+    "findings": null,
+    "cost": null,
+    "agenticFallback": "not-observed",
+    "ciVisibility": "not-observed"
+  }
+}

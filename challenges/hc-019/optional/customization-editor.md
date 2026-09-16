@@ -1,52 +1,44 @@
-# Customizations editorの準備境界
+# Customizations editorで自己所有copyを観察する
 
-## Guide scope
+## 目的
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-019本編](../README.md)の合成inventoryとは別に、対応する管理UIで自己所有copyを観測する前の準備ガイドです。本編原稿をactive化しません。
+管理UIに表示される候補、scope、enabled状態と、実requestへのapplicationを分けて観察します。[メインシナリオ](../README.md)の合成inventoryを実UIの結果として扱わないための補足です。
 
-listed、enabled、候補表示、実requestへのapplication、usefulnessを別に記録します。
+## 前提
 
-## Prerequisites
+- Customizations editorに対応するVS Code / GitHub Copilot環境
+- 組織policyで利用が認められたworkspaceとharness
+- 自分が所有する無害な既存customization
+- clientの版、channel、対象harnessを記録できること
 
-environment:
+## 権限・安全
 
-- 対応版・harness、Preview留保、自己所有の安全なcopy、開始前状態を確認できること。
+- このリポジトリの `starter/**/*.template` は有効化しません。
+- 通常profile、他人のcustomization、User / home、原本を変更しません。
+- 画面やlogを保存する場合は、秘密、個人情報、private codeを除きます。
+- active化やテストrequestが必要なら、対象とcleanupを限定して事前に承認を得ます。
 
-entitlements:
+## 手順
 
-- 対応するVS Code / Copilot、Customizations editor、教材workspaceの通常利用資格と組織policyを確認できること。
+1. client、channel、workspace、選択harness、開始前状態を記録します。
+2. 現在の製品ドキュメントに従ってCustomizations editorを開きます。
+3. 自己所有の安全な項目について、表示名、scope、source、listed、enabledを記録します。
+4. 許可されていればharnessを切り替え、候補表示が変わるかを確認します。
+5. application確認まで承認されている場合だけ、無害な固定requestを一度実行し、UIが示す参照元などの直接情報を記録します。
+6. 自分が加えた一時変更だけを戻し、元の状態と比較します。
 
-実候補、選択harness、scope、source label、必要最小限ログの保存範囲を事前に固定します。
+## 観察すること
 
-## Permissions / Safety
+- listedとenabledは別の状態か
+- harnessごとに候補が変わるか
+- applicationを示す直接情報があるか、単なる出力推測か
+- 出力が従ったとしてもusefulnessを別に評価できているか
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 停止条件
 
-additionalApprovals:
+- 対応UIがない、対象harnessが不明、自己所有項目を分離できない
+- active化の承認がないのに、それが必要になる
+- profile、User / home、原本、他人の項目を変更する必要がある
+- applicationを出力だけから推測するしかない
 
-- 管理UIを開くこと、自己所有copyの候補確認、必要最小限のredacted log、active化が必要な場合の別判断を個別に承認すること。
-
-通常profile、他人のcustomization、User / home、原本を変更しません。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| customization-discovery | not-checked | Runtime v1では管理UIの候補表示、selected harness、discovery、applicationを確認していません。 |
-| optional-active-customization | blocked | 本編は不活性copyだけを許可し、active customizationの配置や適用を許可しないためblockedです。 |
-
-合成inventoryの`listed` / `enabled`は実UIの観測ではありません。
-
-## Stop / Block
-
-- 対応UIがない、対象harnessが違う、自己所有copyを分離できない場合は停止します。
-- active化の承認がない場合は候補確認より先へ進みません。
-- User/Profile、原本、他人のcustomizationを変更しなければ成立しない場合は停止します。
-
-listed / enabledをapplicationへ読み替えません。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-readiness、UI表示、candidate、enabled、applicationの直接Evidence、cleanupを分けます。候補表示を意味の一貫性、実投入、有用性、教育効果へ昇格しません。
+[メインシナリオの発展へ戻る](../README.md#発展)

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "caseId": "case-09",
+  "taskId": "case-09",
+  "title": "同じSkillの版付き配布",
+  "targetHarness": "local-agent",
+  "scope": "workspace",
+  "sourcePaths": [
+    "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java"
+  ],
+  "situation": "同じ一つのSkillのv1/v2を三つの合成workspaceへ配る計画を作る。",
+  "resources": [
+    "starter/package/にあるv1/v2の不活性package",
+    "同じ固定source"
+  ],
+  "constraints": [
+    "owner、reviewer、版、復元を記録する。",
+    "install・組織write・Cloud配布は行わない。",
+    "Pluginの提供段階を全componentへ外挿しない。"
+  ]
+}

@@ -1,0 +1,29 @@
+---
+name: training-order-evidence
+description: Draft a source-grounded order replay investigation while preserving unobserved Java and database boundaries.
+---
+
+# Training order evidence
+
+SYNTHETIC_TRAINING_ONLY starter text
+
+## Inputs to freeze
+
+- task: `same-key-check` or `changed-payload-check`
+- source context and the three source paths
+- `external_key` and redacted payload description
+- Skill revision and raw-byte hash
+
+## Investigation outline
+
+1. Locate the `importDraft` entry and record what it delegates to.
+2. Trace the existing-claim lookup through `findClaim`.
+3. Identify where canonical payload comparison is defined.
+4. Record the boundary before `replay` or database effects.
+5. Separate source-supported findings, unknowns, and checks that would require execution.
+
+## Stop conditions
+
+- Stop if the source revision or task input is not fixed.
+- Stop before claiming a database mutation, replay result, or test result without direct evidence.
+- Do not include secrets, customer data, or a production order.

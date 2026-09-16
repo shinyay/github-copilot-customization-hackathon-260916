@@ -1,0 +1,22 @@
+# Money.java 固定抜粋
+
+対象リポジトリでの想定 path:
+`wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java`
+
+```java
+public static BigDecimal tax(BigDecimal base, BigDecimal rate, String rounding) {
+    RoundingMode mode;
+    if ("DOWN".equals(rounding)) {
+        mode = RoundingMode.DOWN;
+    } else if ("UP".equals(rounding)) {
+        mode = RoundingMode.UP;
+    } else if ("HALF_UP".equals(rounding)) {
+        mode = RoundingMode.HALF_UP;
+    } else {
+        throw new BusinessException("validation.rounding", "端数処理区分が不正です。");
+    }
+    return base.multiply(rate).setScale(0, mode).setScale(2);
+}
+```
+
+`validation.rounding` は不正な入力を拒否する分岐です。受け付けた mode を使う金額計算の rounding と分けて読んでください。実ファイルを利用できる場合は、抜粋ではなく実装全体を正とします。

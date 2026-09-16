@@ -1,0 +1,36 @@
+# HC-012 読む準備と選び直し
+
+## 固定source
+
+- upstream template: `shinyay/github-copilot-customization-runtime-template`
+- upstream revision: `8f0b3aa25c4f33facdea691642c2f1cb3901391c`
+- source location: templateから作成したruntime workspace
+
+| path | 読み始めるsymbol |
+|---|---|
+| `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java` | `importDraft`、`replay` |
+| `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java` | `canonicalHash`、`validate` |
+| `wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java` | 接続前提、再送に関するtest定義 |
+
+upstream revisionはsourceの出所であり、runtime workspaceのlocal HEADとの一致条件ではない。
+sourceを利用できる場合は実際に読み、path、symbol、範囲、未確認事項を記録する。test定義を読んだことは、Java・DBを実行したことではない。
+
+## 固定tool参照
+
+- `search/changes`
+- `search/codebase`
+- `read/problems`
+- `search/usages`
+
+個別選択と名前付き集合のどちらでも、同じ四参照を各1回だけ使う。メンバーを変えて便利さの差を作らない。
+
+## 比較する設計
+
+- 個別に四参照を見つけ、選び、固定リストへ戻って確認する手順
+- 用途が分かる集合名・description・iconと、展開後に四参照を確認する手順
+
+別の人が手順だけから四参照を紙上で再構成できるか確認する。集合を使わない判断も有効。
+
+## 境界
+
+Tool Setは新しい能力、権限、ACL、sandbox、全toolの自動呼出しを追加しない。原稿、紙上の再構成、UI選択、有効なtools、実際のcallを分ける。

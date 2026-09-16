@@ -1,0 +1,31 @@
+# HC-010 固定brief
+
+## 目的
+
+同じ形式検査の結果について、担当者が結果票を読む手動確認と、AgentのStop時に短く知らせるnonblocking通知を設計する。通知を追加しない判断も有効とする。
+
+## 固定source
+
+- upstream template: `shinyay/github-copilot-customization-runtime-template`
+- upstream revision: `8f0b3aa25c4f33facdea691642c2f1cb3901391c`
+- runtime workspace path: `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java`
+- symbol: `Money.tax`
+
+upstream revisionは出所であり、templateから作った作業用repositoryのlocal HEADではない。
+runtime workspaceのsourceを利用できる場合は全文を読み、説明を支持する箇所と、この範囲では確認できないことを分ける。sourceを利用できない場合はコードの意味を補わない。
+
+## 共通入力
+
+- `request.txt.template`
+- `fixtures\draft-complete.md.template`
+- `fixtures\draft-missing-unknowns.md.template`
+- `fixtures\stop-inputs.json.template`
+- `fixtures\checker-results.json.template`
+- `reference\notification-contract.json.template`
+- `tools\` のhelper三つ
+
+草稿とStop入力は `SYNTHETIC_TRAINING_ONLY`。固定結果は合成fixtureの結果であり、実際のStopやLLM出力ではない。
+
+## 安全境界
+
+通知は `continue: true` とし、終了を妨げない。自動修正、新しいAIターン、反復、外部接続を要求しない。形式合格、通知成功、コードの意味、実際の画面表示は別々に扱う。

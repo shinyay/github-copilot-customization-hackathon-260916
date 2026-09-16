@@ -1,5 +1,0 @@
-SYNTHETIC_TRAINING_ONLY
-
-Use the supplied packet set to assess D01 through D07 in order. For each task, record the supported conclusion, cited facts, remaining alternatives, missing observation, next safe check, consultation owner, and stop condition.
-
-For baseline, freeze your usual diagnosis order before reading your own results. For diagnosis-policy, first freeze a participant-authored policy that keeps discovery, tool call, network, authentication, authorization, output use, presence, server trust, and instruction authority distinct. Use the same packet bytes in both conditions. Do not perform live access, retrieve secret values, or turn `unknown` into `false`.

@@ -1,0 +1,26 @@
+# Author-created synthetic trial packet
+
+SYNTHETIC_TRAINING_ONLY
+
+これは実model実行、人の採点、blind testではありません。計画とscheduleを固定した後に、18 rowすべてを欠落なく解析してください。
+
+| task | variant | block | execution | initial | follow-up | reason | duration | cost |
+|---|---|---|---|---:|---:|---|---|---|
+| primary | reference | block-01 | completed | 3 | 4 | recorded | null | null |
+| primary | reference | block-02 | completed | 4 | 3 | recorded | null | null |
+| primary | reference | block-03 | failed | null | null | synthetic-process-failure | null | null |
+| transfer-check | reference | block-01 | completed | 2 | 3 | recorded | null | null |
+| transfer-check | reference | block-02 | not-run | null | null | synthetic-not-run | null | null |
+| transfer-check | reference | block-03 | completed | 3 | 4 | recorded | null | null |
+| primary | reusable-rules | block-01 | completed | 3 | 4 | recorded | null | null |
+| primary | reusable-rules | block-02 | completed | 4 | 5 | recorded | null | null |
+| primary | reusable-rules | block-03 | completed | 2 | 3 | recorded | null | null |
+| transfer-check | reusable-rules | block-01 | completed | 4 | 5 | recorded | null | null |
+| transfer-check | reusable-rules | block-02 | failed | null | null | synthetic-process-failure | null | null |
+| transfer-check | reusable-rules | block-03 | completed | 3 | 2 | recorded | null | null |
+| primary | manual-rules | block-01 | completed | 3 | 4 | recorded | null | null |
+| primary | manual-rules | block-02 | completed | 4 | 5 | recorded | null | null |
+| primary | manual-rules | block-03 | completed | 2 | 3 | recorded | null | null |
+| transfer-check | manual-rules | block-01 | completed | 4 | 5 | recorded | null | null |
+| transfer-check | manual-rules | block-02 | not-run | null | null | synthetic-not-run | null | null |
+| transfer-check | manual-rules | block-03 | completed | 3 | 2 | recorded | null | null |

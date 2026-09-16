@@ -1,48 +1,49 @@
-# Content exclusion観測の準備境界
+# Content exclusionを限定観測する
 
-## Guide scope
+[HC-042本編へ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-042本編](../README.md)とは別に、標準code reviewのcontent exclusionとInstructions `applyTo`を将来確認する前の準備・停止境界だけを整理します。
+## 目的
 
-ガイドの準備完了は、除外の実効、回避許可、live success、本編改善、Runtime completionを意味しません。
+標準code reviewのcontent exclusionとInstructionsの `applyTo` が、異なるownerとsurfaceを持つcontrolであることを限定的に観察します。除外回避や別surfaceへの迂回は行いません。
 
-## Prerequisites
+## 前提
 
-environment:
+- 対象repository、code review surface、対象pathを特定できる。
+- Instructions revisionとcontent exclusionの管理scopeを確認できる。
+- 対象機能のrelease state、利用資格、実効policyを確認できる。
+- 観察範囲、停止、復元担当が決まっている。
 
-- 対象repository、標準code review surface、Instructions revision、content exclusionの管理scope、対象path、復元範囲を確認できること。
+## 権限と安全
 
-entitlements:
+- 除外設定を変更しない観察、対象surface/path、ログ範囲について個別の許可を得る。
+- 除外回避、別surfaceへの迂回、repository内容の持出しを行わない。
+- Instructionsで管理者policyを上書きしようとしない。
+- 設定変更が必要になった場合は、別の承認なしに進めない。
 
-- 対象repository、標準code reviewのPublic Preview、content exclusionを利用・管理する資格と実効policyを確認できること。
+## 手順
 
-## Permissions / Safety
+1. Instructions `applyTo` pattern、対象revision、ownerを記録する。
+2. content exclusionの管理scope、対象path、owner、対応surfaceを記録する。
+3. 設定を変えず、対象surfaceで確認できる適用範囲だけを観察する。
+4. 指示が提供されたか、contentが除外されたか、回答へ使われたかを別々に記録する。
+5. 不明なpolicyを推測せず、管理者へ確認する項目を残す。
 
-このガイドは権限を付与せず、実機実行を開始しません。
+## 観察すること
 
-additionalApprovals:
+- surfaceとrelease state
+- Instructions pattern/revision
+- content exclusion scope/path
+- 各controlのowner
+- 指示提供、content利用、除外の観測
+- unknownと保留理由
 
-- 除外設定を変更しない限定観測、対象surface / path、記録範囲、停止、必要な復元を操作ごとに別承認すること。
+## 停止条件
 
-除外回避、別surfaceへの迂回、repository内容の持出し、Instructionsによる管理policy上書きを行いません。
+- 利用資格、実効policy、管理scopeが不明。
+- 除外回避または別surfaceへの迂回が必要。
+- 対象path、Instructions revision、復元範囲を固定できない。
+- 二つのcontrolを一つの成功値へまとめる必要がある。
 
-## Runtime capabilities
+## 本編へ戻る
 
-| capability | status | reason |
-|---|---|---|
-| review-exclusion-observation | not-checked | 本編とRuntime v1は標準code reviewのcontent exclusion、Public Preview資格、実効管理scope、Instructions applyToとの関係を観測しません。 |
-
-Instructions `applyTo`とcontent exclusionを同じcontrolとして扱いません。
-
-## Stop / Block
-
-- Public Preview、利用資格、実効policy、管理scopeのいずれかが不明な場合は停止します。
-- 除外回避または別surfaceへの迂回を要求される場合は停止します。
-- 対象path、Instructions revision、復元範囲を固定できない場合は停止します。
-- 管理者による除外と参加者の指示適用範囲を一つの成功値へまとめる必要がある場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-surface、Preview / entitlement、管理scope、対象path、Instructions applyTo、content exclusion、unknown、blocked理由を分けます。runtimeBehaviorとeducationalEffectは観測した範囲を超えて主張しません。
+結果は [HC-042の確認ポイント](../README.md#確認ポイント) へ戻し、`applyTo` とcontent exclusionの責任境界を保持します。

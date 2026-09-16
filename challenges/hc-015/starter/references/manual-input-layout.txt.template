@@ -1,0 +1,22 @@
+HC-015 manual-input.txt のレイアウト説明（この説明文自体は送信しません）
+
+保存先の例は work\manual-input.txt です。
+元 bytes は固定 source checkout から読みます。
+完成テキストは UTF-8・BOM なし、次の ASCII preamble と filename delimiter を LF で置きます。
+file 本文は元 raw bytes のままです。trim、抜粋、要約、CRLF 変換、別の回答の追記をしません。
+固定二ファイルは末尾 LF を含みます。本文と END delimiter の間へ余分な改行を挿入しません。
+
+HC-015 MANUAL FULL-SOURCE v1
+<<<BEGIN FILE wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java>>>
+[A1 の完全な 29357 bytes をそのまま配置]
+<<<END FILE wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java>>>
+<<<BEGIN FILE wholesale-core/src/main/resources/application-context.xml>>>
+[A2 の完全な 5169 bytes をそのまま配置]
+<<<END FILE wholesale-core/src/main/resources/application-context.xml>>>
+
+二ファイルの本文だけで 34526 bytes です。preamble、filename、delimiter の分は全体へ加わります。
+A3 は含めず、必要時の追加読取として別に記録します。
+
+各 section の byte 数と SHA-256 を `starter\fixtures\source-targets.json.template` の固定値へ独立に照合します。
+同じ誤った hash を二つの方法で使っても一致とはしません。
+準備したテキストの hash、実際に送信した範囲、内部投入範囲は別々に扱います。

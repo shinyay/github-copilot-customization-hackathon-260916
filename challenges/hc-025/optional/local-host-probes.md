@@ -1,55 +1,53 @@
-# Local Agent / Agent Host live probeの準備境界
+# Local Agent / Agent Host で1件ずつ確認する
 
-## Guide scope
+[メインシナリオへ戻る](../README.md)
 
-OPTIONAL_GUIDE_ONLY / live-unobserved。[HC-025本編](../README.md)の不活性な資料診断とは別に、Local AgentとAgent Hostで一つずつactive probeを観測する前の準備ガイドです。
+## 目的
 
-同時に複数のCustomizationを有効化せず、Skill / Prompt / Agent / Pluginを独立したprobeとして扱います。
+静的診断の次に、Local Agent と Agent Host でカスタマイズを1種類ずつ確認し、発見、本文の読み込み、実効 tool、approval を実測します。一度に複数の形式を有効化せず、結果を形式ごと・harness ごとに分離します。
 
-## Prerequisites
+## 前提
 
-environment:
+- 対象 VS Code version と、Local Agent / Agent Host の利用可否を公式文書で確認できる
+- 通常利用とは分離した disposable workspace と profile を用意できる
+- 対象 model とカスタマイズ機能を利用する権限がある
+- 作成物を最後に安全に無効化・削除できる
 
-- Local AgentとAgent Hostを区別できる対象version、独立workspace、client接続条件、開始前状態を確認できること。
+## 権限・安全
 
-entitlements:
+- active 配置、model 利用、外部送信、終了時の削除を操作ごとに承認します。
+- この repository の `starter/` は変更せず、承認済みの隔離 workspace だけで試します。
+- user home、同期設定、既存 Plugin、既存カスタマイズへ上書きしません。
+- Prompt が Agent Host で読み込まれない場合、Skill へ置き換えて同じ probe を継続しません。
 
-- 各harness、model、対象Customization、教材workspaceの利用資格と組織policyを確認できること。
+## 手順
 
-additionalApprovals:
+1. `../starter/diagnosis.md.template` をもとに観察表を用意します。
+2. Skill、Prompt、Custom Agent、Plugin から1種類だけ選びます。
+3. 公式文書で、その形式の active filename と配置先を確認します。推測した path は使いません。
+4. 隔離 workspace に選んだサンプルだけを配置し、固定依頼 `../starter/request.txt.template` を実行します。
+5. 候補として発見されたか、本文が使われたか、実効 tool、approval 表示、error を記録します。
+6. 自分が配置したファイルだけを無効化・削除し、開始前状態へ戻します。
+7. 次の形式または harness を試す場合は、新しい会話とクリーンな状態から繰り返します。
 
-- 各probeのactive配置、harness選択、限定観測、model利用、終了時解除を一件ずつ別途承認すること。
+## 観察すること
 
-## Permissions / Safety
+- client / harness / version
+- sample type と active path
+- documented discovery / observed discovery
+- loading
+- declared tools / effective tools
+- approval
+- result / error / cleanup
 
-このガイドは権限を付与せず、実機実行を開始しません。
+1つの成功を、別形式、別 version、別 harness の成功へ一般化しません。
 
-additionalApprovals:
+## 停止条件
 
-- 各probeのactive配置、harness選択、限定観測、model利用、終了時解除を一件ずつ別途承認すること。
+- 対象機能または公式の配置先を確認できない
+- 既存ファイルへの上書きや user home の変更が必要
+- 必要な権限、model、費用、外部送信の承認がない
+- 実効 tool や approval を観測できない
+- 自分の変更だけを確実に戻せない
 
-通常profile、User/home保存元、同期、既存Pluginを変更せず、既存probe先へ上書きしません。PromptがHostで読まれない場合、Skillへ置き換えて同じprobeを継続しません。
-
-宣言tools、実効tools、client接続、OS権限、approvalを別に記録します。
-
-## Runtime capabilities
-
-| capability | status | reason |
-|---|---|---|
-| live-portability-probes | not-checked | 両harnessでのactive probeは本編baseline/host条件外で、別の配置設計、実機観測、consumer検証が必要です。 |
-
-本編Packの不活性kitはactive file、install、harness起動を作りません。
-
-## Stop / Block
-
-- Local Agentが対象versionにない場合は停止します。
-- 既存probe先への上書きが必要な場合は停止します。
-- User保存元への移行が必要な場合は停止します。
-- PromptをSkillへ置き換えなければ続けられない場合は元probeを止めます。
-- 実効model/tools/approvalを観測できない場合は停止します。
-
-## Evidence / Non-claims
-
-任意ガイドの完了は、本編の改善やRuntimeの検証成功を意味しません。
-
-format、active path、discovery、loading、effective tools、approval、result、解除をprobeごとに記録します。一つのprobeや一つのharnessの結果を、他の形式・version・hostへ一般化しません。
+停止した項目は `blocked` または `not-observed` とし、[メインシナリオ](../README.md)の静的診断へ戻ります。

@@ -1,0 +1,32 @@
+{
+  "fixtureLabel": "LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACE",
+  "trainingLabel": "SYNTHETIC_TRAINING_ONLY",
+  "formatVersion": 2,
+  "revision": "participant-display-v1",
+  "deliveryPolicy": "hc013-full-display-v1",
+  "instructions": "",
+  "organization": {
+    "reader": "",
+    "readingOrder": [],
+    "groups": [],
+    "omissionPolicy": "preserve-full-display-and-metadata"
+  },
+  "materials": [],
+  "actualHistoricalDecision": "NOT_PROVIDED",
+  "observations": {
+    "localSourceRead": "not-observed",
+    "spaceRead": "not-observed",
+    "spaceAccess": "not-observed",
+    "sourceAccess": "not-observed",
+    "synchronization": "not-observed"
+  },
+  "limitations": [
+    "これはローカルの資料設計であり、実際の Copilot Space または tool 応答ではない。",
+    "合成の運用メモとアクセス属性を、実際の履歴や ACL として扱わない。",
+    "B1/B2/B3 の静的読解は Java・DB・テストの実行ではない。",
+    "全材料の表示全文・metadata・配列順・limitations を保持し、取得不能を不存在としない。",
+    "B3 の六行全体を説明マーカーへ置き換えたため、表示版は原本の byte-exact 複製でも実行可能な Java でもない。",
+    "originalSha256、display.sha256、限定置換の記録はそれぞれ意味が異なる。",
+    "除去した認証値、除去行の原文、個々の値の hash は保存しない。"
+  ]
+}

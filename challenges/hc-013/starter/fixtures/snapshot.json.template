@@ -1,0 +1,17 @@
+{
+  "id": "P2",
+  "fixtureLabel": "UPSTREAM_TEMPLATE_SNAPSHOT",
+  "materialRevision": "hc013-materials-v2",
+  "repository": "shinyay/github-copilot-customization-runtime-template",
+  "referenceType": "upstream-template-revision",
+  "revision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
+  "sourceLocation": "runtime-workspace",
+  "sourcePath": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
+  "scope": "whole-file",
+  "sha256": "540035ef9797badbb049502462c9dfc23295dd7124f30d23e757f7ed5e97dde2",
+  "bytes": 5047,
+  "hashMeaning": "original-source-provenance-before-display-transformation",
+  "spaceRead": "not-observed",
+  "observedSpaceContentSha256": null,
+  "actualHistoricalDecision": "NOT_PROVIDED"
+}

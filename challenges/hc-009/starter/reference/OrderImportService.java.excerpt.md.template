@@ -1,0 +1,53 @@
+# OrderImportService.java replay excerpt
+
+Source path:
+`wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java`
+
+```java
+public RowOutcome importDraft(OrderGroup group, Actor actor) {
+    require(actor, "BATCH");
+    require(actor, "SALES", "MANAGER");
+    Checks.state(group != null, "orderImport.group", "Grouped order input is required");
+    group.validate();
+    String hash = group.canonicalHash();
+    OrderImportRecord previous = findClaim(group.getKey());
+    if (previous != null) {
+        return replay(previous, hash, actor);
+    }
+
+    // Customer, warehouse, order header, and line inputs are resolved here.
+
+    dao.lockReferences(Collections.singleton(warehouse.getId()), productIds);
+    dao.lockKey("order-import", group.getKey());
+    previous = findClaim(group.getKey());
+    if (previous != null) {
+        return replay(previous, hash, actor);
+    }
+
+    SalesOrder order = orderService.saveDraft(null, 0, input, actor);
+    OrderImportRecord claim = new OrderImportRecord();
+    claim.setExternalKey(group.getKey());
+    claim.setPayloadHash(hash);
+    claim.setOrder(order);
+    claim.setCreatedById(actor.getUserId());
+    claim.setCreatedBy(actor.getLogin());
+    claim.setCreatedAt(new Date());
+    dao.save(claim);
+    dao.flush();
+    return new RowOutcome("orderImport.created",
+            "DRAFT created; lines=" + order.getLines().size()
+                    + "; total=" + order.getTotalAmount().toPlainString(),
+            "SalesOrder", order.getId(), order.getNumber());
+}
+
+private RowOutcome replay(OrderImportRecord claim, String hash, Actor actor) {
+    Checks.state(claim.getPayloadHash().equals(hash), "orderImport.keyConflict",
+            "external_key already belongs to a different order payload; original order was not edited");
+    SalesOrder order = orderService.getOrder(claim.getOrder().getId(), actor);
+    return new RowOutcome("orderImport.replayed",
+            "Original order returned without editing; status=" + order.getStatus(),
+            "SalesOrder", order.getId(), order.getNumber());
+}
+```
+
+Static reading does not establish database contents, transaction results, or production incident history.

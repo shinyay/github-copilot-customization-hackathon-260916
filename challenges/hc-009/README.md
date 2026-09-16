@@ -1,159 +1,145 @@
 # HC-009 CSV再送調査のプレイブックをSkillにしよう
 
-## Challenge Story
+## Scenario
 
-CSV importの再実行を調査するたびに、`external_key`、payload hash、同一requestのreplay、異なるpayloadのconflict、new claimを説明し直しています。手順を忘れると、static source readingだけでdatabase stateや実際のincident historyまで断言しかねません。安全な調査playbookをSkillへまとめ、手順の再利用と自動発見の限界を比較します。
+CSV importの再送を調べるたびに、`external_key`、payload hash、同じrequestのreplay、異なるpayloadのconflict、新しいclaimの扱いを説明し直していると、確認項目が抜けやすくなります。さらに、sourceを読んだだけでdatabase stateや実際のincident historyまで断言してしまう危険があります。
 
-このページとRuntimeのpinned sourceだけで完結します。実CSVや過去のLABは不要です。
+このシナリオでは、安全なsource調査のplaybookをSkillへまとめます。Skill本文、checklist、source excerpt、検査scriptを一緒に再利用しながら、Skillが見つかったこと、本文を読んだこと、resourceを使ったこと、scriptを実行したことを別々に確認します。
 
 ## この機能とは
 
-Skillは、特定種類の作業に必要な手順、reference、scriptをひとまとまりにするCustomizationです。説明からSkillを選べるclientでは、明示的に選ぶ使い方と、taskから自動的に見つける使い方があります。
+Skillは、特定種類の作業に必要な手順、reference、scriptをまとめるGitHub Copilotのカスタマイズです。対応clientではSkillを明示的に選べるほか、task descriptionから自動的に候補となる場合があります。
 
-このChallengeでは、Skillの効果と、単にchecklistを渡した効果を分けるため4条件を使います。
+自動発見はclient、設定、task wordingに依存します。回答が良かっただけで「Skillが自動で使われた」と判断しません。次の観測を分けます。
 
-- no Skill（manifest conditionは `baseline`）
-- `manual-equivalent`
-- `manual-skill`
-- `auto-skill`
+- Skillが候補または選択済みとして表示された
+- `SKILL.md` の手順が読み込まれた
+- checklistやsource excerptが使われた
+- bundled scriptが実行された
 
-自動発見は環境や表現に依存します。見つからないことも正しい観測です。
+この題材では、`OrderImportService.importDraft` と `OrderGroup.canonicalHash` を調べます。Skillは調査だけを行い、import、replay、database接続は実行しません。
 
 ## 向いていること / 向いていないこと
 
 **向いていること**
 
-- 手順、reference、validation scriptを一緒に再利用する作業
-- 特定のtask descriptionから選べる専門playbook
-- 安全なstop conditionを含むsource investigation
+- 繰り返し使う手順、reference、validation scriptをまとめる作業
+- 特定のtaskから選べる専門的なplaybook
+- source boundaryとstop conditionを明示した調査
+- 人が確認するworksheetの形式を軽く検査する作業
 
 **向いていないこと**
 
-- repository全体へ常時適用する短いルール
-- secret、実CSV、production dataをSkillへ保存すること
+- repository全体へ常に適用する短い規則
+- secret、実CSV、production dataを保存すること
 - 自動発見を前提にした無人のimportやreplay
-- static readingだけでdatabase stateを断言すること
+- static readingだけでdatabase stateやincident historyを断言すること
 
-## Starter Kit
+## ゴール
 
-[Pack manifest](pack/manifest.json) は次を `.hackathon/challenge/hc-009/**` へ不活性に配置します。
+- CSV再送調査用Skillを作業用リポジトリで有効化する
+- 固定taskから新しいkey、同じhash、異なるhashの3経路をsourceへ戻して説明する
+- `canonicalHash` のversion marker、header fields、quantity normalization、sorted line fingerprintsを確認する
+- Skill本文、checklist、reference、scriptの利用を別々に観察する
+- 調査noteをdependency-free scriptで検査する
+- import、replay、database操作を一切実行しない
 
-- Runtime baselineの
-  `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java`
-  と
-  `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java`
-  を指すread-only excerpt
-- `SKILL.md.template` — 調査だけを行うSkill starter
-- `checklist.md.template` — publicなreplay判断手順
-- `check-evidence-note.mjs.template` — dependency-free Evidence format checker
-- `evidence-note.md.template` — 4条件の比較表
+## 用意するもの
 
-Java sourceはRuntimeのpinned 515-file baselineにすでに存在し、Packは複製しません。
+- Skillを利用できるGitHub Copilot client
+- 題材のJava sourceを含む作業用リポジトリ
+- 検査scriptを使う場合はNode.js
+- このディレクトリの不活性な素材
 
-## Open Question
+| 素材 | 用途 |
+|---|---|
+| [`starter/customization/SKILL.md.template`](starter/customization/SKILL.md.template) | Skill本文の開始点 |
+| [`starter/customization/checklist.md.template`](starter/customization/checklist.md.template) | replay判断の確認項目 |
+| [`starter/reference/`](starter/reference/) | sourceを用意できない場合のread-only excerpt |
+| [`starter/tools/check-investigation-note.mjs.template`](starter/tools/check-investigation-note.mjs.template) | 調査noteのheadingを確認するscript |
+| [`starter/worksheets/investigation-note.md.template`](starter/worksheets/investigation-note.md.template) | 人が記入する調査note |
 
-「Skillとして価値がある」ことを、checklistを貼るだけの効果とどう区別しますか。
+## 準備
 
-- Skillが候補として発見された
-- Skill bodyが読み込まれた
-- checklistやsource excerptが必要時に読み込まれた
-- format checkerが実際に実行された
-- explicit invocationで調査手順の欠落が減った
-- unsupportedなdatabase/incident claimが抑制された
-- checklistだけでも同等だった
+1. 共通の準備は [始め方](../../README.md#始め方) に従い、作業用リポジトリで行います。
+2. 次の素材を作業用リポジトリへコピーし、そこでだけ `.template` を外します。
 
-discovery、body loading、resource loading、script executionを1つの「Skill成功」にまとめません。
+   | コピー元 | 作業用リポジトリの配置先 |
+   |---|---|
+   | `starter/customization/SKILL.md.template` | `.github/skills/csv-resend-investigation/SKILL.md` |
+   | `starter/customization/checklist.md.template` | `.github/skills/csv-resend-investigation/checklist.md` |
+   | `starter/reference/OrderImportService.java.excerpt.md.template` | `.github/skills/csv-resend-investigation/reference/OrderImportService.java.excerpt.md` |
+   | `starter/reference/OrderGroup.java.excerpt.md.template` | `.github/skills/csv-resend-investigation/reference/OrderGroup.java.excerpt.md` |
+   | `starter/tools/check-investigation-note.mjs.template` | `.github/skills/csv-resend-investigation/scripts/check-investigation-note.mjs` |
 
-## Design Time
+3. `starter/worksheets/investigation-note.md.template` を `notes/hc-009-investigation.md` など自分のメモへコピーします。
+4. 可能なら次のfull sourceを開けることを確認します。利用できなければbundled excerptだけを使い、その限界をnoteへ残します。
+   - `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java`
+   - `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java`
+5. 固定taskを変えずに使います。
 
-1. 固定taskを使います。
+   > `OrderImportService.importDraft` と `OrderGroup.canonicalHash` を調査し、新しい `external_key`、同じhashの既存claim、異なるhashの既存claimでsourceが定義する結果を説明してください。database stateや実際のincident historyは推測せず、import/replayを実行しないでください。
 
-   > `OrderImportService.importDraft` と `OrderGroup.canonicalHash` を調査し、新しい`external_key`、同じhashの既存claim、異なるhashの既存claimでsourceが定義する結果を説明してください。database stateや実際のincident historyは推測せず、import/replayを実行しないでください。
+この公開リポジトリでは全素材を `.template` のまま保ち、activeなSkillを作りません。
 
-2. public checklistの各項目を `pass / fail / not-observed` で採点します。
-3. 4条件ごとにfresh repository、conversation、profileを用意します。
-4. auto条件ではSkill名を含めないtask wordingを固定します。
-5. Skill利用のEvidenceを回答前に決めます。UI表示、bodyの引用、resourceの利用、checker invocationなど、直接観測できるものを使います。
+## 試してみる
 
-## Build
-
-1. **Hub checkout** で次の形のdry-runをconditionごとに実行します。このscriptはRuntimeにはありません。
+1. fresh conversationで `csv-resend-investigation` Skillを明示的に選び、固定taskをそのまま渡します。
+2. Skillが `checklist.md` を読み、full sourceまたは `reference/` のexcerptへ戻ったことを確認します。
+3. `OrderImportService.importDraft` について、少なくとも次を分けて説明させます。
+   - `canonicalHash()` の計算
+   - 最初の `findClaim`
+   - 既存claimがある場合の `replay`
+   - referenceとkeyをlockした後の2回目の `findClaim`
+   - 新しいkeyでの `saveDraft` とclaim保存
+4. 既存claimでは、`payloadHash` が異なると `orderImport.keyConflict` で止まり、同じ場合だけ元のorderを取得して `orderImport.replayed` を返すことをsourceと対応付けます。元のorderを編集する経路だと決めつけません。
+5. `OrderGroup.canonicalHash` では、次を別々に記録します。
+   - `order-import-v1` marker
+   - 先頭recordのcommon header fields
+   - quantityをintegerへ変換してから文字列化すること
+   - productとquantityから作るline fingerprint
+   - line fingerprintをsortしてからfinal fingerprintへ含めること
+6. static readingで分からないdatabase contents、transaction result、実incident history、実際の再送結果をunknownに残します。
+7. 人が `notes/hc-009-investigation.md` を記入した後、Skillに含めたscriptで形式を確認します。
 
    ```console
-   node scripts/plan-run.mjs --dry-run --challenge HC-009 --condition baseline --team team-sora --run run-01
+   node .github/skills/csv-resend-investigation/scripts/check-investigation-note.mjs notes/hc-009-investigation.md
    ```
 
-2. **Runtime checkout** のREADMEに従ってcondition付きでPackを適用します。Starterは `.hackathon/challenge/hc-009/**` にだけ配置されます。
-3. Starterからcheckerを `tools/check-evidence-note.mjs` に参加者が新規作成します。
-4. `baseline`（no Skill）条件を実行します。
-5. fresh conversationでchecklist本文だけを固定taskへ貼り、`manual-equivalent` を実行します。
-6. Starterから `.github/skills/csv-resend-investigation/` を参加者が新規作成し、Skillを明示して `manual-skill` を実行します。
-7. fresh profile / conversationでSkill名を出さず、固定taskだけを渡して `auto-skill` を実行します。
-8. `.hackathon/evidence/hc-009/evidence-note.md` を作成後、format checkerを実行します。
+scriptは指定したnoteを読み、必須headingの不足だけを報告します。Java behaviorや回答の正しさを保証するものではありません。
 
-   ```console
-   node tools/check-evidence-note.mjs .hackathon/evidence/hc-009/evidence-note.md
-   ```
+## 任意: 比較する
 
-9. auto discoveryが起きたか不明なら `unknown` とし、回答が良かったことだけを発見証拠にしません。
+同じ固定task、source、model、toolsをできるだけそろえ、次をfresh conversationで1回ずつ試します。
 
-## Compare
+1. checklistを渡さない一般的なsource調査
+2. `checklist.md` の本文だけをpromptへ貼る調査
+3. Skillを明示的に選ぶ調査
 
-| 条件 | Skill active | Skillを明示 | checklistを手で貼る | 主な観測 |
-|---|---|---|---|---|
-| Baseline (`baseline`) | no | no | no | 素のsource investigation |
-| manual-equivalent | no | no | yes | 手順内容だけの効果 |
-| manual-skill | yes | yes | no | packagingと明示呼び出し |
-| auto-skill | yes | no | no | discoveryを含む実利用 |
+checklist項目の抜け、unsupportedなdatabase claim、referenceの利用、note checkerまで到達できたかを手動で比べます。Skill版だけtaskやsourceを増やさず、入力をそろえられない場合は優劣を決めません。
 
-`baseline` を **Baseline**、残る3条件を目的の異なる **Customized** として比較します。
+## 確認ポイント
 
-task、source boundary、評価表、できるだけmodel / effort / toolsを同じにします。前条件の会話やprofile cacheが残れば `incomparable` の理由になります。
+- Skillの対象taskとstop conditionが明確
+- Skillの選択、body loading、resource loading、script executionを混同していない
+- `importDraft` の最初と2回目のclaim lookupを分けている
+- new key、matching hash、different hashの3経路をsourceへ戻せる
+- `canonicalHash` をfile全体のbyte hashだと誤解していない
+- static readingからdatabase stateやproduction resultを発明していない
+- checkerの成功をJava behaviorの成功に置き換えていない
+- import、replay、外部接続、file変更を実行していない
 
-outcomeは `improved`、`equal`、`worse`、`incomparable`、`blocked`、`unsupported` から選びます。autoだけ失敗してmanual Skillが成功した場合は、1語に丸めず条件別の結果も書きます。
+## 発展
 
-## Evidence
+- fresh conversationでSkill名を出さず、固定taskだけを渡して自動発見を観察します。clientに直接表示されなければ「不明」とし、回答品質から推測しません。
+- 調査noteのcopyから必須headingを1つだけ外し、checkerがそのheading名を報告することを確認します。元のnoteは変更せず、確認後にcopyを削除します。
 
-`.hackathon/evidence/hc-009/evidence-note.md` に次を残します。
+## 制約・Fallback・安全
 
-- 4条件の分離状態とexact task
-- Skill名を出したか、checklistを貼ったか
-- discoveryの直接Evidence
-- Skill body / resource loadingの直接Evidence
-- checker commandとexit result
-- new claim / matching hash replay / different hash conflictのrooted evidence
-- `canonicalHash` のversion marker、common header、quantity normalization、sorted line fingerprints
-- unsupported claim、condition drift、unknown
-- outcome
-
-checkerの成功はEvidence noteの必須headingだけを示し、Java behaviorやAI回答全体の正しさを保証しません。
-
-## Submit
-
-Runtime PRへSkill、checklist、Evidence Noteを含めます。Hubの
-[Challenge Result Issue Form](../../.github/ISSUE_TEMPLATE/challenge-result.yml)
-には、4条件の要約と、Skill discovery・body loading・resource loading・script executionを分けて記載します。
-
-実CSV、注文ID、顧客情報、database output、raw logを提出しないでください。
-
-## Judging
-
-- Skillの対象taskとstop conditionが明確か
-- exact Runtime source pathへrootedしているか
-- checklistとcheckerがSkillから必要時に参照されたか
-- 4条件をfreshに分離したか
-- auto discoveryを推測で成功扱いしていないか
-- manual-equivalentとの差を説明したか
-- import、replay、外部接続をしなかったか
-- equal / worse / unsupportedを含む結果を保ったか
-
-## Bonus Mission
-
-Evidence noteの必須headingを1つだけ削除し、checkerがそのheading名を示して失敗することを確認します。単にexit codeが非zeroであるだけでなく、mutationとerror messageが一致することをEvidenceにしてください。
-
-## Support / Fallback
-
-Skillをclientが認識しない場合はBaselineとmanual-equivalentを実行し、Skill directoryを読み込めなかった直接Evidenceを残します。manual promptで同じ回答が得られても、Skill discovery成功とはしません。
-
-Node.jsが使えない場合はcheckerが `blocked` です。手でEvidence headingを確認した場合は、その限界を記録します。auto discovery非対応は `unsupported`、profile分離不能は `incomparable` とできます。
-[Support and Fallbacks](../../docs/support-and-fallbacks.md) も参照してください。
+- Skillを認識しないclientでは、`checklist.md.template` をfresh conversationへ貼る手動playbookに切り替えます。同じ回答が得られてもSkill discovery成功とは呼びません。
+- Node.jsを使えない場合は、worksheetのheadingを人が確認します。scriptを実行したとは記録しません。
+- full sourceを読めない場合はexcerptの範囲だけを説明し、欠けたmethodや周辺処理をunknownにします。
+- 実CSV、注文ID、顧客情報、database output、raw private logを入力やnoteへ含めません。
+- import、resend、replay、DB、server、build、test、外部networkを実行しません。
+- checkerへ渡すpathを人が確認し、調査note以外を読ませません。
+- 自動発見やresource loadingを観測できない場合は、成功と推測しません。

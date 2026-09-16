@@ -1,0 +1,36 @@
+# HC-010 設計worksheet
+
+## Source reading
+
+- 固定sourceのpath、symbol、読んだ範囲:
+- 説明を支持する箇所:
+- この範囲では確認できないこと:
+- sourceを利用できなかった場合の制限:
+
+## Reader and responsibility
+
+- 通知または結果票を読む人:
+- 手動確認の担当者:
+- 確認を行う時点:
+- 読み手に残す説明:
+
+## Result meanings
+
+- `pass / 0`:
+- `invalid / 1`:
+- `uncheckable / 2`:
+- `skipped / 0`:
+- adapterが通知を返したこととchecker結果の違い:
+
+## Notification boundary
+
+- `continue: true` を保つ理由:
+- `stop_hook_active: true` の扱い:
+- 自動修正・追加ターン・反復を行わない理由:
+- 通知を追加しない方がよい場面:
+
+## Comparison criteria
+
+- 手動確認と通知設計を比べる観点:
+- 同等・悪化・追加不要と判断する条件:
+- 実際には観察していないこと:
