@@ -1,5 +1,7 @@
 # `sessionStart` Hookを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-038/optional/session-start-live.md)
+
 [HC-038本編へ戻る](../README.md)
 
 ## 目的

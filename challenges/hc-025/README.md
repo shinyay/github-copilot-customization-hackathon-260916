@@ -1,5 +1,7 @@
 # HC-025 Local Agent / Agent Host のカスタマイズ可搬性を診断する
 
+**Language:** **日本語** / [English](../../en/challenges/hc-025/README.md)
+
 ## Scenario
 
 チームには、固定 packet を読む Skill、Prompt、Custom Agent、Plugin の原稿があります。VS Code の Local Agent 向けに考えた同じ意図を Agent Host でも使いたいものの、本文が同じでも metadata、配置、発見、読み込み、利用可能な tool、approval は同じとは限りません。

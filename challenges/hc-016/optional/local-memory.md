@@ -1,5 +1,7 @@
 # VS Code local Memory を試す前の探索ガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-016/optional/local-memory.md)
+
 ## 目的
 
 [HC-016 の本編](../README.md)で設計した短い fact 候補を、将来 VS Code local Memory で安全に試せるか確認するための補足ガイドです。この文書を読むだけでは Memory の保存や設定変更は行われません。

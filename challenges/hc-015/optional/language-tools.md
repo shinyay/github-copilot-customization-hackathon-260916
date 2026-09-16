@@ -1,5 +1,7 @@
 # Java の文字列検索と定義・参照を分けるガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-015/optional/language-tools.md)
+
 [HC-015 本編へ戻る](../README.md)
 ## 目的
 

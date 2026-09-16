@@ -1,5 +1,7 @@
 # Code review setup を観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-035/optional/review-setup.md)
+
 [← HC-035 のメインシナリオ](../README.md)
 
 ## 目的

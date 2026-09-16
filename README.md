@@ -1,5 +1,13 @@
 # GitHub Copilot Customization Scenarios
 
+**Language:** **日本語** / [English](en/README.md)
+
+> **GitHub Pages（有効化後）:** [日英トグル付きサイトを開く](https://shinyay.github.io/github-copilot-customization-hackathon-260916/)。サイトrootでは日本語を既定表示し、すべての公開ページに目立つ **日本語 / English** 切り替えを表示します。
+
+Pagesのトグルは選択言語をブラウザーへ保存します。JavaScriptまたは保存機能が利用できない場合も通常のリンクとして切り替えられます。GitHub上では、各Markdown冒頭の **Language** リンクを使って同じページの翻訳へ移動できます。
+
+サイト生成にはGitHub Pagesが標準で提供するJekyll pluginだけを使い、Node package、Gemfile、GitHub Actionsのbuild workflowは追加していません。
+
 GitHub Copilotのカスタマイズ機能を、実務に近い45のシナリオで学ぶための公開リポジトリです。
 
 このリポジトリが提供するのは、シナリオの説明と不活性なサンプルだけです。リポジトリ作成、サンプルの配置、Copilotでの実行は利用者が自分の作業用リポジトリで行います。結果をこのリポジトリのIssueやPull Requestへ提出する必要はありません。
@@ -64,6 +72,10 @@ git clone https://github.com/shinyay/github-copilot-customization-hackathon-2609
 ## リポジトリ構成
 
 ```text
+_config.yml             # GitHub Pages用の最小Jekyll設定
+_layouts/default.html   # 全ページ共通の言語トグル
+assets/                 # Pages用の軽量なCSSとJavaScript
+en/                     # 公開Markdownの英語版
 challenges/
 ├── README.md          # 45シナリオの一覧
 └── hc-xxx/

@@ -1,5 +1,7 @@
 # Memory reuseを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-041/optional/memory-reuse-live.md)
+
 [HC-041本編へ戻る](../README.md)
 
 ## 目的

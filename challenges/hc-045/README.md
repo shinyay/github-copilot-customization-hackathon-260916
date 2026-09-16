@@ -1,5 +1,7 @@
 # HC-045 レビュー指摘を安全なCloud修正へ引き継ごう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-045/README.md)
+
 ## Scenario
 
 税計算コードへのreviewで「税率ごとの集計方法が変わるかもしれない」という指摘候補が届きました。そのままCloud修正へ渡すと、変更先、branch/head、許可scope、期待するpost-image、変更してはいけないtest、独立した検証方法が失われることがあります。

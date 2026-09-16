@@ -1,5 +1,7 @@
 # 標準review effortを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-037/optional/review-effort-live.md)
+
 [HC-037本編へ戻る](../README.md)
 
 ## 目的

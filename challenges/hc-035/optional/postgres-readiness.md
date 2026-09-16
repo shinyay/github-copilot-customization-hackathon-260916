@@ -1,5 +1,7 @@
 # PostgreSQL readiness を確認する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-035/optional/postgres-readiness.md)
+
 [← HC-035 のメインシナリオ](../README.md)
 
 ## 目的

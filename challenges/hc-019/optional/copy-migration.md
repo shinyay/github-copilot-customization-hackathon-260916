@@ -1,5 +1,7 @@
 # 自己所有copyのmigrationを観察する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-019/optional/copy-migration.md)
+
 ## 目的
 
 対応製品のcopy migrationを、自己所有の無害なcopyで観察します。sourceとdestination、metadata、原本保持を分けて確認し、copy成功をapplicationや自動同期と誤認しません。

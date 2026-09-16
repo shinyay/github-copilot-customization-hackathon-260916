@@ -1,5 +1,7 @@
 # HC-028 Copilot が読んだ Instructions の版を突き止めよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-028/README.md)
+
 ## Scenario
 
 同じ Instructions が base、head、default、starting ref に存在すると、「保存されている版」「製品仕様上参照される版」「今回の観測で特定できた版」が混ざりやすくなります。

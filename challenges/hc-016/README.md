@@ -1,5 +1,7 @@
 # HC-016 役立つ記憶だけを残し、古い記憶を捨てよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-016/README.md)
+
 ## Scenario
 
 受注承認の権限処理を引き継ぐたびに、担当者は同じ二つの `require` を読み直しています。短いメモがあれば便利ですが、古い引用、広すぎる scope、別 workspace の情報まで残すと、次の担当者を誤らせます。

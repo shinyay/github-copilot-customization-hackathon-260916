@@ -1,5 +1,7 @@
 # GitHub Copilot Customization Scenarios
 
+**Language:** **日本語** / [English](../en/challenges/README.md)
+
 45のシナリオはすべて独立しています。興味のある機能、または自分の現場に近い課題から選んでください。
 
 作業用リポジトリの準備とサンプルの扱い方は、root READMEの [始め方](../README.md#始め方) を参照してください。

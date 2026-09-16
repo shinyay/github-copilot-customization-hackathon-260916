@@ -1,5 +1,7 @@
 # index・検索除外・開いたファイルを分けるガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-015/optional/index-exclusions.md)
+
 [HC-015 本編へ戻る](../README.md)
 
 ## 目的

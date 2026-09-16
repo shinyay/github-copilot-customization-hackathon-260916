@@ -1,5 +1,7 @@
 # Cloud Agent で test 提案を試す
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-029/optional/cloud-test-proposal.md)
+
 [← HC-029 のメインシナリオ](../README.md)
 
 ## 目的

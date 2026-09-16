@@ -1,5 +1,7 @@
 # HC-011 運用メモを安全に取得するMCP Toolを作ろう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-011/README.md)
+
 ## Scenario
 
 運用メモを毎回copy/pasteすると、どのキーで取得したか、取得に失敗したか、どこまでがコード由来かが曖昧になります。一方で、学習のために本番のnote systemへ接続する必要はありません。

@@ -1,5 +1,7 @@
 # Language Model ToolをDevelopment Hostで観察する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-020/optional/extension-tool-host.md)
+
 ## 目的
 
 [メインシナリオ](../README.md)のpure analyzerを変えずに、Language Model Toolのregistration、selection、confirmation、call、cancel、disposeを実機で分けて観察します。

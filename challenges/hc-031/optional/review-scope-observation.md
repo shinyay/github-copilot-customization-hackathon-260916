@@ -1,5 +1,7 @@
 # Code review で Instructions scope を観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-031/optional/review-scope-observation.md)
+
 [← HC-031 のメインシナリオ](../README.md)
 
 ## 目的

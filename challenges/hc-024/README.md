@@ -1,5 +1,7 @@
 # HC-024 Instructions と Skill を一つずつ外して比べる
 
+**Language:** **日本語** / [English](../../en/challenges/hc-024/README.md)
+
 ## Scenario
 
 CSV 再送の説明を作るために Instructions と Skill を併用したところ、回答が読みやすくなりました。しかし、両方を使った1回の結果だけでは、Instructions が役立ったのか、Skill が役立ったのか、片方だけで十分だったのかは分かりません。

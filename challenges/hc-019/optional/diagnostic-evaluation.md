@@ -1,5 +1,7 @@
 # 承認済みの外部diagnosticを試す
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-019/optional/diagnostic-evaluation.md)
+
 ## 目的
 
 外部の診断extensionやmodelへ、合成原稿だけを渡して補助的な指摘を得ます。出力は人のレビューを支える候補であり、意味の真値や修正のanswer keyではありません。

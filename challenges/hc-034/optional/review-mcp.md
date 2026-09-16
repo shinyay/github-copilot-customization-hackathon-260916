@@ -1,5 +1,7 @@
 # Code review で MCP 接続を観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-034/optional/review-mcp.md)
+
 [← HC-034 のメインシナリオ](../README.md)
 
 ## 目的

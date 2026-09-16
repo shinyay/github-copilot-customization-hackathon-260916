@@ -1,5 +1,7 @@
 # HC-029 Cloud Agent に Java 互換条件を守らせよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-029/README.md)
+
 ## Scenario
 
 Java の変更依頼には、今回だけの目的と、repository 全体で繰り返し守りたい互換条件があります。このシナリオでは、十分な固定依頼を出発点に、どの条件を Repository Instructions として常設する価値があるかを設計します。

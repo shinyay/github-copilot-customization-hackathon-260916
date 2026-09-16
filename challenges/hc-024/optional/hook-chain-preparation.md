@@ -1,5 +1,7 @@
 # Stop 通知経路を比べる
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-024/optional/hook-chain-preparation.md)
+
 ## 目的
 
 [HC-024 のメインシナリオ](../README.md)で使う「一要因だけを変える」考え方を、同じ限定 checker の呼出し経路へ応用します。checker を未接続、手動実行、Stop 通知へ接続した3経路で観察します。

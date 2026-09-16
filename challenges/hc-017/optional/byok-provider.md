@@ -1,5 +1,7 @@
 # BYOK provider を評価する探索ガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-017/optional/byok-provider.md)
+
 ## 目的
 
 [HC-017 の本編](../README.md)とは別に、Bring Your Own Key の provider を安全に評価できる条件を整理する補足ガイドです。本編の固定 7 行や private code は使わず、承認済みの無害な合成文だけを通信候補にします。

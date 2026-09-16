@@ -1,5 +1,7 @@
 # Waza評価を安全に試す
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-019/optional/waza-evaluation.md)
+
 ## 目的
 
 利用可能なWaza評価環境がある場合に、合成fixtureだけを対象として評価の入力・出力境界を確認します。未知のcommand、schema、scoreを推測して作りません。

@@ -1,5 +1,7 @@
 # Chat ParticipantをDevelopment Hostで観察する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-020/optional/chat-participant-host.md)
+
 ## 目的
 
 同じpure analyzerをChat Participantから呼び、registration、`@`入口、prompt、stream応答、cancel、disposeを観察します。Language Model Toolとは別の入口として扱います。

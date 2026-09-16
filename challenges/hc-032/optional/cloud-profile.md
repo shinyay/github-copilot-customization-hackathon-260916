@@ -1,5 +1,7 @@
 # Cloud Agent で profile を観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-032/optional/cloud-profile.md)
+
 [← HC-032 のメインシナリオ](../README.md)
 
 ## 目的

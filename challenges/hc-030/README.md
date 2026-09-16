@@ -1,5 +1,7 @@
 # HC-030 税額の意味を守るコードレビューを設計しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-030/README.md)
+
 ## Scenario
 
 税計算の patch には、見た目が小さくても意味を変えるものと、意味を保つものがあります。公開された source、test、2 つの candidate patch を使い、path-specific Instructions が semantic risk の検出と false-positive の抑制に役立つかを確認します。

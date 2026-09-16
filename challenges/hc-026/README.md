@@ -1,5 +1,7 @@
 # HC-026 カスタマイズ資産を安全に段階導入する
 
+**Language:** **日本語** / [English](../../en/challenges/hc-026/README.md)
+
 ## Scenario
 
 チームで作った Instructions、Skill、Plugin の原稿を共有したくても、owner、review、現在版、前版、配布先、復元先のどれかが不明なままでは安全に範囲を広げられません。

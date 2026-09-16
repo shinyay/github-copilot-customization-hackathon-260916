@@ -1,5 +1,7 @@
 # 許可済み Copilot Space を読み取る前の確認ガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-013/optional/space-read.md)
+
 [HC-013 本編へ戻る](../README.md)
 
 ## 目的

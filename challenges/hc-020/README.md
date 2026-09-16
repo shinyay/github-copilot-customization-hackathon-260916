@@ -1,5 +1,7 @@
 # HC-020 VS Code拡張から専用Toolを提供しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-020/README.md)
+
 ## Scenario
 
 Markdown原稿の `## Evidence`、`## Unknowns`、`[[source:...]]` を数える小さな処理があります。普通のNode.jsで十分な処理でも、モデルから呼べるLanguage Model Toolにするなら、入力、説明、確認、error、cancel、解除まで設計が必要です。

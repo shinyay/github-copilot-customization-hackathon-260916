@@ -1,5 +1,7 @@
 # stdio MCP sandbox を評価する探索ガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-018/optional/mcp-sandbox.md)
+
 ## 目的
 
 [HC-018 の本編](../README.md)や [terminal sandbox のガイド](terminal-sandbox.md)とは別に、local stdio MCP server の sandbox 境界を限定的に評価できる条件を整理する補足ガイドです。terminal の結果を MCP の結果へ転用しません。

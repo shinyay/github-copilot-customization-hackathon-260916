@@ -1,5 +1,7 @@
 # HC-021 競合するInstructionsの犯人を見つけよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-021/README.md)
+
 ## Scenario
 
 2行だけの表示カードをGitHub Copilotに整形してもらいます。規則ファイルを置いたのに表示が変わらない場合もあれば、同じ規則を複数の場所へ置いたあと、どの本文が使われたか説明できなくなる場合もあります。

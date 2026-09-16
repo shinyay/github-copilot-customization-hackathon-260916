@@ -1,5 +1,7 @@
 # Event triggerを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-043/optional/event-trigger.md)
+
 [HC-043本編へ戻る](../README.md)
 
 ## 目的

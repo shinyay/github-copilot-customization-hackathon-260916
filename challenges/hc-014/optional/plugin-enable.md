@@ -1,5 +1,7 @@
 # Plugin を有効化する前の確認ガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-014/optional/plugin-enable.md)
+
 [HC-014 本編へ戻る](../README.md)
 
 ## 目的

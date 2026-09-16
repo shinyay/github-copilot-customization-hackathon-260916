@@ -1,5 +1,7 @@
 # HC-040 一つのSkillをPluginとして届けよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-040/README.md)
+
 ## Scenario
 
 受注CSVの再送調査に使う一つのSkillを複数の担当者へ届ける方法を考えます。手動コピーとPlugin packageでSkill本文が同じなら、比較すべきなのは知識量ではなく、版、配布先、更新、旧版復元、drift確認の負担です。

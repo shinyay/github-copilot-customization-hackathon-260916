@@ -1,5 +1,7 @@
 # 外部評価 tool / service を検討する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-027/optional/external-evaluation.md)
+
 [メインシナリオへ戻る](../README.md)
 
 ## 目的

@@ -1,5 +1,7 @@
 # Organization instructions の承認と対応範囲を確認する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-005/optional/organization-scope.md)
+
 [HC-005 本編へ戻る](../README.md)
 
 ## 目的

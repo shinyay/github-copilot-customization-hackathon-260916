@@ -1,5 +1,7 @@
 # Content exclusionを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-042/optional/content-exclusion.md)
+
 [HC-042本編へ戻る](../README.md)
 
 ## 目的

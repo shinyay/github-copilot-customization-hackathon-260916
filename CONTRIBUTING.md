@@ -1,5 +1,7 @@
 # Contributing
 
+**Language:** **日本語** / [English](en/CONTRIBUTING.md)
+
 このリポジトリは、GitHub Copilotのカスタマイズ機能をシナリオから学べる、静的な公開教材として維持します。
 
 ## シナリオの原則
@@ -51,9 +53,17 @@
 
 シナリオを追加、削除、改名した場合は `challenges/README.md` の静的インデックスを同じ変更で更新します。generatorやCatalogは使用しません。
 
+## 日英ドキュメント
+
+- 公開する各日本語文書には、同じpathを `en/` 配下へ写した英語文書を1対1で対応させる。
+- 手順、制約、確認ポイント、安全境界を要約で欠落させず、同じ変更で両言語を更新する。
+- code、command、path、hash、identifier、URL、starter filenameは変更しない。
+- GitHub Markdown上の **日本語 / English** リンクを両言語へ残し、GitHub Pagesのトグルが存在する往復先を指すことを確認する。
+
 ## 確認
 
 - READMEの相対リンクが存在するファイルへ解決する。
+- すべての公開日本語文書に英語版があり、すべての英語文書に日本語版がある。
 - `starter/` のサンプルが不活性な名前になっている。
 - 手順がこのREADMEと対象シナリオだけで開始できる。
 - 旧Hub／Pack／submission用commandやIssue提出導線が残っていない。

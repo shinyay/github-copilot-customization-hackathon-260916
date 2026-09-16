@@ -1,5 +1,7 @@
 # Cloud Agent で MCP 接続を観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-034/optional/cloud-mcp.md)
+
 [← HC-034 のメインシナリオ](../README.md)
 
 ## 目的

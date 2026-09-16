@@ -1,5 +1,7 @@
 # HC-013 チームの知識を Copilot Space 向けに整理しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-013/README.md)
+
 ## Scenario
 
 受注 CSV の再送処理について、次の保守担当へ資料を渡します。コード、テスト定義、合成の運用メモ、

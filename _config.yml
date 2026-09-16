@@ -1,0 +1,33 @@
+title: GitHub Copilot Customization Scenarios
+description: Bilingual, scenario-based guides for learning GitHub Copilot customization.
+url: https://shinyay.github.io
+baseurl: /github-copilot-customization-hackathon-260916
+repository: shinyay/github-copilot-customization-hackathon-260916
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+
+include:
+  - CONTRIBUTING.md
+  - en/CONTRIBUTING.md
+
+optional_front_matter:
+  remove_originals: true
+
+readme_index:
+  remove_originals: true
+
+relative_links:
+  enabled: true
+
+titles_from_headings:
+  enabled: true
+  strip_title: false
+  collections: false

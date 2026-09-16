@@ -1,5 +1,7 @@
 # utility model 経路を観察する探索ガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-017/optional/utility-models.md)
+
 ## 目的
 
 [HC-017 の本編](../README.md)で扱う Chat model とは別に、commit message 生成など一つの utility model 経路を観察するための補足ガイドです。Chat picker で選んだモデルを、utility 機能の実効モデルとみなしません。

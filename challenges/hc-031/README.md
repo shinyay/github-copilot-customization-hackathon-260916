@@ -1,5 +1,7 @@
 # HC-031 Java・XML・製品別に Instructions を出し分けよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-031/README.md)
+
 ## Scenario
 
 注文処理の調査では、Java の制御フローと XML の配線を行き来します。Java 向け規則を XML へ広く配ると noise になり、XML 向け規則をすべての Java へ配ると保守範囲が曖昧になります。さらに、Cloud Agent と code review のどちらへ同じ原稿を届けるかは、file scope とは別の設計問題です。

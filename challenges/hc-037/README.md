@@ -1,5 +1,7 @@
 # HC-037 LiteとBalancedのレビュー品質を比べよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-037/README.md)
+
 ## Scenario
 
 税額まわりの変更をCopilot code reviewへ依頼するとき、LiteとBalancedのどちらを選ぶべきかを検討します。指摘数や文章量だけで勝敗を決めず、根拠のある指摘、誤検知、見落とし、重複、確認負担、欠測を同じ基準で記録できる評価計画を作ります。
@@ -59,7 +61,7 @@ Copilot code reviewのeffortは、標準レビューへ依頼する分析の深�
 |---|---|
 | [`request.txt.template`](starter/request.txt.template) | 未送信の固定依頼 |
 | [`evaluation-plan.md.template`](starter/evaluation-plan.md.template) | Lite × 2候補、Balanced × 2候補の評価計画 |
-| [`candidates/`](starter/candidates/) | 二つの合成候補差分 |
+| [`candidate-01.diff.template`](starter/candidates/candidate-01.diff.template)、[`candidate-02.diff.template`](starter/candidates/candidate-02.diff.template) | 二つの合成候補差分 |
 | [`reference/controls.json.template`](starter/reference/controls.json.template) | effort以外に固定する項目 |
 | [`reference/rules.md.template`](starter/reference/rules.md.template) | 根拠、誤検知、負担、欠測の共通規約 |
 | [`reference/source-map.md.template`](starter/reference/source-map.md.template) | 関連symbolと読取境界 |

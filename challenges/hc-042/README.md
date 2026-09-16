@@ -1,5 +1,7 @@
 # HC-042 読めない外部データの原因を層ごとに探そう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-042/README.md)
+
 ## Scenario
 
 外部資料を参照しようとしたとき、「設定はある」「空の結果だった」「権限がないらしい」という記録が混在しています。設定の存在、tool発見、call、network、authentication、authorization、出力利用は別々の出来事です。

@@ -1,5 +1,7 @@
 # HC-035 指示と実行環境を混同せず準備しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-035/README.md)
+
 ## Scenario
 
 古い Java アプリの調査で「JDK 8 を使う」「Maven 3.9 系を使う」「Java 7 API を越えない」と Instructions に書いても、その tool が環境に存在する証拠にはなりません。setup で tool を用意しても、source/API 制約を守ったことや test 成功までは保証しません。

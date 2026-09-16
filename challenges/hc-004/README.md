@@ -1,5 +1,7 @@
 # HC-004 `CLAUDE.md` 形式の指示を安全に試そう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-004/README.md)
+
 ## Scenario
 
 チームから「別の対応ツールで使っている短い作業規則を、GitHub Copilotでも再利用したい」と相談されました。

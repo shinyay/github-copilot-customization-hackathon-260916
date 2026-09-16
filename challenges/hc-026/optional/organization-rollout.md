@@ -1,5 +1,7 @@
 # 実組織へ段階導入する前の確認
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-026/optional/organization-rollout.md)
+
 [メインシナリオへ戻る](../README.md)
 
 ## 目的

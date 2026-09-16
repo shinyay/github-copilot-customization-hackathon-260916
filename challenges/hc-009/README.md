@@ -1,5 +1,7 @@
 # HC-009 CSV再送調査のプレイブックをSkillにしよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-009/README.md)
+
 ## Scenario
 
 CSV importの再送を調べるたびに、`external_key`、payload hash、同じrequestのreplay、異なるpayloadのconflict、新しいclaimの扱いを説明し直していると、確認項目が抜けやすくなります。さらに、sourceを読んだだけでdatabase stateや実際のincident historyまで断言してしまう危険があります。
@@ -55,7 +57,8 @@ Skillは、特定種類の作業に必要な手順、reference、scriptをまと
 |---|---|
 | [`starter/customization/SKILL.md.template`](starter/customization/SKILL.md.template) | Skill本文の開始点 |
 | [`starter/customization/checklist.md.template`](starter/customization/checklist.md.template) | replay判断の確認項目 |
-| [`starter/reference/`](starter/reference/) | sourceを用意できない場合のread-only excerpt |
+| [`OrderImportService.java.excerpt.md.template`](starter/reference/OrderImportService.java.excerpt.md.template) | `importDraft` のread-only fallback excerpt |
+| [`OrderGroup.java.excerpt.md.template`](starter/reference/OrderGroup.java.excerpt.md.template) | `canonicalHash` のread-only fallback excerpt |
 | [`starter/tools/check-investigation-note.mjs.template`](starter/tools/check-investigation-note.mjs.template) | 調査noteのheadingを確認するscript |
 | [`starter/worksheets/investigation-note.md.template`](starter/worksheets/investigation-note.md.template) | 人が記入する調査note |
 

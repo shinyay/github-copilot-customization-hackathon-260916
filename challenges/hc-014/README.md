@@ -1,5 +1,7 @@
 # HC-014 Skill を Plugin として配布・更新しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-014/README.md)
+
 ## Scenario
 
 受注 CSV を調べる担当者へ、短い読解手順を渡します。一人へ一度だけ渡すなら Skill ファイルのコピーで

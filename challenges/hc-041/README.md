@@ -1,5 +1,7 @@
 # HC-041 repo factsと古い記憶を見分けよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-041/README.md)
+
 ## Scenario
 
 引継ぎ資料に「検査commandは `check-a`」というfactがあり、引用pathも付いています。しかし現在の同じpathには `npm run verify` と書かれているかもしれません。別repositoryの事実、user preference、「今回使った」という自己申告も同じ束へ混ざっています。

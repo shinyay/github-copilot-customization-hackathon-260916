@@ -1,5 +1,7 @@
 # HC-015 最短経路で必要なコードへ到達しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-015/README.md)
+
 ## Scenario
 
 「受注の在庫引当はどこから始まり、transaction はどこで決まりますか」と聞かれました。

@@ -1,5 +1,7 @@
 # terminal sandbox を評価する探索ガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-018/optional/terminal-sandbox.md)
+
 ## 目的
 
 [HC-018 の本編](../README.md)とは別に、Preview の terminal sandbox を限定的に評価できる条件を整理する補足ガイドです。本編の合成 packet や `node --version` の正常出力を、実 sandbox の観察として扱いません。

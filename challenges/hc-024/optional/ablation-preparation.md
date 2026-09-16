@@ -1,5 +1,7 @@
 # 四機構を一つずつ外す
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-024/optional/ablation-preparation.md)
+
 ## 目的
 
 [HC-024 のメインシナリオ](../README.md)は Instructions と Skill の2要因を扱います。この補助ガイドでは、Instructions / Skill / Custom Agent / MCP の full 構成から1つずつ外し、どの構成要素が観察結果に関係したかを整理します。

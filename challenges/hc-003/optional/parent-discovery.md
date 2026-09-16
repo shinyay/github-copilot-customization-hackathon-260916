@@ -1,5 +1,7 @@
 # 親 repository からの customization 発見を探索する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-003/optional/parent-discovery.md)
+
 [HC-003 本編へ戻る](../README.md)
 
 ## 目的

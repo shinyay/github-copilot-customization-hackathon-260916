@@ -1,5 +1,7 @@
 # HC-007 調査役と検証役のAIチームを設計しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-007/README.md)
+
 ## Scenario
 
 受注承認の調査を1つのAIに任せ、そのまま自己レビューも頼むと、最初の仮説を正当化したり、未確認事項を見落としたりすることがあります。
@@ -55,7 +57,10 @@ handoffを扱えるclientでは、Agent定義の `send: false` により候補�
 | [`starter/inputs/fixed-packet.md.template`](starter/inputs/fixed-packet.md.template) | 全ての会話で変えない調査依頼 |
 | [`starter/customization/order-investigator.agent.md.template`](starter/customization/order-investigator.agent.md.template) | investigatorの開始点 |
 | [`starter/customization/order-reviewer.agent.md.template`](starter/customization/order-reviewer.agent.md.template) | reviewerの開始点 |
-| [`starter/reference/`](starter/reference/) | 対象sourceの必要部分を抜き出したread-only参考資料 |
+| [`OrderAction.java.excerpt.md.template`](starter/reference/OrderAction.java.excerpt.md.template) | web actionのrole checkとservice dispatchのread-only fallback資料 |
+| [`OrderService.java.excerpt.md.template`](starter/reference/OrderService.java.excerpt.md.template) | service側のauthorizationと業務条件のread-only fallback資料 |
+| [`Actor.java.excerpt.md.template`](starter/reference/Actor.java.excerpt.md.template) | ADMIN bypassとexact role membershipのread-only fallback資料 |
+| [`BaseService.java.excerpt.md.template`](starter/reference/BaseService.java.excerpt.md.template) | null actorとservice authorizationのread-only fallback資料 |
 | [`starter/worksheets/handoff.md.template`](starter/worksheets/handoff.md.template) | 人の確認と最終判断を残す簡易worksheet |
 
 JDK、database、server起動は不要です。

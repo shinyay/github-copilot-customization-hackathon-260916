@@ -1,5 +1,7 @@
 # User 指示の保存元と隔離を確認する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-005/optional/user-scope.md)
+
 [HC-005 本編へ戻る](../README.md)
 
 ## 目的

@@ -1,5 +1,7 @@
 # HC-003 ディレクトリごとのルールを AGENTS.md で伝えよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-003/README.md)
+
 ## Scenario
 
 受注承認の説明を Copilot に頼むと、service の入口だけで結論を出す回答もあれば、継承元の共有処理や委譲先まで追う回答もあります。チームは「どの調査にも必要な短い規則」と「特定の directory でだけ必要な観点」を整理したいと考えています。

@@ -1,5 +1,7 @@
 # Code review で Skill を観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-033/optional/review-skill.md)
+
 [← HC-033 のメインシナリオ](../README.md)
 
 ## 目的

@@ -1,5 +1,7 @@
 # HC-032 Cloud Agent の調査役と tools を設計しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-032/README.md)
+
 ## Scenario
 
 受注承認の調査を依頼するとき、「コードから根拠を集める担当」と「実際に変更する担当」を分けたいことがあります。ただし profile に「read-only」と書くだけでは、OS や repository の権限は変わりません。また、tool を宣言したこと、実行時に利用可能だったこと、実際に呼ばれたことも別の事実です。

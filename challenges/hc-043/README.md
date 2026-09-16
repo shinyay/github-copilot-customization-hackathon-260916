@@ -1,5 +1,7 @@
 # HC-043 イベント駆動Agentを最小権限で動かそう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-043/README.md)
+
 ## Scenario
 
 Java保守PRの影響範囲を自動で整理したいとします。PRを開いたactor、automationを作ったcreator、費用を負担する主体、sessionを読める人、停止を依頼する人は同じとは限りません。読取taskへlabel更新やpushまで許可すると、不要な権限と継続発火の負担を持ち込みます。

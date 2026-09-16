@@ -1,5 +1,7 @@
 # Review trigger を限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-036/optional/review-triggers.md)
+
 [← HC-036 のメインシナリオ](../README.md)
 
 ## 目的

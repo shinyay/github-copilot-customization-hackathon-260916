@@ -1,5 +1,7 @@
 # CLI / App / Cloud を別 client として調べる
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-025/optional/other-clients.md)
+
 [メインシナリオへ戻る](../README.md)
 
 ## 目的

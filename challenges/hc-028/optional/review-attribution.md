@@ -1,5 +1,7 @@
 # 標準 review attribution を観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-028/optional/review-attribution.md)
+
 [← HC-028 のメインシナリオ](../README.md)
 
 ## 目的

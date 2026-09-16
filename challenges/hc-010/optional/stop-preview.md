@@ -1,5 +1,7 @@
 # Stop Hookを使い捨てworkspaceで観察する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-010/optional/stop-preview.md)
+
 このガイドは[HC-010本編](../README.md)の任意の発展です。本編はHookを有効化せず完了できます。
 
 ## 目的

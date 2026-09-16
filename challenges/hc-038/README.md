@@ -1,5 +1,7 @@
 # HC-038 Cloud Hookの失敗を正しく分類しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-038/README.md)
+
 ## Scenario
 
 Cloud Agentの開始時とtool使用前にcheckerを呼び出す設計を考えます。「Hookが宣言された」「eventで呼ばれた」「checkerが返した」「toolが許可された」は別の観測です。さらに、deny、command error、timeout、HTTP failureを一つの失敗へまとめると、停止すべき場面と通常のpermission flowへ戻る場面を取り違えます。
@@ -67,7 +69,7 @@ Hookは、定めたeventで外部checkerを呼び出すカスタマイズです�
 | [`fixtures/events.json.template`](starter/fixtures/events.json.template) | E01〜E12 |
 | [`tools/checker.sh.template`](starter/tools/checker.sh.template) | 両eventで共通の不活性checker |
 | [`reference/hook-contract.md.template`](starter/reference/hook-contract.md.template) | fieldとfailure境界 |
-| [`customization/`](starter/customization/) | 不活性なHook JSON例 |
+| [`hooks-session-start.json.template`](starter/customization/hooks-session-start.json.template)、[`hooks-pre-tool.json.template`](starter/customization/hooks-pre-tool.json.template) | 不活性なHook JSON例 |
 
 すべて `.template` のまま扱います。
 

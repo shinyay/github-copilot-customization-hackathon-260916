@@ -1,5 +1,7 @@
 # 共有profileを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-039/optional/shared-profiles-live.md)
+
 [HC-039本編へ戻る](../README.md)
 
 ## 目的

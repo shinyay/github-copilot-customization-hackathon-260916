@@ -1,5 +1,7 @@
 # Plugin lifecycleを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-040/optional/plugin-lifecycle-live.md)
+
 [HC-040本編へ戻る](../README.md)
 
 ## 目的

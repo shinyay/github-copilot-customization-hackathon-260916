@@ -1,5 +1,7 @@
 # Cloud handoffを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-045/optional/cloud-handoff.md)
+
 [HC-045本編へ戻る](../README.md)
 
 ## 目的

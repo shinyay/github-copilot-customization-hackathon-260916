@@ -1,5 +1,7 @@
 # HC-002 Java と XML に別々の読み方を教えよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-002/README.md)
+
 ## Scenario
 
 受注の在庫引当を調べるとき、Java だけを読むと「誰が、どの状態で呼べるか」は説明できても、Spring XML とのつながりを見落とすことがあります。逆に XML の属性だけを並べても、それが調べている method へどう適用されるのか伝わりません。

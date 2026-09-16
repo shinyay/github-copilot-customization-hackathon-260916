@@ -1,5 +1,7 @@
 # Approvalを限定観測する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-044/optional/approvals.md)
+
 [HC-044本編へ戻る](../README.md)
 
 ## 目的

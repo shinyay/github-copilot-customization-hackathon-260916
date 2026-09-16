@@ -1,5 +1,7 @@
 # HC-023 最小限で十分なカスタマイズを選ぶ
 
+**Language:** **日本語** / [English](../../en/challenges/hc-023/README.md)
+
 ## Scenario
 
 チームには Instructions、Prompt、Skill、Custom Agent、MCP、Plugin など多くの選択肢があります。困りごとごとに新しい仕組みを追加すると、設定、権限確認、対応環境、更新担当が増えます。一方、反復作業へ何も準備しないと、同じ説明を毎回やり直すことになります。

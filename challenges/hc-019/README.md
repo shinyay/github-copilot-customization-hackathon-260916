@@ -1,5 +1,7 @@
 # HC-019 カスタマイズの健康診断を作ろう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-019/README.md)
+
 ## Scenario
 
 GitHub Copilot向けInstructionsの原稿は、構文として読め、候補一覧にも表示されているのに、実際には互いに矛盾していることがあります。逆に、構文検査だけで「役に立たない」と決めるのも早計です。

@@ -1,5 +1,7 @@
 # `CLAUDE.local.md` と `.claude/rules/` を別々に検討する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-004/optional/claude-variants.md)
+
 [HC-004 本編へ戻る](../README.md)
 
 ## 目的

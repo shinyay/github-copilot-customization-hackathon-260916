@@ -1,5 +1,7 @@
 # HC-006 繰り返す Java 調査を Prompt File にしよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-006/README.md)
+
 ## Scenario
 
 同じ注文処理を調べるたびに、「三ファイルを追う」「fact と推測を分ける」「最小の次の確認を出す」と

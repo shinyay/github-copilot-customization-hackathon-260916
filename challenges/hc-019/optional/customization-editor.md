@@ -1,5 +1,7 @@
 # Customizations editorで自己所有copyを観察する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-019/optional/customization-editor.md)
+
 ## 目的
 
 管理UIに表示される候補、scope、enabled状態と、実requestへのapplicationを分けて観察します。[メインシナリオ](../README.md)の合成inventoryを実UIの結果として扱わないための補足です。

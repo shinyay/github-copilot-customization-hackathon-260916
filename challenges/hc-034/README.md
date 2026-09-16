@@ -1,5 +1,7 @@
 # HC-034 Cloud Agent から運用メモ MCP を呼ぶ設計をしよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-034/README.md)
+
 ## Scenario
 
 CSV 再送の調査では、コードに加えて運用メモを参照したいことがあります。MCP tool から取得する設計では、設定保存、server 起動、tool 一覧、製品採用、call、return、内容の裏付けを一つの「成功」にまとめないことが重要です。

@@ -1,5 +1,7 @@
 # 用途別生成の入口を小さく試す
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-005/optional/task-generation.md)
+
 [HC-005 本編へ戻る](../README.md)
 
 ## 目的

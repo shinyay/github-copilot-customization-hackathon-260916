@@ -1,5 +1,7 @@
 # HC-033 Cloud Agent に再送調査 Skill を渡そう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-033/README.md)
+
 ## Scenario
 
 CSV 再送の調査では、同じ `external_key` でも内容が同じ場合と違う場合があり、元受注、claim、journal の関係も確認する必要があります。毎回長い手順を貼る代わりに Skill としてまとめられますが、Skill 名が見えたこと、本文が使われたこと、resource が読まれたこと、script が動いたことは別々に扱う必要があります。

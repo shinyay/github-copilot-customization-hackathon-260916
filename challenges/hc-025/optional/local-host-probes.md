@@ -1,5 +1,7 @@
 # Local Agent / Agent Host で1件ずつ確認する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-025/optional/local-host-probes.md)
+
 [メインシナリオへ戻る](../README.md)
 
 ## 目的

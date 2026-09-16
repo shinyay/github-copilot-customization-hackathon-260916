@@ -1,5 +1,7 @@
 # HC-039 組織で共有する規約のownerを決めよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-039/README.md)
+
 ## Scenario
 
 「調査結果は根拠と未確認を分ける」という規約を複数teamで共有するとします。rootの `AGENTS.md`、organization Instructions、organization/enterprise共有profileには似た文章を書けますが、保存場所、利用surface、閲覧範囲、編集権限、owner、更新責任は同じではありません。

@@ -1,5 +1,7 @@
 # 入れ子の AGENTS.md を別環境で探索する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-003/optional/nested-discovery.md)
+
 [HC-003 本編へ戻る](../README.md)
 
 ## 目的

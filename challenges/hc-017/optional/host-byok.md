@@ -1,5 +1,7 @@
 # Agent Host で BYOK を評価する探索ガイド
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-017/optional/host-byok.md)
+
 ## 目的
 
 [HC-017 の本編](../README.md)や local client の BYOK とは別に、Agent Host から provider を利用する経路を安全に観察するための補足ガイドです。local での接続成功を Host の成功として扱いません。

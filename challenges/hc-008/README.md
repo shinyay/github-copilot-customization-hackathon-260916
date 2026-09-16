@@ -1,5 +1,7 @@
 # HC-008 大きな調査を二人のSubagentへ任せよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-008/README.md)
+
 ## Scenario
 
 受注機能の保守引継ぎで、「画面から入る注文」と「CSVから入る注文」を説明することになりました。1つのAgentが順に読む方法もありますが、入口ごとに独立して調べられるなら、2つのSubagentへ分けてから親が統合できます。

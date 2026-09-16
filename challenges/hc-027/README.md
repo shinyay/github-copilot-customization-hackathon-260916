@@ -1,5 +1,7 @@
 # HC-027 評価計画を固定してからカスタマイズを比べる
 
+**Language:** **日本語** / [English](../../en/challenges/hc-027/README.md)
+
 ## Scenario
 
 Copilot の回答を見てから採点項目、試行回数、欠測の扱いを変えると、都合の良い結果だけを「改善」と呼べます。このシナリオでは、primary task と transfer-check task を使い、評価観点、順序、終了条件、欠測、回帰の扱いを結果を見る前に固定します。

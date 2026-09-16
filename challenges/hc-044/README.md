@@ -1,5 +1,7 @@
 # HC-044 CopilotのApproveとmerge可能を区別しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-044/README.md)
+
 ## Scenario
 
 保守PRにpositive assessmentとformal Approve eventがあります。それでも、そのeventをrequired approvalへ数えられるactorか、現在head向けか、必要票数へ届いたか、全changed filesが対象か、上位policyやCIが満たされたかは別に確認する必要があります。

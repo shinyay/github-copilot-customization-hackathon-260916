@@ -1,5 +1,7 @@
 # HC-036 Draft・Open・更新時のレビュー発火を設計しよう
 
+**Language:** **日本語** / [English](../../en/challenges/hc-036/README.md)
+
 ## Scenario
 
 Pull Request の自動 review では、新規 Open、Draft から初めて Ready になった時点、Draft 中の更新、新しい push、人による再要求を区別する必要があります。request と完了の時間差や、reviewed head と現在 head の違いも無視できません。

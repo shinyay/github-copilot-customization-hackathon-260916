@@ -1,5 +1,7 @@
 # ProfileでTool Setを安全に確認する
 
+**Language:** **日本語** / [English](../../../en/challenges/hc-012/optional/profile-tool-sets.md)
+
 このガイドは[HC-012本編](../README.md)の任意の発展です。本編はProfileを変更せず完了できます。
 
 ## 目的
