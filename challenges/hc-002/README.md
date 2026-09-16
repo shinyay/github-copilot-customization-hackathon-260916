@@ -71,7 +71,7 @@ Packは全条件へ**同じ六つの不活性ファイル**を `.hackathon/chall
 | `design.md.template` | scope・言葉・費用・停止条件の設計票 |
 | `comparison.md.template` | 各条件の出力と未観測を残すEvidence |
 
-必要なのはNode.js 22以降、Git、非公開Hubと自分のRuntime repositoryを扱う参加権限、利用可能なVS Code Stable / Copilotと読取り用toolsです。Java/JDK、Maven、DB、サーバー起動は本編では不要です。新しいsoftware、MCP、Skill、Custom Agent、Cloud Agentを導入せず、User・組織・workspace設定も変更しません。
+必要なのはNode.js 22以降、Git、公開Hubを閲覧・cloneできる環境、自分の非公開Runtime repositoryを扱う権限、利用可能なVS Code Stable / Copilotと読取り用toolsです。Java/JDK、Maven、DB、サーバー起動は本編では不要です。新しいsoftware、MCP、Skill、Custom Agent、Cloud Agentを導入せず、User・組織・workspace設定も変更しません。
 
 ## Open Question
 

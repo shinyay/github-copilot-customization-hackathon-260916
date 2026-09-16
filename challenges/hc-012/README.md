@@ -66,7 +66,7 @@ Local Agentの説明を別のAgent Host / harnessへ無条件に一般化せず�
 
 ## Starter Kit
 
-必要なのはGit、Node.js 22以降、テキストを読んで編集できる環境、自分の非公開RuntimeとHub Issueへの通常の参加権限です。
+必要なのはGit、Node.js 22以降、テキストを読んで編集できる環境、自分の非公開Runtimeへのアクセス権、公開HubへChallenge Result Issueを提出するためのサインイン済みGitHubアカウントです。
 本編は手作業で進められ、Copilotの利用資格、JDK、Maven、DB、拡張の新規導入、Preview有効化は不要です。
 SYNTHETIC_TRAINING_ONLY — 引継ぎの場面と記録用紙は合成教材です。Javaの実装やテスト定義まで合成の実行ログとして扱いません。
 
