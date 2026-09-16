@@ -2,9 +2,9 @@
 
 ## 1. Event Hubを取得する
 
-このガイドのHubは、2026-09-16開催用の非公開リポジトリ
+このガイドのHubは、2026-09-16開催用の公開リポジトリ
 [`shinyay/github-copilot-customization-hackathon-260916`](https://github.com/shinyay/github-copilot-customization-hackathon-260916)
-です。アクセス権を付与された参加者だけがclone、Challenge閲覧、Issue提出を行えます。
+です。誰でも内容を閲覧してcloneできます。Challenge Result Issueを提出するにはGitHubアカウントでのサインインが必要で、提出は通常のGitHubおよびリポジトリのモデレーション対象です。
 
 ```console
 git clone https://github.com/shinyay/github-copilot-customization-hackathon-260916.git

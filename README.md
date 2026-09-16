@@ -1,6 +1,6 @@
 # GitHub Copilot Customization Workshop 2026-09-16
 
-この非公開リポジトリは、2026-09-16開催ワークショップのChallenge選択、Starter Pack配布、実行計画、Challenge Result Issue、結果集約を担う **Hub** です。実験はHubでは行わず、参加者またはチームごとに独立した非公開Runtimeリポジトリで行います。
+この公開リポジトリは、2026-09-16開催ワークショップのChallenge選択、Starter Pack配布、実行計画、Challenge Result Issue、結果集約を担う **Hub** です。実験はHubでは行わず、参加者またはチームごとに独立した非公開Runtimeリポジトリで行います。
 
 ```console
 git clone https://github.com/shinyay/github-copilot-customization-hackathon-260916.git
