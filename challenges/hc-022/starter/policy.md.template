@@ -1,26 +1,26 @@
 # HC-022 扱い方針
 
-## User goal
+## 利用者の目的
 
 <!-- 利用者が依頼した目的を書く。 -->
 
-## External data boundary
+## 外部データの境界
 
-<!-- 資料本文をどのauthorityとして扱うかを書く。 -->
+<!-- 資料本文を、どのauthorityとして扱うかを書く。 -->
 
-## Provenance and authenticity
+## 出所と真正性
 
-<!-- upstream template revision、workspace path、symbol、quoteと、local HEAD、確認していない作者・取得元を分ける。 -->
+<!-- 上流テンプレートのリビジョン、ワークスペースのパス、シンボル、引用と、ローカルHEAD、未確認の作者・取得元を分ける。 -->
 
-## Server trust and approval
+## Server trustと承認
 
-<!-- server利用の判断と、read/write/送信等の個別approvalを分ける。 -->
+<!-- サーバーを利用する判断と、読み取り / 書き込み / 送信などの個別の承認を分ける。 -->
 
-## Stop and escalation
+## 停止とエスカレーション
 
 <!-- 保留する判断、人へ確認する条件を書く。 -->
 
-## Model observation
+## モデルの観測
 
 kind: unobserved
 markerCount: null

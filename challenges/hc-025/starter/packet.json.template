@@ -10,6 +10,6 @@
     "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java",
     "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
   ],
-  "boundary": "public upstream template revisionはcanonicalな参照であり、template由来workspaceのlocal HEAD一致は要求しません。三つのpathは現在のruntime workspaceから読むsourceを示し、業務仕様の正解や以前の回答ではありません。",
-  "request": "packetId、upstream template fields、三つのpath、HEAD一致不要という境界を保持してください。業務事実の調査・推論は要求しません。"
+  "boundary": "公開された上流テンプレートのリビジョンは正規の参照であり、テンプレートから作成したワークスペースのローカルHEADの一致は要求しません。3つのパスは、現在のランタイムワークスペースから読むソースを示すものであり、業務仕様の正解や以前の回答ではありません。",
+  "request": "packetId、上流テンプレートのフィールド、3つのパス、HEADの一致が不要という境界を保持してください。業務上の事実の調査や推論は要求しません。"
 }

@@ -1,12 +1,12 @@
-# Source map
+# ソースマップ
 
-| role | path | inspect for |
+| 役割 | パス | 確認内容 |
 |---|---|---|
-| main | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` | core Javaの制御フロー |
-| main | `wholesale-core/src/main/resources/application-context.xml` | application wiring |
-| main | `wholesale-core/src/main/resources/spring/module-operations.xml` | module wiring |
-| main | `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java` | core scope外のweb Java |
-| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java` | 共通guardへの継承経路 |
-| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java` | role要求の実装 |
+| main | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` | core Java の制御フロー |
+| main | `wholesale-core/src/main/resources/application-context.xml` | アプリケーションの配線 |
+| main | `wholesale-core/src/main/resources/spring/module-operations.xml` | モジュールの配線 |
+| main | `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java` | core の適用範囲外にある web Java |
+| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java` | 共通ガードへの継承経路 |
+| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java` | ロール要件の実装 |
 
-main 4件はscope表に残し、supplemental 2件は共通guardを辿るときに使います。source読解はtransactionやlive behaviorの観測ではありません。
+main の 4 件は適用範囲の表に残し、supplemental の 2 件は共通ガードをたどる場合に使います。ソースの読解は、トランザクションや実環境での挙動を観測したことにはなりません。

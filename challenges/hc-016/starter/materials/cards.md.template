@@ -1,16 +1,16 @@
-# HC-016 review cards
+# HC-016 レビューカード
 
-すべて教材用です。ID は採否や正誤を表しません。各 card を現在の source、scope、鮮度、再確認条件と照合してください。
+すべて教材用です。IDは採否や正誤を表しません。各カードを、現在のソース、スコープ、鮮度、再確認条件と照合してください。
 
 ## card-p
 
-- material: current fixed-source reading
-- proposed scope: repository
-- source paths:
+- 資料: 現在の固定ソースの読解
+- 提案するスコープ: repository
+- ソースのパス:
   - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java`
   - `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java`
-- symbols: `BaseService.require`, `Actor.require`
-- runtime observation: not performed
+- シンボル: `BaseService.require`, `Actor.require`
+- 実行時の観察: 未実施
 
 教材用の固定事実。対象はこの演習用repositoryだけであり、個人の好みではない。
 BaseService.requireはactorがnullならauthentication.requiredを送出し、それ以外はActor.requireへ委譲する。
@@ -21,10 +21,10 @@ wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java の requi
 
 ## card-q
 
-- material: `SYNTHETIC_TRAINING_ONLY`
-- proposed scope: repository
-- quoted location candidate: `BaseService.java` の package / import 付近
-- claimed source history: none
+- 資料: `SYNTHETIC_TRAINING_ONLY`
+- 提案するスコープ: repository
+- 引用位置の候補: `BaseService.java` のpackage / import付近
+- 主張するソース履歴: なし
 
 教材用の固定事実。対象はこの演習用repositoryだけであり、個人の好みではない。
 BaseService.requireはactorがnullでも認証済みとして通す。
@@ -34,19 +34,19 @@ Java/DBと実権限は未確認。
 
 ## card-r
 
-- material: `SYNTHETIC_TRAINING_ONLY`
-- proposed scope: user
-- source paths: card-p と同じ
-- symbols: `BaseService.require`, `Actor.require`
+- 資料: `SYNTHETIC_TRAINING_ONLY`
+- 提案するスコープ: user
+- ソースのパス: card-pと同じ
+- シンボル: `BaseService.require`, `Actor.require`
 
-card-p と同じ固定 fact を、他 repository にも適用される User 全体へ残す案です。scope の妥当性、別 workspace への影響、再確認 trigger を検討してください。
+card-pと同じ固定事実を、ほかのリポジトリにも適用されるUser全体に残す案です。スコープの妥当性、別のワークスペースへの影響、再確認条件を検討してください。
 
 ## card-s
 
-- material: `SYNTHETIC_TRAINING_ONLY`
-- proposed scope: unrelated training workspace
-- relation to HC-016 source: none
+- 資料: `SYNTHETIC_TRAINING_ONLY`
+- 提案するスコープ: 無関係なトレーニング用ワークスペース
+- HC-016のソースとの関係: なし
 
 KEEP-UNCHANGED
 
-別の架空演習 workspace のメモです。この課題の採否を理由に本文を書き換えたり、一括削除したりしません。
+別の架空の演習用ワークスペースにあるメモです。この課題での採否を理由に、本文を書き換えたり一括削除したりしません。

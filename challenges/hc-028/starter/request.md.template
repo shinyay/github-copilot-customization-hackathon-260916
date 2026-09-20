@@ -1,7 +1,7 @@
-# Fixed revision-audit request
+# 固定リビジョン監査依頼
 
 SYNTHETIC_TRAINING_ONLY
 
-base、head、default、startingの4 refに保存されたInstructionsを台帳化し、製品別の文書化規則と、今回の記録が直接示すことを別々に監査してください。
+base、head、default、starting の 4 つの ref に保存された Instructions を台帳にまとめ、製品ごとの文書化された規則と、今回の記録から直接確認できる事実を分けて監査してください。
 
-old headを現在の対象へ流用せず、task diffとInstructions/config diffを分離し、版を特定できない場合はunknownで停止してください。
+古い head を現在の対象へ流用せず、タスクの差分と Instructions/設定の差分を分けてください。リビジョンを特定できない場合は、unknown で停止してください。

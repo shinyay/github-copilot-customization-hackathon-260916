@@ -1,6 +1,6 @@
-# BaseService.java authorization excerpt
+# BaseService.java の認可処理抜粋
 
-Source path:
+ソースパス:
 `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java`
 
 ```java

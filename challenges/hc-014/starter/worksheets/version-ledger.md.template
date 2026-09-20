@@ -1,31 +1,31 @@
-# HC-014 version ledger
+# HC-014 版台帳
 
-手動配布と package 配布の版、出所、コピー、復元を記録します。
-manifest のない手動方式にも、同じ論理版と Skill hash を割り当てます。
+手動配布とパッケージ配布の版、出所、コピー、復元を記録します。
+マニフェストのない手動方式にも、同じ論理版とSkillのハッシュを割り当てます。
 
 ## 固定情報
 
 upstream template revision:
 
-runtime workspace root:
+ランタイムワークスペースのルート:
 
 request / design の SHA-256:
 
-package name:
+パッケージ名:
 
 Skill name:
 
 UTF-8・BOM なし・LF を確認した方法:
 
-## Version inventory
+## バージョン一覧
 
-| 状態 | 論理版 / manifest version | 本文 marker | Skill raw SHA-256 | manifest raw SHA-256 または非該当理由 | 配置 path |
+| 状態 | 論理版 / マニフェストのバージョン | 本文のマーカー | Skillの生のSHA-256 | マニフェストの生のSHA-256または非該当の理由 | 配置パス |
 |---|---|---|---|---|---|
 | v1 | 1.0.0 | training-v1 |  |  |  |
 | v2 | 2.0.0 | training-v2 |  |  |  |
 | restored-v1 | 1.0.0 | training-v1 |  |  |  |
 
-## Copy operations
+## コピー操作
 
 初期コピー:
 
@@ -33,18 +33,18 @@ v2 への更新:
 
 v1 への復元:
 
-各操作のコピー元、コピー先、変更前後 hash:
+各操作のコピー元、コピー先、変更前後のハッシュ:
 
-## Duplicate sources
+## 重複する出所
 
-全 origin の候補、同名 Skill、旧版、余分なコピー:
+すべての出所にある候補、同名のSkill、旧版、余分なコピー:
 
-合成 fixture と、実際に観察した client 状態の区別:
+合成フィクスチャと、実際に観察したクライアントの状態の区別:
 
-## Full restoration
+## 完全復元
 
-手動 `current` と初回 v1 の raw bytes 比較:
+手動の `current` と初回v1の生のバイト列の比較:
 
-package `current` の manifest / Skill と初回 v1 の raw bytes 比較:
+パッケージの `current` にあるマニフェスト / Skillと、初回v1の生のバイト列の比較:
 
-version 文字列やファイル数だけでなく、全 bytes が一致したこと:
+バージョン文字列やファイル数だけでなく、すべてのバイトが一致したこと:

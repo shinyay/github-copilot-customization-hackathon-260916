@@ -1,4 +1,4 @@
-case-09の同梱v1/v2 packageと共通briefだけを使い、同じ一Skillのowner、reviewer、版、復元を管理する最小の配布方法、手動配布、または追加不要を選んでください。
-sourceを参照する場合は、starter/brief.json.templateのpublic upstream template revisionを基準にし、列挙pathを現在のruntime workspaceから読んでください。local HEADの一致やcheckoutは要求しないでください。
+case-09に同梱されたv1 / v2パッケージと共通ブリーフだけを使い、同じ1つのSkillについて、所有者、レビュアー、バージョン、復元を管理する最小限の配布方法、手動配布、または追加不要を選んでください。
+ソースを参照する場合は、starter/brief.json.templateの公開された上流テンプレートのリビジョンを基準にし、列挙されたパスを現在のランタイムワークスペースから読んでください。ローカルHEADの一致やcheckoutは要求しないでください。
 trigger、scope、resources、permissions、maintenanceと、選ばない案の理由を説明してください。
-実Pluginのinstall、有効化、組織write、Cloud配布、source変更を行わないでください。
+実際のPluginのインストール、有効化、組織への書き込み、Cloud配布、ソースの変更は行わないでください。

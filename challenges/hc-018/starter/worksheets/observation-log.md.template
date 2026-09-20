@@ -1,8 +1,8 @@
-# HC-018 observation log
+# HC-018 観察ログ
 
-## Synthetic packets
+## 合成パケット
 
-| caseId | selected | proposal | approval | execution | result layer | stdout / stderr | exit status | classification limits |
+| caseId | selected | proposal | approval | execution | 結果のレイヤー | stdout / stderr | 終了ステータス | 分類の限界 |
 |---|---|---|---|---|---|---|---|---|
 | packet-01 |  |  |  |  |  |  |  |  |
 | packet-02 |  |  |  |  |  |  |  |  |
@@ -12,17 +12,17 @@
 | packet-06 |  |  |  |  |  |  |  |  |
 | packet-07 |  |  |  |  |  |  |  |  |
 
-## Optional Manual observation
+## 補足のManual観察
 
-- performed: yes / no
-- client / host OS:
-- selected tool:
-- proposed command:
-- approval requirement and visible rule:
-- human decision:
-- execution started:
+- 実施: yes / no
+- クライアント / ホストOS:
+- 選択したツール:
+- 提案されたコマンド:
+- 承認要件と確認できる規則:
+- 人による判断:
+- 実行開始:
 - stdout / stderr:
-- integer exit status or unknown:
-- stop reason:
+- 整数の終了ステータスまたはunknown:
+- 停止理由:
 
-CLI 直実行、synthetic packet、stub、実 sandbox をこの欄へ無標識で混ぜません。
+CLIからの直接実行、合成パケット、スタブ、実際のsandboxを、この欄に区別せず混在させません。

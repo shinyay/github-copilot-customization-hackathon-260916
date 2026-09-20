@@ -1,19 +1,19 @@
-# Repository rules design worksheet
+# リポジトリルールの設計票
 
-## Fixed request
+## 固定依頼
 
-`request.md.template` 全文を使います。固定依頼だけでも互換条件、変更範囲、既存期待値の保持、未実施報告が欠けないようにします。
+`request.md.template` の全文を使います。固定依頼だけでも、互換性要件、変更範囲、既存の期待値の保持、未実施項目の報告が欠けないようにします。
 
-## Responsibility split
+## 役割分担
 
-- Repository rulesへ置く条件:
+- リポジトリルールへ置く条件:
 - 固定依頼へ残す条件:
 - 重複しても明示する安全条件:
-- Instructionsを追加しない判断基準:
+- Instructions を追加しない判断基準:
 
-## Freeze before proposal
+## 提案前に固定する内容
 
 - 常設化する条件:
 - 依頼へ残す条件:
-- Instructions追加不要の判断:
-- body SHA-256:
+- Instructions を追加しない判断:
+- 本文 SHA-256:

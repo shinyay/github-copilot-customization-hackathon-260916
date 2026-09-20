@@ -1,39 +1,39 @@
-# HC-014 rollback checklist
+# HC-014 ロールバック確認表
 
 自分の `work` 配下にある不活性な `current` だけを対象にします。
 `starter`、固定 v1/v2、他人のコピー、実際の Plugin 設定は変更しません。
 
-## Case
+## ケース
 
-対象 method:
+対象の方法:
 
-変更する一要因と exact path:
+変更する一要因と正確なパス:
 
 正常時の全ファイル SHA-256:
 
-## Expected boundary
+## 想定する境界
 
 どの構成・同等性・復元条件が壊れるはずか:
 
 どの差分で停止するか:
 
-## Observation
+## 観察結果
 
-変更後の path と SHA-256:
+変更後のパスとSHA-256:
 
 狙った一要因だけが変わったこと:
 
 検査で見つかった具体的な不一致:
 
-## Restoration
+## 復元
 
 不一致を記録した後、初回 v1 の全ファイルを `current` へ戻した手順:
 
 同じ検査を繰り返した結果:
 
-package の manifest と Skill の両方が戻ったこと:
+パッケージのマニフェストとSkillの両方が戻ったこと:
 
-## Limits
+## 制限
 
 これは不活性なローカルファイルの復元確認です。
-実際の Disable、uninstall、再配信、discovery、本文 loading を確認したものではありません。
+実際のDisable、アンインストール、再配信、検出、本文の読み込みを確認したものではありません。

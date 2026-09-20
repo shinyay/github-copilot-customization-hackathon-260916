@@ -117,11 +117,11 @@
     "synchronization": "not-observed"
   },
   "limitations": [
-    "各 candidate は合成属性であり、実際の Copilot Space の応答ではない。",
-    "available、unavailable、missing、error、empty、partial は別の状態として扱う。",
-    "synthetic-commit は実在 commit の取得記録ではない。",
-    "sha256 がない候補へ、ローカル source から値を補充しない。",
-    "Space の閲覧権と source の閲覧権を分け、合成の allowed/denied を実観測へ読み替えない。",
-    "ローカルの限定置換は、remote の部分取得とは異なる。"
+    "各候補の属性は合成されたものであり、実際のCopilot Spaceの応答ではない。",
+    "available、unavailable、missing、error、empty、partialは、それぞれ別の状態として扱う。",
+    "synthetic-commitは、実在するコミットの取得記録ではない。",
+    "sha256がない候補に、ローカルソースから値を補充しない。",
+    "Spaceの閲覧権とソースの閲覧権を分け、合成されたallowed/deniedを実際の観測結果として扱わない。",
+    "ローカルでの限定置換は、リモートからの部分取得とは異なる。"
   ]
 }

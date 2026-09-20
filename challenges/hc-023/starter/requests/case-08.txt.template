@@ -1,4 +1,4 @@
-case-08の固定packetと共通briefだけを使い、同じ全文の手動供給と将来のread-only resource案を含む最小の準備、または追加不要を比較してください。
-sourceを参照する場合は、starter/brief.json.templateのpublic upstream template revisionを基準にし、列挙pathを現在のruntime workspaceから読んでください。local HEADの一致やcheckoutは要求しないでください。
+case-08の固定パケットと共通ブリーフだけを使い、同じ全文を手動で供給する方法と、将来の読み取り専用リソース案を含む最小限の準備、または追加不要を比較してください。
+ソースを参照する場合は、starter/brief.json.templateの公開された上流テンプレートのリビジョンを基準にし、列挙されたパスを現在のランタイムワークスペースから読んでください。ローカルHEADの一致やcheckoutは要求しないでください。
 trigger、scope、resources、permissions、maintenanceを分け、server trust・content authority・call approvalを混同しないでください。
-実server、認証、設定、source、外部serviceを変更または起動しないでください。
+実際のサーバー、認証、設定、ソース、外部サービスを変更したり起動したりしないでください。

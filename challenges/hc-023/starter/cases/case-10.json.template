@@ -8,14 +8,14 @@
   "sourcePaths": [
     "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java"
   ],
-  "situation": "一回限りの分析依頼で、対象file、固定依頼、事実と未確認を分ける出力条件が既にそろっている。",
+  "situation": "1回限りの分析依頼で、対象ファイル、固定依頼、事実と未確認を分ける出力条件がすでにそろっている。",
   "resources": [
-    "明示された固定source",
+    "明示された固定ソース",
     "既に十分な固定依頼"
   ],
   "constraints": [
     "反復予定や追加の役割・資源・権限はない。",
     "追加機構の数は成果ではない。",
-    "このcaseも最初から閲覧できる。"
+    "このケースも最初から閲覧できる。"
   ]
 }

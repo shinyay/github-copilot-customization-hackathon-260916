@@ -1,8 +1,8 @@
-# Resource / Permission境界
+# リソースと権限の境界
 
-- runtime workspaceの列挙sourceと`starter/`内の不活性資料は読取り対象です。public upstream template revisionはcanonicalな参照であり、local HEAD一致の要求ではありません。
-- case内の「許可」「利用可能」は合成状況であり、参加者の実環境へ権限を付与しません。
-- script、server、install、User/組織設定、外部送信、Cloud操作はこの演習で実行しません。
-- Skillにscriptを置けることと、そのscriptを実行してよいことは別です。
-- MCPを候補にしても、server trust、content authority、call approvalは別です。
-- 読取りだけで足りるcaseではnone/manualも正当です。
+- ランタイムワークスペース内の列挙されたソースと、`starter/` 内の不活性な資料が読み取り対象です。公開された上流テンプレートのリビジョンは正規の参照であり、ローカルHEADの一致を求めるものではありません。
+- ケース内の「許可」「利用可能」は合成された状況であり、参加者の実環境に権限を付与するものではありません。
+- スクリプト、サーバー、インストール、User / 組織設定、外部送信、Cloud操作は、この演習では実行しません。
+- Skillにスクリプトを置けることと、そのスクリプトを実行してよいことは別です。
+- MCPを候補にしても、server trust、content authority、call approvalは別々に確認します。
+- 読み取りだけで足りるケースでは、noneやmanualも正当な選択です。

@@ -1,53 +1,53 @@
-# 共有profileを限定観測する
+# 共有 profile を限定的に観測する
 
-**Language:** **日本語** / [English](../../../en/challenges/hc-039/optional/shared-profiles-live.md)
+**言語:** **日本語** / [English](../../../en/challenges/hc-039/optional/shared-profiles-live.md)
 
 [HC-039本編へ戻る](../README.md)
 
 ## 目的
 
-承認済みのorganizationまたはenterpriseで、共有profileの保存、発見、同名profileの選択、利用範囲を限定的に観察します。保存repositoryのACLとprofileを利用できる人の範囲を別々に確認します。
+承認済みの organization または enterprise で、共有 profile の保存、検出、同名 profile の選択、利用範囲を限定的に観察します。保存先リポジトリの ACL と、profile を利用できる人の範囲を別々に確認します。
 
 ## 前提
 
-- 対象scope、governance repository、固定branch/refを確認できる。
-- profile名、owner、reviewer、保存ACL、利用scopeを確認できる。
-- 共有profile機能のrelease stateと利用資格を確認できる。
+- 対象の scope、ガバナンス用リポジトリ、固定した branch/ref を確認できる。
+- profile 名、責任者、レビュー担当者、保存先の ACL、利用範囲を確認できる。
+- 共有 profile 機能の release state と利用資格を確認できる。
 - 他利用者への影響、停止、復元担当が決まっている。
 
 ## 権限と安全
 
-- profileの保存・更新、限定利用、他利用者への影響について個別の許可を得る。
-- 実人名や未知ownerを補わず、追加toolsや権限をprofileへ混ぜない。
-- 同名profileがある場合は、選択規則と各revisionを先に確認する。
-- 既存profileを削除せず、自分の追加分だけを識別して復元する。
+- profile の保存と更新、限定的な利用、他の利用者への影響について、個別の許可を得る。
+- 実在する人名や不明な責任者を補わず、追加のツールや権限を profile に混ぜない。
+- 同名の profile がある場合は、選択規則と各リビジョンを先に確認する。
+- 既存の profile を削除せず、自分の追加分だけを識別して復元する。
 
 ## 手順
 
-1. repository、organization、enterpriseに同名profileがないか確認する。
-2. 保存path、branch/ref、content hash、owner、reviewer、ACL、利用scopeを記録する。
-3. 承認後に不活性sampleを基に最小profileを保存する。
-4. 対応surfaceで発見されたprofile名、selected scope/revision、利用結果を観察する。
-5. 保存、発見、選択、本文利用を別々に記録する。
-6. 観察後、自分の追加分だけを復元する。
+1. リポジトリ、organization、enterprise に同名の profile がないか確認します。
+2. 保存先のパス、branch/ref、コンテンツのハッシュ、責任者、レビュー担当者、ACL、利用範囲を記録します。
+3. 承認後に不活性なサンプルを基に、最小限の profile を保存します。
+4. 対応する surface で検出された profile 名、選択された scope とリビジョン、利用結果を観察します。
+5. 保存、検出、選択、本文の利用を別々に記録します。
+6. 観察後、自分の追加分だけを復元します。
 
 ## 観察すること
 
 | 項目 | 記録 |
 |---|---|
-| storage | repository/path、branch/ref、ACL |
-| governance | owner、author、reviewer、hash |
-| selection | 同名profile、selected scope/revision |
-| use | 利用資格、対応surface、発見、実利用 |
-| cleanup | 他利用者影響、復元 |
+| storage | リポジトリ / パス、branch/ref、ACL |
+| governance | 責任者、作成者、レビュー担当者、ハッシュ |
+| selection | 同名の profile、選択された scope / リビジョン |
+| use | 利用資格、対応する surface、検出、実際の利用 |
+| cleanup | 他の利用者への影響、復元 |
 
 ## 停止条件
 
-- governance repository、selected revision、owner、利用資格が不明。
-- 保存ACLと利用scopeを同じ値として扱う必要がある。
-- 同名profileの選択結果を確認できない。
+- ガバナンス用リポジトリ、選択されたリビジョン、責任者、利用資格が不明。
+- 保存先の ACL と利用範囲を、同じ値として扱う必要がある。
+- 同名の profile が選択された結果を確認できない。
 - 自分の追加分だけを復元できない。
 
 ## 本編へ戻る
 
-観察結果は [HC-039の仕組みの境界](../README.md#この機能とは) と照合し、Instructionsの優先規則をprofile選択へ流用していないか確認します。
+観察結果を [HC-039の仕組みの境界](../README.md#この機能とは) と照合し、Instructions の優先規則を profile の選択に流用していないか確認します。

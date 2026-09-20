@@ -1,21 +1,21 @@
 HC-010 / 固定依頼
 
-固定source:
+固定ソース:
 upstream template: shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c
-source location: templateから作成したruntime workspace
+ソースの場所: テンプレートから作成したランタイムワークスペース
 wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java
 Money.tax
 
-upstream revisionはsourceの出所であり、runtime workspaceのlocal HEADとの一致条件ではありません。
-runtime workspaceのMoney.java全文を利用できる場合はMoney.taxを読み、支持される説明と、このファイルだけでは確認できないことをdesign.mdへ記録してください。利用できない場合は、コードの意味を推測せず未確認としてください。
+upstreamリビジョンはソースの出所を示す値であり、ランタイムワークスペースのローカル `HEAD` と一致する必要はありません。
+ランタイムワークスペースの `Money.java` 全文を利用できる場合は `Money.tax` を読み、裏付けられる説明と、このファイルだけでは確認できないことを `design.md` に記録してください。利用できない場合は、コードの意味を推測せず、未確認としてください。
 
-次に、同じ形式検査の結果を担当者へ届ける方法を設計してください。合成草稿、同じchecker、固定結果、Stop入出力の契約は変えません。
+次に、同じ形式検査の結果を担当者へ届ける方法を設計してください。合成草稿、同じチェッカー、固定結果、Stopの入出力契約は変更しません。
 
-手動確認では、誰が、いつ、どのresult/codeを読み、検査不能や未実施をどう保留するかを書きます。
+手動確認では、誰が、いつ、どの `result` / `code` を読み、検査不能や未実施をどのように保留するかを書きます。
 通知設計では、同じ結果を誰へどの長さで伝えるか、重複・再入をどう扱うか、通知を追加しない場面を決めます。
 
-通知はcontinue: trueのnonblockingとし、自動修正、新しいAIターン、反復を要求しません。
-stop_hook_active: trueではcheckerを再実行せずskippedとして扱います。
-passは## Evidenceと## Unknownsの形式だけの合格であり、Money.taxの説明の正しさではありません。
+通知は `continue: true` を返して処理を妨げないものとし、自動修正、新しいAIターン、反復を要求しません。
+`stop_hook_active: true` ではチェッカーを再実行せず、`skipped` として扱います。
+`pass` は `## Evidence` と `## Unknowns` の形式だけに対する合格であり、`Money.tax` の説明が正しいことを示すものではありません。
 
-草稿と結果はSYNTHETIC_TRAINING_ONLYです。実際に観察していないHook発火、画面表示、LLM性能、アプリやDBの状態を補わないでください。
+草稿と結果は `SYNTHETIC_TRAINING_ONLY` です。実際に観察していないHookの発火、画面表示、LLMの性能、アプリやDBの状態を補わないでください。

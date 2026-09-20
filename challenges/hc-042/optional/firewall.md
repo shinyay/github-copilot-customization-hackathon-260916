@@ -1,54 +1,54 @@
-# Firewall経路を限定観測する
+# ファイアウォール経路を限定的に観測する
 
-**Language:** **日本語** / [English](../../../en/challenges/hc-042/optional/firewall.md)
+**言語:** **日本語** / [English](../../../en/challenges/hc-042/optional/firewall.md)
 
 [HC-042本編へ戻る](../README.md)
 
 ## 目的
 
-Bash、MCP、setupの経路ごとに、どのnetwork policyが関係し、何を実際に観察できたかを分けます。Bash firewallの対象外を、安全・到達可能・認可済みと解釈しません。
+Bash、MCP、setup の経路ごとに、どのネットワークポリシーが関係し、実際に何を観察できたかを分けます。Bash のファイアウォールの対象外であることを、安全、到達可能、認可済みという意味には解釈しません。
 
 ## 前提
 
 - 承認済みの専用環境がある。
-- Bash/MCP/setupの対象経路、現行policy、許可先を特定できる。
-- network policyを確認できる資格がある。
+- Bash / MCP / setup の対象経路、現行のポリシー、許可先を特定できる。
+- ネットワークポリシーを確認する資格がある。
 - 回数、時間、ログ、停止、復元の上限が決まっている。
 
 ## 権限と安全
 
-- 無害な限定経路、許可先、観察回数について個別の許可を得る。
-- firewallの無効化・迂回、任意endpoint probe、許可先拡大を行わない。
-- credentialや業務データを送信しない。
-- ログには必要最小限のroute/resultだけを残す。
+- 無害で限定された経路、許可先、観察回数について、個別の許可を得る。
+- ファイアウォールの無効化や迂回、任意のエンドポイント確認、許可先の拡大を行わない。
+- credential や業務データを送信しない。
+- ログには必要最小限の経路と結果だけを残す。
 
 ## 手順
 
-1. route、process origin、対象policy、許可先、ownerを記録する。
-2. Bash firewallの対象内/対象外を資料で確認する。
-3. 承認済みの無害な経路だけを一回観察する。
-4. network結果、authentication、authorization、output useを別々に記録する。
-5. MCP/setupがBash制御の対象外でも、成功や安全を推定しない。
-6. 自分の変更がある場合だけ復元する。
+1. 経路、プロセスの起点、対象のポリシー、許可先、責任者を記録します。
+2. Bash のファイアウォールの対象内か対象外かを、資料で確認します。
+3. 承認済みの無害な経路だけを1回観察します。
+4. ネットワークの結果、authentication、authorization、output use を別々に記録します。
+5. MCP / setup が Bash の制御対象外でも、成功や安全性を推定しないようにします。
+6. 自分の変更がある場合だけ復元します。
 
 ## 観察すること
 
 | 項目 | 記録 |
 |---|---|
 | route | Bash / MCP / setup |
-| policy | 対象scope、owner、許可先 |
-| transport | 到達、拒否、timeout、unknown |
+| policy | 対象の scope、責任者、許可先 |
+| transport | 到達、拒否、タイムアウト、unknown |
 | identity | authentication |
 | access | authorization |
-| use | returned outputと実利用 |
+| use | 返された出力と実際の利用 |
 
 ## 停止条件
 
-- firewall無効化または迂回が必要。
-- route、許可先、上限、ログ範囲が不明。
+- ファイアウォールの無効化または迂回が必要。
+- 経路、許可先、上限、ログの範囲が不明。
 - 停止・復元担当が不明。
 - 対象外であることを成功・安全の証拠にする必要がある。
 
 ## 本編へ戻る
 
-結果は [HC-042のroute map](../README.md#試してみる) に戻し、network以外の層を自動的に成功扱いしないでください。
+結果を [HC-042の経路図](../README.md#試してみる) に対応付け、ネットワーク以外の層を自動的に成功扱いしないでください。

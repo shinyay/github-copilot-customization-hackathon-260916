@@ -1,21 +1,21 @@
-# HC-017 design
+# HC-017 設計
 
-- comparison: model / effort / design only
-- manual labels:
-- factor changed:
+- 比較: モデル / Thinking Effort / 設計のみ
+- 手動ラベル:
+- 変更する要因:
 
-## Preflight
+## 事前確認
 
-承認済み model 候補、同一 model の effort 候補、要求値と観測表示、provider、adaptive、tools、Instructions、添付 context を確認します。確認できない値は未知のままにします。
+承認済みのモデル候補、同一モデルのThinking Effort候補、要求値と観測表示、プロバイダー、adaptive、ツール、Instructions、添付するコンテキストを確認します。確認できない値は未知のままにします。
 
-## Fixed controls
+## 固定する統制条件
 
-固定 7 行、初回依頼、追問、提示順、source access、tools、承認、workspace context の内容と揃え方を記録します。
+固定7行、初回依頼、追問、提示順、ソースへのアクセス、ツール、承認、ワークスペースのコンテキストについて、内容と揃え方を記録します。
 
-## Measurements
+## 測定項目
 
-6 観点の保持・欠落・入力外追加・要修正、修正負担、欠測、観測可能な時間・使用量を記録する方法を決めます。内部思考全文は収集しません。
+6つの観点について、保持、欠落、入力外の追加、要修正、修正の負担、欠測、観測できる時間・使用量を記録する方法を決めます。内部思考の全文は収集しません。
 
-## Stop rules
+## 停止規則
 
-model / provider / adaptive の drift、実効表示不明、候補不足、会話や設定の残留を分離できない場合に止める条件を決めます。
+モデル / プロバイダー / adaptiveのドリフト、実効表示が不明、候補が不足、会話や設定の残留を分離できない場合に停止する条件を決めます。

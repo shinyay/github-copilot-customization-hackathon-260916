@@ -1,8 +1,8 @@
 # HC-025 移植診断票
 
-固定入力では、public upstream template repository / revision、runtime workspaceの3 source path、`workspaceHeadMatchRequired: false` を別fieldとして保持します。
+固定入力では、公開された上流テンプレートのリポジトリ / リビジョン、ランタイムワークスペースの3つのソースパス、`workspaceHeadMatchRequired: false` を別々のフィールドとして保持します。
 
-| probe | file format / properties | unsupported properties | documented discovery | observed discovery | loading | effective tools | approval observed | proposed action / reason |
+| 対象 | ファイル形式 / プロパティ | 非対応のプロパティ | documented discovery | observed discovery | loading | effective tools | approval observed | 対応案 / 理由 |
 |---|---|---|---|---|---|---|---|---|
 | skill | | | | null | null | null | null | |
 | prompt | | | Agent Host: not-loaded | null | null | null | null | |
@@ -11,7 +11,7 @@
 
 不正例:
 
-- SkillへPrompt由来の `model` / `tools` をコピーした原稿。
-- Plugin manifest rootへ `agents` を置いた原稿。
+- SkillにPrompt由来の `model` / `tools` をコピーした原稿。
+- Pluginマニフェストのルートに `agents` を置いた原稿。
 
-別機構へ置き換えて元probeの成功とせず、そのまま・移植・非対応・未確認・停止を理由付きで選びます。
+別の機構に置き換えて元の対象が成功したとは扱わず、そのまま、移植、非対応、未確認、停止のいずれかを理由付きで選びます。

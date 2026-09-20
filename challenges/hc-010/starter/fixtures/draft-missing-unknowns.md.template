@@ -6,10 +6,10 @@ SYNTHETIC_TRAINING_ONLY — 業務分析の解答ではありません。
 - sourcePath: wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java
 - readingTarget: Money.tax
 
-## Scope
+## 範囲
 
-見出し構造を読むための合成メモです。処理内容の説明とsourceの支持関係は参加者が別に確かめます。
+見出し構造を確認するための合成メモです。処理内容の説明がソースに裏付けられているかは、参加者が別途確認します。
 
 ## Evidence
 
-書式練習として根拠を置く節を用意しました。ここにはMoney.taxの処理内容を説明していません。
+書式を確認するため、根拠を記載する節を用意しました。ここでは `Money.tax` の処理内容を説明していません。

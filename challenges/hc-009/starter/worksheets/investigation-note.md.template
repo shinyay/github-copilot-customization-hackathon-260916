@@ -2,7 +2,7 @@
 
 ## Fixed task
 
-`OrderImportService.importDraft` と `OrderGroup.canonicalHash` を調査し、新しい `external_key`、同じhashの既存claim、異なるhashの既存claimでsourceが定義する結果を説明する。database stateや実際のincident historyは推測せず、import/replayを実行しない。
+`OrderImportService.importDraft` と `OrderGroup.canonicalHash` を調査し、新しい `external_key`、同じハッシュの既存 `claim`、異なるハッシュの既存 `claim` について、ソースで定義された結果を説明する。データベースの状態や実際のインシデント履歴は推測せず、インポートやリプレイは実行しない。
 
 ## Source map
 
@@ -12,45 +12,45 @@
 
 ## New external_key
 
-- First and second claim lookup:
+- 1 回目と 2 回目の `claim` 検索:
 - `saveDraft`:
-- Claim fields and persistence:
-- Source-defined return:
-- Unknowns:
+- `claim` のフィールドと永続化:
+- ソースで定義された戻り値:
+- 不明点:
 
 ## Matching payload hash
 
-- Hash comparison:
-- Original order lookup:
-- Source-defined return:
-- Unknowns:
+- ハッシュの比較:
+- 元の注文の検索:
+- ソースで定義された戻り値:
+- 不明点:
 
 ## Different payload hash
 
-- Hash comparison:
-- Error code:
-- Why this is not an edit of the original order:
-- Unknowns:
+- ハッシュの比較:
+- エラーコード:
+- 元の注文を編集する経路ではない理由:
+- 不明点:
 
 ## canonicalHash
 
-- Version marker:
-- Common header fields:
-- Quantity normalization:
-- Sorted line fingerprints:
-- Final fingerprint:
+- バージョンマーカー:
+- 共通ヘッダーフィールド:
+- 数量の正規化:
+- 並べ替えた行フィンガープリント:
+- 最終フィンガープリント:
 
 ## Skill observations
 
-- Skill explicitly selected or auto-discovered:
-- Skill body used:
-- Checklist or reference used:
-- Checker used:
-- What was not observable:
+- Skill を明示的に選択したか、自動検出されたか:
+- Skill の本文が使われたか:
+- 使用したチェックリストまたは参考資料:
+- チェッカーを使ったか:
+- 観測できなかったこと:
 
 ## Unknowns and safety
 
-- Database contents and transaction result:
-- Production incident history:
-- Import, replay, server, test, or external connection not run:
-- Secret or private data excluded:
+- データベースの内容とトランザクション結果:
+- 本番環境のインシデント履歴:
+- インポート、リプレイ、サーバー、テスト、外部接続を実行していないこと:
+- シークレットや非公開データを除外したこと:

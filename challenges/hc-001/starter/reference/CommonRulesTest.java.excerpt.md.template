@@ -1,9 +1,9 @@
 # CommonRulesTest.java 固定抜粋
 
-対象リポジトリでの想定 path:
+対象リポジトリでの想定パス:
 `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java`
 
-この既存 test は有効な rounding の境界を確認しています。今回の依頼では、この expectation を変えずに不正な rounding の境界を検討します。
+この既存テストでは、有効な丸め方法の境界を確認しています。今回の依頼では、この期待結果を変えずに、不正な丸め指定の境界を検討します。
 
 ```java
 @Test
@@ -15,4 +15,4 @@ public void roundingModesHaveDistinctBoundaries() {
 }
 ```
 
-実ファイルを利用できる場合は、抜粋ではなく実ファイルと周辺 test を正として確認してください。
+実際のファイルを利用できる場合は、抜粋ではなく、そのファイルと周辺のテストを正として確認してください。

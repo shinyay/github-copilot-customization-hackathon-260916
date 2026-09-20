@@ -1,9 +1,9 @@
-# Repository rules body draft
+# リポジトリルールの本文草稿
 
-この空欄へ、複数taskで繰り返す価値がある条件だけを書きます。UNKNOWN境界の完成test、完成patch、今回だけの具体的期待値を書きません。
+この空欄には、複数のタスクで繰り返し使う価値がある条件だけを書きます。UNKNOWN 境界を扱う完成済みのテストやパッチ、今回だけの具体的な期待値は書きません。
 
-## Body
+## 本文
 
-- <write one reusable repository rule>
+- <再利用可能なリポジトリルールを 1 つ記入>
 
-bodyはこの `.template` 内で凍結し、任意比較では Customized と Manual-equivalent に同じ全文を使います。
+本文はこの `.template` 内で固定し、任意比較では Customized と Manual-equivalent に同じ全文を使います。

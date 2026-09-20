@@ -1,13 +1,13 @@
 HC-011 / 固定依頼
 
-OrderImportService.javaとOrderGroup.javaの同梱excerptを確認したうえで、
-lookup_training_noteにnoteKey `order-import-replay` を渡し、次を分けて要約してください。
+`OrderImportService.java` と `OrderGroup.java` の同梱された抜粋を確認したうえで、
+`lookup_training_note` の `noteKey` に `order-import-replay` を渡し、次の内容を分けて要約してください。
 
-1. source excerptから直接確認できるcode-derived fact
-2. SYNTHETIC_TRAINING_ONLYの運用メモ
-3. 実際の履歴やproduction stateとしては確認できないこと
+1. ソースの抜粋から直接確認できる、コードに基づく事実
+2. `SYNTHETIC_TRAINING_ONLY` の運用メモ
+3. 実際の履歴や本番環境の状態としては確認できないこと
 
-次に、noteKey `Order/Import` と `missing-note` をそれぞれ渡し、
-INVALID_ARGUMENTとNOT_FOUNDを成功に言い換えず記録してください。
+次に、`noteKey` に `Order/Import` と `missing-note` をそれぞれ渡し、
+`INVALID_ARGUMENT` と `NOT_FOUND` を成功に言い換えず記録してください。
 
-serverはlocal fixtureだけを読み、network、write、delete、secretを追加しません。
+サーバーはローカルのフィクスチャだけを読みます。ネットワーク接続、書き込み、削除、シークレットは追加しません。

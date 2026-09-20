@@ -1,33 +1,33 @@
-# HC-029 optional manual comparison
+# HC-029 補足の手動比較
 
-## Fixed task
+## 固定タスク
 
-UNKNOWN rounding境界、固定依頼、main / supplemental source、提案対象を記録してください。
+UNKNOWN の丸め処理の境界、固定依頼、main / supplemental のソース、提案先を記録してください。
 
-## Environment
+## 環境
 
-JDK、Maven、OS、client、実行したcommandとnot-runを分けて記録してください。
+JDK、Maven、OS、クライアント、実行したコマンドと not-run を分けて記録してください。
 
 ## Baseline
 
-追加bodyなしでも十分な依頼を使った提案と監査を記録してください。
+本文を追加しなくても必要な情報がそろう依頼を使い、提案と監査の結果を記録してください。
 
 ## Customized
 
-凍結body、常設化した条件、重複、提案境界を記録してください。
+固定した本文、常設化した条件、重複、提案の境界を記録してください。
 
 ## Manual-equivalent
 
-customizedと同じbody全文を同じ順序で供給した設計を記録してください。
+Customized と同じ本文の全文を、同じ順序で供給した設計を記録してください。
 
-## Compatibility
+## 互換性
 
-JDK8とJava 7制約、production / POM / 既存test期待値の不変、未実施検査を記録してください。
+JDK 8 と Java 7 の制約、プロダクションコード / POM / 既存テストの期待値が変わっていないこと、未実施の検査を記録してください。
 
-## Proposal boundary
+## 提案の境界
 
-提案diffの対象がCommonRulesTest.javaだけで、applyしていないことを記録してください。
+提案した差分の対象が CommonRulesTest.java だけであり、適用していないことを記録してください。
 
-## Outcome
+## 結果
 
-improved / not-needed / equal / worse / blocked / incomparable と、未観測の live behavior を記録してください。
+improved / not-needed / equal / worse / blocked / incomparable と、未観測の実環境での挙動を記録してください。

@@ -207,7 +207,7 @@ function renderHandoff(card) {
   const block = (value) => `\`\`\`json\n${json(value)}\`\`\`\n`;
   const { materials, ...overview } = card;
   return Buffer.from([
-    "# HC-013 個別資料の引継ぎ",
+    "# HC-013 個別資料の引き継ぎ",
     "",
     "LOCAL_CONTEXT_CARD_NOT_A_COPILOT_SPACE / SYNTHETIC_TRAINING_ONLY",
     "",
@@ -225,8 +225,8 @@ function renderHandoff(card) {
     ...materials.flatMap((material) => [`### ${material.id}`, "", block(material)]),
     "## 未確認事項",
     "",
-    "六資料の表示全文と metadata を保持しています。原本 hash と表示用 hash は意味が異なります。",
-    "Space の閲覧、各 source の閲覧、同期、Java・DB・テストの実行は確認していません。",
+    "六資料の表示全文とメタデータを保持しています。原本のハッシュと表示用のハッシュは意味が異なります。",
+    "Spaceの閲覧、各ソースの閲覧、同期、Java・DB・テストの実行は確認していません。",
     "",
   ].join("\n"));
 }

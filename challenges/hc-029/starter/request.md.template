@@ -1,5 +1,5 @@
-# Fixed Java compatibility request
+# 固定 Java 互換性依頼
 
-JDK8とMavenを前提に、Java 7構文とJava 7標準APIの範囲を守ってください。`Money.tax` のUNKNOWN rounding境界を確認し、変更提案は `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java` だけに限定してください。
+JDK 8 と Maven を前提とし、Java 7 の構文と Java 7 標準 API の範囲を守ってください。`Money.tax` で UNKNOWN を指定した場合の丸め処理の境界を確認し、変更の提案先は `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java` だけに限定してください。
 
-production code、`pom.xml`、既存testの期待値は変更せず、未実施のcompile/testは `not-run` と報告してください。提案diffは保存して読むだけで、適用しないでください。
+プロダクションコード、`pom.xml`、既存テストの期待値は変更せず、実行していないコンパイル/テストは `not-run` と報告してください。提案した差分は保存して読むだけにし、適用しないでください。

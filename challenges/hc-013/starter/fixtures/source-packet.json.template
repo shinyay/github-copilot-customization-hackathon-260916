@@ -12,7 +12,7 @@
   "textContent": {
     "id": "TRAINING-SPACE-NOTE-013",
     "label": "SYNTHETIC_TRAINING_ONLY",
-    "text": "架空の照合票では external_key と正規化後の payload が一致する再送と、内容を変えた再送を別に扱います。研修上の担当ロール名は「再送確認係」、照合票の識別語は「白樺-13」です。この文章は実在するチームの規約・障害記録・設計決定ではありません。"
+    "text": "架空の照合票では、external_keyと正規化後のペイロードが一致する再送と、内容を変更した再送を分けて扱います。研修上の担当ロール名は「再送確認係」、照合票の識別語は「白樺-13」です。この文章は、実在するチームの規約、障害記録、設計上の決定を示すものではありません。"
   },
   "sourceReferences": [
     {
@@ -98,14 +98,14 @@
     "removedContent": "entire test authentication statements on the six declared B3 lines",
     "recordedDetails": "line numbers, marker, counts, original whole-source hash and display whole-text hash"
   },
-  "readingTask": "同じ B1/B2/B3 の安全な表示全文を読み、必要なら固定 source の同じ path へ戻ってください。除去した認証値や原文を回答・資料へ転記せず、コードの完成済み説明や提供されていない歴史的理由を作らないでください。",
+  "readingTask": "同じB1/B2/B3の安全な表示全文を読み、必要であれば固定ソースの同じパスへ戻ってください。除去した認証値や原文を回答や資料へ転記せず、コードについて完成済みの説明や、提供されていない歴史的理由を作らないでください。",
   "actualHistoricalDecision": "NOT_PROVIDED",
   "limitations": [
     "これはローカル教材であり、Copilot Space の応答を模倣したものではない。",
-    "ローカル source を読めても、Space 経由の取得や ACL を確認したことにはならない。",
-    "テスト定義の静的読解は Java または DB の実行結果ではない。",
-    "originalSha256/originalBytes は変換前の原本、display の hash/bytes は共有する表示全文を表す。",
-    "B3 の六行全体を説明マーカーへ置き換え、ほかの行と行数を保持する。",
-    "認証値、除去行の原文、個々の値の hash を資料へ保存しない。"
+    "ローカルソースを読めても、Space経由での取得やACLを確認したことにはならない。",
+    "テスト定義の静的な読解は、JavaまたはDBの実行結果ではない。",
+    "originalSha256/originalBytesは変換前の原本を、displayのhash/bytesは共有する表示全文を表す。",
+    "B3の六行全体を説明マーカーへ置き換え、ほかの行と行数は保持する。",
+    "認証値、除去行の原文、個々の値のハッシュを資料に保存しない。"
   ]
 }

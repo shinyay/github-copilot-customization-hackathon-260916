@@ -7,7 +7,7 @@
 - 改善だけでなく費用や悪化を観察する項目:
 - 観測できないと判断する条件:
 
-## Scope
+## 適用範囲
 
 | 原稿 | 選ぶ applyTo | 正例 | 負例 | 広すぎる／狭すぎる場合の費用 |
 | --- | --- | --- | --- | --- |
@@ -15,7 +15,7 @@
 | XML | | `application-context.xml` | `pom.xml`, `README.md` | |
 
 - `module-operations.xml` を直接対象にするか、入口から参照をたどるか:
-- 将来 file が増えた場合の対象漏れ:
+- 将来ファイルが増えた場合の対象漏れ:
 - 二本文の重複や矛盾を避ける方針:
 
 ## 本文
@@ -25,9 +25,9 @@
 - 今回の業務の答えになっているため削る文:
 - 長文化や不要な説明を防ぐため削る文:
 
-## Scope probe
+## 適用範囲の確認
 
-| 対象 path | Java の予測 | XML の予測 | client で観測したこと | 明示添付など別経路 | 未確認 |
+| 対象パス | Java の予測 | XML の予測 | クライアントで観測したこと | 明示添付など別経路 | 未確認 |
 | --- | --- | --- | --- | --- | --- |
 | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` | | | | | |
 | `wholesale-core/src/main/resources/application-context.xml` | | | | | |
@@ -35,10 +35,10 @@
 | `pom.xml` | | | | | |
 | `README.md` | | | | | |
 
-## Stop rules / Safety
+## 停止条件 / 安全
 
 - 予測と選択が違った場合に確認すること:
 - 他の Instructions や設定を分離できない場合の停止条件:
-- source 編集、実行、権限変更をしない確認:
+- ソースの編集、実行、権限変更をしない確認:
 - `applyTo` を ACL として扱わない確認:
 - XML 宣言と実行時の事実を分ける確認:

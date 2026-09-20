@@ -16,36 +16,36 @@
     "facts": [
       {
         "id": "matching-payload",
-        "statement": "既存 claim の payloadHash が一致する場合、replay は元の受注を取得し orderImport.replayed を返す。",
+        "statement": "既存claimのpayloadHashが一致する場合、replayは元の受注を取得し、orderImport.replayedを返す。",
         "path": "wholesale-batch\\src\\main\\java\\jp\\co\\tsubame\\wholesale\\batch\\service\\OrderImportService.java",
         "symbol": "OrderImportService.replay",
         "anchor": "claim.getPayloadHash().equals(hash)"
       },
       {
         "id": "changed-payload",
-        "statement": "既存 claim と異なる hash は orderImport.keyConflict として拒否する。元受注を更新する処理ではない。",
+        "statement": "既存claimと異なるハッシュは、orderImport.keyConflictとして拒否する。元の受注を更新する処理ではない。",
         "path": "wholesale-batch\\src\\main\\java\\jp\\co\\tsubame\\wholesale\\batch\\service\\OrderImportService.java",
         "symbol": "OrderImportService.replay",
         "anchor": "orderImport.keyConflict"
       },
       {
         "id": "canonicalization",
-        "statement": "canonicalHash は数量を整数の文字列表現に正規化し、商品と数量から作った明細 fingerprint を並べ替えて payload に含める。ファイルのバイト列全体の一致判定と同一ではない。",
+        "statement": "canonicalHashは数量を整数の文字列表現に正規化し、商品と数量から作った明細のフィンガープリントを並べ替えてpayloadに含める。ファイルのバイト列全体が一致するかどうかの判定とは異なる。",
         "path": "wholesale-batch\\src\\main\\java\\jp\\co\\tsubame\\wholesale\\batch\\OrderGroup.java",
         "symbol": "OrderGroup.canonicalHash",
         "anchor": "Collections.sort(lines);"
       },
       {
         "id": "create-draft",
-        "statement": "importDraft の新規作成経路は orderService.saveDraft を呼ぶ。ここから実際の DB 状態を観測したとはいえない。",
+        "statement": "importDraftの新規作成経路はorderService.saveDraftを呼ぶ。これだけでは、実際のDBの状態を観測したとはいえない。",
         "path": "wholesale-batch\\src\\main\\java\\jp\\co\\tsubame\\wholesale\\batch\\service\\OrderImportService.java",
         "symbol": "OrderImportService.importDraft",
         "anchor": "orderService.saveDraft(null, 0, input, actor)"
       }
     ],
     "limitations": [
-      "これはpublic upstream template revisionの人手による静的読解スナップショットです。実際のsourceは列挙pathを現在のruntime workspaceから読み、local HEADの一致は要求しません。",
-      "workspace sourceがupstream snapshotと異なる場合は差分を記録し、checkoutやresetで履歴を合わせません。サーバーはJava sourceやDBを動的に照会しません。",
+      "これは、公開された上流テンプレートのリビジョンを人手で静的に読み取ったスナップショットです。実際のソースは、列挙されたパスを現在のランタイムワークスペースから読み、ローカルHEADの一致は要求しません。",
+      "ワークスペースのソースが上流のスナップショットと異なる場合は差分を記録し、checkoutやresetで履歴を合わせません。サーバーはJavaソースやDBを動的に照会しません。",
       "実際の設計理由、障害履歴、最新の本番状態は含まれていません。"
     ]
   }

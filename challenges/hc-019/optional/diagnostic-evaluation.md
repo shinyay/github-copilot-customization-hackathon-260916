@@ -1,46 +1,46 @@
-# 承認済みの外部diagnosticを試す
+# 承認済みの外部診断を試す
 
-**Language:** **日本語** / [English](../../../en/challenges/hc-019/optional/diagnostic-evaluation.md)
+**言語:** **日本語** / [English](../../../en/challenges/hc-019/optional/diagnostic-evaluation.md)
 
 ## 目的
 
-外部の診断extensionやmodelへ、合成原稿だけを渡して補助的な指摘を得ます。出力は人のレビューを支える候補であり、意味の真値や修正のanswer keyではありません。
+外部の診断用拡張機能やモデルに合成原稿だけを渡し、補助的な指摘を得ます。出力は人によるレビューを支える候補であり、意味の正解や修正案の模範解答ではありません。
 
 ## 前提
 
-- publisher、extension、利用model、費用を確認済みであること
-- 送信内容、保存先、保持期間、組織policyを確認できること
-- [固定本文](../starter/fixtures/draft-p.txt.template)と[frontmatter](../starter/fixtures/wrapper.txt.template)だけを使うこと
-- 元へ戻せる自己所有の作業copy
+- 発行元、拡張機能、利用するモデル、費用を確認済みであること
+- 送信内容、保存先、保持期間、組織ポリシーを確認できること
+- [固定本文](../starter/fixtures/draft-p.txt.template)と[front matter](../starter/fixtures/wrapper.txt.template)だけを使うこと
+- 元に戻せる自己所有の作業用コピー
 
 ## 権限・安全
 
-- extension導入、model利用、データ送信、費用を個別に承認します。
-- private code、秘密、個人情報、第三者情報を送信しません。
+- 拡張機能の導入、モデルの利用、データ送信、費用を個別に承認します。
+- 非公開コード、秘密、個人情報、第三者情報を送信しません。
 - 自動修正は無効にし、提案の適用は別判断にします。
-- 通常profileや原本を直接変更しません。
+- 通常のプロファイルや原本を直接変更しません。
 
 ## 手順
 
-1. extensionの公式配布元、publisher、権限、送信先を確認します。
-2. 合成2行とfrontmatterだけを含む使い捨てcopyを用意します。
-3. 実際に送信される本文、metadata、logを事前に確認します。
-4. 診断を一度実行し、入力、model、出力、費用、errorを記録します。
+1. 拡張機能の公式配布元、発行元、権限、送信先を確認します。
+2. 合成した2行とfront matterだけを含む、使い捨て可能なコピーを用意します。
+3. 実際に送信される本文、メタデータ、ログを事前に確認します。
+4. 診断を一度実行し、入力、モデル、出力、費用、エラーを記録します。
 5. 指摘ごとに、固定2行から直接確認できるかを人がレビューします。
 6. 採用する場合も、[修正検討票](../starter/worksheets/repair.md.template)で最小案として再評価します。
-7. 自分が作ったcopyと保存logだけを整理します。
+7. 自分が作成したコピーと保存したログだけを整理します。
 
 ## 観察すること
 
 - 競合2行を明示したか
 - syntaxとmeaningを混同していないか
-- 根拠のないapplication / usefulnessを主張していないか
+- 根拠のない適用（application）や有用性（usefulness）を主張していないか
 - 提案が目的を削りすぎていないか
 
 ## 停止条件
 
-- publisher、送信対象、model、費用、保存先を確認できない
-- private contentを送らなければ成立しない
+- 発行元、送信対象、モデル、費用、保存先を確認できない
+- 非公開の内容を送信しなければ成立しない
 - 自動修正や原本変更が必須
 - 出力を人が検証できない
 

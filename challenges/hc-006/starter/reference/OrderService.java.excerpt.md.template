@@ -1,6 +1,6 @@
-# OrderService.java source excerpt
+# OrderService.java のソース抜粋
 
-runtime workspace path:
+実行用ワークスペースのパス:
 `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`
 
 ```java
@@ -19,7 +19,7 @@ public SalesOrder approve(Long id, int expectedVersion, Actor actor) {
 }
 ```
 
-runtime workspace の full source を使って dependency と省略箇所を確認してください。upstream template revision は
+実行用ワークスペースの完全なソースを使い、依存関係と省略箇所を確認してください。上流テンプレートのリビジョンは
 `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
-ですが、template から作られた workspace の local `HEAD` が一致することは要求しません。
-この excerpt だけでは lock、validation、credit check、永続化の runtime behavior を検証できません。
+ですが、template から作られたワークスペースのローカル `HEAD` が一致している必要はありません。
+この抜粋だけでは、ロック、検証、与信確認、永続化の実行時の挙動を検証できません。

@@ -1,11 +1,11 @@
-# Documented product-rule boundary
+# 文書化された製品規則の境界
 
 SYNTHETIC_TRAINING_ONLY
 
-| product / asset | documented rule used by this exercise | boundary |
+| 製品 / アセット | この演習で使う文書化済み規則 | 境界 |
 |---|---|---|
-| Copilot code review / repository instructions | head branchから読むと説明されている | Cloud Agentや別automationへ一般化しない |
-| Cloud environment setup / setup workflow | default branchに存在することが起動条件 | すべてのInstructionsがdefault由来とは限らない |
-| Cloud Agent / repository instructions | この固定資料では採用refを確定できない | unknownを保持する |
+| Copilot code review / Repository Instructions | head ブランチから読み込むと説明されている | Cloud Agent や別の automation へ一般化しない |
+| Cloud environment setup / setup workflow | default ブランチに存在することが起動条件 | すべての Instructions が default 由来とは限らない |
+| Cloud Agent / Repository Instructions | この固定資料だけでは採用された ref を特定できない | unknown のままにする |
 
-文書化規則の存在は、今回の実投入版やattributionの観測を証明しません。
+文書化された規則が存在しても、今回実際に投入されたリビジョンや attribution を観測できたことにはなりません。

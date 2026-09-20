@@ -1,118 +1,118 @@
-# HC-039 組織で共有する規約のownerを決めよう
+# HC-039 組織で共有する規約の責任者を決めよう
 
-**Language:** **日本語** / [English](../../en/challenges/hc-039/README.md)
+**言語:** **日本語** / [English](../../en/challenges/hc-039/README.md)
 
-## Scenario
+## シナリオ
 
-「調査結果は根拠と未確認を分ける」という規約を複数teamで共有するとします。rootの `AGENTS.md`、organization Instructions、organization/enterprise共有profileには似た文章を書けますが、保存場所、利用surface、閲覧範囲、編集権限、owner、更新責任は同じではありません。
+「調査結果では、根拠がある内容と未確認の内容を分ける」という規約を、複数のチームで共有するとします。ルートの `AGENTS.md`、organization Instructions、organization / enterprise の共有 profile には、似た内容を書けます。しかし、保存場所、利用する surface、閲覧範囲、編集権限、責任者、更新責任はそれぞれ異なります。
 
-12件の合成ownership recordを使い、現在確認できる事実、unknown、参加者の提案、承認待ちを分けたgovernance設計を作ります。実organization設定や共有profileは変更しません。
+12件の責任情報をまとめた合成レコードを使い、現在確認できる事実、unknown、参加者の提案、承認待ちを分けたガバナンス設計を作ります。実際の organization 設定や共有 profile は変更しません。
 
 ## この機能とは
 
-このシナリオでは三つの仕組みを分けます。
+このシナリオでは、3つの仕組みを分けます。
 
-- root `AGENTS.md`: そのrepositoryで共有する作業指示。組織全体のACLや強制policyではない。
-- organization Instructions: organization設定に保存する自然言語指示。対応surface、owner権限、repository側のInstructionsとの関係を確認する。
-- 共有profile: 専門役の定義。organizationまたはenterpriseのgovernance repositoryで、role、版、利用範囲、保守責任を管理する。
+- ルートの `AGENTS.md`: そのリポジトリで共有する作業指示です。組織全体の ACL や強制ポリシーではありません。
+- organization Instructions: organization 設定に保存する自然言語の指示です。対応する surface、責任者の権限、リポジトリ側の Instructions との関係を確認します。
+- 共有 profile: 専門的な役割の定義です。organization または enterprise のガバナンス用リポジトリで、役割、バージョン、利用範囲、保守責任を管理します。
 
 選択規則も別です。
 
-- 対応するGitHub surfaceでは、該当するrepository Instructionsがorganization Instructionsより優先される場合がある。
-- 同名profileの選択は、ファイル名から `.md` / `.agent.md` を除いた名前を使い、repository、organization、enterpriseの順で選ばれる。
+- 対応する GitHub surface では、該当するリポジトリの Instructions が organization Instructions より優先される場合があります。
+- 同名 profile の選択には、ファイル名から `.md` / `.agent.md` を除いた名前を使います。リポジトリ、organization、enterprise の順で選ばれます。
 
-Instructionsの優先とprofileのdeduplicationは同じ処理ではありません。また、profileを利用できる範囲と、保存repositoryを閲覧・編集できる範囲も同じではありません。
+Instructions の優先順位と profile の重複排除は、同じ処理ではありません。また、profile を利用できる範囲と、保存先のリポジトリを閲覧・編集できる範囲も異なります。
 
 ## 向いていること / 向いていないこと
 
 **向いていること**
 
-- owner、author、reviewer、更新・廃止・復元担当を明示する。
-- 現在値と提案値を分ける。
-- 保存ACL、利用scope、編集権限、selected revisionを別々に記録する。
-- 重複を減らす、共有を見送る、追加承認まで保留する判断を説明する。
+- 責任者、作成者、レビュー担当者、更新・廃止・復元の担当者を明示する。
+- 現在の値と提案する値を分ける。
+- 保存先の ACL、利用範囲、編集権限、選択されたリビジョンを別々に記録する。
+- 重複を減らす、共有を見送る、追加承認まで保留するといった判断を説明する。
 
 **向いていないこと**
 
-- owner不明を実在する人名や「管理者」で補う。
-- pathだけでACL、利用資格、採用revisionを断定する。
-- `AGENTS.md` やInstructionsをrulesetやアクセス制御と呼ぶ。
-- 不活性sampleをactiveな共有profileとして配置する。
+- 責任者が不明な状態を、実在する人名や「管理者」で補う。
+- パスだけを根拠に、ACL、利用資格、採用されたリビジョンを断定する。
+- `AGENTS.md` や Instructions を ruleset やアクセス制御と見なす。
+- 不活性なサンプルを、有効な共有 profile として配置する。
 
 ## ゴール
 
 [`starter/governance-design.md.template`](starter/governance-design.md.template) の12行を埋め、各仕組みについて次を説明できるようにします。
 
-1. 現在確認できるowner、author、reviewer、revision
-2. unknownと、その確認先
+1. 現在確認できる責任者、作成者、レビュー担当者、リビジョン
+2. unknown と、その確認先
 3. 提案する責任分担と必要な承認
 4. 更新、廃止、復元の方法
-5. Instructionsの優先とprofile dedupの違い
+5. Instructions の優先順位と profile の重複排除の違い
 
 ## 用意するもの
 
 - テキストエディター
 - `starter/` 以下の合成資料
-- organization ownerやenterprise admin権限は本編には不要
+- organization owner や enterprise admin の権限は本編には不要
 
 | 素材 | 役割 |
 |---|---|
 | [`request.txt.template`](starter/request.txt.template) | 固定依頼 |
-| [`governance-design.md.template`](starter/governance-design.md.template) | 4 task × 3 recordのworksheet |
-| [`fixtures/ownership.json.template`](starter/fixtures/ownership.json.template) | 12件のownership record |
-| [`reference/current-policy.md.template`](starter/reference/current-policy.md.template) | 現行共有方針のsnapshot |
-| [`reference/mechanism-map.md.template`](starter/reference/mechanism-map.md.template) | 保存先、surface、優先、dedupの境界 |
+| [`governance-design.md.template`](starter/governance-design.md.template) | 4タスク × 3レコードのワークシート |
+| [`fixtures/ownership.json.template`](starter/fixtures/ownership.json.template) | 責任情報をまとめた12件のレコード |
+| [`reference/current-policy.md.template`](starter/reference/current-policy.md.template) | 現行の共有方針のスナップショット |
+| [`reference/mechanism-map.md.template`](starter/reference/mechanism-map.md.template) | 保存先、surface、優先順位、重複排除の境界 |
 | [`customization/shared-rules.md.template`](starter/customization/shared-rules.md.template) | 不活性な共通規約例 |
-| [`customization/profile.agent.md.template`](starter/customization/profile.agent.md.template) | 不活性な専門profile例 |
+| [`customization/profile.agent.md.template`](starter/customization/profile.agent.md.template) | 不活性な専門 profile の例 |
 
-`.template` を外さず、active pathへコピーしません。
+`.template` を外さず、有効なパスへコピーしません。
 
 ## 準備
 
-[リポジトリの始め方](../../README.md#始め方) に従ってこのディレクトリを開きます。次の四つのtaskを、それぞれ `record-01`〜`record-03` で確認します。
+[リポジトリの始め方](../../README.md#始め方) に従ってこのディレクトリを開きます。次の4つのタスクを、それぞれ `record-01`〜`record-03` で確認します。
 
-| task | 対象 |
+| タスク | 対象 |
 |---|---|
-| `root-rules` | repository rootの共有規約 |
+| `root-rules` | リポジトリのルートに置く共有規約 |
 | `org-instructions` | organization Instructions |
-| `org-profile` | organization共有profile |
-| `enterprise-profile` | enterprise共有profile |
+| `org-profile` | organization の共有 profile |
+| `enterprise-profile` | enterprise の共有 profile |
 
-`record-02` は責任情報の不足、`record-03` はselected ref、recorded revision、content hashの不整合を含みます。task名やrecord名は正解ラベルではありません。
+`record-02` には責任情報の不足、`record-03` には選択された ref、記録されたリビジョン、コンテンツのハッシュの不整合が含まれます。タスク名やレコード名は正解ラベルではありません。
 
 ## 試してみる
 
-1. `current-policy.md.template` と `mechanism-map.md.template` を読む。
-2. worksheetの列を埋める前に、current factとproposalを混ぜないルールを決める。
-3. 12 recordについて、保存repo/path、利用surface、利用scope、ACL、owner、author、reviewer、selected ref/revision/hashを照合する。
-4. 不明値はunknownのままにし、誰へ何を確認するかを書く。
-5. 参加者の提案は別欄へ書き、承認済みの現在値へ変換しない。
-6. Instructionsではrepository/organizationの関係を、profileではscope間dedupとselected revisionを確認する。
-7. 共通規約または専門profileを追加する案を検討する場合は、`customization/` の不活性sampleを参考に、owner、reviewer、更新、復元を先に決める。
+1. `current-policy.md.template` と `mechanism-map.md.template` を読みます。
+2. ワークシートの列を埋める前に、現在の事実と提案を混ぜないためのルールを決めます。
+3. 12件のレコードについて、保存先のリポジトリとパス、利用する surface、利用範囲、ACL、責任者、作成者、レビュー担当者、選択された ref / リビジョン / ハッシュを照合します。
+4. 不明な値は unknown のままにし、誰に何を確認するかを書きます。
+5. 参加者の提案は別欄へ書き、承認済みの現在値として扱わないようにします。
+6. Instructions ではリポジトリと organization の関係を、profile では scope 間の重複排除と選択されたリビジョンを確認します。
+7. 共通規約または専門 profile の追加を検討する場合は、`customization/` の不活性なサンプルを参考にし、責任者、レビュー担当者、更新方法、復元方法を先に決めます。
 
 ## 任意: 比較する
 
-まず `current-policy.md.template` だけで12 recordを短く診断し、その後governance worksheetで再評価します。unknownが減ったかではなく、根拠のない補完、重複責任、復元不能が減ったかを比較します。
+まず `current-policy.md.template` だけを使って12件のレコードを簡潔に診断し、その後、ガバナンス用ワークシートで再評価します。unknown が減ったかではなく、根拠のない補完、責任の重複、復元できない状態が減ったかを比較します。
 
 ## 確認ポイント
 
-- 4 task × 3 recordをすべて扱っている。
-- owner、author、reviewer、ACL、利用scope、revision、hashを分けている。
-- unknownな現在値と提案値を上書きしていない。
-- Instructionsの優先とprofileの同名dedupを混同していない。
-- profile利用scopeと保存repository ACLを同一視していない。
+- 4タスク × 3レコードをすべて扱っている。
+- 責任者、作成者、レビュー担当者、ACL、利用範囲、リビジョン、ハッシュを分けている。
+- unknown の現在値を提案値で上書きしていない。
+- Instructions の優先順位と、同名 profile の重複排除を混同していない。
+- profile の利用範囲と、保存先リポジトリの ACL を同一視していない。
 - 共有しない、追加不要、保留も有効な結論にしている。
 
 ## 発展
 
-- 同じ規約を二つの仕組みに重複配置した場合のdrift検出と正本を設計する。
-- 実organization設定を観察する場合は [Organization Instructionsの限定観測](optional/org-instructions-live.md) を参照する。
-- 共有profileを観察する場合は [共有profileの限定観測](optional/shared-profiles-live.md) を参照する。
+- 同じ規約を2つの仕組みに重複して配置した場合に、差異を検出する方法と正本を設計する。
+- 実際の organization 設定を観察する場合は、[Organization Instructions の限定観測](optional/org-instructions-live.md) を参照する。
+- 共有 profile を観察する場合は、[共有 profile の限定観測](optional/shared-profiles-live.md) を参照する。
 
-## 制約・Fallback・安全
+## 制約・代替手段・安全
 
-- 本編ではorganization settings、governance repository、ruleset、active profileを変更しない。
-- 実人名、実organization、private ACLを合成資料へ追加しない。
-- owner、ACL、selected revisionを確認できない場合は推測せず停止する。
-- Public Previewや利用資格は実環境で確認するまで未観測とする。
-- 管理権限がなくても、テキスト資料だけでgovernance設計を完成できる。
+- 本編では organization settings、ガバナンス用リポジトリ、ruleset、有効な profile を変更しない。
+- 実在する人名、実際の organization、非公開の ACL を合成資料へ追加しない。
+- 責任者、ACL、選択されたリビジョンを確認できない場合は、推測せずに停止する。
+- Public Preview や利用資格は、実環境で確認するまで未観測として扱う。
+- 管理権限がなくても、テキスト資料だけでガバナンス設計を完成できる。

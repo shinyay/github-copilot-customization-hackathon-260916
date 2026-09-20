@@ -7,11 +7,11 @@ description: 受注CSVの再送処理を説明するとき、既存Javaコード
 
 教材版: training-v2
 
-1. public upstream template基準 `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` を確認し、列挙pathは現在のruntime workspaceから読む。local HEADの一致は要求しない。
+1. 公開された上流テンプレートの基準 `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` を確認し、列挙されたパスは現在のランタイムワークスペースから読む。ローカルHEADの一致は要求しない。
 2. `OrderImportService.java` の `importDraft` と `replay` を読む。
-3. `OrderGroup.java` の `canonicalHash` を読み、external keyとファイルbytes全体の一致を混同しない。
-4. 必要なら `OrderImportPostgresTest.java` の定義を読む。読んだだけのtestを実行済みにしない。
+3. `OrderGroup.java` の `canonicalHash` を読み、外部キーとファイルのバイト列全体の一致を混同しない。
+4. 必要なら `OrderImportPostgresTest.java` の定義を読む。定義を読んだだけで、テストを実行済みとは扱わない。
 5. 現行動作、根拠、未確認、確認案を分ける。合成メモは実履歴と区別する。
 6. アプリや設定を編集せず、回答は自分の作業メモへ保存する。
 
-このSkillは新しいtool、権限、業務知識、強制実行を追加しない。
+このSkillは、新しいツール、権限、業務知識、強制実行を追加しない。

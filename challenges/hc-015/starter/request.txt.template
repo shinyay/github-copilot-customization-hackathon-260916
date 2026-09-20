@@ -1,12 +1,12 @@
-受注の在庫引当の入口と、適用される transaction 設定を説明してください。
-OrderService と application-context.xml の対応を調べ、必要ならそこから参照される XML も読んでください。
-path・symbol・確認できる範囲を示し、静的に確定できない点を分けてください。
+受注の在庫引当の入口と、適用されるトランザクション設定を説明してください。
+`OrderService` と `application-context.xml` の対応を調べ、必要であれば、そこから参照されるXMLも読んでください。
+パス、シンボル、確認できる範囲を示し、静的には確定できない点を分けてください。
 
-共通 source:
+共通ソース:
 upstream template: shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c
-source location: templateから作成したruntime workspace
+ソースの場所: テンプレートから作成したランタイムワークスペース
 
-upstream revisionはsourceの出所であり、runtime workspaceのlocal HEADとの一致条件ではありません。
+upstreamリビジョンはソースの出所を示す値であり、ランタイムワークスペースのローカルHEADと一致する必要はありません。
 
 読む候補:
 - A1: wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java
@@ -14,14 +14,14 @@ upstream revisionはsourceの出所であり、runtime workspaceのlocal HEADと
 - A3: wholesale-core/src/main/resources/spring/module-operations.xml
 
 A1 の `OrderService.allocate` を起点に、文字列一致と定義・参照解決を区別してください。
-A2 の import から A3 を追加で読んだ場合は、path、目的、要求範囲、返却範囲、実際に読んだ範囲を示してください。
-候補 path は ACL ではなく、必要な参照先を同じ source から追加で読めます。
+A2のimportからA3を追加で読んだ場合は、パス、目的、要求範囲、返却範囲、実際に読んだ範囲を示してください。
+候補のパスはACLではありません。必要な参照先は、同じソースから追加で読めます。
 
-添付や手動入力がある場合は、版、path、byte 数、範囲を確認してください。
+添付や手動入力がある場合は、版、パス、バイト数、範囲を確認してください。
 添付表示、準備した全文、内部で実際に使われた範囲を分け、欠落・切り詰め・別タブ混入が疑われれば報告してください。
 
-index や言語機能が未準備・未確認の場合は結果を 0 件にせず、確認できない状態として残してください。
-文字列検索を LSP や semantic search の成功と呼ばないでください。
+インデックスや言語機能が未準備または未確認の場合は、結果を0件とせず、確認できない状態として残してください。
+文字列検索を、LSPやsemantic searchの成功と呼ばないでください。
 
-アプリ、DB、テストを実行せず、Java、XML、設定、index、拡張を変更しないでください。
-静的読解で、実 proxy、実 transaction、過去の設計意図を断定しないでください。
+アプリ、DB、テストを実行せず、Java、XML、設定、インデックス、拡張機能を変更しないでください。
+静的な読解から、実際のプロキシ、トランザクション、過去の設計意図を断定しないでください。

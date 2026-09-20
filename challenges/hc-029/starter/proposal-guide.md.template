@@ -1,14 +1,14 @@
-# Inert proposal guide
+# 不活性な提案ガイド
 
-提案先は次の1 pathだけです。
+提案先は次の 1 パスだけです。
 
 `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java`
 
-自分で作る `proposed-change.diff.template` へ、UNKNOWN rounding境界を確認する新規testの提案だけを書きます。次の変更を含めません。
+自分で作成する `proposed-change.diff.template` には、UNKNOWN の丸め処理の境界を確認する新しいテスト案だけを書きます。次の変更は含めません。
 
-- `Money.java`、`BusinessException.java`、`TaxAmounts.java`などのproduction変更
-- `pom.xml`、workflow、dependency、Java versionの変更
-- 既存test期待値の変更や削除
-- 完成patchや旧教材のanswerの転記
+- `Money.java`、`BusinessException.java`、`TaxAmounts.java` などのプロダクションコードの変更
+- `pom.xml`、workflow、依存関係、Java のバージョンの変更
+- 既存テストの期待値の変更や削除
+- 完成済みのパッチや旧教材の答えの転記
 
-このdiffは `git apply` しません。compile/testを実行していない場合は架空のexit codeを書かず、not-runを保持します。
+この差分には `git apply` を実行しません。コンパイル/テストを実行していない場合は、架空の終了コードを書かず、not-run のままにします。

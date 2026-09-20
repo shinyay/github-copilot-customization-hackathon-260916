@@ -1,21 +1,21 @@
 # HC-008 返却の記録
 
-子の返却は修復せず、そのまま記録します。機密情報が混入した場合は共有を止め、内容を転載せず問題だけを記録します。
+子からの返却は修正せず、そのまま記録します。機密情報が混入していた場合は共有を止め、内容を転載せず、問題があったことだけを記録します。
 
 ## 委任方法
 
 - Actual Subagent / manual fresh conversation:
-- 実際の呼出し表示: observed / not observed / not available
-- 最大2担当・各1回を守った: yes / no
+- 実際の呼び出し表示: observed / not observed / not available
+- 最大 2 担当、各 1 回を守った: yes / no
 
 ## Web return
 
-返却全文:
+返却された全文:
 
 不足入力、未観測部分:
 
 ## Batch return
 
-返却全文:
+返却された全文:
 
 不足入力、未観測部分:

@@ -2,20 +2,20 @@
   "schemaVersion": 1,
   "caseId": "case-06",
   "taskId": "case-06",
-  "title": "外部serviceが使えない日の固定packet",
+  "title": "外部サービスが使えない場合の固定パケット",
   "targetHarness": "local-agent",
   "scope": "workspace",
   "sourcePaths": [
     "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java"
   ],
-  "situation": "必要な合成運用メモ全文は固定packetとして配布済みで、外部MCPや認証は許可されていない。",
+  "situation": "必要な合成運用メモの全文は固定パケットとして配布済みで、外部MCPや認証は許可されていない。",
   "resources": [
-    "固定source",
+    "固定ソース",
     "配布済みの同じメモ全文"
   ],
   "constraints": [
-    "server起動・認証・外部送信は不可。",
+    "サーバーの起動、認証、外部送信は不可。",
     "MCP不在を情報不足へ置き換えない。",
-    "none/manualを劣ったものとみなさない。"
+    "noneやmanualを劣った選択肢とみなさない。"
   ]
 }

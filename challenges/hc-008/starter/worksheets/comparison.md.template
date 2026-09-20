@@ -1,34 +1,34 @@
-# HC-008 任意の比較worksheet
+# HC-008 任意の比較ワークシート
 
-同じrequest、packet、design、source、model、toolsをできるだけそろえます。そろえられない差は結論より先に記録します。
+同じ依頼、パケット、設計、ソース、モデル、ツールをできるだけそろえます。そろえられない条件の違いは、結論より先に記録します。
 
 ## 固定した入力
 
-- Request:
-- Web packet:
-- Batch packet:
-- Design:
+- 依頼:
+- Web パケット:
+- バッチパケット:
+- 設計:
 - そろえられなかった環境差:
 
 ## 直接調査
 
-- Sourceへ戻れる項目:
-- Unknownの保持:
+- ソースまでたどれる項目:
+- 不明点の保持:
 - 重複調査や誤引用:
 - 人の統合作業:
 
-## Subagent調査
+## Subagent 調査
 
-- 実際の子の呼出し: observed / not observed
-- Sourceへ戻れる項目:
-- Unknownの保持:
+- 実際の子の呼び出し: observed / not observed
+- ソースまでたどれる項目:
+- 不明点の保持:
 - 重複調査や誤引用:
 - 人の統合作業:
 
-## Source check
+## ソースの確認
 
-- Webで確認したclaim:
-- Batchで確認したclaim:
+- Web で確認した主張:
+- バッチで確認した主張:
 
 ## 差
 

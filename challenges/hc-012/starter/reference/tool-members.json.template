@@ -11,13 +11,13 @@
     {
       "reference": "search/changes",
       "purpose": "変更を調べる入口。変更がなくても異常とは限りません。",
-      "emptyResultMeaning": "変更なしは実装の正しさの証拠ではありません。結果を作るためにsourceを変更しません。",
+      "emptyResultMeaning": "変更がないことは、実装が正しいことの証拠にはなりません。結果を作るためにソースを変更しません。",
       "zeroResultsProveCorrectness": false
     },
     {
       "reference": "search/codebase",
       "purpose": "意味に基づいて関連コードへ到達する入口。索引と検索範囲に依存します。",
-      "emptyResultMeaning": "関連コードが存在しないとは断定せず、索引・範囲・queryを確認します。",
+      "emptyResultMeaning": "関連コードが存在しないとは断定せず、索引、範囲、クエリを確認します。",
       "zeroResultsProveCorrectness": false
     },
     {
@@ -28,8 +28,8 @@
     },
     {
       "reference": "search/usages",
-      "purpose": "symbolの利用・関係を調べる入口。対応する言語機能と検索範囲に依存します。",
-      "emptyResultMeaning": "呼出し元がないとは断定せず、言語機能と対象範囲を確認します。",
+      "purpose": "シンボルの利用箇所や関係を調べる入口。対応する言語機能と検索範囲に依存します。",
+      "emptyResultMeaning": "呼び出し元がないとは断定せず、言語機能と対象範囲を確認します。",
       "zeroResultsProveCorrectness": false
     }
   ],

@@ -8,15 +8,15 @@
   "sourcePaths": [
     "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java"
   ],
-  "situation": "同じ合成メモを参照する分析を繰り返し、将来のread-only resource経路と手動全文供給を比較する。",
+  "situation": "同じ合成メモを参照する分析を繰り返し、将来の読み取り専用リソース経路と、全文を手動で供給する方法を比較する。",
   "resources": [
-    "固定source",
+    "固定ソース",
     "同じ運用メモ全文",
     "合成の読み取り許可記録"
   ],
   "constraints": [
-    "実serverは起動しない。",
-    "許可記録はserver trust・取得・callの証拠ではない。",
+    "実際のサーバーは起動しない。",
+    "許可の記録は、server trust、取得、呼び出しの証拠ではない。",
     "同じ情報量で保守負担を比べる。"
   ]
 }

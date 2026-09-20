@@ -6,15 +6,15 @@
 
 ## 点検順
 
-<!-- syntax / location / harness / meaning / discovery / application / usefulness の順序と理由を書く。 -->
+<!-- syntax / location / harness / meaning / discovery / application / usefulness の順序と、その理由を書く。 -->
 
 ## 自動確認と人の判断
 
-<!-- shapeや既知の状態と、意図・意味・保守性の判断を分ける。 -->
+<!-- 形式や既知の状態と、意図・意味・保守性に関する判断を分ける。 -->
 
 ## 修正候補
 
-<!-- 削除、書換え、scope限定、優先関係、追加不要などを比較する。 -->
+<!-- 削除、書き換え、スコープの限定、優先関係、追加不要などを比較する。 -->
 
 ## 停止条件と非主張
 

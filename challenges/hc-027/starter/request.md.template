@@ -1,7 +1,7 @@
-# Fixed evaluation request
+# 固定評価依頼
 
 SYNTHETIC_TRAINING_ONLY
 
-primaryとtransfer-checkを、reference / reusable-rules / manual-rulesの3 variantで比較する計画を作ってください。結果packetを読む前に5観点、固定分母、順序、終了条件、欠測、initial / follow-up、回帰方針を固定してください。
+primaryとtransfer-checkを、reference / reusable-rules / manual-rulesの3つのvariantで比較する計画を作ってください。結果パケットを読む前に、5つの観点、固定する分母、順序、終了条件、欠測、initial / follow-up、回帰方針を固定してください。
 
-合成18 rowを実modelの18回実行と呼ばず、費用・時間を観測していなければnullを保持してください。
+合成した18行を、実際のモデルを18回実行した結果と呼ばないでください。費用や時間を観測していなければ、nullを保持してください。

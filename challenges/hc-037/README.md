@@ -1,70 +1,70 @@
 # HC-037 LiteとBalancedのレビュー品質を比べよう
 
-**Language:** **日本語** / [English](../../en/challenges/hc-037/README.md)
+**言語:** **日本語** / [English](../../en/challenges/hc-037/README.md)
 
-## Scenario
+## シナリオ
 
-税額まわりの変更をCopilot code reviewへ依頼するとき、LiteとBalancedのどちらを選ぶべきかを検討します。指摘数や文章量だけで勝敗を決めず、根拠のある指摘、誤検知、見落とし、重複、確認負担、欠測を同じ基準で記録できる評価計画を作ります。
+税額に関する変更を Copilot code review でレビューするとき、Lite と Balanced のどちらを選ぶべきかを検討します。指摘数や文章量だけで優劣を決めず、根拠のある指摘、誤検知、見落とし、重複、確認の負担、欠測を同じ基準で記録できる評価計画を作ります。
 
-このシナリオでは実際のレビューを依頼しません。二つの候補差分について、LiteとBalancedの四つの計画セルをすべて `planned-not-requested` として設計します。
+このシナリオでは、実際のレビューは依頼しません。2つの候補差分と Lite / Balanced を組み合わせた4つの計画セルを、すべて `planned-not-requested` として設計します。
 
 ## この機能とは
 
-Copilot code reviewのeffortは、標準レビューへ依頼する分析の深さです。LiteとBalancedは次のものとは別に扱います。
+Copilot code review の effort は、標準レビューで依頼する分析の深さを表します。Lite と Balanced は、次の項目と分けて扱います。
 
-- Chatのmodel pickerやthinking effort
-- Custom Agentの役割
-- 手動promptの長さ
-- 実際に表示されたeffective effort
-- 内部model、費用、agentic fallback、CI上の表示
+- Chat の model picker や thinking effort
+- Custom Agent の役割
+- 手動プロンプトの長さ
+- 実際に表示された effective effort
+- 内部モデル、費用、エージェントによる代替手段、CI での表示
 
 題材は税率ごとの集約と丸めです。
 
-- `TaxAmounts` は税率ごとに金額を集約する。
-- `Money.tax` は税率bucketごとに税額を丸める。
-- 既存testは、同じ税率でも `0.10` と `0.1000` のようにscaleが異なる入力を含む。
-- `candidate-01` は通常変更を含む候補、`candidate-02` は集約と丸めの順序を検討する候補。ただし正解ラベルは配布しない。
+- `TaxAmounts` は、税率ごとに金額を集約します。
+- `Money.tax` は、税率 bucket ごとに税額を丸めます。
+- 既存のテストには、同じ税率でも `0.10` と `0.1000` のように scale が異なる入力が含まれます。
+- `candidate-01` は通常の変更を含む候補、`candidate-02` は集約と丸めの順序を検討する候補です。ただし、正解ラベルは配布しません。
 
 ## 向いていること / 向いていないこと
 
 **向いていること**
 
-- 実レビュー前に公正な比較方法を決める。
-- findingを変更行とsource/testへ結び付ける。
-- 正常な変更への警告もfalse positive候補として扱う。
-- 片側の欠測を0件へ変換せず、比較不能の条件を決める。
+- 実際にレビューする前に、公正な比較方法を決める。
+- 指摘を変更行とソースやテストに結び付ける。
+- 正常な変更への警告も、誤検知の候補として扱う。
+- 片側の欠測を0件と見なさず、比較不能とする条件を決める。
 
 **向いていないこと**
 
-- Balancedの文章量やfinding数だけで高品質と判断する。
-- 一回の結果を統計的優位と呼ぶ。
-- 手動promptや別modelを第三条件として混ぜる。
-- 候補差分を実sourceへ適用し、Javaやtestを実行済みとする。
+- Balanced の文章量や指摘数だけで、品質が高いと判断する。
+- 1回の結果を統計的に優位だと見なす。
+- 手動プロンプトや別のモデルを、第3の条件として混ぜる。
+- 候補差分を実際のソースへ適用し、Java やテストを実行済みと見なす。
 
 ## ゴール
 
 [`starter/evaluation-plan.md.template`](starter/evaluation-plan.md.template) の四行を埋め、次を説明できる状態にします。
 
-1. findingを支持する最小単位
+1. 指摘を裏付ける最小単位
 2. false positive、重複、見落としの扱い
-3. 人が確認する時間と根拠確認の負担
-4. requested effortと未観測項目の分離
+3. 人が確認する時間と、根拠を確かめる負担
+4. requested effort と未観測項目の分離
 5. 比較を中止または保留する条件
 
 ## 用意するもの
 
 - テキストエディター
 - `starter/` 以下の固定資料
-- 任意でGit。Copilot code reviewの利用資格や課金枠は本編には不要
+- 任意で Git。Copilot code review の利用資格や課金枠は本編には不要
 
 | 素材 | 役割 |
 |---|---|
 | [`request.txt.template`](starter/request.txt.template) | 未送信の固定依頼 |
 | [`evaluation-plan.md.template`](starter/evaluation-plan.md.template) | Lite × 2候補、Balanced × 2候補の評価計画 |
-| [`candidate-01.diff.template`](starter/candidates/candidate-01.diff.template)、[`candidate-02.diff.template`](starter/candidates/candidate-02.diff.template) | 二つの合成候補差分 |
+| [`candidate-01.diff.template`](starter/candidates/candidate-01.diff.template)、[`candidate-02.diff.template`](starter/candidates/candidate-02.diff.template) | 2つの合成候補差分 |
 | [`reference/controls.json.template`](starter/reference/controls.json.template) | effort以外に固定する項目 |
 | [`reference/rules.md.template`](starter/reference/rules.md.template) | 根拠、誤検知、負担、欠測の共通規約 |
-| [`reference/source-map.md.template`](starter/reference/source-map.md.template) | 関連symbolと読取境界 |
+| [`reference/source-map.md.template`](starter/reference/source-map.md.template) | 関連シンボルと読み取り範囲 |
 
 すべて学習用の不活性資料です。`.template` を外さないでください。
 
@@ -72,56 +72,56 @@ Copilot code reviewのeffortは、標準レビューへ依頼する分析の深�
 
 [リポジトリの始め方](../../README.md#始め方) に従ってこのディレクトリを開きます。比較前に次を固定します。
 
-- task: `amount-review`
+- タスク: `amount-review`
 - `candidate-01` と `candidate-02` の内容
 - 依頼全文と評価規約
-- Lite / Balanced以外の評価項目
-- 計画revision
+- Lite / Balanced 以外の評価項目
+- 計画のリビジョン
 
-実sourceを取得できない場合でも、README、候補差分、source map、規約に記載された集約・丸め境界だけで計画を作れます。
+実際のソースを取得できない場合でも、README、候補差分、ソースマップ、規約に記載された集約と丸めの境界だけで計画を作れます。
 
 ## 試してみる
 
-1. `starter/request.txt.template` と `starter/reference/rules.md.template` を読む。
-2. 二つのcandidateを、正解ラベルを仮定せずに読む。
-3. finding候補ごとに、変更行、支持するsource/test、支持範囲を決める。
-4. 通常変更への警告、unsupportedな指摘、重複をどう記録するか決める。
+1. `starter/request.txt.template` と `starter/reference/rules.md.template` を読みます。
+2. 2つの候補を、正解ラベルを仮定せずに読みます。
+3. 指摘候補ごとに、変更行、裏付けとなるソースやテスト、裏付けられる範囲を決めます。
+4. 通常の変更への警告、裏付けのない指摘、重複をどのように記録するか決めます。
 5. `evaluation-plan.md.template` の四行を同じ基準で埋める。
 6. 次の値は実行しない限り `null` または `not-observed` のままにする。
    - effective effort
-   - 内部model
-   - 実finding
+   - 内部モデル
+   - 実際の指摘
    - 費用
-   - agentic fallback
-   - CI visibility
-7. 片側だけ実行できた場合や、candidate/sourceの固定が崩れた場合の停止条件を書く。
+   - エージェントによる代替手段
+   - CI での表示
+7. 片側だけ実行できた場合や、候補またはソースの固定条件が崩れた場合の停止条件を書きます。
 
 精度や優位性の比率は、妥当な分母がない限り作りません。
 
 ## 任意: 比較する
 
-最初にテンプレートを見ず短い評価案を作り、その後テンプレートの観点で作り直します。両方で同じcandidateを使い、見落とした欠測、誤検知確認、負担の差だけを比較してください。
+最初にテンプレートを見ずに短い評価案を作り、その後、テンプレートの観点に沿って作り直します。どちらにも同じ候補を使い、見落としていた欠測、誤検知の確認、負担の違いだけを比較してください。
 
-実レビューを行う場合は本編と分け、LiteとBalancedを同じPR、base/head、依頼、回数上限、費用上限で一回ずつ観測します。未実施側を0 findingsとして扱いません。
+実際にレビューする場合は本編と分け、Lite と Balanced を同じ PR、base/head、依頼内容、回数上限、費用上限で1回ずつ観測します。未実施側を指摘0件として扱いません。
 
 ## 確認ポイント
 
-- 四つの計画セルがすべてある。
+- 4つの計画セルがすべてある。
 - requested effort以外の入力と評価軸が同じ。
-- finding数ではなく、支持、誤検知、重複、見落とし、負担を分けている。
+- 指摘数ではなく、裏付け、誤検知、重複、見落とし、負担を分けている。
 - 通常変更への警告を検討できる。
 - `planned-not-requested` を実レビュー結果へ読み替えていない。
 - `same`、`worse`、`not-observed`、`incomparable` も有効な結論にしている。
 
 ## 発展
 
-- 追加の金額例がどの欠測を解消するか、次の独立した検証案を一つ設計する。
-- 実サービスで観測する前の安全確認は、[標準review effortの限定観測](optional/review-effort-live.md) を参照する。
+- 追加の金額例がどの欠測を解消するか、次の独立した検証案を1つ設計する。
+- 実サービスで観測する前の安全確認は、[標準 review effort の限定観測](optional/review-effort-live.md) を参照する。
 
-## 制約・Fallback・安全
+## 制約・代替手段・安全
 
-- 本編からreview request、PR変更、source変更、費用発生操作を行わない。
-- 実effort、内部model、費用、review品質を推測しない。
-- sourceへアクセスできない場合は、同梱資料だけで評価計画を作り、source実行結果を未観測として残す。
-- candidateの内容、依頼、評価規約を固定できない場合は比較を停止する。
+- 本編からレビュー依頼、PR変更、ソース変更、費用が発生する操作を行わない。
+- 実際の effort、内部モデル、費用、レビュー品質を推測しない。
+- ソースへアクセスできない場合は、同梱資料だけで評価計画を作り、ソースの実行結果は未観測のまま残す。
+- 候補の内容、依頼、評価規約を固定できない場合は比較を停止する。
 - 利用資格がない場合でも、テキストだけでゴールまで完了できる。

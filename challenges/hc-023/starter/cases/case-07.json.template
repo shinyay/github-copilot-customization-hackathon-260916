@@ -8,15 +8,15 @@
   "sourcePaths": [
     "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/OrderStates.java"
   ],
-  "situation": "同じ固定アプリのread-only依頼をAgent Host向けに再利用する設計を点検する。実機は起動しない。",
+  "situation": "同じ固定アプリの読み取り専用依頼を、Agent Host向けに再利用する設計を点検する。実機は起動しない。",
   "resources": [
     "固定依頼",
-    "固定source",
-    "公開資料のharness境界"
+    "固定ソース",
+    "公開資料に記載されたハーネスの境界"
   ],
   "constraints": [
-    "Prompt FilesのHost非読込を残す。",
-    "Localの過去結果をHostへコピーしない。",
+    "Prompt FilesがHostで読み込まれないという境界を残す。",
+    "Localで得た過去の結果をHostへ流用しない。",
     "手動入力または対応を確認する別案を検討する。"
   ]
 }

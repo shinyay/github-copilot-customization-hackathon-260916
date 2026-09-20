@@ -1,30 +1,30 @@
-runtime workspaceの受注 CSV 再送sourceを読む人向けに、短い Skill 原稿を設計してください。
+ランタイムワークスペースにある受注CSVの再送ソースを読む人向けに、短いSkill原稿を設計してください。
 
 upstream template repository: shinyay/github-copilot-customization-runtime-template
 upstream template revision: 8f0b3aa25c4f33facdea691642c2f1cb3901391c
-source location: templateから作成したruntime workspace
+ソースの場所: テンプレートから作成したランタイムワークスペース
 読むファイル:
 - wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java
 - wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java
 - wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java
 
-三ファイルを静的に読み、読解の入口、path・symbol・行範囲の残し方、
+三つのファイルを静的に読み、読解の入口、パス、シンボル、行範囲の残し方、
 未確認を保留する基準を考えてください。完成済みのコード解説、採用理由、障害履歴は作らないでください。
 テストは定義を読むだけで、Java・DB・ネットワークは実行しません。
-upstream revisionはsourceの出所であり、runtime workspaceのlocal HEADとの一致条件ではありません。
+upstreamリビジョンはソースの出所を示す値であり、ランタイムワークスペースのローカルHEADと一致する必要はありません。
 
-Skill 名は order-import-evidence、frontmatter は name と単一行の description だけにします。
-本文の順序と表現は選べますが、source と安全境界を広げないでください。
+Skill名は `order-import-evidence` とし、front matterは `name` と単一行の `description` だけにします。
+本文の順序と表現は選べますが、ソースと安全境界を広げないでください。
 
-比較前に frontmatter を含む v1 全文を UTF-8・BOM なし・LF で固定します。
+比較前に、front matterを含むv1の全文を、UTF-8、BOMなし、LFで固定します。
 v2 は「教材版: training-v1」を「教材版: training-v2」にする一行だけを変え、新しい事実を加えません。
 
-手動配布では同じ Skill と版台帳を使います。package 配布では、同じ版の Skill raw bytes を変えずに、
-Agent Plugins 1.0 の root manifest と一つの Skill だけの package に包みます。
-同じ版の手動 Skill と package Skill を byte 単位で一致させてください。
+手動配布では、同じSkillと版台帳を使います。パッケージ配布では、同じ版のSkillの生のバイト列を変えずに、
+Agent Plugins 1.0のルートマニフェストと一つのSkillだけで構成されるパッケージにまとめます。
+同じ版の手動Skillとパッケージ内のSkillを、バイト単位で一致させてください。
 
-v1 → v2 → v1 の更新と復元を行い、全 path と SHA-256、コピー元・コピー先、
-重複・旧版候補、完全復元を記録してください。package は manifest と Skill の両方を戻します。
+v1 → v2 → v1の更新と復元を行い、すべてのパスとSHA-256、コピー元とコピー先、
+重複や旧版の候補、完全復元を記録してください。パッケージはマニフェストとSkillの両方を戻します。
 
-サンプルの enabled / disabled は合成値です。実際の discovery、本文 loading、停止を証明しません。
-`.template` を外さず、Plugin の install、register、enable、publish を行わないでください。
+サンプルの `enabled` / `disabled` は合成値です。実際の検出、本文の読み込み、停止を証明するものではありません。
+`.template` を外さず、Pluginのインストール、登録、有効化、公開は行わないでください。

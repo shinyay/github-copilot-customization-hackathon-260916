@@ -3,8 +3,8 @@ name: order-import-evidence-training
 description: "SYNTHETIC_TRAINING_ONLY: collect source citations, unknowns, and restore evidence without executing changes."
 ---
 
-# Evidence steps training-v2
+# 根拠確認手順 training-v2
 
-1. 対象pathと根拠を記録する。
+1. 対象パスと根拠を記録する。
 2. 未確認の結果をunknownとして残す。
-3. current、previous、rollbackの版とdigestを別欄へ記録する。
+3. current、previous、rollbackのバージョンとダイジェストを別々の欄に記録する。

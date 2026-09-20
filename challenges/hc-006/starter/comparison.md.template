@@ -2,51 +2,51 @@
 
 ## 固定する調査
 
-- upstream template repository / revision:
-- runtime workspace root:
-- local HEAD（記録のみ。upstream template revision との一致は条件にしない）:
-- operation:
-- 固定 request:
-- 対象三ファイル:
-- full source または excerpt のどちらを使ったか:
-- client / host / OS:
-- model / tools:
+- 上流テンプレートのリポジトリ / リビジョン:
+- 実行用ワークスペースのルート:
+- ローカルの HEAD（記録のみ。上流テンプレートのリビジョンとの一致は条件にしない）:
+- 操作:
+- 固定依頼:
+- 対象の三つのファイル:
+- 完全なソースと抜粋のどちらを使ったか:
+- クライアント / ホスト / OS:
+- モデル / ツール:
 - 時間測定の開始点と終了点:
 
 ## Manual 1 回目
 
-- exact request:
-- 作られた section:
-- source citation:
-- fact / inference / unknown の分離:
+- 依頼全文:
+- 作られたセクション:
+- ソースの引用:
+- 事実 / 推論 / 不明点の分離:
 - 不要な作業:
 - 所要時間:
 
 ## Manual 2 回目
 
-- exact request:
-- 作られた section:
-- source citation:
-- 一回目からの drift:
+- 依頼全文:
+- 作られたセクション:
+- ソースの引用:
+- 1 回目からのずれ:
 - 不要な作業:
 - 所要時間:
 
 ## Prompt File 1 回目
 
-- 実際の呼出し方:
-- 渡した input:
-- 作られた section:
-- source citation:
-- fact / inference / unknown の分離:
+- 実際の呼び出し方:
+- 渡した入力:
+- 作られたセクション:
+- ソースの引用:
+- 事実 / 推論 / 不明点の分離:
 - 不要な作業:
 - 所要時間:
 
 ## Prompt File 2 回目
 
-- 実際の呼出し方:
-- 渡した input:
-- 作られた section:
-- 一回目からの drift:
+- 実際の呼び出し方:
+- 渡した入力:
+- 作られたセクション:
+- 1 回目からのずれ:
 - 不要な作業:
 - 所要時間:
 
@@ -54,17 +54,17 @@
 
 | 観点 | Manual | Prompt File | 根拠 |
 | --- | --- | --- | --- |
-| 必須 section の欠落 | | | |
-| citation の正確さ | | | |
-| competing explanation | | | |
-| runtime boundary | | | |
-| irrelevant work | | | |
-| participant effort | | | |
-| 二回の drift | | | |
+| 必須セクションの欠落 | | | |
+| 引用の正確さ | | | |
+| 競合する説明 | | | |
+| 実行時の境界 | | | |
+| 不要な作業 | | | |
+| 参加者の作業量 | | | |
+| 2 回の結果のずれ | | | |
 
 ## 結論
 
 - 改善 / 同等 / 悪化 / 比較不能 / 非対応から選ぶ:
 - その理由:
 - 失敗、欠落、未確認:
-- discovery や explicit invocation を確認できなかった場合の制約:
+- 検出や明示的な呼び出しを確認できなかった場合の制約:

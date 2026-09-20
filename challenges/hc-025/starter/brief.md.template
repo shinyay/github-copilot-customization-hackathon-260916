@@ -1,18 +1,18 @@
 # HC-025 可搬性ブリーフ
 
-固定 packet `LAB25-APP-01` と同じ4種類の原稿を、VS Code Local Agent と Agent Host の観点から静的に診断します。
+固定パケット `LAB25-APP-01` と同じ4種類の原稿を、VS Code Local AgentとAgent Hostの観点から静的に診断します。
 
-packetはpublic upstream template `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` をcanonicalな参照とし、sourceは現在のruntime workspaceにある3 pathから読みます。template由来workspaceのlocal HEAD一致は要求しません。
+パケットは、公開された上流テンプレート `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` を正規の参照とします。ソースは、現在のランタイムワークスペースにある3つのパスから読みます。テンプレートから作成したワークスペースのローカルHEADの一致は要求しません。
 
 各 sample で分ける層:
 
-1. file format
-2. documented discovery
-3. observed discovery
-4. loading
-5. effective tools
-6. approval
+1. ファイル形式
+2. 文書化された検出方法
+3. 観測した検出
+4. 読み込み
+5. 実効ツール
+6. 承認
 
-この starter は不活性な原稿だけを提供します。実 client、model、MCP、Plugin install は起動しません。実測していない observed discovery、loading、effective tools、approval は `null` です。
+このスターターでは、不活性な原稿だけを提供します。実際のクライアント、モデル、MCP、Pluginのインストール処理は起動しません。実測していないobserved discovery、loading、effective tools、approvalは `null` です。
 
-Agent Host を Cloud Agent の別名にせず、Prompt の Agent Host 非読込を Skill の成功へ置き換えません。書き込み、外部送信、shell、install、同期、user home の設定変更は行いません。
+Agent HostをCloud Agentの別名として扱わず、PromptがAgent Hostで読み込まれないという結果を、Skillの成功に置き換えません。書き込み、外部送信、シェル操作、インストール、同期、ユーザーのホームの設定変更は行いません。

@@ -5,7 +5,7 @@
   "upstreamTemplateRevision": "8f0b3aa25c4f33facdea691642c2f1cb3901391c",
   "workspaceSourceMode": "read-listed-paths-from-current-runtime-workspace",
   "workspaceHeadMatchRequired": false,
-  "purpose": "同じ卸売アプリの読み取り分析に必要な最小の準備を、trigger/scope/resources/permissions/maintenanceで選ぶ。",
+  "purpose": "同じ卸売アプリの読み取り分析に必要な最小限の準備を、trigger/scope/resources/permissions/maintenanceで選ぶ。",
   "allowedOperations": [
     "read-fixed-source",
     "inspect-inert-materials",

@@ -1,6 +1,6 @@
 {
   "fixtureLabel": "SYNTHETIC_LIFECYCLE_NOT_PLUGIN_DISCOVERY",
-  "scope": "紙上の候補メモ。実在するユーザー、home 設定、Plugin 一覧ではありません。",
+  "scope": "紙上の候補メモです。実在するユーザー、ホームディレクトリの設定、Plugin一覧を示すものではありません。",
   "snapshot": "v2",
   "candidates": [
     {
@@ -26,9 +26,9 @@
     }
   ],
   "questions": [
-    "全 origin をまとめて、同名・旧版・余分なコピーをどう調べますか。",
-    "enabled が false と書かれた候補を、版の確認対象から外してよいですか。",
-    "この合成メモだけでは確認できない client の状態は何ですか。"
+    "すべてのoriginを対象に、同名、旧版、余分なコピーをどのように調べますか。",
+    "enabledがfalseと記された候補を、版の確認対象から外してよいですか。",
+    "この合成メモだけでは確認できないクライアントの状態は何ですか。"
   ],
   "observedClientState": null
 }

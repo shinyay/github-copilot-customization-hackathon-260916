@@ -14,5 +14,5 @@
     "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/OrderStates.java",
     "wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java"
   ],
-  "boundary": "pathはruntime workspaceから読み、local HEADのupstream revision一致は要求しない。pathの実在は意味・実行結果・採用すべき機構の証明ではない。"
+  "boundary": "パスはランタイムワークスペースから読み、ローカルHEADが上流のリビジョンと一致することは要求しない。パスが実在しても、意味、実行結果、採用すべき機構を証明するものではない。"
 }

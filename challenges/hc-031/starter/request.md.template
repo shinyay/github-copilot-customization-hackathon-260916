@@ -1,5 +1,5 @@
-# Fixed scoped-instructions request
+# 適用範囲を指定した Instructions の固定依頼
 
-OrderServiceのJava制御、2つのcore XML、範囲外web Javaを読み、java-reading / xml-reading / mixed-readingの3 taskについて必要な規則の供給設計を作ってください。
+OrderService の Java 制御、2 つの core XML、範囲外の web Java を読んでください。そのうえで、java-reading / xml-reading / mixed-reading の 3 つのタスクに必要な規則の供給設計を作ってください。
 
-4つのmain sourceをすべて残し、`applyTo` をACLと呼ばず、`excludeAgent` の値は `code-review` または `cloud-agent` だけを使ってください。実Cloud/reviewの採用結果はnot-checkedのまま記録してください。
+4 つの主なソースをすべて残し、`applyTo` を ACL と呼ばず、`excludeAgent` の値には `code-review` または `cloud-agent` だけを使ってください。実際の Cloud Agent / code review での採用結果は、not-checked のまま記録してください。

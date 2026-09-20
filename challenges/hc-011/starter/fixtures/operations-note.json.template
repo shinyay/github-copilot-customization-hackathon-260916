@@ -5,7 +5,7 @@
   "syntheticOperationsNote": {
     "id": "TRAINING-OPS-017",
     "title": "架空の受注CSV再送確認メモ",
-    "text": "これは研修用に創作したメモであり、実在する障害記録・社内規約・設計会議の記録ではありません。演習では再送の確認票にexternal_key、正規化後の内容の一致／不一致、元受注を変更しないことを記録します。照合票の架空の識別語は「銀杏-17」です。内容が変わった場合は元受注の自動上書きを依頼せず、差分を担当者に確認する、という架空の運用を想定します。",
+    "text": "これは研修用に作成した架空のメモであり、実在する障害記録、社内規約、設計会議の記録ではありません。演習では、再送の確認票にexternal_key、正規化後の内容が一致するかどうか、元の受注を変更しないことを記録します。照合票で使う架空の識別語は「銀杏-17」です。内容が変わった場合は、元の受注の自動上書きを依頼せず、担当者が差分を確認するという架空の運用を想定します。",
     "realIncidentDecision": "NOT_PROVIDED"
   },
   "codeDerivedSnapshot": {
@@ -16,36 +16,36 @@
     "facts": [
       {
         "id": "matching-payload",
-        "statement": "既存claimのpayloadHashが一致する場合、replayは元の受注を取得しorderImport.replayedを返す。",
+        "statement": "既存のclaimのpayloadHashが一致する場合、replayは元の受注を取得し、orderImport.replayedを返す。",
         "path": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
         "symbol": "OrderImportService.replay",
         "anchor": "claim.getPayloadHash().equals(hash)"
       },
       {
         "id": "changed-payload",
-        "statement": "既存claimと異なるhashはorderImport.keyConflictとして拒否する。元受注を更新する処理ではない。",
+        "statement": "既存のclaimと異なるハッシュは、orderImport.keyConflictとして拒否する。元の受注を更新する処理ではない。",
         "path": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
         "symbol": "OrderImportService.replay",
         "anchor": "orderImport.keyConflict"
       },
       {
         "id": "canonicalization",
-        "statement": "canonicalHashは数量を整数の文字列表現に正規化し、商品と数量から作った明細fingerprintを並べ替えてpayloadに含める。ファイルのbyte列全体の一致判定と同一ではない。",
+        "statement": "canonicalHashは数量を整数の文字列表現に正規化し、商品と数量から作成した明細のフィンガープリントを並べ替えてpayloadに含める。ファイル全体のバイト列が一致するかどうかを判定するものではない。",
         "path": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java",
         "symbol": "OrderGroup.canonicalHash",
         "anchor": "Collections.sort(lines);"
       },
       {
         "id": "create-draft",
-        "statement": "importDraftの新規作成経路はorderService.saveDraftを呼ぶ。ここから実際のDB状態を観測したとはいえない。",
+        "statement": "importDraftの新規作成経路ではorderService.saveDraftを呼ぶ。この情報だけでは、実際のDBの状態を観測したとはいえない。",
         "path": "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java",
         "symbol": "OrderImportService.importDraft",
         "anchor": "orderService.saveDraft(null, 0, input, actor)"
       }
     ],
     "limitations": [
-      "これは公開upstream template revisionを出所とする人手のstatic reading snapshotです。templateから作ったruntime workspaceのlocal HEADとの一致は要求せず、serverはJava sourceやDBを動的に照会しません。",
-      "実際の設計理由、障害履歴、最新のproduction stateは含まれていません。"
+      "これは公開upstreamテンプレートのリビジョンを出所として、人が静的に読み取ったスナップショットです。テンプレートから作成したランタイムワークスペースのローカルHEADとの一致は要求せず、サーバーはJavaソースやDBを動的に照会しません。",
+      "実際の設計理由、障害履歴、最新の本番環境の状態は含まれていません。"
     ]
   }
 }

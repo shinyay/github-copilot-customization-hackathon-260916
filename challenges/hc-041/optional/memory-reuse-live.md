@@ -1,54 +1,54 @@
-# Memory reuseを限定観測する
+# Memory reuse を限定的に観測する
 
-**Language:** **日本語** / [English](../../../en/challenges/hc-041/optional/memory-reuse-live.md)
+**言語:** **日本語** / [English](../../../en/challenges/hc-041/optional/memory-reuse-live.md)
 
 [HC-041本編へ戻る](../README.md)
 
 ## 目的
 
-専用repositoryで、自分が追加した識別可能なrepository factについて、保存候補、eligible、Cloudでの利用、standard reviewでの利用、残留を限定的に観察します。全Memory削除や「空の対照」を作る手順ではありません。
+専用のリポジトリで、自分が追加した識別可能な repository fact について、保存候補、eligible、Cloud での利用、standard review での利用、残留を限定的に観察します。Memory をすべて削除したり、「空の対照」を作ったりする手順ではありません。
 
 ## 前提
 
-- 対象account、専用repository、current branchを特定できる。
-- GitHub Copilot Memory、Cloud、標準reviewの利用資格を確認できる。
-- user単位設定の影響範囲を理解している。
+- 対象のアカウント、専用のリポジトリ、current branch を特定できる。
+- GitHub Copilot Memory、Cloud、標準レビューの利用資格を確認できる。
+- ユーザー単位の設定が影響する範囲を理解している。
 - 自分の追加記録と既存記録を区別できる。
-- Cloudとreviewを独立して観察する計画がある。
+- Cloud と review を独立して観察する計画がある。
 
 ## 権限と安全
 
-- Memory設定、限定記録、Cloud/review試行、終了時の整理について個別の許可を得る。
-- 実秘密、個人情報、private内容をfactへ入れない。
-- 全Memory削除、識別不能な記録の削除、他製品のMemory操作を行わない。
-- 新sessionや設定解除を削除・空状態の証拠にしない。
+- Memory の設定、限定した記録、Cloud / review での試行、終了時の整理について、個別の許可を得る。
+- 実際の秘密情報、個人情報、非公開の内容を fact に入れない。
+- Memory の全削除、識別できない記録の削除、他製品の Memory 操作を行わない。
+- 新しいセッションや設定の解除を、削除や空の状態を示す証拠にしない。
 
 ## 手順
 
-1. 対象repository/branch、fact本文、citation path/revision、識別子を記録する。
-2. current citationがfactを支持することと、対象surfaceでeligibleであることを別々に確認する。
-3. 承認後に限定記録を作り、保存を示す直接Evidenceの有無を記録する。
-4. Cloudで一回、standard reviewで一回、同じrepository factが使われた直接Evidenceを独立して確認する。
-5. response本文の自己申告だけでusedと判断しない。
-6. 残留、retention、整理の各観測を分け、自分の追加分だけを承認済み手順で扱う。
+1. 対象のリポジトリとブランチ、fact の本文、引用元のパスとリビジョン、識別子を記録します。
+2. 現在の引用元が fact を裏付けることと、対象の surface で eligible であることを別々に確認します。
+3. 承認後に限定した記録を作り、保存を示す直接的な根拠の有無を記録します。
+4. Cloud で1回、standard review で1回、同じ repository fact が使われたことを示す直接的な根拠を、個別に確認します。
+5. 応答本文の自己申告だけで used と判断しないようにします。
+6. 残留、保持期間、整理に関する観測を分け、自分の追加分だけを承認済みの手順で扱います。
 
 ## 観察すること
 
-- repository、branch、fact、citation
-- 設定scopeと保存を示すEvidence
-- Cloud/reviewそれぞれのeligibleとused
-- current source support
-- 残留、retention、整理
+- リポジトリ、ブランチ、fact、引用元
+- 設定の scope と、保存を示す根拠
+- Cloud / review それぞれの eligible と used
+- 現在のソースによる裏付け
+- 残留、保持期間、整理
 - unknownと確認不能の理由
 
 ## 停止条件
 
 - 自分の追加記録を識別できない。
-- user全体への設定影響を確認できない。
-- Cloudとreviewを独立して観察できない。
-- 既存Memoryの全削除や識別不能な記録の削除が必要。
-- 別製品のMemory操作を同じ検証へ混ぜる必要がある。
+- ユーザー全体に対する設定の影響を確認できない。
+- Cloud と review を独立して観察できない。
+- 既存の Memory をすべて削除したり、識別できない記録を削除したりする必要がある。
+- 別製品の Memory 操作を同じ検証に混ぜる必要がある。
 
 ## 本編へ戻る
 
-観察結果は [HC-041の確認ポイント](../README.md#確認ポイント) へ戻し、supported、eligible、used、stored、retained、deletedを分けて記録します。
+観察結果を [HC-041の確認ポイント](../README.md#確認ポイント) に対応付け、supported、eligible、used、stored、retained、deleted を分けて記録します。

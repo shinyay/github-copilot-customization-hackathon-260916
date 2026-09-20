@@ -1,8 +1,8 @@
-# HC-018 synthetic event packets
+# HC-018 合成イベントパケット
 
 SYNTHETIC_TRAINING_ONLY
 
-これは有限教材 packet であり、VS Code event schema、実ログ、実 sandbox 観察ではありません。各 case の event shape と欠測だけを使い、packet が示す範囲を超えて原因を断定しないでください。
+これは有限の教材用パケットであり、VS Codeのイベントスキーマ、実際のログ、実際のsandboxの観察結果ではありません。各ケースのイベントの形と欠測だけを使い、パケットが示す範囲を超えて原因を断定しないでください。
 
 ```json
 {"caseId":"packet-01","selected":false,"events":[]}
@@ -32,4 +32,4 @@ SYNTHETIC_TRAINING_ONLY
 {"caseId":"packet-07","selected":true,"events":[{"type":"proposal","command":"node --version"},{"type":"approval","decision":"allow-once"},{"type":"execution"},{"type":"result","layer":"unknown","code":"INSUFFICIENT_EVIDENCE","exitCode":null}]}
 ```
 
-`v22.16.0` は packet 内の合成文字列です。手元の Node.js version ではありません。packet-07 の null を 0 や nonzero へ補完しません。
+`v22.16.0` はパケット内の合成文字列です。手元のNode.jsのバージョンではありません。packet-07の `null` を0や0以外の値に置き換えません。

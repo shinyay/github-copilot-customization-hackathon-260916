@@ -1,9 +1,9 @@
-# Three-task scope matrix
+# 3 タスクの適用範囲マトリクス
 
-| task | core Java | core XML | web Java | predicted supplied drafts | live observation |
+| タスク | core Java | core XML | web Java | 供給される原稿の予測 | 実環境での観測 |
 |---|---|---|---|---|---|
 | java-reading | record | record | record | TBD | not-checked |
 | xml-reading | record | record | record | TBD | not-checked |
 | mixed-reading | record | record | record | TBD | not-checked |
 
-`record` は4 main sourceを確認表から削除しないという意味です。適用予測や製品での実採用を示しません。任意比較を行う場合は、この表を各 approach で複製します。
+`record` は、4 つの主なソースを確認表から削除しないという意味です。適用の予測や製品での実際の採用を示すものではありません。任意比較を行う場合は、この表を方法ごとに複製します。

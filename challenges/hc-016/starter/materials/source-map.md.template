@@ -1,10 +1,10 @@
-# HC-016 fixed source map
+# HC-016 固定ソースマップ
 
-| ID | Workspace relative path | Symbol | Static reading boundary |
+| ID | ワークスペースからの相対パス | シンボル | 静的な読解の境界 |
 |---|---|---|---|
 | S1 | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java` | `require` | null actor を拒否し、それ以外を S2 へ委譲する |
 | S2 | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java` | `require` | ADMIN、指定 role、拒否を分ける |
 
-この map は source へ戻る入口です。対象 workspace にファイルがある場合は、行番号だけでなく現在の symbol 本文が主張を支持するか確認します。
+このマップは、ソースへ戻るための入口です。対象のワークスペースにファイルがある場合は、行番号だけでなく、現在のシンボルの本文が主張を裏付けているか確認します。
 
-ファイルを読めない場合は `memory-fact.txt.template` を有限の教材入力として使います。Java / DB、実認証、実利用者の権限、過去の設計理由は確認済みとしません。
+ファイルを読めない場合は、`memory-fact.txt.template` を有限の教材入力として使います。Java / DB、実際の認証、実際の利用者の権限、過去の設計理由は確認済みとはみなしません。

@@ -1,24 +1,24 @@
-# HC-004 `CLAUDE.md` 形式の指示を安全に試そう
+# HC-004 `CLAUDE.md`形式の指示を安全に試そう
 
-**Language:** **日本語** / [English](../../en/challenges/hc-004/README.md)
+**言語:** **日本語** / [English](../../en/challenges/hc-004/README.md)
 
-## Scenario
+## シナリオ
 
-チームから「別の対応ツールで使っている短い作業規則を、GitHub Copilotでも再利用したい」と相談されました。
+チームから「別の対応ツールで使っている短い作業規則を、GitHub Copilot でも再利用したい」と相談されました。
 名前を `CLAUDE.md` に変えるだけで十分でしょうか。
 
-このシナリオでは、受注承認コードを読むための短い規則を自分で設計し、repository root の
-`CLAUDE.md` から利用します。ファイルを保存したこと、client が発見したこと、会話へ本文が渡ったこと、
-回答に意図が表れたことを分けて確認します。
+このシナリオでは、受注承認コードを読むための短い規則を自分で設計し、リポジトリのルートに置く
+`CLAUDE.md` から利用します。ファイルを保存したこと、クライアントが検出したこと、会話に本文が渡ったこと、
+意図した進め方が回答に表れたことを分けて確認します。
 
 ## この機能とは
 
-対応する VS Code / GitHub Copilot は、repository root の `CLAUDE.md` を custom instructions の
-互換形式として扱えます。同じ調査姿勢を繰り返し伝える用途では、毎回長い前置きを貼る手間を減らせます。
+対応する VS Code / GitHub Copilot では、リポジトリのルートにある `CLAUDE.md` を custom instructions の
+互換形式として扱えます。同じ調査方針を繰り返し伝える場合に、毎回長い前置きを貼る手間を減らせます。
 
-ただし、ファイル名によって Claude モデルや別の harness へ切り替わるわけではありません。
-モデル、tool、承認、OS、filesystem の権限も変わりません。また、同じ本文でも保存場所による発見範囲や
-優先順位まで同一とは限りません。本編では混同を避けるため、root の `CLAUDE.md` 一つだけを扱います。
+ただし、ファイル名を変えても、Claude モデルや別のハーネスに切り替わるわけではありません。
+モデル、ツール、承認、OS、ファイルシステムの権限も変わりません。また、同じ本文でも、保存場所によって検出範囲や
+優先順位まで同一になるとは限りません。本編では混同を避けるため、ルートの `CLAUDE.md` 一つだけを扱います。
 
 参考: [VS Code Custom instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions)
 
@@ -27,41 +27,41 @@
 **向いていること**
 
 - 複数の調査で繰り返す、短く一般化できる作業規則
-- 根拠、推論、未確認事項の分け方など、回答の作り方を共有すること
+- 根拠、推論、未確認事項の分け方など、回答の組み立て方を共有すること
 - 既存の互換形式を再利用する価値と保守負担を確かめること
 
 **向いていないこと**
 
-- 今回だけの依頼、特定利用者の判断、業務上の正解を常設すること
-- モデル性能や別 harness の比較
-- tool 権限、承認、filesystem 権限を追加すること
-- secret、個人情報、実データを保存すること
+- この演習でしか使わない依頼、特定利用者に関する判断、業務上の正解を常設すること
+- モデルの性能や別のハーネスを比較すること
+- ツールの権限、承認、ファイルシステムの権限を追加すること
+- シークレット、個人情報、実データを保存すること
 
 ## ゴール
 
 1. 受注承認の調査に再利用できる短い規則を一つ、必要なら二つまで設計する。
-2. その本文だけを root `CLAUDE.md` として明示的に試す。
-3. 固定依頼への回答が、指定した source を追い、認証・認可と業務条件を分けているか確認する。
-4. 保存・発見・本文投入・出力を混同せず、確認できない段階を未確認のまま残す。
+2. その本文だけを、ルートの `CLAUDE.md` として明示的に試す。
+3. 固定依頼への回答が、指定したソースを追い、認証・認可と業務条件を分けているか確認する。
+4. 保存、検出、本文投入、出力を混同せず、確認できない段階を未確認のまま残す。
 
 ## 用意するもの
 
 - Git
 - `CLAUDE.md` に対応する VS Code / GitHub Copilot
-- [始め方](../../README.md#始め方) で用意した runtime workspace
-- upstream template revision:
+- [始め方](../../README.md#始め方) で用意した実行用ワークスペース
+- 上流テンプレートのリビジョン:
   `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
 
-runtime workspace が GitHub template から作られた repository の場合、独自の commit history を持ちます。
-上記 revision は教材 source の由来を示すもので、runtime workspace の local `HEAD` が
+実行用ワークスペースが GitHub template から作られたリポジトリの場合は、独自のコミット履歴を持ちます。
+上記のリビジョンは教材ソースの由来を示すもので、実行用ワークスペースのローカル `HEAD` が
 `8f0b3aa25c4f33facdea691642c2f1cb3901391c` と一致することは確認条件ではありません。
-revision へ checkout/reset せず、workspace にすでにある対象ファイルを使います。
+そのリビジョンへの checkout や reset は行わず、ワークスペースにすでにある対象ファイルを使います。
 
-`starter/` にはすべて不活性な `.template` として、次の素材があります。
+`starter/` には、すべて無効な状態の `.template` として、次の素材があります。
 
 | 素材 | 用途 |
 | --- | --- |
-| [brief.md.template](starter/brief.md.template) | upstream template の由来と runtime workspace で追跡する問い |
+| [brief.md.template](starter/brief.md.template) | 上流テンプレートの由来と、実行用ワークスペースで追跡する問い |
 | [request.txt.template](starter/request.txt.template) | 変更せず使う固定依頼 |
 | [CLAUDE.md.template](starter/CLAUDE.md.template) | 自分で完成させる短い指示の原稿 |
 | [comparison.md.template](starter/comparison.md.template) | 任意比較と観察のワークシート |
@@ -69,50 +69,50 @@ revision へ checkout/reset せず、workspace にすでにある対象ファイ
 ## 準備
 
 1. [共通の始め方](../../README.md#始め方)を確認します。
-2. runtime workspace の root を workspace root として開き、`starter/brief.md.template` にある三ファイルを
-   読めることを確認します。local `HEAD` と upstream template revision の一致は求めません。
-3. root に既存の `CLAUDE.md` がある場合は上書きせず、手動供給の fallback で進めます。
+2. 実行用ワークスペースのルートをワークスペースルートとして開き、`starter/brief.md.template` にある三つのファイルを
+   読めることを確認します。ローカルの `HEAD` と上流テンプレートのリビジョンが一致している必要はありません。
+3. ルートに既存の `CLAUDE.md` がある場合は上書きせず、手動で本文を渡す代替手段で進めます。
 4. `starter/brief.md.template` と `starter/request.txt.template` を読みます。
 5. `starter/CLAUDE.md.template` の括弧書きを、自分で選んだ短い規則へ置き換えます。
-   固有の承認可否、role の答え、今回だけの依頼、secret は含めません。
-6. 使用する client、model、tools を記録し、試行中は変えないようにします。
+   特定の承認可否、ロールに関する答え、この演習でしか使わない依頼、シークレットは含めません。
+6. 使用するクライアント、モデル、ツールを記録し、試行中は変更しないようにします。
 
-この教材 repository には active な `CLAUDE.md` を追加しません。完成本文を試すのは runtime workspace の
-root だけです。
+この教材リポジトリには、有効な `CLAUDE.md` を追加しません。完成した本文を試すのは、実行用ワークスペースの
+ルートだけです。
 
 ## 試してみる
 
-1. 完成させた原稿の本文を、runtime workspace の新しい root `CLAUDE.md` へコピーします。
-2. repository root を開き、新しい会話を開始します。
+1. 完成させた原稿の本文を、実行用ワークスペースのルートに新しい `CLAUDE.md` としてコピーします。
+2. リポジトリのルートを開き、新しい会話を開始します。
 3. `starter/request.txt.template` の全文を変更せずに送ります。
 4. 最初の回答を修正せず保存し、次を確認します。
    - `OrderService.approve` から `BaseService.require`、さらに `Actor.require` の分岐まで追っているか
    - 認証・認可と受注の業務条件を別の根拠として説明しているか
-   - fact、推論、未確認事項を file + symbol 付きで分けているか
-   - 実行していない DB、Web、batch、test を成功したと書いていないか
-5. client に参照した instructions の表示がある場合は、その表示を記録します。ファイルが存在するだけで、
+   - 事実、推論、未確認事項を、ファイルとシンボルを添えて分けているか
+   - 実行していないデータベース、Web、バッチ、テストを、成功したと書いていないか
+5. クライアントに参照した Instructions の表示がある場合は、その表示を記録します。ファイルが存在するだけで、
    本文が会話へ渡ったと断定しません。
-6. 終了後は、自分が作成した root `CLAUDE.md` だけを runtime workspace から取り除きます。
+6. 終了後は、自分が作成したルートの `CLAUDE.md` だけを実行用ワークスペースから取り除きます。
 
 ## 任意: 比較する
 
-短い手動セルフチェックとして、fresh conversation で次の三つを比べられます。
+簡単な手動確認として、新しい会話で次の三つを比べられます。
 
 | 条件 | 送るもの |
 | --- | --- |
 | 追加なし | 固定依頼だけ |
-| root `CLAUDE.md` | 完成本文を root に置き、固定依頼だけ |
-| 手動供給 | root ファイルを置かず、同じ完成本文の後に固定依頼 |
+| ルートの `CLAUDE.md` | 完成本文をルートに置き、固定依頼だけ |
+| 手動供給 | ルートにファイルを置かず、同じ完成本文の後に固定依頼 |
 
-runtime workspace の対象ファイル、upstream template revision、固定依頼、client、model、tools は
-そろえます。local `HEAD` の一致は条件にしません。手動供給は discovery の代替確認にはなりません。
+実行用ワークスペースの対象ファイル、上流テンプレートのリビジョン、固定依頼、クライアント、モデル、ツールは
+そろえます。ローカルの `HEAD` が一致していることは条件にしません。手動で本文を渡しても、検出を確認したことにはなりません。
 結果は `starter/comparison.md.template` のコピーへ記録してください。
 
 ## 確認ポイント
 
 - 指示本文の意図と、`CLAUDE.md` という保存形式の役割を分けて説明できるか
-- role 文字列一つで結論を出さず、共有ガードと業務条件を最後まで追えているか
-- 保存、発見、本文投入、出力のうち、実際に観察できた範囲だけを主張しているか
+- ロール文字列一つで結論を出さず、共通ガードと業務条件を最後まで追えているか
+- 保存、検出、本文投入、出力のうち、実際に観察できた範囲だけを主張しているか
 - 同じ規則を複数場所へ置く場合の正本、更新担当、削除条件を決められるか
 - 「追加なし」や手動依頼の方が保守しやすい場合、その結論も受け入れられるか
 
@@ -122,13 +122,13 @@ runtime workspace の対象ファイル、upstream template revision、固定依
 - 同じ本文を二か所で管理すると仮定し、更新漏れを検出する方法と、どちらを正本にするかを考える
 - 調査対象を別の method に替え、固有の答えを含まない規則として再利用できるか確認する
 
-## 制約・Fallback・安全
+## 制約・代替手段・安全
 
-- 静的な source 読解だけを行い、DB、Web、batch、アプリ、test を起動しません。
-- source、既存 test、設定を変更しません。実在の利用者や受注の承認可否を判断しません。
+- ソースを静的に読むだけにとどめ、データベース、Web、バッチ、アプリ、テストは起動しません。
+- ソース、既存のテスト、設定は変更しません。実在する利用者や受注の承認可否も判断しません。
 - home、User、organization、Memory 由来の既存指示は削除・退避しません。影響を切り分けられない場合は、
   比較不能として記録します。
 - `CLAUDE.md` が非対応なら、完成本文を固定依頼の直前に手動で貼って学習できます。ただし、
-  root ファイルの発見や自動投入を確認したことにはなりません。
-- runtime workspace に対象ファイルがない場合は `starter/brief.md.template` で追跡手順を設計できますが、
+  ルートファイルの検出や自動投入を確認したことにはなりません。
+- 実行用ワークスペースに対象ファイルがない場合は `starter/brief.md.template` で追跡手順を設計できますが、
   実装を読んだ結果として扱いません。

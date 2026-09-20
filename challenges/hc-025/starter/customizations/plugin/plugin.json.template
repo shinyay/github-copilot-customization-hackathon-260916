@@ -2,5 +2,5 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "hc025-portability",
   "version": "1.0.0",
-  "description": "形式とclient固有境界だけを点検する不活性な配布例。"
+  "description": "形式とクライアント固有の境界だけを点検する、不活性な配布例。"
 }

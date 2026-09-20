@@ -7,13 +7,13 @@ description: 受注 CSV 再送を静的に読むときの根拠と未確認を�
 
 教材版: training-v1
 
-これは設計の出発点となる DRAFT です。読み手、読む順番、根拠の提示順は参加者が比較前に選び、両方式へ同じ全文を渡します。
+これは設計の出発点となるDRAFTです。読み手、読む順番、根拠を示す順番は参加者が比較前に選び、両方の方式に同じ全文を渡します。
 
-1. templateから作成したruntime workspaceに対象sourceがあることを確認する。出所はupstream template revision `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` とし、local HEADは比較しない。内容変更が疑われる場合は同じsourceと仮定せず止める。
+1. テンプレートから作成したランタイムワークスペースに対象のソースがあることを確認する。出所はupstreamテンプレートのリビジョン `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` とし、ローカルのHEADは比較しない。内容が変更されている疑いがある場合は、同じソースと仮定せず作業を止める。
 2. `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java` の `importDraft` と `replay` を読む。説明に使う箇所のパス・シンボル・行範囲を控える。
 3. `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java` の `canonicalHash` を読み、確認できる範囲と追加の根拠が必要な問いを分ける。
 4. `wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java` の関連するテスト定義を読む。定義で確かめようとしていることと実行結果を区別し、テストは未実行と記す。
 5. 読んだ範囲、根拠、未確認、次に確かめたいことを区別する。採用理由・実際の障害履歴は入力にない限り不明とし、現在のコードから過去の事情を作らない。
-6. source、設定、アプリを変更せず、DB・Java・ネットワークを実行しない。このサンプルはロードせず、原稿、version ledger、復元結果だけを `work` 配下へ記録する。
+6. ソース、設定、アプリを変更せず、DB、Java、ネットワークを実行しない。このサンプルは読み込まず、原稿、版台帳、復元結果だけを `work` 配下に記録する。
 
 この原稿は新しいツール、権限、業務知識、強制実行を追加しない。完成済みのコード回答はここへ埋め込まない。

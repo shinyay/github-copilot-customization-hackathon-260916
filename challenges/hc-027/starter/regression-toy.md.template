@@ -1,12 +1,12 @@
-# Neutral regression rollup toy
+# 中立的な回帰rollupの練習
 
 SYNTHETIC_TRAINING_ONLY
 
-次の2 targetは、個別predicateと全体rollupを別々に確認するための構造データです。実taskの勝敗ではありません。
+次の2つの対象は、個別の判定条件と全体のrollupを別々に確認するための構造データです。実際のタスクの勝敗を示すものではありません。
 
 | target | reference | candidate | comparable |
 |---|---:|---:|---|
 | target-a | 4 | 4 | true |
 | target-b | 4 | 3 | true |
 
-全体結論を作る前に各targetを判定し、1 targetの回帰を他targetの同等で隠さないでください。
+全体の結論を出す前に各対象を判定し、1つの対象の回帰を、他の対象が同等だったことで隠さないでください。

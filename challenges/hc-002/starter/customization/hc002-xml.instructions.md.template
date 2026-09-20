@@ -6,7 +6,7 @@ applyTo: "wholesale-core/src/main/resources/application-context.xml,wholesale-co
 
 - bean、advice、advisor の pointcut、method rule の参照を名前でつないでから説明する。
 - 対象外の bean や method へ同じ規則を広げていないか確かめる。
-- 重要な主張を要素・属性と file に結び付ける。
-- transaction や rollback の宣言と、稼働時の観測を区別する。
+- 重要な主張を要素・属性とファイルに結び付ける。
+- トランザクションやロールバックの宣言と、稼働時の観測を区別する。
 
-<!-- 対象の列挙と directory pattern の費用を考え、配置前に scope と本文を見直してください。 -->
+<!-- 対象の列挙とディレクトリパターンの保守費用を考え、配置前に適用範囲と本文を見直してください。 -->

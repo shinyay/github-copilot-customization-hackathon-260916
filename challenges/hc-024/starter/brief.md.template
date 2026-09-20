@@ -9,8 +9,8 @@
 | 01 | 0 | 1 |
 | 11 | 1 | 1 |
 
-全セルで同じruntime workspaceの3 source、同じpublic upstream template revision、同じoperations note全文、同じrequest、同じ凍結I/S原稿を使います。workspaceのlocal HEADをrevisionへ合わせる必要はありません。実機で比べる場合はmodel、effort、toolsもそろえます。
+すべてのセルで、同じランタイムワークスペースの3つのソース、同じ公開された上流テンプレートのリビジョン、同じ運用メモの全文、同じリクエスト、同じ凍結済みのI / S原稿を使います。ワークスペースのローカルHEADをリビジョンに合わせる必要はありません。実機で比較する場合は、モデル、effort、ツールもそろえます。
 
-原稿のpresence、discovery、loading、usage、output effectを分けます。Skill未利用、equal、worse、追加不要、incomparableも保持します。
+原稿のpresence、discovery、loading、usage、出力への影響を分けます。Skillの未利用、`equal`、`worse`、追加不要、`incomparable` も残します。
 
-Agent、MCP、Hook、別model、manualの第5セルをこの比較へ加えません。Java、DB、test、設定、外部serviceは変更・実行しません。
+Agent、MCP、Hook、別のモデル、manualの第5セルは、この比較に加えません。Java、DB、テスト、設定、外部サービスは変更したり実行したりしません。

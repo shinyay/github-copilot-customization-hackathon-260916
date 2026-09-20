@@ -1,57 +1,57 @@
-# 標準review effortを限定観測する
+# 標準 review effort を限定的に観測する
 
-**Language:** **日本語** / [English](../../../en/challenges/hc-037/optional/review-effort-live.md)
+**言語:** **日本語** / [English](../../../en/challenges/hc-037/optional/review-effort-live.md)
 
 [HC-037本編へ戻る](../README.md)
 
 ## 目的
 
-同じcandidate PRへLiteとBalancedを一回ずつ依頼し、requested effort、表示されたeffective effort、finding、確認負担、費用の観測範囲を分けて記録します。本編の評価計画を実サービスで確かめるための補足であり、実施は必須ではありません。
+同じ候補 PR に Lite と Balanced を1回ずつ依頼し、requested effort、表示された effective effort、指摘、確認の負担、費用について、観測できた範囲を分けて記録します。本編の評価計画を実サービスで確かめるための補足であり、実施は必須ではありません。
 
 ## 前提
 
-- 変更してよい専用candidate PRがある。
+- 変更してよい専用の候補 PR がある。
 - diff、依頼全文、base/head、評価規約を固定できる。
-- Copilot code reviewと両effortを利用できる。
-- 既存の自動reviewや共有設定の影響を確認できる。
+- Copilot code review と両方の effort を利用できる。
+- 既存の自動レビューや共有設定の影響を確認できる。
 - 回数、費用、時間の上限と終了時の担当者が決まっている。
 
 ## 権限と安全
 
-- PR変更と各review requestについて、対象repositoryの明示的な許可を得る。
-- private diff、token、個人情報、未加工logを外部へ転記しない。
-- 共有設定の削除、履歴の巻き戻し、無制限の再要求を行わない。
-- 整理するのは自分が追加したcandidateと依頼だけに限定する。
+- PR の変更と各レビュー依頼について、対象リポジトリから明示的な許可を得る。
+- 非公開の diff、トークン、個人情報、未加工のログを外部へ転記しない。
+- 共有設定の削除、履歴の巻き戻し、上限のない再依頼を行わない。
+- 整理する対象は、自分が追加した候補と依頼だけに限定する。
 
 ## 手順
 
-1. candidate revision、base/head、依頼全文、評価規約を記録する。
-2. 既存review、Memory、Instructions、Skills等の残留条件を確認し、不明なものはunknownにする。
-3. Liteを一回だけ依頼し、requested/effective effort、actor、finding、開始・終了、確認負担、費用のうち見える項目を記録する。
-4. 同じheadと依頼でBalancedを一回だけ依頼し、同じ項目を記録する。
-5. 各findingを変更行とsource/testへ戻し、supported、unsupported、duplicate、false positive候補を分類する。
-6. 片側の失敗や欠測を0 findingsへ変換せず、比較可能性を判断する。
-7. 終了後は、承認範囲に従って自分の試験用成果だけを整理する。
+1. 候補のリビジョン、base/head、依頼全文、評価規約を記録します。
+2. 既存のレビュー、Memory、Instructions、Skills などの残留条件を確認し、不明なものは unknown とします。
+3. Lite を1回だけ依頼し、requested / effective effort、actor、指摘、開始・終了、確認の負担、費用のうち、確認できる項目を記録します。
+4. 同じ head と依頼内容で Balanced を1回だけ依頼し、同じ項目を記録します。
+5. 各指摘を変更行とソースやテストに照らし、supported、unsupported、duplicate、誤検知の候補に分類します。
+6. 片側の失敗や欠測を指摘0件と見なさず、比較できるかを判断します。
+7. 終了後は、承認された範囲に従い、自分が追加した試験用の成果だけを整理します。
 
 ## 観察すること
 
 | 項目 | 分けて記録する内容 |
 |---|---|
-| effort | requestedと画面・結果で確認できたeffective |
-| review | actor、対象head、finding本文、根拠 |
-| 品質 | supported、unsupported、false positive、見落とし候補 |
+| effort | requested と、画面や結果で確認できた effective |
+| review | actor、対象の head、指摘本文、根拠 |
+| 品質 | supported、unsupported、誤検知、見落としの候補 |
 | 負担 | 重複、確認時間、追加調査 |
-| 運用 | 回数、時間、費用、既存自動reviewの影響 |
+| 運用 | 回数、時間、費用、既存の自動レビューの影響 |
 
-内部model、agentic fallback、CI visibilityなど見えない値は推測しません。
+内部モデル、エージェントによる代替手段、CI での表示など、確認できない値は推測しません。
 
 ## 停止条件
 
-- diff、依頼、base/head、実effort表示を固定できない。
-- review requestまたは費用発生の承認がない。
-- 片側だけの結果を、未実施側の0 findingsと比較する必要がある。
+- diff、依頼、base/head、実際の effort の表示を固定できない。
+- レビュー依頼または費用発生の承認がない。
+- 片側だけの結果を、未実施側の指摘0件と比較する必要がある。
 - 上限を超える再要求、共有設定の変更、機密情報の転記が必要になる。
 
 ## 本編へ戻る
 
-観測結果は本編の評価項目へ対応付け、[HC-037の確認ポイント](../README.md#確認ポイント) で過剰な主張がないか確認します。
+観測結果を本編の評価項目に対応付け、[HC-037の確認ポイント](../README.md#確認ポイント) で過剰な主張がないか確認します。

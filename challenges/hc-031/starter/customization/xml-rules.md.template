@@ -2,10 +2,10 @@
 applyTo: "wholesale-core/src/main/resources/**/*.xml"
 ---
 
-# XML rules body draft
+# XML 規則の本文草稿
 
-XML配線を読むために必要な規則を参加者が記入します。完成bodyやsourceの答えは含まれていません。
+XML の配線を読むために必要な規則を、参加者が記入します。完成済みの本文やソースの答えは含まれていません。
 
-- <write one XML reading rule>
+- <XML の読解規則を 1 つ記入>
 
-除外なしでは `excludeAgent` keyを置きません。使う場合の値は `code-review` または `cloud-agent` です。metadataは供給対象を表し、sourceへのACLではありません。
+除外しない場合は `excludeAgent` キーを置きません。使う場合の値は `code-review` または `cloud-agent` です。メタデータは供給対象を示すものであり、ソースへの ACL ではありません。

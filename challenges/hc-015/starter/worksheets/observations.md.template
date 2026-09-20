@@ -1,49 +1,49 @@
 # HC-015 観察メモ
 
-## 依頼と source
+## 依頼とソース
 
 試した方法:
 
-request の SHA-256:
+依頼のSHA-256:
 
-source repository / commit:
+ソースのリポジトリ / コミット:
 
-A1/A2/A3 の exact path、query、要求範囲と理由:
+A1/A2/A3の正確なパス、クエリ、要求範囲と理由:
 
-## 渡した context
+## 渡したコンテキスト
 
 検索から開始 / Add Context / 手動全文のどれか:
 
-準備した path、raw byte 数、SHA-256、順序:
+準備したパス、未加工のバイト数、SHA-256、順序:
 
-添付表示、手動 section hash、全文の切り詰め確認:
+添付表示、手動セクションのハッシュ、全文が切り詰められていないかの確認:
 
 内部投入範囲と実際に読めた範囲:
 
-## Source references
+## ソースの参照
 
-回答に現れた path / symbol / 行範囲と、元 source で確認した対応:
+回答に示されたパス / シンボル / 行範囲と、元のソースで確認した対応:
 
 A2 の import から A3 の bean 定義へ辿った操作:
 
-追加で読んだ path、目的、要求・返却・読取範囲:
+追加で読んだパス、目的、要求範囲、返却範囲、読み取り範囲:
 
-## Search and language status
+## 検索と言語機能の状態
 
 literal text search:
 
-file read:
+ファイルの読み取り:
 
 人の Definition / References:
 
 Agent Usages:
 
-semantic search と index 状態:
+semantic searchとインデックスの状態:
 
-`search.exclude`、`files.exclude`、`.gitignore`、tabs、selection:
+`search.exclude`、`files.exclude`、`.gitignore`、タブ、選択範囲:
 
 ## 限界
 
-確認できなかった添付範囲、言語機能、index、アクセス:
+確認できなかった添付範囲、言語機能、インデックス、アクセス:
 
-静的読解では確認できない実 proxy、実 transaction、Java・DB 動作、過去の設計意図:
+静的な読解では確認できない、実際のプロキシ、トランザクション、JavaやDBの動作、過去の設計意図:

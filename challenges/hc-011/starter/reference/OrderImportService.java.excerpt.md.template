@@ -1,10 +1,10 @@
-# OrderImportService.java replay excerpt
+# OrderImportService.java replayの抜粋
 
-固定source:
+固定ソース:
 
 - upstream template: `shinyay/github-copilot-customization-runtime-template`
 - upstream revision: `8f0b3aa25c4f33facdea691642c2f1cb3901391c`
-- runtime workspace path: `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java`
+- runtimeワークスペースのパス: `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java`
 
 ```java
 String hash = group.canonicalHash();
@@ -17,4 +17,4 @@ Checks.state(claim.getPayloadHash().equals(hash), "orderImport.keyConflict",
         "external_key already belongs to a different order payload; original order was not edited");
 ```
 
-このcode-derived excerptと合成運用メモは別の情報源です。excerptだけで実行結果や障害履歴を断定しません。
+このコード由来の抜粋と合成運用メモは、別の情報源です。この抜粋だけを根拠に、実行結果や障害履歴を断定しません。

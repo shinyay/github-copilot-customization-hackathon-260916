@@ -2,21 +2,21 @@
   "schemaVersion": 1,
   "caseId": "case-05",
   "taskId": "case-05",
-  "title": "役割を分けた読み取りreview",
+  "title": "役割を分けた読み取りレビュー",
   "targetHarness": "local-agent",
   "scope": "workspace",
   "sourcePaths": [
     "wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java"
   ],
-  "situation": "分析者とは別のreview役に同じ固定packetを読ませたい。",
+  "situation": "分析者とは別のレビュー役に、同じ固定パケットを読ませたい。",
   "resources": [
-    "固定review packet",
-    "固定source",
-    "許可された読み取りtool一覧"
+    "固定レビューパケット",
+    "固定ソース",
+    "許可された読み取りツールの一覧"
   ],
   "constraints": [
-    "書込み・terminalは不要。",
-    "役割選択と実効toolsを別に確認する。",
-    "自動handoffやSubagentは要求しない。"
+    "書き込みやターミナル操作は不要。",
+    "役割の選択と実効ツールを別々に確認する。",
+    "自動引き継ぎやSubagentは要求しない。"
   ]
 }

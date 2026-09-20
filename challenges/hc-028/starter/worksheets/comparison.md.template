@@ -1,29 +1,29 @@
-# HC-028 optional manual comparison
+# HC-028 補足の手動比較
 
-## Fixed task
+## 固定タスク
 
-4 ref、2 diff、3 attribution状態と、監査方法の有無を記録してください。
+4 つの ref、2 つの差分、3 種類の attribution 状態と、監査方法の有無を記録してください。
 
-## Environment
+## 環境
 
-OS、client、実review / Cloudを行っていない境界を記録してください。
+OS、クライアント、Copilot code review / Cloud Agent を実行していない範囲を記録してください。
 
-## Stored revisions
+## 保存済みリビジョン
 
-ref、path、body hash、file hashを実starter bytesから記録してください。
+ref、パス、本文のハッシュ、ファイル全体のハッシュを、実際のスターターファイルのバイト列から記録してください。
 
-## Documented rules
+## 文書化された規則
 
-製品、asset、文書化された採用元、適用範囲、確認時点を記録してください。
+製品、アセット、文書化された採用元、適用範囲、確認時点を記録してください。
 
-## Observed attribution
+## 観測した attribution
 
 今回直接観測した値だけを記録し、合成記録と `not-observed` を区別してください。
 
-## Diff separation
+## 差分の切り分け
 
-task diffとInstructions/config diffのpath、目的、hashを別々に記録してください。
+タスクの差分と Instructions/設定の差分について、パス、目的、ハッシュを別々に記録してください。
 
-## Outcome
+## 結果
 
-revision-identified、old-head、unknown と、未観測の live behavior を分けて記録してください。
+revision-identified、old-head、unknown と、未観測の実環境での挙動を分けて記録してください。

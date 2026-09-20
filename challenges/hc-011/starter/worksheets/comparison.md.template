@@ -1,39 +1,39 @@
-# HC-011 任意の手動比較
+# HC-011 補足の手動比較
 
-## Fixed request
+## 固定依頼
 
-- 使用したrequest:
-- note key:
-- source excerpt:
-- fixture:
+- 使用した依頼:
+- `noteKey`:
+- ソースの抜粋:
+- フィクスチャ:
 
-## Manual reading
+## 手動での読み取り
 
 - 直接読んだ情報:
-- code由来 / synthetic / unknownの分類:
+- コード由来 / 合成 / 未確認の分類:
 - 取得元やキーが曖昧になった点:
 
-## MCP Tool
+## MCPツール
 
-- tool input:
-- text output:
-- structured output:
+- ツール入力:
+- テキスト出力:
+- 構造化出力:
 - 分類を保てたか:
 
-## Errors
+## エラー
 
 - `Order/Import` の結果:
 - `missing-note` の結果:
-- assistantがerrorを保持したか:
+- アシスタントがエラーを保持したか:
 
-## Process cleanup
+## プロセスの終了確認
 
-- MCP clientがstdio subprocessを起動したことを確認した方法:
-- clientの接続解除後にsubprocessが残っていないことを確認した方法:
-- standalone direct testを行った場合のpipeline:
+- MCPクライアントがstdioのサブプロセスを起動したことを確認した方法:
+- クライアントの接続解除後にサブプロセスが残っていないことを確認した方法:
+- 単独の直接テストを行った場合のパイプライン:
 
-## Conclusion
+## 結論
 
-- 手動読取りとMCP Toolのどちらが追跡しやすかったか:
+- 手動での読み取りとMCPツールのどちらが追跡しやすかったか:
 - 変わらなかった点:
-- 実際の履歴やproduction stateについて主張できないこと:
+- 実際の履歴や本番環境の状態について主張できないこと:

@@ -8,14 +8,14 @@
   "sourcePaths": [
     "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java"
   ],
-  "situation": "同じ一つのSkillのv1/v2を三つの合成workspaceへ配る計画を作る。",
+  "situation": "同じ1つのSkillのv1 / v2を、3つの合成ワークスペースへ配る計画を作る。",
   "resources": [
-    "starter/package/にあるv1/v2の不活性package",
-    "同じ固定source"
+    "starter/package/にあるv1 / v2の不活性パッケージ",
+    "同じ固定ソース"
   ],
   "constraints": [
-    "owner、reviewer、版、復元を記録する。",
-    "install・組織write・Cloud配布は行わない。",
-    "Pluginの提供段階を全componentへ外挿しない。"
+    "所有者、レビュアー、バージョン、復元方法を記録する。",
+    "インストール、組織への書き込み、Cloud配布は行わない。",
+    "Pluginの提供段階を、すべてのコンポーネントへ外挿しない。"
   ]
 }

@@ -1,14 +1,14 @@
-# Compatibility checklist
+# 互換性チェックリスト
 
-| check | required record |
+| 確認項目 | 必須の記録 |
 |---|---|
-| environment | JDK8 / Mavenのavailabilityと実際に実行したか |
-| language | Java 7構文とJava 7標準APIの範囲 |
-| proposal target | CommonRulesTest.javaだけ |
-| production | Money.javaを含むproduction codeは不変 |
-| build | pom.xmlは不変 |
-| existing tests | 既存testの期待値は不変 |
-| execution | compile/test未実施はnot-run |
-| application | proposed-change.diff.templateはapplyしない |
+| 環境 | JDK 8 / Maven の利用可否と、実際に実行したか |
+| 言語 | Java 7 の構文と Java 7 標準 API の範囲 |
+| 提案先 | CommonRulesTest.java だけ |
+| プロダクションコード | Money.java を含むプロダクションコードは不変 |
+| ビルド | pom.xml は不変 |
+| 既存テスト | 既存テストの期待値は不変 |
+| 実行 | コンパイル/テストを実行していない場合は not-run |
+| 適用 | proposed-change.diff.template は適用しない |
 
-sourceを読めたことやDB testのskipを、compile/test全体のpassへ置き換えません。
+ソースを読めたことや DB テストがスキップされたことを、コンパイル/テスト全体の成功とみなしません。

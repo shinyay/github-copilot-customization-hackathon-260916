@@ -1,13 +1,13 @@
-# HC-018 boundary map
+# HC-018 境界マップ
 
-| stage | required observation | human check | stop if missing |
+| 段階 | 必要な観察結果 | 人が確認すること | 欠けている場合の停止 |
 |---|---|---|---|
-| tool candidate |  |  |  |
-| proposal |  |  |  |
-| approval |  |  |  |
-| execution |  |  |  |
-| OS / sandbox result |  |  |  |
-| program result |  |  |  |
-| cleanup |  |  |  |
+| ツールの候補 |  |  |  |
+| `proposal` |  |  |  |
+| `approval` |  |  |  |
+| `execution` |  |  |  |
+| OS / sandboxの結果 |  |  |  |
+| プログラムの結果 |  |  |  |
+| 後片付け |  |  |  |
 
-`false` は ask へ戻す設定案であり deny ではありません。この map は設定を適用せず、必要な人の判断と unknown の停止位置を設計します。
+`false` は `ask` に戻す設定案であり、`deny` ではありません。このマップでは設定を適用せず、必要な人の判断と、`unknown` で停止する位置を設計します。

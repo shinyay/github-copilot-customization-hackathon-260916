@@ -1,6 +1,6 @@
-# OrderService.java approval excerpt
+# OrderService.java の承認処理抜粋
 
-Source path:
+ソースパス:
 `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java`
 
 ```java

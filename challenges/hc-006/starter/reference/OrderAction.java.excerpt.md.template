@@ -1,6 +1,6 @@
-# OrderAction.java source excerpt
+# OrderAction.java のソース抜粋
 
-runtime workspace path:
+実行用ワークスペースのパス:
 `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java`
 
 ```java
@@ -20,7 +20,7 @@ protected ActionForward perform(ActionMapping mapping, BaseForm base, HttpServle
 }
 ```
 
-runtime workspace にある full source が演習上の正本です。upstream template revision は
+実行用ワークスペースにある完全なソースが、演習上の正本です。上流テンプレートのリビジョンは
 `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
-ですが、template から作られた workspace の local `HEAD` が一致することは要求しません。
-省略された branch や framework behavior を、この excerpt だけから推測しないでください。
+ですが、template から作られたワークスペースのローカル `HEAD` が一致している必要はありません。
+省略された分岐やフレームワークの挙動を、この抜粋だけから推測しないでください。

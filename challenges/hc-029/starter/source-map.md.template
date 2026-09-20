@@ -1,12 +1,12 @@
-# Source map
+# ソースマップ
 
-| role | path | inspect for |
+| 役割 | パス | 確認内容 |
 |---|---|---|
-| main | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java` | roundingの選択とunknown値の境界 |
-| main | `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java` | 既存testと追加候補の配置 |
-| main | `pom.xml` | JDK、Maven、compiler、API制約 |
-| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/BusinessException.java` | validation errorの表現 |
-| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java` | `Money`との責任分担 |
-| supplemental | `README.md` | 実行手順と互換条件の説明 |
+| main | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Money.java` | 丸め方法の選択と unknown 値の境界 |
+| main | `wholesale-core/src/test/java/jp/co/tsubame/wholesale/common/CommonRulesTest.java` | 既存テストと追加候補の配置 |
+| main | `pom.xml` | JDK、Maven、コンパイラ、API の制約 |
+| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/BusinessException.java` | バリデーションエラーの表現 |
+| supplemental | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/TaxAmounts.java` | `Money` との役割分担 |
+| supplemental | `README.md` | 実行手順と互換性要件の説明 |
 
-main 3件を固定入力とし、supplemental 3件は必要なときだけ辿ります。sourceを読んだことはcompile/test成功の証拠ではありません。
+main の 3 件を固定入力とし、supplemental の 3 件は必要な場合だけ参照します。ソースを読んだことは、コンパイル/テストに成功した根拠にはなりません。

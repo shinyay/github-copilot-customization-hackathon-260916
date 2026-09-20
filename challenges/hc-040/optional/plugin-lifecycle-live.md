@@ -1,57 +1,57 @@
-# Plugin lifecycleを限定観測する
+# Plugin lifecycle を限定的に観測する
 
-**Language:** **日本語** / [English](../../../en/challenges/hc-040/optional/plugin-lifecycle-live.md)
+**言語:** **日本語** / [English](../../../en/challenges/hc-040/optional/plugin-lifecycle-live.md)
 
 [HC-040本編へ戻る](../README.md)
 
 ## 目的
 
-信頼済みの固定取得先を使い、Pluginの取得、install、enable、selected version、Skill発見、update、restoreを限定的に観察します。本編のbyte identity計画を実環境で確認する補足です。
+信頼済みの固定された取得先を使い、Plugin の取得、インストール、有効化、選択されたバージョン、Skill の検出、更新、復元を限定的に観察します。本編で作成したバイト単位の一致確認計画を、実環境で確かめるための補足です。
 
 ## 前提
 
-- 承認済みの取得先と固定ref/versionがある。
-- 対応clientまたはCloud surfaceを確認できる。
-- 既存Skill/Plugin copyと自分の追加分を識別できる。
-- v1/v2 package hashとv1復元元を固定できる。
-- install、enable、updateに必要な資格と組織policyを確認できる。
+- 承認済みの取得先と、固定された ref / version がある。
+- 対応するクライアントまたは Cloud surface を確認できる。
+- 既存の Skill / Plugin のコピーと、自分の追加分を識別できる。
+- v1 / v2 のパッケージのハッシュと、v1 の復元元を固定できる。
+- インストール、有効化、更新に必要な資格と、組織のポリシーを確認できる。
 
 ## 権限と安全
 
-- 取得、install、enable、update、restore、Cloud試行、費用について個別の許可を得る。
-- 架空marketplace、floating ref、未知版を使わない。
-- user設定へ黙って迂回せず、既存copyを一括削除しない。
-- 本編のpackageへ追加componentを入れない。
+- 取得、インストール、有効化、更新、復元、Cloud での試行、費用について、個別の許可を得る。
+- 架空の marketplace、floating ref、不明なバージョンを使わない。
+- ユーザー設定へ無断で迂回せず、既存のコピーを一括で削除しない。
+- 本編のパッケージへ追加のコンポーネントを入れない。
 
 ## 手順
 
-1. 取得先、ref/version、package hash、component inventoryを記録する。
-2. 既存copy、selected version、復元元を確認する。
-3. 承認後にv1をinstall/enableし、発見されたversionとSkillを観察する。
-4. v2へupdateし、selected version、Skill hash、発見、callの各観測を分けて記録する。
-5. v1へrestoreし、取得元とSkill hashが凍結したv1へ戻ったか確認する。
-6. 終了後、自分の追加分だけを承認済み手順で整理する。
+1. 取得先、ref / version、パッケージのハッシュ、コンポーネント一覧を記録します。
+2. 既存のコピー、選択されたバージョン、復元元を確認します。
+3. 承認後に v1 をインストールして有効化し、検出されたバージョンと Skill を観察します。
+4. v2 へ更新し、選択されたバージョン、Skill のハッシュ、検出、呼び出しの各観測を分けて記録します。
+5. v1 へ復元し、取得元と Skill のハッシュを固定した v1 に戻ったか確認します。
+6. 終了後、自分の追加分だけを承認済みの手順で整理します。
 
 ## 観察すること
 
 | 層 | 記録 |
 |---|---|
-| package | source/ref、package hash、component inventory |
-| lifecycle | install、enable、update、restore |
-| selection | active copy数、selected/fetched version |
-| use | discovery、本文投入、call |
-| safety | client/Cloud対応、費用、復元 |
+| package | ソース / ref、パッケージのハッシュ、コンポーネント一覧 |
+| lifecycle | インストール、有効化、更新、復元 |
+| selection | 有効なコピーの数、選択 / 取得されたバージョン |
+| use | 検出、本文の投入、呼び出し |
+| safety | クライアント / Cloud の対応状況、費用、復元 |
 
-形式適合やhash一致だけで、発見やcallを成功扱いしません。
+形式への適合やハッシュの一致だけで、検出や呼び出しを成功扱いしません。
 
 ## 停止条件
 
-- 取得先、ref/version、対応surfaceを確認できない。
-- 既存copyと自分の追加分を識別できない。
-- v1復元元またはhashを固定できない。
-- install、enable、update、restoreの個別許可がない。
-- 一Skill比較へ追加componentが必要になる。
+- 取得先、ref / version、対応する surface を確認できない。
+- 既存のコピーと自分の追加分を識別できない。
+- v1 の復元元またはハッシュを固定できない。
+- インストール、有効化、更新、復元について個別の許可がない。
+- 1つの Skill の比較に、追加のコンポーネントが必要になる。
 
 ## 本編へ戻る
 
-観察結果は [HC-040の確認ポイント](../README.md#確認ポイント) へ戻し、planned copyとobserved active copy、manifestとselected versionを混同していないか確認します。
+観察結果を [HC-040の確認ポイント](../README.md#確認ポイント) に対応付け、計画上のコピーと観測された有効なコピー、manifest と選択されたバージョンを混同していないか確認します。

@@ -1,8 +1,8 @@
-# Evaluation design worksheet
+# 評価設計ワークシート
 
 SYNTHETIC_TRAINING_ONLY
 
-## Five criteria
+## 5つの評価観点
 
 1.
 2.
@@ -10,20 +10,20 @@ SYNTHETIC_TRAINING_ONLY
 4.
 5.
 
-## Frozen denominator
+## 固定する分母
 
 5
 
-## Variant order
+## Variantの順序
 
-## Block stop rule
+## Blockの停止規則
 
-## Missing / failure rule
+## 欠測 / 失敗時の規則
 
-## Initial / follow-up rule
+## Initial / follow-upの規則
 
-## Per-target regression rule
+## 対象ごとの回帰規則
 
-## Overall rollup rule
+## 全体のrollup規則
 
-この用紙は完成rubricや正解を含みません。結果を見る前に固定した計画だけを書いてください。
+この用紙には、完成したルーブリックや正解は含まれていません。結果を見る前に固定した計画だけを書いてください。

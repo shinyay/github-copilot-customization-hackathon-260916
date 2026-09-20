@@ -1,52 +1,52 @@
 # 実組織へ段階導入する前の確認
 
-**Language:** **日本語** / [English](../../../en/challenges/hc-026/optional/organization-rollout.md)
+**言語:** **日本語** / [English](../../../en/challenges/hc-026/optional/organization-rollout.md)
 
 [メインシナリオへ戻る](../README.md)
 
 ## 目的
 
-合成台帳で作った方針を実組織へ持ち込む前に、責任者、権限、配布元 bytes、pilot 範囲、監視、復元方法を確認します。このガイド自体は配布や権限変更を承認しません。
+合成台帳で作成した方針を実際の組織へ持ち込む前に、責任者、権限、配布元のバイト列、パイロットの範囲、監視、復元方法を確認します。このガイド自体は、配布や権限変更を承認するものではありません。
 
 ## 前提
 
-- 実 owner、reviewer、対象管理者を特定できる
-- 配布する exact version と復元先の bytes / digest を固定できる
-- 対象 client、管理対象、組織 policy、検証環境を確認できる
+- 実際のowner、reviewer、対象管理者を特定できる
+- 配布する正確なバージョンと、復元先のバイト列 / ダイジェストを固定できる
+- 対象クライアント、管理対象、組織ポリシー、検証環境を確認できる
 - 変更前状態を保存し、自分の変更だけを戻せる
 
 ## 権限・安全
 
-- 組織 write、権限変更、配布、Plugin、MCP、復元試行を操作ごとに承認します。
-- owner や承認を架空値で補いません。
+- 組織への書き込み、権限変更、配布、Plugin、MCP、復元の試行を操作ごとに承認します。
+- ownerや承認を架空の値で補いません。
 - Plugin と MCP の権限・通信先を別々に審査します。
-- private code、credential、token、個人情報を承認なく外部へ送りません。
+- 非公開コード、資格情報、トークン、個人情報を承認なく外部へ送りません。
 
 ## 手順
 
-1. asset ごとに owner、reviewer、現在版、前版、配布理由を確認します。
-2. 配布元と rollback candidate の SHA-256 を再計算し、承認記録へ結び付けます。
-3. repository / organization / Plugin / MCP の必要権限と通信先を分離して確認します。
-4. 最小の pilot 対象、成功指標、観察期間、停止条件、撤回担当を決めます。
-5. review と変更承認を得た後だけ pilot を実施します。
-6. error、利用者影響、想定外の tool / network、設定 drift を監視します。
-7. 停止条件に達したら拡大せず、固定した bytes へ復元して結果を記録します。
+1. 資産ごとに、owner、reviewer、現在のバージョン、前のバージョン、配布理由を確認します。
+2. 配布元とrollback candidateのSHA-256を再計算し、承認記録に結び付けます。
+3. リポジトリ / 組織 / Plugin / MCPについて、必要な権限と通信先を分けて確認します。
+4. 最小限のパイロット対象、成功指標、観察期間、停止条件、撤回担当を決めます。
+5. レビューと変更の承認を得た後に限り、パイロットを実施します。
+6. エラー、利用者への影響、想定外のツール / ネットワーク利用、設定のずれを監視します。
+7. 停止条件に達した場合は対象を拡大せず、固定したバイト列へ復元して結果を記録します。
 
 ## 観察すること
 
-- asset / owner / reviewer / approval
-- source version / source digest
-- pilot target / start / stop criteria
-- effective permissions / network destinations
-- observed behavior / issue
-- rollback version / rollback digest / restore result
+- 資産 / owner / reviewer / approval
+- ソースのバージョン / ソースのダイジェスト
+- パイロット対象 / 開始条件 / 停止条件
+- 実効権限 / ネットワークの送信先
+- 観測した動作 / 問題
+- rollbackのバージョン / rollbackのダイジェスト / 復元結果
 
 ## 停止条件
 
 - owner、reviewer、対象管理者のいずれかを確認できない
-- 配布元または復元先の bytes を固定できない
+- 配布元または復元先のバイト列を固定できない
 - 必要な write、権限拡大、Plugin、MCP の承認がない
-- pilot の監視・撤回担当がいない
-- private data の送信範囲を制御できない
+- パイロットの監視担当または撤回担当がいない
+- 非公開データの送信範囲を制御できない
 
 停止理由と未確認項目を残し、[メインシナリオ](../README.md)の合成監査へ戻ります。

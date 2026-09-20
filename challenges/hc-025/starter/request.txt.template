@@ -1,7 +1,7 @@
-HC-025: 同じLAB25-APP-01と同じ4種類の原稿について、VS Code Local AgentとAgent Hostの可搬性を点検してください。
-packetのpublic upstream template repository / revision、runtime workspaceの三つのsourcePaths、workspaceHeadMatchRequired=falseを固定し、local HEADの一致やcheckoutを要求しないでください。
-Skill、Prompt、Custom Agent、Pluginを独立したsampleとし、複数のカスタマイズを同時に有効化しないでください。
-file format、metadataの非対応property、文書化された発見元、実発見、loading、実効tools、approvalを別々に記録してください。
+HC-025: 同じLAB25-APP-01と同じ4種類の原稿について、VS Code Local AgentとAgent Hostの間での可搬性を点検してください。
+パケットにある、公開された上流テンプレートのリポジトリ / リビジョン、ランタイムワークスペースの3つのsourcePaths、workspaceHeadMatchRequired=falseを固定してください。ローカルHEADの一致やcheckoutは要求しないでください。
+Skill、Prompt、Custom Agent、Pluginを独立したサンプルとし、複数のカスタマイズを同時に有効化しないでください。
+ファイル形式、メタデータ内の非対応プロパティ、文書化された検出元、実際の検出、loading、実効ツール、承認を別々に記録してください。
 Prompt FileはAgent Hostでは読み込まれません。Skillへ変換してPromptの成功と報告しないでください。
-実version、model、effort、tools、approvalは観測できなければnullです。別clientや現在日付から補完しないでください。
-この静的診断では原稿だけを読み、実client・model・MCPを起動せず、権限を広げず、編集・外部送信・install・設定変更を行わないでください。
+実際のバージョン、モデル、effort、ツール、承認は、観測できなければnullです。別のクライアントや現在の日付から補完しないでください。
+この静的診断では原稿だけを読み、実際のクライアント、モデル、MCPを起動しません。また、権限を広げず、編集、外部送信、インストール、設定変更を行わないでください。

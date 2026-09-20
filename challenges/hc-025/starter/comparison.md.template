@@ -1,29 +1,29 @@
 # HC-025 可搬性比較ワークシート
 
-## Fixed input
+## 固定入力
 
-<!-- packet ID、public upstream template repository / revision、runtime workspaceの3 source path、workspaceHeadMatchRequired=false、比較する4種類のsample。 -->
+<!-- パケットID、公開された上流テンプレートのリポジトリ / リビジョン、ランタイムワークスペースの3つのソースパス、workspaceHeadMatchRequired=false、比較する4種類のサンプル。 -->
 
-## Documentation
+## ドキュメント
 
-<!-- 参照した公式文書と、各形式のdocumented discovery / support。 -->
+<!-- 参照した公式文書と、各形式のdocumented discovery / 対応状況。 -->
 
-## Local Agent view
+## Local Agentでの確認
 
-<!-- format、discovery、loading、effective tools、approval、unknown。 -->
+<!-- 形式、discovery、loading、effective tools、approval、unknown。 -->
 
-## Agent Host view
+## Agent Hostでの確認
 
-<!-- format、discovery、loading、effective tools、approval、unknown。 -->
+<!-- 形式、discovery、loading、effective tools、approval、unknown。 -->
 
-## Invalid fixtures
+## 不正なフィクスチャ
 
-<!-- 問題のproperty、理由、最小修正。別形式への置換は元形式の成功にしない。 -->
+<!-- 問題のあるプロパティ、理由、最小限の修正。別形式への置き換えは、元の形式の成功とは扱わない。 -->
 
-## Proposed actions
+## 対応案
 
 <!-- そのまま、移植、非対応、未確認、停止の判断と理由。 -->
 
-## Limits
+## 制限
 
-<!-- 静的診断で未観測の値、client / version固有の境界、安全上試していない操作。 -->
+<!-- 静的診断で未観測の値、クライアント / バージョン固有の境界、安全上の理由で試していない操作。 -->

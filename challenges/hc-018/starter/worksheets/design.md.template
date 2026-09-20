@@ -1,21 +1,21 @@
-# HC-018 design
+# HC-018 設計
 
-## Boundary stages
+## 境界の段階
 
-tool candidate、proposal、approval、execution、OS / sandbox result、program result、cleanup を分けます。
+ツールの候補、`proposal`、`approval`、`execution`、OS / sandboxの結果、プログラムの結果、後片付けを分けます。
 
-## Environment
+## 環境
 
-client、実行 host OS、利用可能 / 選択 tool、Manual の状態、既存 approval rules の見える範囲を記録します。
+クライアント、実行ホストのOS、利用可能なツール / 選択したツール、Manualの状態、既存の承認規則を確認できる範囲を記録します。
 
-## Human decision
+## 人による判断
 
-allow-once / deny の前に確認する command、cwd、変更範囲、network、期待出力を決めます。
+`allow-once` / `deny` の前に確認するコマンド、cwd、変更範囲、ネットワーク、期待する出力を決めます。
 
-## Stop rules
+## 停止規則
 
-pending、deny、EACCES、program error、exit status 欠測、情報不足、live 未許可で停止する条件を決めます。
+`pending`、`deny`、EACCES、プログラムエラー、終了ステータスの欠測、情報不足、実際の観察が未許可の場合に停止する条件を決めます。
 
-## Non-equivalence
+## 同一視しないもの
 
-synthetic packet、通常の Manual 観察、stub、実 sandbox を別にし、false を deny、正常実行を拒否境界、EACCES を sandbox 成功へ読み替えません。
+合成パケット、通常のManualによる観察、スタブ、実際のsandboxを分け、`false` を `deny`、正常な実行を拒否境界、EACCESをsandboxの成功として扱いません。

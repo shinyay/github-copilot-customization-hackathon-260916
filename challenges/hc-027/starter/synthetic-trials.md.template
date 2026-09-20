@@ -1,8 +1,8 @@
-# Author-created synthetic trial packet
+# 作成者が用意した合成試行パケット
 
 SYNTHETIC_TRAINING_ONLY
 
-これは実model実行、人の採点、blind testではありません。計画とscheduleを固定した後に、18 rowすべてを欠落なく解析してください。
+これは、実際のモデル実行、人による採点、ブラインドテスト（blind test）ではありません。計画とスケジュールを固定した後に、18行すべてを欠落なく解析してください。
 
 | task | variant | block | execution | initial | follow-up | reason | duration | cost |
 |---|---|---|---|---:|---:|---|---|---|

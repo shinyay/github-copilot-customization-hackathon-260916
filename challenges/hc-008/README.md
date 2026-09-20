@@ -1,136 +1,136 @@
-# HC-008 大きな調査を二人のSubagentへ任せよう
+# HC-008 大きな調査を2つのSubagentへ任せよう
 
-**Language:** **日本語** / [English](../../en/challenges/hc-008/README.md)
+**言語:** **日本語** / [English](../../en/challenges/hc-008/README.md)
 
-## Scenario
+## シナリオ
 
-受注機能の保守引継ぎで、「画面から入る注文」と「CSVから入る注文」を説明することになりました。1つのAgentが順に読む方法もありますが、入口ごとに独立して調べられるなら、2つのSubagentへ分けてから親が統合できます。
+受注機能の保守引継ぎで、「画面から入力する注文」と「CSV から入力する注文」を説明することになりました。一つの Agent が順に読む方法もありますが、入口ごとに独立して調べられるなら、2 つの Subagent に分け、親が結果を統合できます。
 
-ただし、2人分の文章を並べるだけでは、読んだ範囲、引用、未確認事項が統合時に消えることがあります。このシナリオでは、調査の **分け方**、子へ渡す **完全な入力**、親へ戻す **根拠付きの形式** を設計します。速さや子の数を競う課題ではありません。
+ただし、2 人分の文章を並べるだけでは、読んだ範囲、引用、未確認事項が、統合時に失われることがあります。このシナリオでは、調査の **分け方**、子に渡す **完全な入力**、親に返す **根拠付きの形式** を設計します。速さや子の数を競う課題ではありません。
 
 ## この機能とは
 
-Subagentは、親Agentから限定された仕事を受け、別のコンテキストで調べて結果を返す担当です。通常の回答に「画面担当」「バッチ担当」という見出しを出すだけでは、Subagentを呼び出したことにはなりません。clientが表示するtool callや実行表示で、実際の委任と返却を区別します。
+Subagent は、親 Agent から範囲を限定した作業を受け、別のコンテキストで調査して結果を返す担当です。通常の回答に「画面担当」「バッチ担当」という見出しを付けるだけでは、Subagent を呼び出したことにはなりません。クライアントが表示するツール呼び出しや実行状況を使い、実際の委任と返却を区別します。
 
-VS Codeでの使い方は [Run subagents in Visual Studio Code](https://code.visualstudio.com/docs/agents/run/subagents) を参照してください。clientによって呼出し方法や表示は異なります。VS Codeでは子がstatelessであるため、同じ子への追質問を前提にせず、最初の依頼へ必要なscope、資料、安全条件、返却形式を全て含めます。親のmodelやtoolsを継承する場合でも、実効値を観測できなければ推測しません。
+VS Code での使い方は、[Run subagents in Visual Studio Code](https://code.visualstudio.com/docs/agents/run/subagents) を参照してください。呼び出し方法や表示は、クライアントによって異なります。VS Code では子がステートレスであるため、同じ子への追加質問を前提にせず、最初の依頼に必要な範囲、資料、安全条件、返却形式をすべて含めます。親のモデルやツールを継承する場合でも、実際の値を観測できなければ推測しません。
 
-別コンテキストは、別worktreeやfile systemの隔離を意味しません。このシナリオでは親も子もsourceを読むだけにします。また、**最大2子、各1回、入れ子なし、再試行ループなし** を教材上の安全上限にします。これは製品全体の一律上限ではありません。
+別のコンテキストで動くことは、別のワークツリーやファイルシステムに隔離されることを意味しません。このシナリオでは、親も子もソースを読むだけにします。また、教材上の安全上限を **子は最大 2 つ、各 1 回、入れ子なし、再試行ループなし** とします。これは、製品全体に共通する上限ではありません。
 
 ## 向いていること / 向いていないこと
 
 **向いていること**
 
-- 先の担当の結論を待たずに読める複数の範囲
-- 各範囲に明確なsource boundaryと返却形式がある調査
+- 先の担当者の結論を待たずに読める複数の範囲
+- 各範囲に、明確なソースの境界と返却形式がある調査
 - 親が複数の返却を照合し、根拠を残して統合できる作業
-- 子へ一度で完全な依頼を渡せる作業
+- 子に一度で完全な依頼を渡せる作業
 
 **向いていないこと**
 
-- 1つの短いcall chainを複数人で重複して追うだけの調査
+- 一つの短い呼び出し経路を、複数人で重複して追うだけの調査
 - 頻繁な追質問や長い共同編集が必要な作業
-- 子ごとに同じfileを変更させる作業
-- DBの実状態、運用上の再送安全性、利用者の権限をstatic readingだけで証明すること
+- 子ごとに同じファイルを変更させる作業
+- データベースの実際の状態、運用上の再送の安全性、利用者の権限を、静的な読解だけで証明すること
 
-「この大きさならSubagentを使わない」という判断も有効です。委任は正解、速度、安さ、並列実行を保証しません。
+「この規模なら Subagent を使わない」という判断も有効です。委任しても、正確さ、速さ、低コスト、並列実行が保証されるわけではありません。
 
 ## ゴール
 
-- web入口とbatch入口を重ならないscopeへ分ける
-- 各Subagentへ必要な入力を最初の1回で全て渡す
-- 各返却を最大5項目の「観測 / path・symbol・line range / 限界」にそろえる
+- Web の入口とバッチの入口を、重ならない範囲に分ける
+- 各 Subagent に必要な入力を、最初の 1 回ですべて渡す
+- 各返却を、最大 5 項目の「観測 / パス・シンボル・行範囲 / 限界」にそろえる
 - 親が両入口、比較できる点、未確認事項へ統合する
-- 人が各入口から最低1項目をsourceへ戻して確認する
-- Subagentが使えない場合も、手動のfresh conversationで同じ設計を試せるようにする
+- 人が各入口から最低 1 項目を選び、ソースに戻って確認する
+- Subagent を使えない場合も、手動で用意した新しい会話で同じ設計を試せるようにする
 
 ## 用意するもの
 
-- Subagentを利用できるGitHub Copilot client。利用できない場合はfresh conversationを3つ作れる環境
-- 題材のJava sourceを含む作業用リポジトリ
-- このディレクトリの不活性な素材
+- Subagent を利用できる GitHub Copilot クライアント。利用できない場合は、新しい会話を 3 つ作れる環境
+- 題材の Java ソースを含む作業用リポジトリ
+- このディレクトリにある、無効な状態の素材
 
 | 素材 | 用途 |
 |---|---|
-| [`starter/request.txt.template`](starter/request.txt.template) | 親へ渡す固定依頼 |
-| [`starter/packets/web-entry.md.template`](starter/packets/web-entry.md.template) | web担当の固定scopeと安全条件 |
-| [`starter/packets/batch-entry.md.template`](starter/packets/batch-entry.md.template) | batch担当の固定scopeと安全条件 |
+| [`starter/request.txt.template`](starter/request.txt.template) | 親に渡す固定依頼 |
+| [`starter/packets/web-entry.md.template`](starter/packets/web-entry.md.template) | Web 担当の固定範囲と安全条件 |
+| [`starter/packets/batch-entry.md.template`](starter/packets/batch-entry.md.template) | バッチ担当の固定範囲と安全条件 |
 | [`starter/worksheets/design.md.template`](starter/worksheets/design.md.template) | 分割と統合を先に決める |
-| [`starter/worksheets/returns.md.template`](starter/worksheets/returns.md.template) | 2つの返却を改変せず記録する |
+| [`starter/worksheets/returns.md.template`](starter/worksheets/returns.md.template) | 2 つの返却を変更せず記録する |
 | [`starter/worksheets/synthesis.md.template`](starter/worksheets/synthesis.md.template) | 親の統合と人の点検を分ける |
-| [`starter/worksheets/comparison.md.template`](starter/worksheets/comparison.md.template) | 任意の手動セルフチェック |
+| [`starter/worksheets/comparison.md.template`](starter/worksheets/comparison.md.template) | 任意の手動確認 |
 
-JDK、Maven、database、server、追加extensionは不要です。
+JDK、Maven、データベース、サーバー、追加の拡張機能は不要です。
 
 ## 準備
 
 1. 共通の準備は [始め方](../../README.md#始め方) に従い、作業用リポジトリで行います。
-2. 次の6ファイルを読めることを確認します。
+2. 次の 6 ファイルを読めることを確認します。
 
-   | 担当 | source |
+   | 担当 | ソース |
    |---|---|
-   | web | `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java` |
-   | web | `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java` |
-   | web | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` |
-   | batch | `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderCsv.java` |
-   | batch | `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java` |
-   | batch | `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java` |
+   | Web | `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java` |
+   | Web | `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java` |
+   | Web | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` |
+   | バッチ | `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderCsv.java` |
+   | バッチ | `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java` |
+   | バッチ | `wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java` |
 
-3. `starter/worksheets/design.md.template` を自分のメモへコピーし、回答を見る前に分ける理由、返却順、統合方法、停止条件を記入します。固定source、各packet最大5項目、安全条件は変えません。
-4. `request.txt.template`、2つのpacket、完成したdesignを親Agentへ渡せるようにします。file添付を子が自動で読めるとは仮定せず、子への依頼には該当packetとdesignの必要部分を明示します。
-5. 親と子がsourceを読むだけで、fileを生成・変更しないことを確認します。worksheetへの記録は人が行います。
+3. `starter/worksheets/design.md.template` を自分のメモにコピーし、回答を見る前に、分ける理由、返却順、統合方法、停止条件を記入します。固定ソース、各パケット最大 5 項目、安全条件は変更しません。
+4. `request.txt.template`、2 つのパケット、完成した設計を親 Agent に渡せるようにします。添付ファイルを子が自動的に読めるとは仮定せず、子への依頼には、該当するパケットと設計の必要部分を明記します。
+5. 親と子がソースを読むだけで、ファイルを生成したり変更したりしないことを確認します。ワークシートへの記録は人が行います。
 
 ## 試してみる
 
-1. 親Agentのfresh conversationへ、固定request、web packet、batch packet、完成したdesignを渡します。
-2. 親へ、webとbatchを最大2つのSubagentへ1回ずつ委任するよう依頼します。各子には次を最初から含めます。
-   - 担当するpacketの全文
-   - 固定したdesignの返却形式と停止条件
-   - 読めるsourceのexact path
-   - 最大5項目という上限
-   - read-only、入れ子なし、再試行なし、model上書きなしという安全条件
-3. clientがSubagentの呼出しを表示する場合は、2つの実際の呼出しと返却を確認します。表示されない場合は「観測できない」とし、回答の見出しだけから起動を推測しません。
-4. 各返却が「観測 / path・symbol・line range / 限界」を保っているか確認します。別担当の結果や親の過去の会話を知っている前提が混ざっていたら採用しません。
-5. 親に次の4区分で統合させます。
+1. 親 Agent 用の新しい会話に、固定依頼、Web のパケット、バッチのパケット、完成した設計を渡します。
+2. 親に、Web とバッチを最大 2 つの Subagent に 1 回ずつ委任するよう依頼します。各子への最初の依頼に、次の内容をすべて含めます。
+   - 担当するパケットの全文
+   - 固定した設計の返却形式と停止条件
+   - 読み取りを許可するソースの完全なパス
+   - 最大 5 項目という上限
+   - 読み取り専用、入れ子なし、再試行なし、モデルの上書きなしという安全条件
+3. クライアントに Subagent の呼び出しが表示される場合は、実際の 2 回の呼び出しと返却を確認します。表示されない場合は「観測できない」と記録し、回答の見出しだけから起動を推測しません。
+4. 各返却が「観測 / パス・シンボル・行範囲 / 限界」を保っているか確認します。別の担当の結果や、親の過去の会話を知っていることを前提とした内容が含まれていた場合は採用しません。
+5. 親に次の 4 区分で統合させます。
    - 画面入口
-   - CSV入口
+   - CSV 入口
    - 比較できる点
    - 未確認事項
-6. `returns.md.template` と `synthesis.md.template` を使い、子の返却全文、親の統合、人の点検を分けて残します。
-7. 人がwebとbatchから最低1項目ずつsourceを開き直し、path、symbol、line range、claim、限界が一致するか確認します。
+6. `returns.md.template` と `synthesis.md.template` を使い、子からの返却全文、親による統合、人による点検を分けて残します。
+7. 人が Web とバッチから最低 1 項目ずつ選んでソースを開き直し、パス、シンボル、行範囲、主張、限界が一致するか確認します。
 
-追加sourceが必要になった場合、子は読まずにpathと理由をunknownへ返します。webとbatchが同じ業務経路だと推測したり、片方の根拠をもう片方へ流用したりしません。
+追加のソースが必要になった場合、子はそのソースを読まず、パスと理由を不明点として返します。Web とバッチが同じ業務経路だと推測したり、一方の根拠をもう一方に流用したりしません。
 
 ## 任意: 比較する
 
-同じrequest、2つのpacket、design、source、model、toolsをできるだけそろえ、次を1回ずつ手動で試します。
+同じ依頼、2 つのパケット、設計、ソース、モデル、ツールをできるだけそろえ、次の方法を手動で 1 回ずつ試します。
 
-- 1つのAgentが両packetを順に直接調査して統合する
-- 親がwebとbatchを2つのSubagentへ分けて統合する
+- 一つの Agent が両方のパケットを順に直接調査し、統合する
+- 親が Web とバッチを 2 つの Subagent に分け、結果を統合する
 
-`comparison.md.template` を使い、sourceへ戻れる項目数、unknownの保持、重複調査、誤引用、統合作業量を比べます。時間やcostを表示できない環境では推測しません。入力や機能をそろえられない場合は優劣を決めません。
+`comparison.md.template` を使い、ソースまでたどれる項目数、不明点の保持、重複した調査、誤った引用、統合作業の量を比べます。時間やコストを表示できない環境では推測しません。入力や機能をそろえられない場合は、優劣を決めません。
 
 ## 確認ポイント
 
-- 見出しだけでなく、実際のSubagent呼出しを観測できた
-- 子へ該当packetと必要なdesignを最初の1回で全て渡した
-- 子を2つより多く起動していない
-- 入れ子、追質問、再試行ループ、model上書きを追加していない
-- 各返却にpath、symbol、line range、限界がある
-- 親の統合でunknownが断言へ変わっていない
-- webとbatchの根拠が混ざっていない
-- 人が両入口から最低1項目をsourceと照合した
+- 見出しだけでなく、実際の Subagent の呼び出しを観測できた
+- 子に、該当するパケットと必要な設計を最初の 1 回ですべて渡した
+- 3 つ以上の子を起動していない
+- 入れ子、追加質問、再試行ループ、モデルの上書きを追加していない
+- 各返却に、パス、シンボル、行範囲、限界がある
+- 親の統合で、不明点が断定に変わっていない
+- Web とバッチの根拠が混ざっていない
+- 人が両方の入口から最低 1 項目を選び、ソースと照合した
 
 ## 発展
 
-同じ2つの返却を再利用し、統合する順番だけを逆にした案を紙上で作ります。どのunknownや限界が先頭の返却へ引っ張られて消えやすいかを確認してください。新しいSubagentは起動せず、元の返却も変更しません。
+同じ 2 つの返却を再利用し、統合する順序だけを逆にした案を紙上で作ります。どの不明点や限界が、最初に扱う返却の影響で消えやすいかを確認してください。新しい Subagent は起動せず、元の返却も変更しません。
 
-## 制約・Fallback・安全
+## 制約・代替手段・安全
 
-- Subagentを使えない場合は、人がwebとbatchを別々のfresh conversationへ渡し、2つの返却全文を第三のfresh conversationへ運んで統合します。これはSubagent実行ではなく手動handoffです。
-- read toolを使えない場合は、人が許可sourceを読み、設計と統合の練習だけを行います。
-- 指定した6ファイル以外が必要になった時点で、そのpathと理由をunknownにして止めます。
-- 実データ、資格情報、private logを読みません。
-- DB、server、build、test、shell、無許可networkを実行しません。
-- source、設定、文書をAgentへ変更させません。
-- 別コンテキストをfile systemの隔離とみなしません。
-- Subagentのmodel、tools、並列性を表示から確認できない場合は、既定値を推測しません。
+- Subagent を使えない場合は、人が Web とバッチを別々の新しい会話に渡し、2 つの返却全文を三つ目の新しい会話に移して統合します。これは Subagent の実行ではなく、手動の handoff です。
+- 読み取りツールを使えない場合は、人が許可されたソースを読み、設計と統合の練習だけを行います。
+- 指定した 6 ファイル以外が必要になった時点で、そのパスと理由を不明点として記録し、作業を止めます。
+- 実データ、資格情報、非公開ログは読みません。
+- データベース、サーバー、ビルド、テスト、シェル、許可されていないネットワーク接続は実行しません。
+- ソース、設定、文書を Agent に変更させません。
+- 別のコンテキストを、ファイルシステムの隔離とみなしません。
+- Subagent のモデル、ツール、並列性を画面表示から確認できない場合は、既定値を推測しません。

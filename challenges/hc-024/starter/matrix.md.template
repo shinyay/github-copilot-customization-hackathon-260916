@@ -1,6 +1,6 @@
 # HC-024 四セル記録
 
-| cell | I | S | Iの版 | Sの版 | source / note / request | presence | discovery | loading | usage | outcome |
+| cell | I | S | Iの版 | Sの版 | ソース / メモ / リクエスト | presence | discovery | loading | usage | 結果 |
 |---|---:|---:|---|---|---|---|---|---|---|---|
 | 00 | 0 | 0 | 同じ凍結原稿 | 同じ凍結原稿 | fixed | 0 / 0 | unobserved | unobserved | unobserved | |
 | 10 | 1 | 0 | fixed-I | 同じ凍結原稿 | fixed | 1 / 0 | unobserved | unobserved | unobserved | |

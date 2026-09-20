@@ -8,5 +8,5 @@
   "approvalPolicy": "manual",
   "writes": false,
   "externalNetwork": false,
-  "boundary": "これは教材の作業範囲でありOS隔離ではありません。非対応を解消するために権限を広げません。"
+  "boundary": "これは教材で定めた作業範囲であり、OSによる隔離ではありません。非対応を解消するために権限を広げません。"
 }

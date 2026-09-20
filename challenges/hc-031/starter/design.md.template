@@ -1,23 +1,23 @@
-# Scoped design worksheet
+# 適用範囲の設計票
 
-## Java draft
+## Java 原稿
 
-- purpose:
-- body:
+- 目的:
+- 本文:
 - applyTo:
-- out-of-scope path:
-- product use:
+- 対象外のパス:
+- 製品での利用:
 
-## XML draft
+## XML 原稿
 
-- purpose:
-- body:
+- 目的:
+- 本文:
 - applyTo:
-- out-of-scope path:
-- product use:
+- 対象外のパス:
+- 製品での利用:
 
-## Mixed task order
+## Mixed タスクの順序
 
-## Prediction / observation boundary
+## 予測と観測の境界
 
-scope予測、product予測、実観測を別欄にし、body変更とmetadata変更を同じ比較へ混ぜないでください。
+適用範囲の予測、製品ごとの予測、実際の観測結果を別々の欄に記録し、本文の変更とメタデータの変更を同じ比較に混ぜないでください。

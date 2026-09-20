@@ -1,19 +1,19 @@
-# HC-017 manual comparison protocol
+# HC-017 手動比較プロトコル
 
-## Experiment M: model
+## 実験M: モデル
 
-| trial | fixed | changed |
+| 試行 | 固定するもの | 変更するもの |
 |---|---|---|
-| M-A | fixed input、request、follow-up、tools、approval、context、可能な範囲の effort / adaptive 条件 | 承認済み model A |
-| M-B | M-A と同じ | model だけ B |
+| M-A | 固定入力、依頼、追問、ツール、承認、コンテキスト、可能な範囲のThinking Effort / adaptive条件 | 承認済みモデルA |
+| M-B | M-Aと同じ | モデルだけをBに変更 |
 
-## Experiment E: effort
+## 実験E: Thinking Effort
 
-| trial | fixed | changed |
+| 試行 | 固定するもの | 変更するもの |
 |---|---|---|
-| E-1 | fixed input、request、follow-up、同じ model E、provider、tools、approval、context | picker で確認した effort e1 |
-| E-2 | E-1 と同じ | effort だけ e2 |
+| E-1 | 固定入力、依頼、追問、同じモデルE、プロバイダー、ツール、承認、コンテキスト | ピッカーで確認したThinking Effortのe1 |
+| E-2 | E-1と同じ | Thinking Effortだけをe2に変更 |
 
-M と E は別の比較です。それぞれ新しい会話を使い、M の応答を E へ渡しません。同じ effort label を異なる model 間の同じ計算量とみなしません。
+MとEは別の比較です。それぞれ新しい会話を使い、Mの応答をEに渡しません。同じThinking Effortのラベルを、異なるモデル間で同じ計算量を示すものとはみなしません。
 
-M で effort / adaptive 条件を揃えられなければ model 構成の限定観察とし、E で model / provider が変われば effort だけの比較を止めます。欠測した trial も除外せず、未観測理由を記録します。
+MでThinking Effort / adaptiveの条件を揃えられない場合は、モデル構成の限定的な観察とします。Eでモデル / プロバイダーが変わった場合は、Thinking Effortだけの比較を停止します。欠測した試行も除外せず、観測できなかった理由を記録します。

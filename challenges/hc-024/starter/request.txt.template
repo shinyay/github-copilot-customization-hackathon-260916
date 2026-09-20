@@ -1,8 +1,18 @@
-public upstream template `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c` をcanonicalな比較基準とし、現在のruntime workspaceにある受注CSV external_key再送のsourceを説明してください。
-template由来workspaceのlocal HEADがupstream template revisionと一致することは要求せず、checkoutやresetを行わないでください。
-OrderImportService.javaのimportDraft/replay、OrderGroup.javaのcanonicalHash、OrderImportPostgresTest.javaの定義という同じ3 sourceの範囲で、新規作成・同じ内容の再送・内容が違う再送を分け、pathとsymbolを根拠にしてください。
+正規の比較基準には、次の公開された上流テンプレートを使います。
+`shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
+現在のランタイムワークスペースにある、受注CSVのexternal_key再送処理のソースを説明してください。
+テンプレートから作成したワークスペースのローカルHEADが、上流テンプレートのリビジョンと一致することは要求しません。checkoutやresetも行わないでください。
+対象は、次の3つのソースです。
+- `OrderImportService.java` の `importDraft` / `replay`
+- `OrderGroup.java` の `canonicalHash`
+- `OrderImportPostgresTest.java` の定義
+この範囲で、新規作成、同じ内容の再送、内容が異なる再送を分け、パスとシンボルを根拠にしてください。
 starter/operations-note.json.templateの全文は4セルすべてで利用できます。
-コードの現在の分岐、合成した運用、資料にない実際の採用理由を分離し、採用理由や未展開guardの挙動は不明としてください。
-testは定義の意図だけを読み、未実行と明記してください。
-日本語でEvidenceとUnknownsを分け、[[source:import-draft]]、[[source:import-replay]]、[[source:canonical-hash]]、[[source:replay-test-definition]]を該当する説明へ一度ずつ添えてください。
-markerの存在だけでは意味の正しさを証明できません。read/searchの範囲で回答だけを返し、ファイル・設定・アプリ・DB・test・外部systemを変更または実行しないでください。
+コードの現在の分岐、合成した運用、資料にない実際の採用理由を分け、採用理由や未展開のguardの挙動は不明としてください。
+テストは定義の意図だけを読み、未実行と明記してください。
+日本語でEvidenceとUnknownsを分けてください。次のマーカーを、該当する説明に1回ずつ添えてください。
+- `[[source:import-draft]]`
+- `[[source:import-replay]]`
+- `[[source:canonical-hash]]`
+- `[[source:replay-test-definition]]`
+マーカーがあるだけでは、意味の正しさを証明できません。read/searchの範囲で回答だけを返し、ファイル、設定、アプリ、DB、テスト、外部システムを変更したり実行したりしないでください。

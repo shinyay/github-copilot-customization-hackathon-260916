@@ -1,4 +1,4 @@
-case-10の固定packetと共通briefだけを使い、一回限りで既に十分な入力に追加する準備方法、または追加不要を選び、その理由を説明してください。
-sourceを参照する場合は、starter/brief.json.templateのpublic upstream template revisionを基準にし、列挙pathを現在のruntime workspaceから読んでください。local HEADの一致やcheckoutは要求しないでください。
+case-10の固定パケットと共通ブリーフだけを使い、1回限りですでに十分な入力に追加する準備方法、または追加不要を選び、その理由を説明してください。
+ソースを参照する場合は、starter/brief.json.templateの公開された上流テンプレートのリビジョンを基準にし、列挙されたパスを現在のランタイムワークスペースから読んでください。ローカルHEADの一致やcheckoutは要求しないでください。
 trigger、scope、resources、permissions、maintenanceと、少なくとも一つの別案を示してください。
-この追加確認caseは最初から公開されています。別caseの回答を使わず、設定・source・外部serviceを変更しないでください。
+この追加確認ケースは最初から公開されています。別のケースの回答を使わず、設定、ソース、外部サービスを変更しないでください。

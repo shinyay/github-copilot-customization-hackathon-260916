@@ -1,58 +1,58 @@
-# Cloud handoffを限定観測する
+# Cloud handoff を限定的に観測する
 
-**Language:** **日本語** / [English](../../../en/challenges/hc-045/optional/cloud-handoff.md)
+**言語:** **日本語** / [English](../../../en/challenges/hc-045/optional/cloud-handoff.md)
 
 [HC-045本編へ戻る](../README.md)
 
 ## 目的
 
-承認済みのreview/Cloud環境で、一つのfindingから限定request、受理、返却、独立validationまでを観察します。draft、prepared、sent、accepted、appliedを直接Evidenceで分けます。
+承認済みの review / Cloud 環境で、1つの finding から、対象を限定した依頼、受理、返却、独立した検証までを観察します。draft、prepared、sent、accepted、applied を直接的な根拠で分けます。
 
 ## 前提
 
-- 対象PR、source branch、current headを固定できる。
-- 変更scopeを `TaxAmounts.java` だけに限定できる。
-- `Money.java` と`CommonRulesTest.java` をread-onlyに保てる。
+- 対象の PR、ソースブランチ、current head を固定できる。
+- 変更の scope を `TaxAmounts.java` だけに限定できる。
+- `Money.java` と `CommonRulesTest.java` を read-only に保てる。
 - 独立期待値、返却情報、停止・復元方法を決めている。
-- code review、Cloud Agent、repository/PRの利用資格がある。
-- 使用するworkflowが対象branch/headとscopeを安全に保持できる。
+- code review、Cloud Agent、リポジトリ / PR の利用資格がある。
+- 使用する workflow が対象の branch/head と scope を安全に維持できる。
 
 ## 権限と安全
 
-- request送信、Cloud session、source変更、test、commit、push、返却、最終確認について個別の許可を得る。
-- scopeを広げるallow-allや、変更不可pathの編集を行わない。
-- branch/headを事後的に読み替えず、unexpected returnは停止する。
-- mergeはこの観察に含めない。
+- 依頼の送信、Cloud セッション、ソースの変更、テスト、commit、push、返却、最終確認について、個別の許可を得る。
+- scope を広げる allow-all や、変更してはいけないパスの編集を行わない。
+- branch/head を事後的に読み替えず、想定外の返却があれば停止する。
+- merge はこの観察に含めない。
 
 ## 手順
 
-1. finding、human assessment、source anchor、candidate post-imageを記録する。
-2. source branch/head、target branch/head、allowed path、read-only paths、期待値、stop条件を固定する。
-3. request draftを人がレビューし、preparedへ進める条件を確認する。
-4. 承認後に一度だけ送信し、transmission Evidenceと受信側のacceptanceを別々に記録する。
-5. 返却されたbranch/head、changed paths、commit、test reportを依頼scopeと照合する。
-6. 自己申告のtest reportとは別に、bucket数、net、tax、rounding、changed-path inventoryを独立確認する。
-7. 最終判断を人へ戻し、承認範囲内の自分の試験用変更だけを整理する。
+1. finding、human assessment、ソースの anchor、candidate post-image を記録します。
+2. ソースの branch/head、対象の branch/head、許可するパス、読み取り専用のパス、期待値、停止条件を固定します。
+3. request draft を人がレビューし、prepared へ進む条件を確認します。
+4. 承認後に1回だけ送信し、送信記録と受信側の acceptance を別々に記録します。
+5. 返却された branch/head、変更されたパス、commit、test report を、依頼した scope と照合します。
+6. 自己申告の test report とは別に、bucket 数、net、tax、rounding、変更されたパスの一覧を独立して確認します。
+7. 最終判断を人に戻し、承認された範囲内で、自分が加えた試験用の変更だけを整理します。
 
 ## 観察すること
 
-| 状態 | 必要な直接Evidence |
+| 状態 | 必要な直接的な根拠 |
 |---|---|
 | draft | 依頼本文 |
-| prepared | 人によるscope/branch/head/validation確認 |
-| sent | transmission record |
+| prepared | 人による scope / branch / head / validation の確認 |
+| sent | 送信記録 |
 | accepted | 受信側の受理 |
-| applied | 対象headのsource/commit |
-| validated | 独立した期待値とchanged-path確認 |
+| applied | 対象の head にあるソース / commit |
+| validated | 独立した期待値と変更されたパスの確認 |
 
 ## 停止条件
 
-- branch/head/scopeまたは独立期待値が不明。
+- branch/head/scope または独立した期待値が不明。
 - `TaxAmounts.java` 以外の変更が必要。
-- workflowがbranch/headを安全に保持できない。
-- request、source変更、test、commit、push、最終確認の個別許可がない。
-- 自己申告だけでcorrectnessを確定する必要がある。
+- workflow が branch/head を安全に維持できない。
+- 依頼、ソースの変更、テスト、commit、push、最終確認について個別の許可がない。
+- 自己申告だけで正しさを確定する必要がある。
 
 ## 本編へ戻る
 
-結果は [HC-045の確認ポイント](../README.md#確認ポイント) へ戻し、claimと直接Evidence、handoffとindependent validationを分離します。
+結果を [HC-045の確認ポイント](../README.md#確認ポイント) に対応付け、claim と直接的な根拠、handoff と independent validation を分けて記録します。

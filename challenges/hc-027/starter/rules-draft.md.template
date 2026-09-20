@@ -1,9 +1,9 @@
-# Rules body draft
+# ルール本文の原稿
 
 SYNTHETIC_TRAINING_ONLY
 
-この空欄へ、結果を見る前に決めた再利用可能な評価規則だけを書きます。task固有のpacket値、合成trialの結果、勝敗、模範回答を書きません。
+この空欄には、結果を見る前に決めた再利用可能な評価規則だけを書きます。タスク固有のパケット値、合成試行の結果、勝敗、模範回答は書きません。
 
-## Body
+## 本文
 
 - <write one reusable evaluation rule>

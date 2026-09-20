@@ -1,4 +1,4 @@
-# HC-010 手動確認worksheet
+# HC-010 手動確認ワークシート
 
 ## 担当と時点
 
@@ -8,14 +8,14 @@
 
 ## 固定入力
 
-- source:
-- request:
+- ソース:
+- 依頼:
 - draft:
-- checker結果:
+- チェッカーの結果:
 
-## Case確認
+## ケースごとの確認
 
-| case | result / code | まだ判断できないこと | 次の扱い |
+| ケース | result / code | まだ判断できないこと | 次の扱い |
 |---|---|---|---|
 | complete-draft |  |  |  |
 | missing-unknowns |  |  |  |

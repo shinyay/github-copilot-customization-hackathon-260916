@@ -2,21 +2,21 @@
   "schemaVersion": 1,
   "caseId": "case-04",
   "taskId": "case-04",
-  "title": "checklistとひな型を伴う反復分析",
+  "title": "チェックリストとひな型を使う反復分析",
   "targetHarness": "local-agent",
   "scope": "workspace",
   "sourcePaths": [
     "wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java"
   ],
-  "situation": "batch読解のたびに同じchecklistと根拠メモのひな型を使い、資料の版をそろえたい。",
+  "situation": "バッチ処理を読み解くたびに、同じチェックリストと根拠メモのひな型を使い、資料のバージョンをそろえたい。",
   "resources": [
-    "固定source",
+    "固定ソース",
     "evidence-note.txt.template",
-    "五観点checklist"
+    "5つの観点のチェックリスト"
   ],
   "constraints": [
-    "script実行は許可されていない。",
-    "資源参照と起動を分ける。",
+    "スクリプトの実行は許可されていない。",
+    "リソースの参照と起動を分ける。",
     "手動添付の保守負担も比較する。"
   ]
 }

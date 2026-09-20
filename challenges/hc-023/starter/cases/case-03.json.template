@@ -8,14 +8,14 @@
   "sourcePaths": [
     "wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/action/OrderAction.java"
   ],
-  "situation": "同じ範囲・見出しの根拠map依頼を週に三回、人が明示的に開始する。",
+  "situation": "同じ範囲と見出しを使う根拠マップの作成を、人が週に3回、明示的に開始する。",
   "resources": [
     "固定依頼",
-    "固定source"
+    "固定ソース"
   ],
   "constraints": [
     "自動起動は要求しない。",
-    "Promptを選ぶ場合もharness境界を説明する。",
+    "Promptを選ぶ場合も、ハーネスの境界を説明する。",
     "移行操作を本編で実行しない。"
   ]
 }

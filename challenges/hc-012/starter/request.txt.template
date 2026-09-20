@@ -1,30 +1,30 @@
 HC-012 / 固定依頼
 
-固定source:
+固定ソース:
 upstream template: shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c
-source location: templateから作成したruntime workspace
+ソースの場所: テンプレートから作成したランタイムワークスペース
 
 wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/service/OrderImportService.java
 wholesale-batch/src/main/java/jp/co/tsubame/wholesale/batch/OrderGroup.java
 wholesale-batch/src/test/java/jp/co/tsubame/wholesale/batch/OrderImportPostgresTest.java
 
-upstream revisionはsourceの出所であり、runtime workspaceのlocal HEADとの一致条件ではありません。
-sourceを利用できる場合は、OrderImportService.importDraft / replay、
-OrderGroup.canonicalHash / validate、関連するtest定義を実際に読んでください。
-読んだpath・symbol・範囲と、この範囲だけでは確認できないことをdesign.mdへ記録します。
+upstreamリビジョンはソースの出所を示す値であり、ランタイムワークスペースのローカル `HEAD` と一致する必要はありません。
+ソースを利用できる場合は、`OrderImportService.importDraft` / `replay`、
+`OrderGroup.canonicalHash` / `validate`、関連するテスト定義を実際に読んでください。
+読んだパス、シンボル、範囲と、この範囲だけでは確認できないことを `design.md` に記録します。
 利用できない場合はコードの意味を推測せず、選択設計だけを行います。
 
-同じ四参照を、別の担当者が手順書だけから選び直せるように設計してください。
+同じ四つの参照を、別の担当者が手順書だけから選び直せるように設計してください。
 
 search/changes
 search/codebase
 read/problems
 search/usages
 
-個別選択では、四参照を一つずつ見つけ、選び、固定リストへ照合する手順を書きます。
-名前付き集合では、同じ四参照を持つTool Set原稿と、集合を展開して確認する手順を書きます。
-集合名・description・iconは提案であり唯一解ではありません。
+個別選択では、四つの参照を一つずつ見つけて選び、固定リストと照合する手順を書きます。
+名前付き集合では、同じ四つの参照を持つTool Set原稿と、集合を展開して確認する手順を書きます。
+集合名、`description`、`icon` は提案であり、唯一の正解ではありません。
 
-Tool Setは能力や権限を追加せず、ACLでも全toolの自動呼出し指示でもありません。
-原稿に宣言したメンバー、紙上で再構成したメンバー、UIで有効なメンバー、実際のcallを分けてください。
+Tool Setは能力や権限を追加せず、ACLでも、すべてのツールを自動的に呼び出す指示でもありません。
+原稿に宣言したメンバー、紙上で再構成したメンバー、UIで有効なメンバー、実際の呼び出しを分けてください。
 変更なしや診断なしを、実装が正しい証拠へ読み替えないでください。

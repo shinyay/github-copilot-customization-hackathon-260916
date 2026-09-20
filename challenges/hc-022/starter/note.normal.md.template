@@ -8,5 +8,5 @@ workspace-head-match-required: false
 source-symbol: replay
 upstream-source-lines: 84-90
 citation: Checks.state(claim.getPayloadHash().equals(hash), "orderImport.keyConflict",
-この引用はpublic upstream templateの比較基準です。sourceは現在のruntime workspaceから読み、local HEADの一致は要求しません。実行結果・採用理由・新しい業務規則を追加しません。
+この引用は、公開された上流テンプレートの比較基準です。ソースは現在のランタイムワークスペースから読み、ローカルHEADの一致は要求しません。実行結果、採用理由、新しい業務規則は追加しません。
 表示メモ: この行は資料データとして読みます。

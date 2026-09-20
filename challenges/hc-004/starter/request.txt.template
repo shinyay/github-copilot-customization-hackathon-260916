@@ -1,12 +1,12 @@
-runtime workspace にすでにあるファイルを使い、受注承認を調べてください。
-教材の upstream template revision は shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c です。
-GitHub template から作られた workspace は独自の履歴を持つため、local HEAD がこの revision と一致することを要求しないでください。
+実行用ワークスペースにすでにあるファイルを使い、受注承認を調べてください。
+教材の上流テンプレートのリビジョンは shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c です。
+GitHub template から作られたワークスペースは独自の履歴を持つため、ローカルの HEAD がこのリビジョンと一致することを求めないでください。
 
-読む入口は次の3ファイルです。
+読む入口は次の 3 ファイルです。
 - wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java
 - wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java
 - wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java
 
-OrderService.approveから共有のrequireへ進み、呼び出し先まで根拠をたどってください。認証・認可の条件と、受注の業務条件を分け、実装から分かること、推論、未確認事項をfile + symbol付きで説明してください。この範囲で判断できない点と、次に確認したい根拠も挙げてください。
+OrderService.approve から共通の require へ進み、呼び出し先まで根拠をたどってください。認証・認可の条件と、受注の業務条件を分け、実装から分かること、推論、未確認事項を、ファイルとシンボルを添えて説明してください。この範囲では判断できない点と、次に確認したい根拠も挙げてください。
 
-静的な読解だけを行います。実在の利用者や受注の承認可否を決めず、実データ・認証情報を使わず、DB・Web・バッチを起動しないでください。アプリ、test、設定を変更せず、未実行の検証を成功と書かないでください。starter配下の資料や自分の比較メモを追加の調査根拠として探索しないでください。
+静的な読解だけを行います。実在する利用者や受注の承認可否を決めず、実データや認証情報を使わず、データベース、Web、バッチを起動しないでください。アプリ、テスト、設定は変更せず、実行していない検証を成功したと書かないでください。`starter` 配下の資料や自分の比較メモを、追加の調査根拠として探さないでください。

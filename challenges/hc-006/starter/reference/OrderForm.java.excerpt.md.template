@@ -1,6 +1,6 @@
-# OrderForm.java source excerpt
+# OrderForm.java のソース抜粋
 
-runtime workspace path:
+実行用ワークスペースのパス:
 `wholesale-web/src/main/java/jp/co/tsubame/wholesale/web/form/OrderForm.java`
 
 ```java
@@ -18,8 +18,8 @@ public class OrderForm extends BaseForm {
 }
 ```
 
-Operation、identity、version の field は form hierarchy から継承されます。
-runtime workspace の full source を確認するまで、実際の data binding や runtime behavior を断定しないでください。
-upstream template revision は
+Operation、identity、version のフィールドは、フォームの継承階層から引き継がれます。
+実行用ワークスペースの完全なソースを確認するまでは、実際のデータバインディングや実行時の挙動を断定しないでください。
+上流テンプレートのリビジョンは
 `shinyay/github-copilot-customization-runtime-template@8f0b3aa25c4f33facdea691642c2f1cb3901391c`
-ですが、template から作られた workspace の local `HEAD` が一致することは要求しません。
+ですが、template から作られたワークスペースのローカル `HEAD` が一致している必要はありません。

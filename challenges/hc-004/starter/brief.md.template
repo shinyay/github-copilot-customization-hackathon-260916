@@ -1,38 +1,38 @@
-# runtime workspace の source を読むための手元資料
+# 実行用ワークスペースのソースを読むための手元資料
 
 これは参照案内であり、常設指示でも、承認可否の解答でもありません。
 
-- Upstream template: `shinyay/github-copilot-customization-runtime-template`
-- Upstream template revision: `8f0b3aa25c4f33facdea691642c2f1cb3901391c`
-- Exercise source: runtime workspace にすでにある対象ファイル
+- 上流テンプレート: `shinyay/github-copilot-customization-runtime-template`
+- 上流テンプレートのリビジョン: `8f0b3aa25c4f33facdea691642c2f1cb3901391c`
+- 演習用ソース: 実行用ワークスペースにすでにある対象ファイル
 
-GitHub template から作成された runtime workspace は独自の commit history を持つため、local `HEAD` が
-upstream template revision と一致することは確認条件ではありません。revision へ checkout/reset せず、
-runtime workspace の root から次のファイルを読みます。
+GitHub template から作成された実行用ワークスペースは独自のコミット履歴を持つため、ローカルの `HEAD` が
+上流テンプレートのリビジョンと一致することは確認条件ではありません。そのリビジョンへの checkout や reset は行わず、
+実行用ワークスペースのルートから次のファイルを読みます。
 
 ## 読む場所
 
-| repository-relative path | 調べる入口 |
+| リポジトリからの相対パス | 調査の入口 |
 | --- | --- |
 | `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/OrderService.java` | `approve` が呼ぶガードと、その後の業務条件をたどる |
-| `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java` | 継承元の `require` が何を確認し、どこへ委ねるかを読む |
-| `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java` | `require` と role 判定の分岐を読む |
+| `wholesale-core/src/main/java/jp/co/tsubame/wholesale/service/BaseService.java` | 継承元の `require` が何を確認し、どこに処理を委ねるかを読む |
+| `wholesale-core/src/main/java/jp/co/tsubame/wholesale/common/Actor.java` | `require` とロール判定の分岐を読む |
 
 ## 途中で問い直すこと
 
-1. method 内の role 文字列だけで説明を終えていないか。
+1. メソッド内のロール文字列だけで説明を終えていないか。
 2. `require` の定義と委譲先を最後まで追ったか。
 3. null や早く戻る分岐を見落としていないか。
 4. 認証・認可と、受注の業務条件を混ぜていないか。
-5. この三ファイルでは分からない実行時の値を、未確認として残しているか。
+5. この三つのファイルでは分からない実行時の値を、未確認のまま残しているか。
 
-Java 本文は runtime workspace にある full source を演習上の正本として読みます。upstream template revision は
-由来を示す参照であり、local history の同一性を要求しません。この資料には完成した判定表を含めません。
-実データ、利用者 ID、認証情報を追加せず、DB、Web、batch を起動せず、source や既存 test を変更しません。
+Java の本文は、実行用ワークスペースにある完全なソースを演習上の正本として読みます。上流テンプレートのリビジョンは
+由来を示す参照であり、ローカル履歴との同一性は求めません。この資料には、完成済みの判定表を含めません。
+実データ、利用者 ID、認証情報を追加せず、データベース、Web、バッチを起動せず、ソースや既存のテストを変更しません。
 
 ## 比較時に固定するもの
 
-任意比較では、同じ request 全文、同じ runtime workspace のファイル内容、同じ upstream template revision、
-同じ三ファイルへのアクセスを使います。local `HEAD` の一致は比較条件にしません。
-`starter/` の資料や自分の比較メモは調査根拠として会話へ追加しません。意図せず参照された場合は、
+任意の比較では、同じ依頼全文、同じ実行用ワークスペースのファイル内容、同じ上流テンプレートのリビジョン、
+同じ三つのファイルへのアクセスを使います。ローカルの `HEAD` が一致していることは比較条件にしません。
+`starter/` の資料や自分の比較メモは、調査の根拠として会話に追加しません。意図せず参照された場合は、
 入力が混ざったことを記録します。

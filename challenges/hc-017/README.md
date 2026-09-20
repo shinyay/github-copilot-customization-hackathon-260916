@@ -1,18 +1,18 @@
 # HC-017 タスクに合うモデルと推論量を選ぼう
 
-**Language:** **日本語** / [English](../../en/challenges/hc-017/README.md)
+**言語:** **日本語** / [English](../../en/challenges/hc-017/README.md)
 
-## Scenario
+## シナリオ
 
-受注承認の固定分析を短い表へ整理するとき、「新しいモデルだから正確」「推論量を上げたから安全」と先に結論すると、入力差、tool 差、未確認の補完を見落とします。モデルを変える比較と、同じモデルで Thinking Effort だけを変える比較も別の実験です。
+受注承認の固定分析を短い表に整理するとき、「新しいモデルだから正確」「推論量を上げたから安全」と先に結論すると、入力やツールの違い、未確認事項の補完を見落とします。モデルを変える比較と、同じモデルでThinking Effortだけを変える比較も、別の実験です。
 
 この演習では、利用中の環境ですでに承認されている候補だけを使い、同じ 7 行、同じ初回依頼、同じ追問を保って選択方法を設計します。候補が足りない場合は、実行せず設計だけで完了できます。
 
 ## この機能とは
 
-**モデル選択**は依頼を処理する推論器の選択、**Thinking Effort**は対応する同一モデル内の推論設定です。Instructions、tools、添付文脈、provider を同時に変えると、モデルまたは effort だけの差とは言えません。
+**モデル選択**は依頼を処理する推論器の選択、**Thinking Effort**は対応する同一モデル内の推論設定です。Instructions、ツール、添付したコンテキスト、プロバイダーを同時に変えると、モデルまたはThinking Effortだけの差とはいえません。
 
-要求したモデル名、picker の表示名、応答上で確認できる表示、provider、内部実装 ID は同じとは限りません。観測できない値は未知のままにします。Auto は request ごとに routing が変わる可能性があるため、controlled comparison には使いません。
+要求したモデル名、ピッカーの表示名、応答上で確認できる表示、プロバイダー、内部実装IDは、同じとは限りません。観測できない値は未知のままにします。Autoは依頼ごとにルーティングが変わる可能性があるため、統制した比較には使いません。
 
 参考: [AI language models in VS Code](https://code.visualstudio.com/docs/agent-customization/language-models)
 
@@ -20,56 +20,56 @@
 
 **向いていること**
 
-- 同じ固定入力で、モデルと effort を別々の factor として比較する
+- 同じ固定入力で、モデルとThinking Effortを別々の要因として比較する
 - 根拠保持、入力にない追加、修正負担、欠測を記録する
-- モデルを切り替えない、高い effort を使わない判断を説明する
+- モデルを切り替えない、高いThinking Effortを使わないという判断を説明する
 - 表示不足や残留を分離できない比較を、比較不能として止める
 
 **向いていないこと**
 
-- Auto、provider、credential、組織 policy を変更して候補を作る
-- 異なるモデル間の effort label を同じ計算量とみなす
+- Auto、プロバイダー、認証情報、組織ポリシーを変更して候補を作る
+- 異なるモデル間のThinking Effortのラベルを同じ計算量とみなす
 - 出力量、長い思考表示、単発のよい回答だけで精度を証明する
-- 内部思考全文、秘密ログ、未承認 provider へ送った private code を収集する
+- 内部思考の全文、秘密のログ、未承認のプロバイダーに送った非公開コードを収集する
 
 ## ゴール
 
 次を満たす選択・比較方法を作ります。
 
-1. モデル差と effort 差を別々に扱う
-2. 固定入力、依頼、追問、tools、context を揃える
+1. モデルの違いとThinking Effortの違いを分けて扱う
+2. 固定入力、依頼、追問、ツール、コンテキストを揃える
 3. 要求値と観測できた表示を分け、未知値を補わない
 4. 固定分析の 6 観点を人が照合する
-5. 候補不足、表示不足、設定 drift で止める条件を決める
+5. 候補不足、表示不足、設定のドリフトが発生した場合に停止する条件を決める
 6. 切替不要または設計のみという結論を有効に扱う
 
 ## 用意するもの
 
-- GitHub Copilot Chat または agent を利用できるエディター
+- GitHub Copilot ChatまたはAgentを利用できるエディター
 - 利用中の環境で承認済みのモデル候補
-- 任意: 同じモデルで選択できる二つの Thinking Effort
-- この directory の `starter/`
+- 補足: 同じモデルで選択できる二つのThinking Effort
+- このディレクトリの `starter/`
 
 `starter/` にはすべて不活性な `.template` として次を用意しています。
 
 - [固定の初回依頼](starter/request.txt.template)
 - [固定 7 行](starter/materials/model-input.txt.template)
 - [固定の追問](starter/materials/follow-up.txt.template)
-- [source map](starter/materials/source-map.md.template)
-- [手動比較 protocol](starter/materials/comparison-protocol.md.template)
+- [ソースマップ](starter/materials/source-map.md.template)
+- [手動比較プロトコル](starter/materials/comparison-protocol.md.template)
 - [設計用紙](starter/worksheets/design.md.template)
-- [controls 記録用紙](starter/worksheets/controls.md.template)
+- [統制条件の記録用紙](starter/worksheets/controls.md.template)
 - [応答レビュー用紙](starter/worksheets/responses.md.template)
 
 ## 準備
 
-1. Repository 全体の共通準備は [#始め方](../../README.md#始め方) を参照します。
+1. リポジトリ全体の共通準備は [#始め方](../../README.md#始め方) を参照します。
 2. `starter/` の `.template` はそのまま残し、記入用のコピーを任意の作業場所へ作ります。
-3. 利用可能なモデル、同一モデル内の effort、表示できる provider / effort 情報を確認します。
-4. 比較中に固定する tools、Instructions、添付文脈、承認方法を決めます。
+3. 利用可能なモデル、同一モデル内のThinking Effort、表示できるプロバイダー / Thinking Effortの情報を確認します。
+4. 比較中に固定するツール、Instructions、添付するコンテキスト、承認方法を決めます。
 5. 候補や表示が不足する場合は、架空の名前や応答を作らず、設計のみへ切り替えます。
 
-固定分析は次の exact 7 行です。
+固定分析は次の固定7行です。
 
 ```text
 この固定入力はモデル比較用の教材であり、前のラボの回答ではない。
@@ -92,11 +92,11 @@ Java/DBは未実行。実環境の認証・transaction適用・過去の設計�
 ## 試してみる
 
 1. **事前条件を記録する**
-   要求するモデル、実際に見えた表示、provider、要求・観測 effort、adaptive の見え方、tools、Instructions、添付文脈を controls 用紙へ書きます。
+   要求するモデル、実際に見えた表示、プロバイダー、要求・観測したThinking Effort、adaptiveの表示、ツール、Instructions、添付するコンテキストを統制条件の記録用紙に書きます。
 2. **モデル比較を設計する**
-   承認済みモデル A / B に対して、固定 7 行、初回依頼、追問、tools、context、可能な範囲の effort 条件を同じにします。
-3. **effort 比較を別に設計する**
-   同じモデル E、同じ provider、同じ入力と tools のまま、実際に選べる effort e1 / e2 だけを変えます。モデル比較の応答を再利用しません。
+   承認済みモデルA / Bに対して、固定7行、初回依頼、追問、ツール、コンテキスト、可能な範囲のThinking Effortの条件を同じにします。
+3. **Thinking Effortの比較を別に設計する**
+   同じモデルE、同じプロバイダー、同じ入力とツールのまま、実際に選べるThinking Effortのe1 / e2だけを変えます。モデル比較の応答は再利用しません。
 4. **新しい会話を使う**
    各試行は新しい会話で始め、他の試行の応答、要約、評価を渡しません。入力順も揃えます。
 5. **固定依頼を実行する**
@@ -104,40 +104,40 @@ Java/DBは未実行。実環境の認証・transaction適用・過去の設計�
 6. **6 観点を人が確認する**
    actor / role、version / SUBMITTED、自己承認 / ADMIN、active / 与信、更新項目、未確認事項について、保持・欠落・入力外追加・要修正を記録します。
 7. **停止または採用を判断する**
-   根拠保持、修正負担、欠測、観測可能な時間や使用量を見ます。内部思考全文や未表示の token 数は推測しません。
+   根拠の保持、修正の負担、欠測、観測できる時間や使用量を確認します。内部思考の全文や、表示されていないトークン数は推測しません。
 
 ## 任意: 比較する
 
-承認済み候補と必要な表示が揃う場合だけ、[手動比較 protocol](starter/materials/comparison-protocol.md.template) に沿って比較します。
+承認済みの候補と必要な表示が揃う場合に限り、[手動比較プロトコル](starter/materials/comparison-protocol.md.template)に沿って比較します。
 
 - モデル比較: モデル A と B だけを変える
-- effort 比較: 同じモデル E で e1 と e2 だけを変える
+- Thinking Effortの比較: 同じモデルEでe1とe2だけを変える
 
-二つは別の比較です。モデル、provider、adaptive、tools、context のいずれかが意図せず変わった場合、その結果を単一 factor の効果として扱いません。
+二つは別の比較です。モデル、プロバイダー、adaptive、ツール、コンテキストのいずれかが意図せず変わった場合、その結果を単一要因の効果として扱いません。
 
 ## 確認ポイント
 
 - モデル選択と Thinking Effort を区別している
-- exact 7 行、初回依頼、追問を変えていない
-- モデル比較と effort 比較を分離している
-- 要求名と観測表示、provider、未知値を分けている
+- 固定7行、初回依頼、追問を変えていない
+- モデル比較とThinking Effortの比較を分けている
+- 要求名と観測表示、プロバイダー、未知値を分けている
 - 6 観点を元の固定分析へ戻って確認している
 - 欠測を除外したり、Auto や合成応答で埋めたりしていない
 - 同等、悪化、追加不要、比較不能、未観測を有効な結論としている
 
 ## 発展
 
-- [BYOK provider を評価する探索ガイド](optional/byok-provider.md)
-- [utility model 経路を観察する探索ガイド](optional/utility-models.md)
+- [BYOKプロバイダーを評価する探索ガイド](optional/byok-provider.md)
+- [utility modelの経路を観察する探索ガイド](optional/utility-models.md)
 - [Agent Host で BYOK を評価する探索ガイド](optional/host-byok.md)
-- 「どの観測ならモデルや effort を切り替えないか」という停止規則を一つ追加する
+- 「どの観測ならモデルやThinking Effortを切り替えないか」という停止規則を一つ追加する
 
-## 制約・Fallback・安全
+## 制約・代替手段・安全
 
-- 組織 policy、trust、provider、API key、Custom Endpoint、User 設定は変更しません。
-- 未承認 provider へ固定 7 行や private code を送りません。
-- Auto、架空モデル、架空 effort、合成応答で空欄を埋めません。
-- 内部思考全文、secret、秘密 endpoint、生の private transcript を記録しません。
-- モデル候補が二つない、同一モデルの effort が二つない、実効表示を確認できない場合は設計だけで完了できます。
-- 比較中にモデルや provider が drift した場合は、限定的な観察として残し、単一 factor の差を断定しません。
-- 終了時に戻すのは自分が変更したモデルまたは effort の選択だけです。既存 provider、credential、User 設定は削除しません。
+- 組織ポリシー、trust、プロバイダー、API key、Custom Endpoint、User設定は変更しません。
+- 未承認のプロバイダーへ固定7行や非公開コードを送りません。
+- Auto、架空のモデル、架空のThinking Effort、合成応答で空欄を埋めません。
+- 内部思考の全文、シークレット、秘密のエンドポイント、生の非公開トランスクリプトを記録しません。
+- モデルの候補が二つない場合、同一モデルのThinking Effortが二つない場合、実効表示を確認できない場合は、設計だけで完了できます。
+- 比較中にモデルやプロバイダーがドリフトした場合は、限定的な観察として残し、単一要因の違いを断定しません。
+- 終了時に戻すのは、自分が変更したモデルまたはThinking Effortの選択だけです。既存のプロバイダー、認証情報、User設定は削除しません。
